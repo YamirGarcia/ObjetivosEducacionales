@@ -24,7 +24,7 @@ return new class extends Migration
         Schema::create('EncuestaObjetivos', function (Blueprint $table) {
             $table->bigInteger('idEncuestaObjetivo');
             $table->bigInteger('idObjetivo');
-            $table->foreign('idEncuestaObjetivo')->references('id')->on('NumeroEncuestaObjetivo');//->onDelete('cascade');
+            $table->foreign('idEncuestaObjetivo')->references('id')->on('NumeroEncuestaObjetivos');//->onDelete('cascade');
             $table->foreign('idObjetivo')->references('id')->on('ObjetivosEducacionales');//->onDelete('cascade');
         });
 
