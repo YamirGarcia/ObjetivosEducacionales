@@ -44,40 +44,50 @@ h1{
 }
 .Tabla{
 	position: absolute;
-	width: 1500px;
+	width: calc(100%);
+    margin: auto;
 	top: 200px;
 	align-items: center;
-	left: calc((100% - 1500px) /2);
 	
 }
 .Tabla__filaregistro{
     display: flex;
     position: relative;
     background: #edf6f9;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     margin: auto;
-	margin-top: 1px;
     padding: 10px;
     width: 80%;
 	opacity: .8;
-	border-radius: 12px;
+	border-radius: 8px;
 }
 .Tabla__registroCarrera{
-    width: 45%;
+    width: calc((100% - 50px) * .7);;
+    border-right: 1px solid black;
+    overflow-x: auto;
 }
 
 .Tabla__registroPlan{
-    width: 45%;
+    width: calc((100% - 50px) * .3);
+    border-right: 1px solid black;
+    padding-left: 30px;
+    overflow-x: auto;
+}
+
+.Tabla__menucont{
+    width: 40px;
+    align-items: center;
 }
 
 
 .Tabla__registroMas{
     position: absolute;
-	right: -80px;
+	right: -120px;
+    top: -140px;
 	width: 150px;
     display: flex;
     flex-direction: column;
-    background: grey;
+    background: #ffffff ;
     opacity: 1;
     border: none;
     border-radius: 8px;
@@ -111,7 +121,7 @@ h1{
 
 
 .Tabla__menucontvv button:hover{
-    background: #006;
+    background: #32304760;
 }
 
 .Tabla__menucontvv .Tabla__editar{

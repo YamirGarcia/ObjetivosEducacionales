@@ -97,12 +97,22 @@
     </div>
 
     <script>
-        let mas = document.querySelector("#mas");
-        let menumas = document.querySelector(".Tabla__menucont");
+        let mostrarmenucont = document.querySelectorAll(".Tabla__menucont");
 
-        mas.onclick = function() {
-            menumas.classList.toggle("active");
-        }
+        mostrarmenucont.forEach(mostrarmenucont => {
+            mostrarmenucont.addEventListener('click', ()=>{
+                mostrarmenucont.classList.toggle("active");
+            })
+        });
+
+        let ocultarmenucont = document.querySelectorAll(".contenido");
+
+        mostrarmenucont.forEach(menucont => {
+            mostrarmenucont.addEventListener('click', ()=>{
+                mostrarmenucont.classList.toggle("active");
+            })
+        });
+
     </script>
 
 
