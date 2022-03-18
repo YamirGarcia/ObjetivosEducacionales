@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('carrera', 100);
             $table->string('planEstudios', 100);
+            $table->timestamps();
         });
     }
 

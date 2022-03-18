@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarreraController;
 
 
 Route::get('/aravel', function () {
@@ -19,6 +20,8 @@ Route::get('/menu', function () {
     return view('Objetivos.menu');
 })->name('menu');
 
-Route::get('/carrera', function () {
-    return view('Objetivos.carrera');
-})->name('carrera');
+Route::get('/carrera', [CarreraController::class, 'verCarreras'])->name('carrera');
+
+Route::post('/carrera', [CarreraController::class, 'guardarCarrera'])->name('carrera');
+
+Route::delete('/carrera/{id}', [CarreraController::class, 'eliminarCarrera'])->name('eliminarCarrera');
