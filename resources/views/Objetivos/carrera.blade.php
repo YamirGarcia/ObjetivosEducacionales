@@ -24,8 +24,8 @@
                         {{ $carrera->planEstudios }}
                         </p>
                     </div>
-                    <div class="Tabla__menucont">
-                        <i>mas</i>
+                    <div class="Tabla__menucont" id="mas">
+                        <img id="btnmas" src="img/option.png" alt="">
                     </div>
                     <div class="Tabla__registroMas">
                         <form action="#" method="GET">
@@ -95,6 +95,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let mas = document.querySelector("#mas");
+        let menumas = document.querySelector(".Tabla__menucont");
+
+        mas.onclick = function() {
+            menumas.classList.toggle("active");
+        }
+    </script>
 
 
 @endsection

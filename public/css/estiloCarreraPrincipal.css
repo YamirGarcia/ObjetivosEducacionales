@@ -11,7 +11,6 @@ h1{
 }
 
 .sidebar.active ~ .contenido{
-	background: red;
     width: calc(100% - 240px);
     left: 240px;
     transition: all .5s ease;
@@ -42,4 +41,83 @@ h1{
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
 	border:1px solid #2c2fa5;
 	transform: translateY(-7px);
+}
+.Tabla{
+	position: absolute;
+	width: 1500px;
+	top: 200px;
+	align-items: center;
+	left: calc((100% - 1500px) /2);
+	
+}
+.Tabla__filaregistro{
+    display: flex;
+    position: relative;
+    background: #edf6f9;
+    border: 1px solid black;
+    margin: auto;
+	margin-top: 1px;
+    padding: 10px;
+    width: 80%;
+	opacity: .8;
+	border-radius: 12px;
+}
+.Tabla__registroCarrera{
+    width: 45%;
+}
+
+.Tabla__registroPlan{
+    width: 45%;
+}
+
+
+.Tabla__registroMas{
+    position: absolute;
+	right: -80px;
+	width: 150px;
+    display: flex;
+    flex-direction: column;
+    background: grey;
+    opacity: 1;
+    border: none;
+    border-radius: 8px;
+    visibility: hidden;
+}
+
+.Tabla__menucont.active ~ .Tabla__registroMas{
+	z-index: 1000;
+	visibility: visible;
+	transition: all .5s ease;
+}
+
+.Tabla__menucont.active ~ .Tabla__filaregistro{
+	z-index: 20;
+}
+
+
+
+.Tabla__menucontvv button{
+    color: black;
+    width: 150px;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    padding: .5rem .5rem;
+}
+.Tabla__menucont img{
+	width: 40px;
+}
+
+
+.Tabla__menucontvv button:hover{
+    background: #006;
+}
+
+.Tabla__menucontvv .Tabla__editar{
+    color: blue;
+}
+
+.Tabla__menucontvv .Tabla__eliminar{
+    color: red;
 }
