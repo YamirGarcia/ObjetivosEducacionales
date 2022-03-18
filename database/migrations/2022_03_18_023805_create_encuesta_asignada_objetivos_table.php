@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('periodo');
             $table->bigInteger('idEvaluador');
             $table->bigInteger('idNumeroEncuestaObjetivos');
+            $table->timestamps();
             $table->foreign('idEvaluador')->references('id')->on('evaluadors');//->onDelete('cascade');
             $table->foreign('idNumeroEncuestaObjetivos')->references('id')->on('numero_encuesta_objetivos');//->onDelete('cascade');
         });

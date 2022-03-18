@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->bigInteger('idDepartamento');
             $table->bigInteger('idGrupoDeInteres');
+            $table->timestamps();
             $table->foreign('idDepartamento')->references('id')->on('departamentos');//->onDelete('cascade');
             $table->foreign('idGrupoDeInteres')->references('id')->on('grupo_de_interes');//->onDelete('cascade');
         });

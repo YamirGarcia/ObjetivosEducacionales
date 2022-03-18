@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('usuario_carreras', function (Blueprint $table) {
             $table->bigInteger('idUsuario');
             $table->bigInteger('idCarrera');
+            $table->timestamps();
             $table->foreign('idUsuario')->references('id')->on('usuarios');//->onDelete('cascade');
             $table->foreign('idCarrera')->references('id')->on('carreras');//->onDelete('cascade');
         });

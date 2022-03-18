@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('aspectos_objetivos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
             $table->timestamps();
         });
     }

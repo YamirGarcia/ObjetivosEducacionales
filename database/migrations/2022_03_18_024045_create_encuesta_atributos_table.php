@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('encuesta_atributos', function (Blueprint $table) {
             $table->bigInteger('idEncuestaAtributos');
             $table->bigInteger('idAtributo');
+            $table->timestamps();
             $table->foreign('idEncuestaAtributos')->references('id')->on('numero_encuesta_atributos');//->onDelete('cascade');
             $table->foreign('idAtributo')->references('id')->on('atributos');//->onDelete('cascade');
         });

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('Pregunta');
             $table->bigInteger('idAspectoAtributo');
+            $table->timestamps();
             $table->foreign('idAspectoAtributo')->references('id')->on('aspectos_atributos');//->onDelete('cascade');
         });
     }

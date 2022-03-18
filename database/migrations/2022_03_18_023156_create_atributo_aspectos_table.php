@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('atributo_aspectos', function (Blueprint $table) {
             $table->bigInteger('idAtributo');
             $table->bigInteger('idAspectoAtributo');
+            $table->timestamps();
             $table->foreign('idAtributo')->references('id')->on('atributos');//->onDelete('cascade');
             $table->foreign('idAspectoAtributo')->references('id')->on('aspectos_atributos');//->onDelete('cascade');
         });

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->bigInteger('idCarrera');
+            $table->timestamps();
             $table->foreign('idCarrera')->references('id')->on('carreras');//->onDelete('cascade');
         });
     }

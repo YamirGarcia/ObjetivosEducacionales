@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carreras', function (Blueprint $table) {
-            $table->id();
-            $table->string('carrera', 100);
-            $table->string('planEstudios', 100);
+             $table->id();
+            $table->string('carrera');
+            $table->string('planEstudios');
+            $table->timestamps();
         });
     }
 

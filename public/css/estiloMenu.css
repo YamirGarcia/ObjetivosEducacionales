@@ -88,9 +88,11 @@ body{
     position: relative;
     height: 50px;
     width: 100%;
-    margin: 0px 5px;
+    margin: 10px 5px;
     list-style: none;
     line-height: 50px;
+    
+
 }
 
 .sidebar ul li .tooltip{
@@ -162,6 +164,7 @@ body{
 .sidebar ul li a:hover{
     color: #11101d;
     background: #fff;
+    font-weight: bold;
 }
 
 .sidebar ul li i{
