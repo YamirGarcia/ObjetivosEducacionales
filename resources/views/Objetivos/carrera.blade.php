@@ -24,18 +24,22 @@
                         {{ $carrera->planEstudios }}
                         </p>
                     </div>
+                    <div class="Tabla__registroPlan">
+                        <p>
+                        {{ $carrera->id }}
+                        </p>
+                    </div>
                     <div class="Tabla__menucont" id="mas">
                         <img id="btnmas" src="img/option.png" alt="">
                     </div>
                     <div class="Tabla__registroMas">
-                        <form action="#" method="GET">
-                            @csrf
-                            <div class="Tabla__menucontvv">
-                                <button class="Tabla__editar">Editar</button>
-                                
-                            </div>
+                            
+                        <div class="Tabla__menucontvv">
+                            <button class="Tabla__editar" data-bs-toggle="modal" data-bs-target="#modalEditar{{$carrera->id}}">Editar</button>                            
+                            
+                        </div>
+                            
                             <!-- <button class="btn btn-primary">Editar</button> -->
-                        </form>
                         <form action="{{ route('eliminarCarrera', ['id' => $carrera->id]) }}" method="POST">
                              @method('DELETE')
                              @csrf
@@ -58,6 +62,35 @@
                                 
                             </div>
                          </form>
+                    </div>
+                </div>
+
+                    <!-- MODAL EDITAR -->
+                    <div class="modal fade" id="modalEditar{{$carrera->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ACCESO RAPIDO</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('editarCarrera', ['id' => $carrera->id]) }}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                <div class="modal-body">
+                                    <label for="carrera" >Nombre de la Carrera:</label>
+                                    <input type="text" class="form-control" name="carrera" style="margin-bottom: 2rem;" value="{{$carrera->carrera}}">
+                    
+                                    <label for="planEstudios" >Plan de estudios:</label>
+                                    <input type="text" class="form-control" name="planEstudios" value="{{$carrera->planEstudios}}">
+                                    
+                                </div>
+                                    
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                                    <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -95,6 +128,9 @@
             </div>
         </div>
     </div>
+
+  
+
 
     <script>
         let mostrarmenucont = document.querySelectorAll(".Tabla__menucont");
