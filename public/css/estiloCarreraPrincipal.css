@@ -100,6 +100,12 @@ h1{
 	transition: all .5s ease;
 }
 
+.contenido ~ .Tabla__registroMas{
+	z-index: 1000;
+	visibility: hidden;
+	transition: all .5s ease;
+}
+
 .Tabla__menucont.active ~ .Tabla__filaregistro{
 	z-index: 20;
 }

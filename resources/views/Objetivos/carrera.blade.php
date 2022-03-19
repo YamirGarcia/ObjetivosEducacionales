@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="contenido">
+<div class="contenido" id="contenido">
 
 <div class="Tabla">
             <div class="Tabla__filas">
@@ -105,13 +105,14 @@
             })
         });
 
-        let ocultarmenucont = document.querySelectorAll(".contenido");
+        let menucont = document.querySelectorAll(".contenido");
 
-        mostrarmenucont.forEach(menucont => {
-            mostrarmenucont.addEventListener('click', ()=>{
-                mostrarmenucont.classList.toggle("active");
-            })
+        $(".Tabla__registroMas").focusout(function() {
+            menucont.style.visibility = 'hidden';
         });
+
+        
+        
 
     </script>
 
