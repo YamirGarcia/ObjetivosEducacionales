@@ -25,6 +25,19 @@ class CarreraController extends Controller
         return redirect()->route('carrera')->with('success','Carrera agregada correctamente');
     }
 
+    public function editarCarrera(Request $request, $id){
+        $request->validate([
+            'carrera' => 'required',
+            'planEstudios' => 'required'
+        ]);
+        $carrera = Carrera::find($id);
+        $carrera->carrera = $request->carrera;
+        $carrera->planEstudios = $request->planEstudios;
+        $carrera->save();
+
+        return redirect()->route('carrera')->with('success','Carrera actualizada correctamente');
+    }
+
     public function eliminarCarrera($id){
         $carrera = Carrera::find($id);
         $carrera->delete();

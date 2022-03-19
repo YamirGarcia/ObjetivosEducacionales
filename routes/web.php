@@ -24,4 +24,6 @@ Route::get('/carrera', [CarreraController::class, 'verCarreras'])->name('carrera
 
 Route::post('/carrera', [CarreraController::class, 'guardarCarrera'])->name('carrera');
 
+Route::patch('/carrera/{id}', [CarreraController::class, 'editarCarrera'])->name('editarCarrera');
+
 Route::delete('/carrera/{id}', [CarreraController::class, 'eliminarCarrera'])->name('eliminarCarrera');
