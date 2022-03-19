@@ -24,10 +24,6 @@
                         {{ $carrera->planEstudios }}
                         </p>
                     </div>
-                    <div class="Tabla__registroPlan">
-                        <p>
-                        {{ $carrera->id }}
-                        </p>
                     </div>
                     <div class="Tabla__menucont" id="mas">
                         <img id="btnmas" src="img/option.png" alt="">
