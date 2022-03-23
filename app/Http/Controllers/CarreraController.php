@@ -7,6 +7,14 @@ use App\Models\Carrera;
 
 class CarreraController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-carrera | crear-carrera | editar-carrera | borrar-carrera', ['only'=>['Objetivos.carrera']]);
+        $this->middleware('permission:crear-carrera', ['only'=>['guardarCarrera']]);
+        $this->middleware('permission:editar-carrera', ['only'=>['editarCarrera']]);
+        $this->middleware('permission:borrar-carrera', ['only'=>['eliminarCarrera']]);
+    }
+
     public function verCarreras(Request $request){
         $carreras = Carrera::all();
         return view('Objetivos.carrera', ['carreras' => $carreras]);

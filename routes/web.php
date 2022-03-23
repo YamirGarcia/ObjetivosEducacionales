@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarreraController;
 
+//agreagmos los controladors de permisos y roles
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+
 
 Route::get('/aravel', function () {
     return view('welcome');
@@ -12,18 +17,34 @@ Route::get('/test', function () {
     return view('home');
 });
 
+// Route::get('/', function () {
+//     return view('Objetivos.login');
+// });
 Route::get('/', function () {
-    return view('Objetivos.login');
+    return view('auth.login');
 });
 
 Route::get('/menu', function () {
     return view('Objetivos.menu');
 })->name('menu');
 
-Route::get('/carrera', [CarreraController::class, 'verCarreras'])->name('carrera');
 
-Route::post('/carrera', [CarreraController::class, 'guardarCarrera'])->name('carrera');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::patch('/carrera/{id}', [CarreraController::class, 'editarCarrera'])->name('editarCarrera');
+Auth::routes();
 
-Route::delete('/carrera/{id}', [CarreraController::class, 'eliminarCarrera'])->name('eliminarCarrera');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::resource('roles', RolController::class);
+    Route::resource('usuarios', UsuarioController::class);
+
+
+    Route::get('/carrera', [CarreraController::class, 'verCarreras'])->name('carrera');
+    
+    Route::post('/carrera', [CarreraController::class, 'guardarCarrera'])->name('carrera');
+    
+    Route::patch('/carrera/{id}', [CarreraController::class, 'editarCarrera'])->name('editarCarrera');
+    
+    Route::delete('/carrera/{id}', [CarreraController::class, 'eliminarCarrera'])->name('eliminarCarrera');
+});
