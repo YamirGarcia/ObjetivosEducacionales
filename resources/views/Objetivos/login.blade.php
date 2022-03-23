@@ -27,7 +27,7 @@
         <div class="login__fondousuario">
             <img class="login__fondousuario-icono" src="https://www.seekpng.com/png/full/138-1388073_login-icons-user-flat-icon-png.png"/>
         </div>
-        <form action="{{route('menu')}}">
+        <form method="POST" action="{{ route('login') }}">
             <div class="login__bordediv">
             <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/><input type="text" placeholder="Usuario">
             </div>
