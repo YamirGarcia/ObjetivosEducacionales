@@ -38,15 +38,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function(){
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
+    Route::resource('carreras', CarreraController::class);
 
 
-    Route::get('/carrera', [CarreraController::class, 'verCarreras'])->name('carrera');
+    // Route::get('/carrera', [CarreraController::class, 'verCarreras'])->name('carrera');
     
-    Route::post('/carrera', [CarreraController::class, 'guardarCarrera'])->name('carrera');
+    // Route::post('/carrera', [CarreraController::class, 'guardarCarrera'])->name('carrera');
     
-    Route::patch('/carrera/{id}', [CarreraController::class, 'editarCarrera'])->name('editarCarrera');
+    // Route::patch('/carrera/{id}', [CarreraController::class, 'editarCarrera'])->name('editarCarrera');
     
-    Route::delete('/carrera/{id}', [CarreraController::class, 'eliminarCarrera'])->name('eliminarCarrera');
+    // Route::delete('/carrera/{id}', [CarreraController::class, 'eliminarCarrera'])->name('eliminarCarrera');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

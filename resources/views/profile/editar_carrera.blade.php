@@ -6,7 +6,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">ACCESO RÁPIDO</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
             </div>
-            <form action="{{ route('editarCarrera', ['id' => $carrera->id]) }}" method="POST">
+            <form action="{{ route('carreras.update', [$carrera->id]) }}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">
