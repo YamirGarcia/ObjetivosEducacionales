@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">AGREGAR CARRERA</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
             </div>
-            <form action="{{ route('carrera') }}" method="POST">
+            <form action="{{ route('carreras.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <label for="carrera">Nombre de la Carrera:</label>

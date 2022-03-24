@@ -14,13 +14,35 @@ class CarreraController extends Controller
         $this->middleware('permission:editar-carrera', ['only'=>['editarCarrera']]);
         $this->middleware('permission:borrar-carrera', ['only'=>['eliminarCarrera']]);
     }
-
-    public function verCarreras(Request $request){
-        $carreras = Carrera::all();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $carreras = Carrera::paginate(10);
         return view('Objetivos.carrera', ['carreras' => $carreras]);
     }
 
-    public function guardarCarrera(Request $request){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $request->validate([
             'carrera' => 'required',
             'planEstudios' => 'required'
@@ -30,10 +52,41 @@ class CarreraController extends Controller
         $carrera->planEstudios = $request->planEstudios;
         $carrera->save();
 
-        return redirect()->route('carrera')->with('success','Carrera agregada correctamente');
+
+        return redirect()->route('carreras.index');
     }
 
-    public function editarCarrera(Request $request, $id){
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'carrera' => 'required',
             'planEstudios' => 'required'
@@ -43,13 +96,21 @@ class CarreraController extends Controller
         $carrera->planEstudios = $request->planEstudios;
         $carrera->save();
 
-        return redirect()->route('carrera')->with('success','Carrera actualizada correctamente');
+        return redirect()->route('carreras.index');
     }
 
-    public function eliminarCarrera($id){
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
         $carrera = Carrera::find($id);
         $carrera->delete();
 
-        return redirect()->route('carrera')->with('success','Carrera agregada correctamente');
+        return redirect()->route('carreras.index');
     }
-}
+    }
+
