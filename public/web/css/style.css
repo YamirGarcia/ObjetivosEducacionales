@@ -3513,9 +3513,15 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li > a.has-dropdown:after {
     content: initial;
 }
 
+<<<<<<< HEAD
 body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
     box-shadow: 0 4px 8px #acb5f6;
     background-color: #6777ef;
+=======
+body.sidebar-mini .main-sidebar .sidebar-menu>li.active>a {
+    /* box-shadow: 0 4px 8px #101f46; */
+    /* background-color: #f8fafb; */
+>>>>>>> 7868799f7544d7a61058bcf6635c757848f3e692
     color: #fff;
 }
 
@@ -3890,7 +3896,7 @@ body.layout-3 .main-footer {
 .main-sidebar .sidebar-menu li.active a {
     color: #6777ef;
     font-weight: 600;
-    background-color: #f8fafb;
+    /* background-color: #f8fafb; */
 }
 
 .main-sidebar .sidebar-menu li.active a.has-dropdown:after {

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('estilos')
+
+<link rel="stylesheet" type="text/css" href="css/estiloAdicionalRol.css">
+@endsection
+
 @section('content')
 <section class="section">
     <div class="section-header">
@@ -11,32 +16,38 @@
                 <div class="card">
                     <div class="card-body">
                         @can('crear-rol')
-                        <a class="btn btn-warning" href="{{route('roles.create')}}">Nuevo</a>
+                        <!-- <a class="btn btn-warning" href="{{route('roles.create')}}">Nuevo</a> -->
                         @endcan
-                        <table class="table table-striped mt-2">
-                            <thead style="background-color: #6777ef;">
+                        <table class="table mt-2">
+                            <thead>
                                 <th style="color: #fff;">Rol</th>
-                                <th style="color: #fff;">Acciones</th>
+                                <th style="color: #fff;"></th>
                             </thead>
                             <tbody>
                                 @foreach($roles as $role)
                                 <tr>
                                     <td>{{$role->name}}</td>
-                                    <td>
-                                        @can('editar-rol')
-                                        <a class="btn btn-primary" href="{{ route('roles.edit' ,$role->id)}}">Editar</a>
-                                        @endcan
+                                    <td style="display: flex; flex-direction: row-reverse; ">
+                                        <div class="submenu" style="display: flex; flex-direction: row-reverse; ">
                                         @can('borrar-rol')
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Borrar', ['class' => 'btn-danger']) !!}
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id],'style'=>'margin: 4px']) !!}
+                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger hide-menu']) !!}
                                         {!! Form::close() !!}
                                         @endcan
+                                        @can('editar-rol')
+                                        {!! Form::open(['method' => 'GET', 'route' => ['roles.edit', $role->id],'style'=>'margin: 4px']) !!}
+                                        {!! Form::submit('Editar', ['class' => ' btn btn-primary hide-menu']) !!}
+                                        {!! Form::close() !!}
+                                        @endcan
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+
+                    <a href="{{route('roles.create')}}" class="btn-flotante">Agregar Rol</a>
                 </div>
             </div>
         </div>

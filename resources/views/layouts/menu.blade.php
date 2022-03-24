@@ -6,7 +6,7 @@
         <span style="color: black;"> Dashboard</span>
     </a>
 </li>
-@can('ver-usuario' | 'crear-usuario')
+@can('ver-usuario')
 <li class="side-menus {{ Request::is('home') ? 'active' : '' }}">
     <a class="nav-link" href="/usuarios">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">

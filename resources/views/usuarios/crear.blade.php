@@ -32,20 +32,32 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="email">E-mail</label>
+                                    <label for="apellido">Apellidos</label>
+                                    {!! Form::text('apellido', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="email">Correo</label>
                                     {!! Form::text('email', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="password">Password</label>
+                                    <label for="password">Contraseña</label>
                                     {!! Form::password('password', array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="confirm-password">Confirmar Password</label>
+                                    <label for="confirm-password">Confirmar Contraseña</label>
                                     {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="telefono">Télefono</label>
+                                    {!! Form::text('telefono', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -54,9 +66,13 @@
                                     {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
                                 </div>
                             </div>
+
+                            <input type="text" readonly name="creadopor" class="form-control" style="visibility: hidden;" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
+                            
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
+                              
                         </div>
                         {!! Form::close() !!}
                             

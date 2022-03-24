@@ -33,6 +33,18 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
+                                    <label for="apellido">Apellidos</label>
+                                    {!! Form::text('apellido', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="telefono">Télefono</label>
+                                    {!! Form::text('telefono', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
                                     <label for="email">Correo</label>
                                     {!! Form::text('email', null, array('class' => 'form-control')) !!}
                                 </div>
