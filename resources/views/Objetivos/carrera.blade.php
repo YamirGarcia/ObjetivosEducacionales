@@ -20,6 +20,9 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        @if ($carreras->count()==0)
+                            <h1>No existen carreras creadas por mostrar</h1> 
+                        @endif
                         <div>
                             <div class="Tabla__filas">
                                 @foreach ($carreras as $carrera)
