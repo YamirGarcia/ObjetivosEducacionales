@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -27,8 +28,12 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::paginate(5);
-        return view('usuarios.index', compact('usuarios'));
+        $user_sesion = Auth::user()->name;
+        $usuarios = User::where('creadopor', $user_sesion)->paginate(10);
+        // $usuarios = $usuarios->simplePaginate(2);
+        // $usuarios = User::paginate(2);
+        // dd($usuarios);
+        return view('usuarios.index', compact('usuarios','user_sesion'));
     }
 
     /**
@@ -42,6 +47,14 @@ class UsuarioController extends Controller
         return view('usuarios.crear', compact('roles'));
     }
 
+    public function edit($id)
+    {
+        $user = User::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+        return view('usuarios.editar', compact('user', 'roles', 'userRole'));
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -52,14 +65,16 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'apellido'=> 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'telefono' => 'required',
+            'roles' => 'required',
+            'creadopor' => 'required'
         ]);
 
-        $input = $request->all();
+        $input = $request->all();        
         $input['password'] = Hash::make($input['password']);
-
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
@@ -83,14 +98,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $user = User::find($id);
-        $roles = Role::pluck('name', 'name')->all();
-        $userRole = $user->roles->pluck('name', 'name')->all();
-        return view('usuarios.editar', compact('user', 'roles', 'userRole'));
-
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -103,8 +111,10 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'apellido'=> 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
+            'telefono' => 'required',
             'roles' => 'required'
         ]);   
         $input = $request->all();

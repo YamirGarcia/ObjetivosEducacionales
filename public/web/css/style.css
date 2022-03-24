@@ -3760,8 +3760,8 @@ body.sidebar-mini .main-sidebar .sidebar-menu>li>a.has-dropdown:after {
 }
 
 body.sidebar-mini .main-sidebar .sidebar-menu>li.active>a {
-    box-shadow: 0 4px 8px #101f46;
-    background-color: #0d1a3a93;
+    /* box-shadow: 0 4px 8px #101f46; */
+    /* background-color: #f8fafb; */
     color: #fff;
 }
 
@@ -4137,7 +4137,7 @@ body.layout-3 .main-footer {
 .main-sidebar .sidebar-menu li.active a {
     color: #6777ef;
     font-weight: 600;
-    background-color: #f8fafb;
+    /* background-color: #f8fafb; */
 }
 
 .main-sidebar .sidebar-menu li.active a.has-dropdown:after {

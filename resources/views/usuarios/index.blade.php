@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('estilos')
+
+<link rel="stylesheet" type="text/css" href="css/estiloAdicionalUsuario.css">
+@endsection
 
 @section('content')
 <section class="section">
@@ -10,7 +14,6 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <a class="btn btn-warning" href="{{route('usuarios.create')}}">Nuevo</a>
                         <table class="table table-striped mt-2">
                             <thead style="background-color: #6777ef;">
                                 <th style="display: none;">ID</th>
@@ -21,6 +24,8 @@
                             </thead>
                             <tbody>
                                 @foreach($usuarios as $usuario)
+                                @if ($usuario->creadopor == $user_sesion)
+                                
                                 <tr>
                                     <td style="display: none;">{{$usuario->id}}</td>
                                     <td>{{$usuario->name}}</td>
@@ -39,6 +44,7 @@
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
@@ -46,6 +52,7 @@
                             {!! $usuarios->links() !!}
                         </div>
                     </div>
+                    <a href="{{route('usuarios.create')}}" class="btn-flotante">Agregar Usuario</a>
                 </div>
             </div>
         </div>
