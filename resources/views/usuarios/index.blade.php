@@ -12,7 +12,7 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
                         <table class="table table-striped mt-2 text-center">
                             <thead style="background-color: #6777ef;">
@@ -33,7 +33,9 @@
                                     <td>
                                         @if(!empty($usuario->getRoleNames()))
                                         @foreach($usuario->getRoleNames() as $rolName)
-                                        <h5><span class="badge badge-dark">{{$rolName}}</span></h5>
+                                        <h5>
+                                                <span class="badge badge-dark">{{$rolName}}</span>
+                                        </h5>
                                         @endforeach
                                         @endif
                                     </td>
