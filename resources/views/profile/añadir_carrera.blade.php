@@ -15,7 +15,7 @@
                     <input type="text" class="form-control" name="planEstudios">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">CERRAR</button>
                     <button type="submit" class="btn btn-primary">GUARDAR</button>
                 </div>
             </form>
