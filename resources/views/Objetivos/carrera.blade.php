@@ -24,7 +24,7 @@
                         @can('crear-carrera')
                         <!-- <a class="btn btn-warning" href="{{route('roles.create')}}">Nuevo</a> -->
                         @endcan
-                        <table class="table table-striped mt-2">
+                        <table class="table table-striped mt-2 text-center">
                             <thead style="background-color: #6777ef">
                                 <th style="color: #fff;">Carrera</th>
                                 <th style="color: #fff;">Plan de estudios</th>
@@ -40,9 +40,15 @@
                                     {{-- style="display: flex; flex-direction: row-reverse; " --}}
                                     <td>
                                     
-                                        <button class="badge bg-info text-dark" data-toggle="modal" data-target="#modalCarreraUsuario{{$carrera->id}}">
-                                            Número
-                                          </button>
+                                        <button class="badge bg-info text-dark mr-2" data-toggle="modal" data-target="#modalCarreraUsuario{{$carrera->id}}">
+                                            Usuarios: {{$carrera->usuarios->count()}}
+                                        </button>
+                                        <button class="badge bg-success text-dark mr-2" data-toggle="modal" data-target="#modalAtributosCarrera{{$carrera->id}}">
+                                            Atributos: {{$carrera->atributos->count()}}
+                                        </button>
+                                        <button class="badge bg-primary text-dark mr-2" data-toggle="modal" data-target="#modalObjetivosCarrera{{$carrera->id}}">
+                                            Objetivos: {{$carrera->objetivos->count()}}
+                                        </button>
                                     </td>
                                     <td>
                                         <div class="submenu">
@@ -79,30 +85,12 @@
 
     @foreach ($carreras as $carrera)
         @include('profile.editar_carrera')  
+        @include('profile.add_user_to_degree')
+        @include('profile.atributos_carrera')  
+        @include('profile.objetivos_carrera')
     @endforeach
 
     @include('profile.añadir_carrera')
 
-    @foreach ($carreras as $carrera)
-        @include('profile.add_user_to_degree')  
-    @endforeach
-
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div> --}}
     
 @endsection

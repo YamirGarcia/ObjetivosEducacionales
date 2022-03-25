@@ -1,32 +1,28 @@
-<!-- Modal para asignar usuario a carrera -->
-<div class="modal fade" id="modalCarreraUsuario{{$carrera->id}}" >
+<!-- Modal para consultar los atributos de una carrera -->
+<div class="modal fade" id="modalAtributosCarrera{{$carrera->id}}" >
     <div class="modal-dialog modal-lg" style="z-index: 4000;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Asignar Usuarios a Carrera {{$carrera->carrera}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Atributos de: {{$carrera->carrera}}</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
             </div>
             <form action="{{ route('carreras.update', [$carrera->id]) }}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">
-                    <h4>Lista de Usuarios</h4>
+                    <h4>Lista de Atributos</h4>
                     <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Correo</th>
+                            <th scope="col">Descripcion</th>
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($carrera->usuarios as $usuario)
+                            @foreach ($carrera->atributos as $atributo)
                           <tr>
                               <th scope="row">{{$loop->iteration}}</th>
-                              <td>{{$usuario->name}}</td>
-                              <td>{{$usuario->apellido}}</td>
-                              <td>{{$usuario->email}}</td>
+                              <td>{{$atributo->descripcion}}</td>
                                   
                             </tr>
                             @endforeach
