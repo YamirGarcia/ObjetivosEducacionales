@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AspectosObjetivos extends Model
 {
     use HasFactory;
+    public function objetivos () {
+        return $this->belongsToMany('App\Models\ObjetivoEducacional', 'objetivo_aspectos');
+    }
 }

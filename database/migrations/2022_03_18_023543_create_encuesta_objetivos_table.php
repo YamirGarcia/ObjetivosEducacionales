@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('encuesta_objetivos', function (Blueprint $table) {
-            $table->bigInteger('idEncuestaObjetivo');
-            $table->bigInteger('idObjetivo');
+            $table->bigInteger('numero_encuesta_objetivo_id');
+            $table->bigInteger('objetivo_educacional_id');
             $table->timestamps();
-            $table->foreign('idEncuestaObjetivo')->references('id')->on('numero_encuesta_objetivos');//->onDelete('cascade');
-            $table->foreign('idObjetivo')->references('id')->on('objetivo_educacionals');//->onDelete('cascade');
+            $table->foreign('numero_encuesta_objetivo_id')->references('id')->on('numero_encuesta_objetivos');//->onDelete('cascade');
+            $table->foreign('objetivo_educacional_id')->references('id')->on('objetivo_educacionals');//->onDelete('cascade');
         });
     }
 

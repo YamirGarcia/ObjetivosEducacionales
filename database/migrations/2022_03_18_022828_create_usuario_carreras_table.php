@@ -14,11 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('usuario_carreras', function (Blueprint $table) {
-            $table->bigInteger('idUsuario');
-            $table->bigInteger('idCarrera');
+            // $table->bigInteger('usuario_id');
+            $table->bigInteger('user_id');
+            $table->bigInteger('carrera_id');
             $table->timestamps();
-            $table->foreign('idUsuario')->references('id')->on('usuarios');//->onDelete('cascade');
-            $table->foreign('idCarrera')->references('id')->on('carreras');//->onDelete('cascade');
+            // $table->foreign('usuario_id')->references('id')->on('usuarios');//->onDelete('cascade');
+            $table->foreign('carrera_id')->references('id')->on('carreras');//->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');//->onDelete('cascade');
         });
     }
 

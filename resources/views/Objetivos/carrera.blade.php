@@ -28,6 +28,7 @@
                             <thead style="background-color: #6777ef">
                                 <th style="color: #fff;">Carrera</th>
                                 <th style="color: #fff;">Plan de estudios</th>
+                                <th style="color: #fff;">Propiedades</th>
                                 <th style="color: #fff;"></th>
                             </thead>
                             <tbody>
@@ -37,6 +38,12 @@
                                     <td>{{$carrera->planEstudios}}</td>
                                     {{-- td style="display: flex; flex-direction: row-reverse; " --}}
                                     {{-- style="display: flex; flex-direction: row-reverse; " --}}
+                                    <td>
+                                    
+                                        <button class="badge bg-info text-dark" data-toggle="modal" data-target="#modalCarreraUsuario{{$carrera->id}}">
+                                            Número
+                                          </button>
+                                    </td>
                                     <td>
                                         <div class="submenu">
                                         @can('borrar-carrera')
@@ -76,6 +83,26 @@
 
     @include('profile.añadir_carrera')
 
-    
+    @foreach ($carreras as $carrera)
+        @include('profile.add_user_to_degree')  
+    @endforeach
+
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div> --}}
     
 @endsection

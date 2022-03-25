@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('atributo_aspectos', function (Blueprint $table) {
-            $table->bigInteger('idAtributo');
-            $table->bigInteger('idAspectoAtributo');
+            $table->bigInteger('atributo_id');
+            $table->bigInteger('aspectos_atributos_id');
             $table->timestamps();
-            $table->foreign('idAtributo')->references('id')->on('atributos');//->onDelete('cascade');
-            $table->foreign('idAspectoAtributo')->references('id')->on('aspectos_atributos');//->onDelete('cascade');
+            $table->foreign('atributo_id')->references('id')->on('atributos');//->onDelete('cascade');
+            $table->foreign('aspectos_atributos_id')->references('id')->on('aspectos_atributos');//->onDelete('cascade');
         });
     }
 

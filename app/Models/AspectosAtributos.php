@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class AspectosAtributos extends Model
 {
     use HasFactory;
+    public function atributos () {
+        return $this->belongsToMany('App\Models\Atributo', 'atributo_aspectos');
+    }
+
+    public function preguntas () {
+        return $this->hasMany('App\Models\PreguntaAspectoAtributo', 'idAspectoAtributo');
+    }
 }
