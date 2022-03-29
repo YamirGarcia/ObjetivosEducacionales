@@ -13,8 +13,11 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
+                        @if ($roles->count()==0)
+                            <h1>No existen roles creados por mostrar</h1> 
+                        @else
                         @can('crear-rol')
                         <!-- <a class="btn btn-warning" href="{{route('roles.create')}}">Nuevo</a> -->
                         @endcan
@@ -45,6 +48,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
 
                     <a href="{{route('roles.create')}}" class="btn-flotante">Agregar Rol</a>

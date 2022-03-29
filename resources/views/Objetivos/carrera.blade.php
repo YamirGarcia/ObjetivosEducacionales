@@ -13,15 +13,22 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
+                    @if ($carreras->count()==0)
+                        <h1 class="text-center">No existen carreras que mostrar</h1> 
+                    @else
+                            
+                        
                     <div class="card-body">
+                        
                         @can('crear-carrera')
                         <!-- <a class="btn btn-warning" href="{{route('roles.create')}}">Nuevo</a> -->
                         @endcan
-                        <table class="table table-striped mt-2">
+                        <table class="table table-striped mt-2 text-center">
                             <thead style="background-color: #6777ef">
                                 <th style="color: #fff;">Carrera</th>
                                 <th style="color: #fff;">Plan de estudios</th>
+                                <th style="color: #fff;">Propiedades</th>
                                 <th style="color: #fff;"></th>
                             </thead>
                             <tbody>
@@ -29,16 +36,31 @@
                                 <tr>
                                     <td>{{$carrera->carrera}}</td>
                                     <td>{{$carrera->planEstudios}}</td>
-                                    <td style="display: flex; flex-direction: row-reverse; ">
-                                        <div class="submenu" style="display: flex; flex-direction: row-reverse; ">
+                                    {{-- td style="display: flex; flex-direction: row-reverse; " --}}
+                                    {{-- style="display: flex; flex-direction: row-reverse; " --}}
+                                    <td>
+                                    
+                                        <button class="badge bg-info text-dark mr-2" data-toggle="modal" data-target="#modalCarreraUsuario{{$carrera->id}}">
+                                            Usuarios: {{$carrera->usuarios->count()}}
+                                        </button>
+                                        <button class="badge bg-success text-dark mr-2" data-toggle="modal" data-target="#modalAtributosCarrera{{$carrera->id}}">
+                                            Atributos: {{$carrera->atributos->count()}}
+                                        </button>
+                                        <button class="badge bg-primary text-dark mr-2" data-toggle="modal" data-target="#modalObjetivosCarrera{{$carrera->id}}">
+                                            Objetivos: {{$carrera->objetivos->count()}}
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <div class="submenu">
                                         @can('borrar-carrera')
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['carreras.destroy', $carrera->id],'style'=>'margin: 4px']) !!}
-                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger hide-menu']) !!}
+                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-md']) !!}
                                         {!! Form::close() !!}
                                         @endcan
                                         @can('editar-carrera')
                                         <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}">Editar</button>
                                         @endcan
+<<<<<<< HEAD
                                         <!-- Default dropend button -->
                                         <div class="btn-group dropend">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,6 +84,11 @@
                                         </ul>
                                         </div>
                                         </div>
+=======
+                                         </div>
+
+                                        
+>>>>>>> 4f605caa58eea616180ecce0b4515dcad18f37cd
                                     </td>
                                 </tr>   
                                 @endforeach
@@ -71,11 +98,12 @@
                             {!! $carreras->links() !!}
                         </div>
                     </div>
-
+                    @endif
                     @can('crear-carrera')
                         <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar Carrera</a>
                         @endcan
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -83,10 +111,12 @@
 
     @foreach ($carreras as $carrera)
         @include('profile.editar_carrera')  
+        @include('profile.add_user_to_degree')
+        @include('profile.atributos_carrera')  
+        @include('profile.objetivos_carrera')
     @endforeach
 
     @include('profile.añadir_carrera')
 
-    
     
 @endsection

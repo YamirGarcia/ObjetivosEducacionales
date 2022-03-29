@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('encuesta_atributos', function (Blueprint $table) {
-            $table->bigInteger('idEncuestaAtributos');
-            $table->bigInteger('idAtributo');
+            $table->bigInteger('numero_encuesta_atributo_id');
+            $table->bigInteger('atributo_id');
             $table->timestamps();
-            $table->foreign('idEncuestaAtributos')->references('id')->on('numero_encuesta_atributos');//->onDelete('cascade');
-            $table->foreign('idAtributo')->references('id')->on('atributos');//->onDelete('cascade');
+            $table->foreign('numero_encuesta_atributo_id')->references('id')->on('numero_encuesta_atributos');//->onDelete('cascade');
+            $table->foreign('atributo_id')->references('id')->on('atributos');//->onDelete('cascade');
         });
     }
 

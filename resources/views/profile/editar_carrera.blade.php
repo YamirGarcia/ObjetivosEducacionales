@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">CERRAR</button>
                     <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button>
                 </div>
             </form>

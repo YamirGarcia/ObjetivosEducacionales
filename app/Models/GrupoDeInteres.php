@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GrupoDeInteres extends Model
 {
     use HasFactory;
+    public function evaluadores(){
+        return $this->hasMany('App\Models\Evaluador', 'idGrupoDeInteres');
+    }
 }

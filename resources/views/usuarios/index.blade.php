@@ -12,9 +12,9 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
-                        <table class="table table-striped mt-2">
+                        <table class="table table-striped mt-2 text-center">
                             <thead style="background-color: #6777ef;">
                                 <th style="display: none;">ID</th>
                                 <th style="color: #fff;">Nombre</th>
@@ -33,14 +33,17 @@
                                     <td>
                                         @if(!empty($usuario->getRoleNames()))
                                         @foreach($usuario->getRoleNames() as $rolName)
-                                        <h5><span class="badge badge-dark">{{$rolName}}</span></h5>
+                                        <h5>
+                                                <span class="badge badge-dark">{{$rolName}}</span>
+                                        </h5>
                                         @endforeach
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-info" style="display: inline;" href="{{ route('usuarios.edit', $usuario->id)}}">Editar</a>
+                                        {{-- display:inline --}}
+                                        <a class="btn btn-info btn-md" style="" href="{{ route('usuarios.edit', $usuario->id)}}">Editar</a>
                                         {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-md']) !!}
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>

@@ -47,4 +47,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function departamento(){
+        return $this->belongsTo('App\Models\Departamento', 'idDepartamento');
+    }
+
+    public function carreras(){
+        return $this->belongsToMany('App\Models\Carrera', 'usuario_carreras');
+    }
 }

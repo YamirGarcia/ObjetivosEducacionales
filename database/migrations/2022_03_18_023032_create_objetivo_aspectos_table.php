@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('objetivo_aspectos', function (Blueprint $table) {
-            $table->bigInteger('idObjetivo');
-            $table->bigInteger('idAspectoObjetivo');
+            $table->bigInteger('objetivo_educacional_id');
+            $table->bigInteger('aspectos_objetivos_id');
             $table->timestamps();
-            $table->foreign('idObjetivo')->references('id')->on('objetivo_educacionals');//->onDelete('cascade');
-            $table->foreign('idAspectoObjetivo')->references('id')->on('aspectos_objetivos');//->onDelete('cascade');
+            $table->foreign('objetivo_educacional_id')->references('id')->on('objetivo_educacionals');//->onDelete('cascade');
+            $table->foreign('aspectos_objetivos_id')->references('id')->on('aspectos_objetivos');//->onDelete('cascade');
         });
     }
 

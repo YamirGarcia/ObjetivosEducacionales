@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('respuesta_objetivos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('respuesta');
-            $table->bigInteger('idPreguntaAspectoObjetivo');
-            $table->bigInteger('idEncuestaAsignada');
+            $table->bigInteger('pregunta_aspecto_objetivo_id');
+            $table->bigInteger('encuesta_asignada_objetivo_id');
             $table->timestamps();
-            $table->foreign('idPreguntaAspectoObjetivo')->references('id')->on('pregunta_aspecto_objetivos');//->onDelete('cascade');
-            $table->foreign('idEncuestaAsignada')->references('id')->on('encuesta_asignada_objetivos');//->onDelete('cascade');
+            $table->foreign('pregunta_aspecto_objetivo_id')->references('id')->on('pregunta_aspecto_objetivos');//->onDelete('cascade');
+            $table->foreign('encuesta_asignada_objetivo_id')->references('id')->on('encuesta_asignada_objetivos');//->onDelete('cascade');
         });
     }
 
