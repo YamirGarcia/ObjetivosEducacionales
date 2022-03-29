@@ -51,44 +51,28 @@
                                         </button>
                                     </td>
                                     <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                            Opciones
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            @can('borrar-carrera')
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['carreras.destroy', $carrera->id],'style'=>'margin: 4px; color:red;']) !!}
+                                            {!! Form::submit('Borrar', ['class' => 'dropdown-item']) !!}
+                                            {!! Form::close() !!}
+                                            @endcan
+                                            @can('editar-carrera')
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}" style="font-size: 1rem; padding-left: 1.8rem">Editar</a>
+                                            @endcan
+                                            <a class="dropdown-item" href="#">Objetivos</a>
+                                        </div>
+                                        </div>
                                         <div class="submenu">
-                                        @can('borrar-carrera')
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['carreras.destroy', $carrera->id],'style'=>'margin: 4px']) !!}
-                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-md']) !!}
-                                        {!! Form::close() !!}
-                                        @endcan
-                                        @can('editar-carrera')
-                                        <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}">Editar</button>
-                                        @endcan
-<<<<<<< HEAD
-                                        <!-- Default dropend button -->
-                                        <div class="btn-group dropend">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                        <!-- Dropdown menu links -->
-                                        </ul>
-                                        </div>
-
-                                        <!-- Split dropend button -->
-                                        <div class="btn-group dropend">
-                                        <button type="button" class="btn btn-secondary">
-                                        Split dropend
-                                        </button>
-                                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="visually-hidden">Toggle Dropright</span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                        <!-- Dropdown menu links -->
-                                        </ul>
-                                        </div>
-                                        </div>
-=======
+                                            
+                                            
                                          </div>
 
                                         
->>>>>>> 4f605caa58eea616180ecce0b4515dcad18f37cd
                                     </td>
                                 </tr>   
                                 @endforeach
