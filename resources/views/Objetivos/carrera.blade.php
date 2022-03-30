@@ -77,7 +77,9 @@
                                             @can('editar-carrera')
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}" style="font-size: 1rem; padding-left: 1.8rem">Editar</a>
                                             @endcan
-                                            <a class="dropdown-item" href="#">Objetivos</a>
+                                            {!! Form::open(['method' => 'GET', 'route' => ['ObjetivoEducacional.show', $carrera->id],'style'=>'margin: 4px']) !!}
+                                            {!! Form::submit('Objetivos Educacionales', ['class' => 'btn btn-primary btn-md']) !!}
+                                            {!! Form::close() !!}
                                         </div>
                                         </div>
                                         <div class="submenu">
