@@ -64,15 +64,25 @@
                                         </button>
                                     </td>
                                     <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                            Opciones
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            @can('borrar-carrera')
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['carreras.destroy', $carrera->id],'style'=>'margin: 4px; color:red;']) !!}
+                                            {!! Form::submit('Borrar', ['class' => 'dropdown-item']) !!}
+                                            {!! Form::close() !!}
+                                            @endcan
+                                            @can('editar-carrera')
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}" style="font-size: 1rem; padding-left: 1.8rem">Editar</a>
+                                            @endcan
+                                            <a class="dropdown-item" href="#">Objetivos</a>
+                                        </div>
+                                        </div>
                                         <div class="submenu">
-                                        @can('borrar-carrera')
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['carreras.destroy', $carrera->id],'style'=>'margin: 4px']) !!}
-                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-md']) !!}
-                                        {!! Form::close() !!}
-                                        @endcan
-                                        @can('editar-carrera')
-                                        <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}">Editar</button>
-                                        @endcan
+                                            
+                                            
                                          </div>
 
                                         
