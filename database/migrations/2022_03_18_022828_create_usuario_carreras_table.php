@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('usuario_carreras', function (Blueprint $table) {
             // $table->bigInteger('usuario_id');
+            $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('carrera_id');
             $table->timestamps();

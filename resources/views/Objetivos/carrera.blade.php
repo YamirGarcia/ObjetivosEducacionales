@@ -3,6 +3,19 @@
 @section('estilos')
 
 <link rel="stylesheet" type="text/css" href="css/estiloAdicionalRol.css">
+<style>
+    .checkbox-lg .custom-control-label::before, 
+    .checkbox-lg .custom-control-label::after {
+    top: .8rem;
+    width: 1.55rem;
+    height: 1.55rem;
+    }
+
+    .checkbox-lg .custom-control-label {
+    padding-top: 13px;
+    padding-left: 6px;
+    }
+</style>
 @endsection
 
 @section('content')

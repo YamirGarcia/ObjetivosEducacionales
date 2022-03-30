@@ -17,6 +17,7 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Descripcion</th>
+                            <th scope="col">Check</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -24,7 +25,12 @@
                           <tr>
                               <th scope="row">{{$loop->iteration}}</th>
                               <td>{{$objetivo->descripcion}}</td>
-                                  
+                              <td>
+
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['eliminarObjetivo', $objetivo->id],'style'=>'margin: 4px']) !!}
+                                {!! Form::submit('Borrar', ['class' => 'btn btn-outline-danger']) !!}
+                                {!! Form::close() !!}
+                              </td>
                             </tr>
                             @endforeach
                           {{-- <tr>

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carrera;
+use App\Models\User;
+use App\Models\UsuarioCarrera;
+use App\Models\Atributo;
+use App\Models\ObjetivoEducacional;
 
 class CarreraController extends Controller
 {
@@ -22,7 +26,10 @@ class CarreraController extends Controller
     public function index()
     {
         $carreras = Carrera::paginate(10);
-        return view('Objetivos.carrera', ['carreras' => $carreras]);
+        $usuarios = User::all();
+        // $atributos = Atributo::all();
+        // $objetivos = ObjetivoEducacional::all();
+        return view('Objetivos.carrera', ['carreras' => $carreras, 'usuarios' => $usuarios]);
     }
 
     /**
@@ -96,6 +103,37 @@ class CarreraController extends Controller
         $carrera->planEstudios = $request->planEstudios;
         $carrera->save();
 
+        return redirect()->route('carreras.index');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function agregar_usuario(Request $request, $id){
+        // dd([$request->carreraAtributo, $request->carrera]);
+        
+        if($request->carreraAtributo != 'Lista de Usuarios'){
+            $usuarioCarrera = new UsuarioCarrera;
+            $usuarioCarrera->user_id = $request->carreraAtributo;
+            $usuarioCarrera->carrera_id = $request->carrera;
+            $usuarioCarrera->save();
+        }
+        return redirect()->route('carreras.index');
+    }
+    
+    public function eliminarAtributo(Request $request, $id){
+        $atributo = Atributo::find($id);
+        $atributo->delete();
+        return redirect()->route('carreras.index');
+    }
+
+    public function eliminarObjetivo(Request $request, $id){
+        $objetivo = ObjetivoEducacional::find($id);
+        $objetivo->delete();
         return redirect()->route('carreras.index');
     }
 

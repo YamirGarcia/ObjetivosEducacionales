@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('encuesta_objetivos', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('numero_encuesta_objetivo_id');
             $table->bigInteger('objetivo_educacional_id');
             $table->timestamps();

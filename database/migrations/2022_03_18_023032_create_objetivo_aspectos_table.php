@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('objetivo_aspectos', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('objetivo_educacional_id');
             $table->bigInteger('aspectos_objetivos_id');
             $table->timestamps();

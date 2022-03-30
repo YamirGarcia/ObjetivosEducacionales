@@ -16,40 +16,30 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Descripcion</th>
+                            <th scope="col">Check</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($carrera->atributos as $atributo)
                           <tr>
                               <th scope="row">{{$loop->iteration}}</th>
-                              <td>{{$atributo->descripcion}}</td>
+                              <td>{{$atributo->descripcion}}</td> 
+                              <td>
                                   
-                            </tr>
-                            @endforeach
-                          {{-- <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['eliminarAtributo', $atributo->id],'style'=>'margin: 4px']) !!}
+                                {!! Form::submit('Borrar', ['class' => 'btn btn-outline-danger']) !!}
+                                {!! Form::close() !!}
+                            </td>     
                           </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr> --}}
+                            @endforeach
                         </tbody>
                       </table>
-                    {{-- <label for="carrera">Nombre de la Carrera:</label>
-                    <input type="text" class="form-control" name="carrera" style="margin-bottom: 2rem;" value="{{$carrera->carrera}}"> --}}
-
-                    {{-- <label for="planEstudios">Plan de estudios:</label>
-                    <input type="text" class="form-control" name="planEstudios" value="{{$carrera->planEstudios}}"> --}}
 
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">CERRAR</button>
-                    <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button>
+                    {{-- <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button> --}}
                 </div>
             </form>
         </div>

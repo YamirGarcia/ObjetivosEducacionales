@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('atributo_aspectos', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('atributo_id');
             $table->bigInteger('aspectos_atributos_id');
             $table->timestamps();
