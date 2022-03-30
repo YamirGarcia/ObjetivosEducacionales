@@ -67,7 +67,7 @@
                 <div class="modal-body">
                 <label for="carrera">Descripcion:</label>
                     <textarea type="text" row="5" class="form-control" name="descripcion" style="margin-bottom: 2rem;"></textarea>
-                    <input  type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem;" value ={{$id}}></textarea>
+                    <input  type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem; visibility: hidden;" value ={{$id}}></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
@@ -102,9 +102,8 @@
                                     @csrf
                                     <div class="modal-body">
                                         <label for="carrera">Descripcion:</label>
-                                        <textarea type="text" class="form-control" name="descripcion" style="margin-bottom: 2rem;">
-                                        </textarea>
-                                        <input  type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem;" value ={{$id}}>
+                                        <textarea type="text" class="form-control" name="descripcion" style="margin-bottom: 2rem;">{{$objetivo->descripcion}}</textarea>
+                                        <input  type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem; visibility: hidden;" value ={{$id}}>
 
                                     </div>
 

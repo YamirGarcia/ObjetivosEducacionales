@@ -96,10 +96,10 @@ class ObjetivosController extends Controller
      */
     public function destroy($id)
     {
-        $idcarrera = ObjetivoEducacional::where('id','=', $id );
+        $objetivo=ObjetivoEducacional::findorFail($id);
         ObjetivoEducacional::destroy($id);
         //return redirect('ObjetivoEducacional');
         // return redirect('ObjetivoEducacional');
-        return redirect('ObjetivoEducacional/'.$idcarrera->idCarrera);
+        return redirect('ObjetivoEducacional/'.$objetivo->idCarrera);
     }
 }

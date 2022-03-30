@@ -78,7 +78,7 @@
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditar{{$carrera->id}}" style="font-size: 1rem; padding-left: 1.8rem">Editar</a>
                                             @endcan
                                             {!! Form::open(['method' => 'GET', 'route' => ['ObjetivoEducacional.show', $carrera->id],'style'=>'margin: 4px']) !!}
-                                            {!! Form::submit('Objetivos Educacionales', ['class' => 'btn btn-primary btn-md']) !!}
+                                            {!! Form::submit('Objetivos Educacionales', ['class' => 'dropdown-item']) !!}
                                             {!! Form::close() !!}
                                         </div>
                                         </div>
