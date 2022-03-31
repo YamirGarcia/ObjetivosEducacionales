@@ -7,7 +7,7 @@ use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
-
+use App\Http\Controllers\ObjetivosController;
 
 Route::get('/test', function () {
     return view('home');
@@ -47,3 +47,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Auth::routes();
 Auth::routes();
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('ObjetivoEducacional', ObjetivosController::class);
