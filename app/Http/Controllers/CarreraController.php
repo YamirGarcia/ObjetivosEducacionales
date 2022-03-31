@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UsuarioCarrera;
 use App\Models\Atributo;
 use App\Models\ObjetivoEducacional;
+use Illuminate\Support\Facades\Auth;
 
 class CarreraController extends Controller
 {
@@ -25,10 +26,10 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        $carreras = Carrera::paginate(10);
-        $usuarios = User::all();
-        // $atributos = Atributo::all();
-        // $objetivos = ObjetivoEducacional::all();
+        $user_session = Auth::user()->name;
+        $carreras = Carrera::where('creadopor', $user_session)->paginate(5);
+        $usuarios = User::where('creadopor', $user_session)->paginate();
+
         return view('Objetivos.carrera', ['carreras' => $carreras, 'usuarios' => $usuarios]);
     }
 
@@ -50,6 +51,7 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
+        $user_sesion = Auth::user()->name;
         $request->validate([
             'carrera' => 'required',
             'planEstudios' => 'required'
@@ -57,6 +59,7 @@ class CarreraController extends Controller
         $carrera = new Carrera;
         $carrera->carrera = $request->carrera;
         $carrera->planEstudios = $request->planEstudios;
+        $carrera->creadopor = $user_sesion;
         $carrera->save();
 
 

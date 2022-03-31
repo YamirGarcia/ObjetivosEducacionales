@@ -31,7 +31,7 @@
                         <h1 class="text-center">No existen carreras que mostrar</h1> 
                     @else
                             
-                        
+                       
                     <div class="card-body">
                         
                         @can('crear-carrera')
@@ -46,6 +46,9 @@
                             </thead>
                             <tbody>
                                 @foreach($carreras as $carrera)
+
+                                {{-- @if ($carrera->creadopor == ) --}}
+                                
                                 <tr>
                                     <td>{{$carrera->carrera}}</td>
                                     <td>{{$carrera->planEstudios}}</td>
@@ -80,14 +83,12 @@
                                             <a class="dropdown-item" href="#">Objetivos</a>
                                         </div>
                                         </div>
-                                        <div class="submenu">
-                                            
-                                            
-                                         </div>
-
-                                        
+                                        <div class="submenu"></div>                                        
                                     </td>
-                                </tr>   
+                                </tr>
+                                
+                                
+
                                 @endforeach
                             </tbody>
                         </table>
@@ -98,14 +99,14 @@
                     @endif
                     @can('crear-carrera')
                         <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar Carrera</a>
-                        @endcan
+                    @endcan
                     </div>
                     
                 </div>
             </div>
         </div>
     </section>
-
+    
     @foreach ($carreras as $carrera)
         @include('profile.editar_carrera')  
         @include('profile.add_user_to_degree')
@@ -115,5 +116,5 @@
 
     @include('profile.añadir_carrera')
 
-    
+    {{-- DAVID RODRIGUES SILVA 17121062 --}}
 @endsection
