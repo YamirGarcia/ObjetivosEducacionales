@@ -21,8 +21,8 @@
                         @can('crear-rol')
                         <!-- <a class="btn btn-warning" href="{{route('roles.create')}}">Nuevo</a> -->
                         @endcan
-                        <table class="table mt-2">
-                            <thead>
+                        <table class="table table-striped mt-2 text-center">
+                            <thead style="background-color: #6777ef">
                                 <th style="color: #fff;">Rol</th>
                                 <th style="color: #fff;"></th>
                             </thead>
