@@ -25,10 +25,15 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     @yield('page_css')
 
-    @yield('css')
-
+    
     @yield('css_login')
 </head>
+@yield('css')
+<style>
+    body{
+        background: #9eb3c2;
+    }
+</style>
 
 <body>
     <div id="app">

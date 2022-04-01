@@ -1,21 +1,7 @@
 @extends('layouts.app')
 
 @section('estilos')
-
 <link rel="stylesheet" type="text/css" href="css/estiloAdicionalRol.css">
-<style>
-    .checkbox-lg .custom-control-label::before, 
-    .checkbox-lg .custom-control-label::after {
-    top: .8rem;
-    width: 1.55rem;
-    height: 1.55rem;
-    }
-
-    .checkbox-lg .custom-control-label {
-    padding-top: 13px;
-    padding-left: 6px;
-    }
-</style>
 @endsection
 
 @section('content')
@@ -51,13 +37,13 @@
                                     <td>{{$carrera->planEstudios}}</td>
                                     <td>
                                     
-                                        <button class="badge bg-info text-dark mr-2" data-toggle="modal" data-target="#modalCarreraUsuario{{$carrera->id}}">
+                                        <button class="badge badge-dark" data-toggle="modal" data-target="#modalCarreraUsuario{{$carrera->id}}">
                                             Usuarios: {{$carrera->usuarios->count()}}
                                         </button>
-                                        <button class="badge bg-success text-dark mr-2" data-toggle="modal" data-target="#modalAtributosCarrera{{$carrera->id}}">
+                                        <button class="badge badge-dark" data-toggle="modal" data-target="#modalAtributosCarrera{{$carrera->id}}">
                                             Atributos: {{$carrera->atributos->count()}}
                                         </button>
-                                        <button class="badge bg-primary text-dark mr-2" data-toggle="modal" data-target="#modalObjetivosCarrera{{$carrera->id}}">
+                                        <button class="badge badge-dark" data-toggle="modal" data-target="#modalObjetivosCarrera{{$carrera->id}}">
                                             Objetivos: {{$carrera->objetivos->count()}}
                                         </button>
                                     </td>
@@ -148,6 +134,7 @@
         @include('profile.objetivos_carrera')
     @endforeach
 
+    <!-- Modal para añadir carrera -->
     @include('profile.añadir_carrera')
 
     {{-- DAVID RODRIGUES SILVA 17121062 --}}
