@@ -34,6 +34,7 @@
                       </table>
                       <div class="container">
                         <h3>Agregar Usuario:</h3>
+                        <h4>idCarrera {{$carrera->id}}</h4>
                         <select name="carreraAtributo" id="carreraAtributo" class="form-control">
                           <option selected >Lista de Usuarios</option>
                           @foreach ($usuarios as $usuario)

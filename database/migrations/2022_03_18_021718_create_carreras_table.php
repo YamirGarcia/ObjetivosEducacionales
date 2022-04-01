@@ -17,8 +17,10 @@ return new class extends Migration
              $table->id();
             $table->string('carrera');
             $table->string('planEstudios');
-            $table->string('creadopor');
+            $table->bigInteger('creadopor');
             $table->timestamps();
+
+            $table->foreign('creadopor')->references('id')->on('users');//->onDelete('cascade');
         });
     }
 
