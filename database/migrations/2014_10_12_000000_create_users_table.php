@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('creadopor');
             $table->rememberToken();
             $table->timestamps();
+
+            // $table->foreign('creadopor')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

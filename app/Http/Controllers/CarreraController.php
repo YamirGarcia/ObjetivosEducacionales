@@ -27,8 +27,19 @@ class CarreraController extends Controller
     public function index()
     {
         $user_session = Auth::user()->name;
-        $carreras = Carrera::where('creadopor', $user_session)->paginate(5);
-        $usuarios = User::where('creadopor', $user_session)->paginate();
+        $user = Auth::user();
+
+
+        // $carreras = Carrera::where('creadopor', $user->id)->paginate(5);
+        $carreras = User::find($user->id)->carreras;
+
+        $usuarios = User::where('creadopor', $user->name)->get();
+        
+        // $carrerasAsignadas = User::find($user->id)->carreras;
+
+        // $carreras = $carrerasAsignadas->merge($carrerasCreadas);
+
+
 
         return view('Objetivos.carrera', ['carreras' => $carreras, 'usuarios' => $usuarios]);
     }
@@ -51,7 +62,7 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        $user_sesion = Auth::user()->name;
+        // $user_sesion = Auth::user()->name;
         $request->validate([
             'carrera' => 'required',
             'planEstudios' => 'required'
@@ -59,8 +70,13 @@ class CarreraController extends Controller
         $carrera = new Carrera;
         $carrera->carrera = $request->carrera;
         $carrera->planEstudios = $request->planEstudios;
-        $carrera->creadopor = $user_sesion;
+        $carrera->creadopor = Auth::user()->id;
         $carrera->save();
+
+        $usuarioCarrera = new UsuarioCarrera;
+        $usuarioCarrera->user_id = Auth::user()->id;
+        $usuarioCarrera->carrera_id = $carrera->id;
+        $usuarioCarrera->save();
 
 
         return redirect()->route('carreras.index');
