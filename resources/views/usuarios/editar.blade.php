@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="telefono">Télefono</label>
+                                    <label for="telefono">Teléfono</label>
                                     {!! Form::text('telefono', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
