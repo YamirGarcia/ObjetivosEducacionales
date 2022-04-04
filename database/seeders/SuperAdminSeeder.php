@@ -32,7 +32,7 @@ class SuperAdminSeeder extends Seeder
         ]);
         // Se le asignan los roles al usuario Administrador
         //Si ya se tiene creador roles se comentan las primeras tres lineas
-        $rol = Role::create(['name' => 'Adminsitrador']);
+        $rol = Role::create(['name' => 'Administrador']);
         $permisos = Permission::pluck('id', 'id')->all();
         $rol->syncPermissions($permisos);
         $usuario->assignRole([$rol->id]);

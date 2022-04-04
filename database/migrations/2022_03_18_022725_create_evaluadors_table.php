@@ -18,14 +18,14 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('empresa');
-            $table->string('nombreUsuario');
+            // $table->string('nombreUsuario');
             $table->string('contraseña');
             $table->string('correo');
             $table->string('telefono');
-            $table->bigInteger('idDepartamento');
+            $table->string('idDepartamento');
+            $table->string('creadopor');
             $table->bigInteger('idGrupoDeInteres');
             $table->timestamps();
-            $table->foreign('idDepartamento')->references('id')->on('departamentos');//->onDelete('cascade');
             $table->foreign('idGrupoDeInteres')->references('id')->on('grupo_de_interes');//->onDelete('cascade');
         });
     }
