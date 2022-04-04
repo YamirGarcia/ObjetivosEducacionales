@@ -2,6 +2,7 @@
 @section('estilos')
 
 <link rel="stylesheet" type="text/css" href="css/estiloAdicionalUsuario.css">
+<link rel="stylesheet" type="text/css" href="css/estiloTabla.css">
 @endsection
 
 @section('content')
@@ -12,6 +13,7 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
+<<<<<<< HEAD
                 <div class="card shadow p-3 mb-5 bg-body rounded">
                     @if ($usuarios->count() == 0)
                         <h1 class="text-center">No existen usuarios que mostrar</h1> 
@@ -26,16 +28,32 @@
                                 <th style="color: #fff;">Correo</th>
                                 <th style="color: #fff;">Rol</th>
                                 <th style="color: #fff;">Acciones</th>
+=======
+                <div >
+                    <div >
+                        <!-- estos div es para conservar las clases y ver como funciona -->
+                    <!-- <div class="card shadow p-3 mb-5 bg-body rounded">
+                    <div class="card-body"> -->
+                        <table>
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1" style="display: none;">ID</th>
+                                    <th class="column2">Nombre</th>
+                                    <th class="column3">Correo</th>
+                                    <th class="column4">Rol</th>
+                                    <th class="column5">Acciones</th>
+                                </tr>
+>>>>>>> fe804f5f2983f002e12eb83543b2846983768c9a
                             </thead>
                             <tbody>
                                 @foreach($usuarios as $usuario)
                                 @if ($usuario->creadopor == $user_sesion)
                                 
                                 <tr>
-                                    <td style="display: none;">{{$usuario->id}}</td>
-                                    <td>{{$usuario->name}}</td>
-                                    <td>{{$usuario->email}}</td>
-                                    <td>
+                                    <td class="column1" style="display: none;">{{$usuario->id}}</td>
+                                    <td class="column2">{{$usuario->name}}</td>
+                                    <td class="column3">{{$usuario->email}}</td>
+                                    <td class="column4">
                                         @if(!empty($usuario->getRoleNames()))
                                         @foreach($usuario->getRoleNames() as $rolName)
                                         <h5>
@@ -44,7 +62,7 @@
                                         @endforeach
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="column5">
                                         {{-- display:inline --}}
                                         <a class="btn btn-info btn-md" style="" href="{{ route('usuarios.edit', $usuario->id)}}">Editar</a>
                                         {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}

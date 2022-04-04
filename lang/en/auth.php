@@ -15,6 +15,6 @@ return [
 
     'failed' => 'Correo o Contraseña incorrectos.',
     'password' => 'Contraseña incorecta.',
-    'throttle' => 'Lo has intentado varias veces. Porfavor intenta en :seconds seconds.',
+    'throttle' => 'Lo has intentado varias veces. Porfavor intenta en :seconds segundos.',
 
 ];
