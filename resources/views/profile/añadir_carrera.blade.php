@@ -14,7 +14,6 @@
                     <label for="planEstudios">Plan de estudios:</label>
                     <input type="text" class="form-control" name="planEstudios">
 
-                    <input type="text" name="idCarrera" id="idCarrera" value="{{$carrera->id}}" hidden>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">CERRAR</button>

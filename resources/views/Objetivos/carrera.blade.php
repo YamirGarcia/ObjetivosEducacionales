@@ -70,8 +70,6 @@
                                     </td>
                                 </tr>
                                 @endforeach
-{{-- ------------------------------------------------------------------------------------------------------------------------------------------------------ --}}
-                            
                             </tbody>
                         </table>
                         <div class="pagination justify-content-end">
@@ -99,5 +97,4 @@
     <!-- Modal para añadir carrera -->
     @include('profile.añadir_carrera')
 
-    {{-- DAVID RODRIGUES SILVA 17121062 --}}
 @endsection
