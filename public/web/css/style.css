@@ -2109,6 +2109,7 @@ h6 .badge {
     position: absolute;
     z-index: 890;
     background-color: transparent;
+    color: red;
 }
 
 .navbar.active {
@@ -2260,6 +2261,8 @@ h6 .badge {
 
 .navbar .navbar-text {
     color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 .navbar .nav-link {

@@ -6,12 +6,7 @@
 <ul class="navbar-nav navbar-right">
 
 
-    <span class="navbar-text text-center" style="position:absolute; left:47%;">Instituto Tecnológico de Morelia</span>
-
-
-
-
-
+    <span class="navbar-text text-center" style="position:absolute; left:45%;">Instituto Tecnológico de Morelia</span>
 
 
     @if(\Illuminate\Support\Facades\Auth::user())
