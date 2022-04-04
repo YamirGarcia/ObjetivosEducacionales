@@ -13,6 +13,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
+                    @if ($usuarios->count() == 0)
+                        <h1 class="text-center">No existen usuarios que mostrar</h1> 
+                    @else
+                        
+                    
                     <div class="card-body">
                         <table class="table table-striped mt-2 text-center">
                             <thead style="background-color: #6777ef;">
@@ -55,6 +60,7 @@
                             {!! $usuarios->links() !!}
                         </div>
                     </div>
+                    @endif
                     <a href="{{route('usuarios.create')}}" class="btn-flotante">Agregar Usuario</a>
                 </div>
             </div>

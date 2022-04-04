@@ -5,8 +5,16 @@
 </form>
 <ul class="navbar-nav navbar-right">
 
+
+    <span class="navbar-text text-center" style="position:absolute; left:47%;">Instituto Tecnológico de Morelia</span>
+
+
+
+
+
+
+
     @if(\Illuminate\Support\Facades\Auth::user())
-    
         <li class="dropdown">
             <a href="#" data-toggle="dropdown"
                class="nav-link dropdown-toggle nav-link-lg nav-link-user">

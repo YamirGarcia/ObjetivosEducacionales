@@ -3406,6 +3406,8 @@ pre {
     background-color: #fff;
     z-index: 880;
     left: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
 .main-sidebar,
