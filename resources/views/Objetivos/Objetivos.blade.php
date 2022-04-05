@@ -78,6 +78,9 @@
                                                 {{method_field('DELETE')}}
                                                 <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar" class="btn btn-danger btn-md">
                                             </form>
+                                            <form method="GET" action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}">
+                                                <button type="submit" class="btn btn-warning btn-md">Aspectos</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
