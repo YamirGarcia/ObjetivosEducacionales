@@ -91,7 +91,11 @@ class AspectosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $aspecto = AspectosObjetivos::find($id);
+        $aspecto->nombre = $request->nombre;
+        $aspecto->save();
+
+        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
     }
 
     /**

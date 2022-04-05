@@ -38,7 +38,8 @@
                                         {{$loop->iteration}}.-  {{$aspecto->nombre}}
                                     </button>
 
-                                    <button class="btn btn-primary" style="position:absolute; right:10%;">Editar</button>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#modalEditar{{$aspecto->id}}"style="position:absolute; right:10%;">Editar</button>
+
                                     <form action="{{route ('aspectosObjetivos.destroy', [$aspecto->id])}}" method="POST">
                                         @method('DELETE')
                                         @csrf
@@ -62,5 +63,33 @@
     </div>
 </section>
 
+{{-- MODAL EDITAR ASPECTO --}}
+@foreach ($aspectos as $aspecto)
+    <div class="modal fade" id="modalEditar{{$aspecto->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">EDITAR ASPECTO</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route ('aspectosObjetivos.update', [$aspecto->id])}}" method="POST">
+                    @method('PATCH')
+                    @csrf
+                    <div class="modal-body">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" name="nombre" value={{$aspecto->nombre}}>
+
+                        <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                        <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>  
+@endforeach
 
 @endsection
