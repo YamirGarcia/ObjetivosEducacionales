@@ -29,7 +29,11 @@ class UsuarioController extends Controller
     public function index()
     {
         $user_sesion = Auth::user()->name;
-        $usuarios = User::where('creadopor', $user_sesion)->paginate(10);
+        $usuarios = User::where([
+            ['creadopor', $user_sesion],
+            ['rol', '!=', 'Evaluador']
+            ])->paginate(10);
+                      
         // $usuarios = $usuarios->simplePaginate(2);
         // $usuarios = User::paginate(2);
         // dd($usuarios);
