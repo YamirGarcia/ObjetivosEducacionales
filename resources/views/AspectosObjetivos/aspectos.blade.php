@@ -77,7 +77,7 @@
                     @csrf
                     <div class="modal-body">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" name="nombre" value={{$aspecto->nombre}}>
+                        <textarea name="nombre" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;">{{$aspecto->nombre}}</textarea>
 
                         <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
                     </div>
