@@ -34,4 +34,5 @@
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
     border: 1px solid #2c2fa5;
     transform: translateY(-7px);
+    text-decoration: none;
 }

@@ -90,6 +90,7 @@ class EvaluadoresController extends Controller
         $user->password= Hash::make($request->contraseña);;
         $user->telefono = $request->telefono;
         $user->creadopor = $request->creadopor;
+        $user->rol = $request->rol;
         $user->assignRole($request->input('roles'));
         $user->save();
         return redirect()->route('evaluadores.index');

@@ -28,7 +28,8 @@ class SuperAdminSeeder extends Seeder
             'telefono' => '4431111111',
             'email' => 'admin@morelia.tecnm.mx',
             'password' => bcrypt('asdf'),
-            'creadopor' => 'SuperAdmin'
+            'creadopor' => 'SuperAdmin',
+            'rol' => 'Administrador'
         ]);
         // Se le asignan los roles al usuario Administrador
         //Si ya se tiene creador roles se comentan las primeras tres lineas

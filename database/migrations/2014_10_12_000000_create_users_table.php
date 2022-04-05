@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('creadopor');
+            $table->string('rol');
             $table->rememberToken();
             $table->timestamps();
 

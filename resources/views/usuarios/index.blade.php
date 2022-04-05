@@ -31,7 +31,6 @@
                             <tbody>
                                 @foreach($usuarios as $usuario)
                                 @if ($usuario->creadopor == $user_sesion)
-                                
                                 <tr>
                                     <td class="column1" style="display: none;">{{$usuario->id}}</td>
                                     <td class="column2">{{$usuario->name}}</td>
@@ -39,9 +38,10 @@
                                     <td class="column4">
                                         @if(!empty($usuario->getRoleNames()))
                                         @foreach($usuario->getRoleNames() as $rolName)
+                                        
                                         <h5>
                                                 <span class="badge badge-dark">{{$rolName}}</span>
-                                        </h5>
+                                        </h5>                                            
                                         @endforeach
                                         @endif
                                     </td>

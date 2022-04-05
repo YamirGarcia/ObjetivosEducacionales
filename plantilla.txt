@@ -1,0 +1,23 @@
+boton mas
+https://codepen.io/knyttneve/pen/rGLxbP
+
+boton con animaciones
+https://codepen.io/emanuelgsouza/pen/YVJOZo
+
+boton submit
+https://codepen.io/dhanishgajjar/pen/OgYdzR
+
+
+boton
+https://www.instintoprogramador.com.mx/2020/03/20-botones-animados-increibles-de-css.html
+6
+13 para btn editar y mas
+16 submit
+
+
+botones editar y eso 
+https://www.bypeople.com/rotating-icon-buttons-css-snippet/
+
+
+añadir elementos
+https://www.bypeople.com/animated-material-design-css-jquery-button/

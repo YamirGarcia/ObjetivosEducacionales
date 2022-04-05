@@ -65,6 +65,7 @@
                                     <label for="">Roles</label>
                                     {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
                                 </div>
+                                <input type="text" name="rol" value="otro" hidden>
                             </div>
 
                             <input type="text" readonly name="creadopor" class="form-control" style="visibility: hidden;" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
