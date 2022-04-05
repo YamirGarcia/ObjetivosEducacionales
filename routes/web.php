@@ -10,6 +10,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ObjetivosController;
 use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
+use App\Http\Controllers\GrupoInteresController;
 
 Route::get('/test', function () {
     return view('home');
@@ -53,3 +54,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 Route::resource('ObjetivoEducacional', ObjetivosController::class);
+Route::resource('GrupodeInteres', GrupoInteresController::class);

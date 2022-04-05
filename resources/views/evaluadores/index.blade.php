@@ -60,6 +60,7 @@
                         
                         @endif
                         <a href="{{route('evaluadores.create')}}" class="btn-flotante">Agregar Evaluador</a>
+                        @extends('evaluadores.grupointeresModal')
                     </div>
                 </div>
                 </div>

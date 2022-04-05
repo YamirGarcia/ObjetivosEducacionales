@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Evaluador;
 use App\Models\GrupoDeInteres;
 
+
 class EvaluadoresController extends Controller
 {
 
@@ -32,9 +33,10 @@ class EvaluadoresController extends Controller
      */
     public function index()
     {
+        $datos['envio'] = GrupoDeInteres::paginate();
         $user_sesion = Auth::user()->name;
         $evaluadores = Evaluador::where('creadopor', $user_sesion)->paginate(10);
-        return view('evaluadores.index', compact('evaluadores', 'user_sesion'));
+        return view('evaluadores.index', compact('evaluadores', 'user_sesion'), $datos);
     }
 
     /**
