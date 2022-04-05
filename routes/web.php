@@ -10,6 +10,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ObjetivosController;
 use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
+use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
 Route::get('/test', function () {
     return view('home');
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('carreras', CarreraController::class);
     Route::resource('evaluadores', EvaluadoresController::class);
     Route::resource('aspectosObjetivos', AspectosController::class);
+    Route::resource('preguntaAspectosObjetivos', PreguntaAspectoObjetivoController::class);
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');

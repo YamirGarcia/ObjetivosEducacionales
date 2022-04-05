@@ -50,7 +50,42 @@
                             
                                 <div id="collapse{{$aspecto->id}}" class="collapse" aria-labelledby="heading{{$aspecto->id}}" data-parent="#accordionExample{{$aspecto->id}}">
                                   <div class="card-body">
-                                    {{$aspecto->nombre}}
+                                      <table class="table table-striped mt-2 text-center">
+                                        <thead style="background-color: #6777ef;">
+                                            <th style="display: none;">ID</th>
+                                            <th style="color: #fff;">No.</th>
+                                            <th style="color: #fff;">Pregunta</th>
+                                            <th style="color: #fff;">Opciones</th>
+                                        </thead>
+                                        <tbody>
+                                      @foreach ($aspecto->preguntas as $pregunta)
+                                            <tr>
+                                                <td class="column1" style="display: none;">{{$pregunta->id}}</td>
+                                                <td class="column2">{{$loop->iteration}}</td>
+                                                <td class="column3">{{$pregunta->Pregunta}}</td>
+                                                <td class="column4">
+                                                    <button class="btn btn-primary">Editar</button>
+                                                   <button class="btn btn-danger">Borrar</button>
+                                                </td>
+                                            </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                      <h4>Agregar Nueva Pregunta:</h4>
+                                    <form action="{{route ('preguntaAspectosObjetivos.store')}}" method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <input type="text" class="form-control" style="margin-right: 1rem;" name="Pregunta">
+                                            </div>
+                                            <div class="col-1">
+                                                <button type="submit" class="btn btn-success btn-hg">Agregar</button>
+                                            </div>
+                                        </div>
+                                        <input type="text" style="visibility: hidden;" value="{{$aspecto->id}}" name="idAspectoObjetivo">
+                                        <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
+                                    </form>
                                   </div>
                                 </div>
                               </div>

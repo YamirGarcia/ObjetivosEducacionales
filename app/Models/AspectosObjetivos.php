@@ -11,4 +11,8 @@ class AspectosObjetivos extends Model
     public function objetivos () {
         return $this->belongsToMany('App\Models\ObjetivoEducacional', 'objetivo_aspectos');
     }
+
+    public function preguntas(){
+        return $this->hasMany('App\Models\PreguntaAspectoObjetivo', 'idAspectoObjetivo');
+    }
 }
