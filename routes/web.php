@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('evaluadores', EvaluadoresController::class);
     Route::resource('aspectosObjetivos', AspectosController::class);
     Route::resource('preguntaAspectosObjetivos', PreguntaAspectoObjetivoController::class);
+    Route::post('/cambiarpsw/{id}', [App\Http\Controllers\UsuarioController::class, 'cambiar'])->name('cambiar');
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');

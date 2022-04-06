@@ -91,9 +91,17 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        dd('si entro');
+        $this->validate($request, [
+            'password' => 'same:confirm-password'
+        ]);   
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::find($id);
+        $user->update($input);
     }
 
     /**
@@ -150,18 +158,25 @@ class UsuarioController extends Controller
 
 
 
-
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     // Cambiar de contraseña
-    public function cambiarContraseña(Request $request, $id){
-        $request->validate([
-            'password' => 'required|same:confirm-password',
-        ]);
+    public function cambiar(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'same:confirm-password'
+        ]);   
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
 
-        
         $user = User::find($id);
-        $user->password = $request->Hash::make($user['password']);
-        $user->save();
-
-        return redirect()->route('home')->with('success','Contraseña actualizada correctamente');
+        $user->update($input);
+        return redirect()->route('home');
     }
 }
+
