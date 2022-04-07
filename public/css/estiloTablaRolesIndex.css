@@ -1,6 +1,3 @@
-/* Estilos Para tabla */
-
-
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 
@@ -100,7 +97,7 @@ tbody tr:nth-child(even) {
 tbody tr {
     font-family: OpenSans-Regular;
     font-size: 15px;
-    color: #fff;
+    color: black;
     line-height: 1.2;
     font-weight: unset;
 }
@@ -112,13 +109,12 @@ tbody tr:hover {
 }
 
 .column1 {
-    width: 10%;
-    padding-left: 40px;
+    width: 60%;
     text-align: center;
 }
 
 .column2 {
-    width: 15%;
+    width: 40%;
     text-align: center;
 }
 
@@ -179,10 +175,10 @@ tbody tr:hover {
         top: 0;
     }
     table tbody tr td:nth-child(1):before {
-        content: "Nombre";
+        content: "Rol";
     }
     table tbody tr td:nth-child(2):before {
-        content: "Nombre";
+        content: "Acciones";
     }
     table tbody tr td:nth-child(3):before {
         content: "Correo";
@@ -196,8 +192,8 @@ tbody tr:hover {
     table tbody tr td:nth-child(6):before {
         content: "Total";
     }
-    .column4,
-    .column5,
+    .column1,
+    .column2,
     .column6 {
         text-align: center;
     }
@@ -219,44 +215,4 @@ tbody tr:hover {
         padding-left: 15px;
         padding-right: 15px;
     }
-}
-
-
-/* Estilos para El boton flotante de Agregar nuevo usuario */
-
-.btn-flotante {
-    font-size: 16px;
-    /* Cambiar el tamaÃ±o de la tipografia */
-    text-transform: uppercase;
-    /* Texto en mayusculas */
-    font-weight: bold;
-    /* Fuente en negrita o bold */
-    color: #ffffff;
-    /* Color del texto */
-    text-decoration: none;
-    font-family: Poppins;
-    border-radius: 5px;
-    /* Borde del boton */
-    letter-spacing: 2px;
-    /* Espacio entre letras */
-    background-color: #2c2fa5;
-    /* Color de fondo */
-    padding: 18px 30px;
-    /* Relleno del boton */
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    transition: all 300ms ease 0ms;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    z-index: 99;
-}
-
-.btn-flotante:hover {
-    background-color: #ffffff;
-    /* Color de fondo al pasar el cursor */
-    color: #2c2fa5;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid #2c2fa5;
-    transform: translateY(-7px);
-    text-decoration: none;
 }

@@ -33,10 +33,7 @@ class UsuarioController extends Controller
             ['creadopor', $user_sesion],
             ['rol', '!=', 'Evaluador']
             ])->paginate(10);
-                      
-        // $usuarios = $usuarios->simplePaginate(2);
-        // $usuarios = User::paginate(2);
-        // dd($usuarios);
+
         return view('usuarios.index', compact('usuarios','user_sesion'));
     }
 
@@ -93,15 +90,7 @@ class UsuarioController extends Controller
      */
     public function show(Request $request, $id)
     {
-        dd('si entro');
-        $this->validate($request, [
-            'password' => 'same:confirm-password'
-        ]);   
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-
-        $user = User::find($id);
-        $user->update($input);
+       
     }
 
     /**
@@ -157,15 +146,6 @@ class UsuarioController extends Controller
     }
 
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // Cambiar de contraseña
     public function cambiar(Request $request, $id)
     {
         $this->validate($request, [
