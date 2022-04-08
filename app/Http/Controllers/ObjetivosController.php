@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\ObjetivoEducacional;
 use App\Models\Carrera;
 
-
-
 class ObjetivosController extends Controller
 {
     /**
@@ -17,11 +15,8 @@ class ObjetivosController extends Controller
      */
     public function index()
     {
-        
-        $datos['envio'] = ObjetivoEducacional::paginate();
-        return view('Objetivos.Objetivos',$datos);
+        //
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -54,9 +49,7 @@ class ObjetivosController extends Controller
      */
     public function show($id)
     {
-        // $objetivos = ObjetivoEducacional::paginate();
         $datos['envio'] = ObjetivoEducacional::where('idCarrera','=', $id )->paginate();
-        
         return view('Objetivos.Objetivos', $datos, compact('id'));
     }
 
@@ -83,8 +76,6 @@ class ObjetivosController extends Controller
     {
         $datosobjetivo = request()->except('_token','_method');
         ObjetivoEducacional::where('id','=', $id )-> update($datosobjetivo);
-    //return redirect()->route('ObjetivoEducacional', compact('id'));
-       // return view('Objetivos.Objetivos');
         return redirect('ObjetivoEducacional/'.$request->idCarrera);
     }
 
@@ -98,8 +89,6 @@ class ObjetivosController extends Controller
     {
         $objetivo=ObjetivoEducacional::findorFail($id);
         ObjetivoEducacional::destroy($id);
-        //return redirect('ObjetivoEducacional');
-        // return redirect('ObjetivoEducacional');
         return redirect('ObjetivoEducacional/'.$objetivo->idCarrera);
     }
 }

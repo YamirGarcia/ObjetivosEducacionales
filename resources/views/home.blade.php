@@ -2,7 +2,6 @@
 
 @section('estilos')
 
-<link rel="stylesheet" type="text/css" href="css/estiloAdicionalRol.css">
 @endsection
 
 @section('content')

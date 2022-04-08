@@ -32,12 +32,22 @@
     @yield('css_login')
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 </head>
-
-<body>
+@yield('cssObjetivos')
+<style>
+    .nav-bar{
+        position: fixed;
+        z-index: 3000;
+        background: #11101d;
+    }
+    .modal{
+        top: 50px
+    }
+</style>
+<body style="overflow: scroll">
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg" style="background: #11101d;"></div>
-            <nav class="navbar navbar-expand-lg main-navbar">
+            <nav class="navbar navbar-expand-lg main-navbar nav-bar">
                 @include('layouts.header')
 
             </nav>
@@ -71,6 +81,7 @@
 <script src="{{ asset('web/js/scripts.js') }}"></script>
 <script src="{{ mix('assets/js/profile.js') }}"></script>
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+
 @yield('page_js')
 @yield('scripts')
 <script>

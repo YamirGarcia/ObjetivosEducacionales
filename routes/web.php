@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');
     Route::delete('/eliminarObjetivo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarObjetivo'])->name('eliminarObjetivo');
+    Route::resource('ObjetivoEducacional', ObjetivosController::class);
+    Route::resource('GrupodeInteres', GrupoInteresController::class);
     
 });
 
@@ -53,9 +55,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
 
 
 Auth::routes();
-Route::resource('ObjetivoEducacional', ObjetivosController::class);
-Route::resource('GrupodeInteres', GrupoInteresController::class);

@@ -112,7 +112,7 @@ tbody tr:hover {
     text-align: center;
 }
 .column1-modal {
-    width: 10%;
+    width: 70%;
     text-align: center;
 }
 
@@ -121,7 +121,7 @@ tbody tr:hover {
     text-align: center;
 }
 .column2-modal {
-    width: 20%;
+    width: 30%;
     text-align: center;
 }
 .column2-modal-objetivos-atributos {
@@ -202,13 +202,13 @@ tbody tr:hover {
         content: "Carrera";
     }
     .tabla-general tbody tr td:nth-child(2):before {
-        content: "Plan de estudios:";
+        content: "Nombre:";
     }
     .tabla-general tbody tr td:nth-child(3):before {
-        content: "Propiedades";
+        content: "Correo";
     }
     .tabla-general tbody tr td:nth-child(4):before {
-        content: "Acciones";
+        content: "Empresa";
     }
     .tabla-general tbody tr td:nth-child(5):before {
         content: "Acciones";
@@ -218,6 +218,9 @@ tbody tr:hover {
     }
     .tabla-general.column1,
     .tabla-general.column2,
+    .tabla-general.column3,
+    .tabla-general.column4,
+    .tabla-general.column5,
     .tabla-general.column6 {
         text-align: center;
     }
