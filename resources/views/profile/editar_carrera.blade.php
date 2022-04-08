@@ -3,7 +3,7 @@
     <div class="modal-dialog" style="z-index: 4000;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ACCESO RÁPIDO</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar Carrera</h5>
                 <button class="btn-tabla" type="button" data-dismiss="modal">
                     <div class="icon trash-fill">
                       <i> 

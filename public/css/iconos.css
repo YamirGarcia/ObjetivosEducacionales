@@ -13,7 +13,7 @@ body {
 }
 
 .acciones {
-    padding-bottom: 8px;
+    padding-bottom: 20px;
     margin-top: 5px;
     margin-bottom: 0;
     display: flex;
@@ -27,6 +27,16 @@ body {
     color: black;
     left: 20%;
     bottom: -19px;
+    font-size: 12px;
+    visibility: hidden;
+}
+.etiqueta-objetivos{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    position: absolute;
+    color: black;
+    left: -8px;
+    bottom: -30px;
     font-size: 12px;
     visibility: hidden;
 }
@@ -108,7 +118,7 @@ svg {
     border-radius: 50px;
     fill: white;
 }
-.icon:hover ~ .etiqueta{
+.icon:hover ~ .etiqueta, .icon:hover ~ .etiqueta-objetivos{
     visibility: visible;
 }
 

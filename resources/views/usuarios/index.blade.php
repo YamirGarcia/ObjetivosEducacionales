@@ -20,7 +20,7 @@
                     @else
                         
                     
-                    <div class="card-body" style="overflow: scroll">
+                    <div class="card-body">
                         <table>
                             <thead>
                                 <tr class="table100-head">                                    

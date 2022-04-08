@@ -6,7 +6,7 @@
     <ul class="navbar-nav navbar-right">
         
         
-        <span class="navbar-text text-center" style="position:absolute; left:45%;">Instituto Tecnológico de Morelia</span>
+        <span class="navbar-text text-center" style="position:absolute; left: calc((100% - 400px) / 2); width: 400px">Instituto Tecnológico de Morelia</span>
         
         
         @if(\Illuminate\Support\Facades\Auth::user())
@@ -23,10 +23,10 @@
                     <!-- <a class="dropdown-item has-icon edit-profile" href="#" data-id="{{ \Auth::id() }}">
                         <i class="fa fa-user"></i>Editar Perfil</a> -->
                         <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
-                            class="fa fa-lock"> </i>Cambiar Contraseña</a>
+                            class="fa fa-lock" style="color: black"> </i>Cambiar Contraseña</a>
                             <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
                             onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            <i class="fas fa-sign-out-alt" style="color: red"></i> Cerrar Sesión
                         </a>
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
                             {{ csrf_field() }}

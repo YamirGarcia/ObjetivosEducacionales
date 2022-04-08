@@ -140,6 +140,9 @@ tbody tr:hover {
 }
 
 @media screen and (max-width: 992px) {
+    .etiqueta {
+        visibility: visible;
+    }
     table {
         display: block;
     }
