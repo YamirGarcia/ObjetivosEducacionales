@@ -77,7 +77,11 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pregunta = PreguntaAspectoObjetivo::find($id);
+        $pregunta->Pregunta = $request->Pregunta;
+        $pregunta->save();
+
+        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
     }
 
     /**
