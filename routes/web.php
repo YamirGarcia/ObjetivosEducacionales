@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ObjetivosController;
+use App\Http\Controllers\AtributosController;
 use App\Http\Controllers\EvaluadoresController;
 
 Route::get('/test', function () {
@@ -24,15 +25,12 @@ Route::get('/menu', function () {
 })->name('menu');
 
 
-
-
-
-
 Route::group(['middleware' => ['auth']], function(){
     // -------------------------- ROLES --------------------------
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('carreras', CarreraController::class);
+    Route::resource('Atributos', AtributosController::class);
     Route::resource('evaluadores', EvaluadoresController::class);
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
@@ -51,3 +49,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 Route::resource('ObjetivoEducacional', ObjetivosController::class);
+

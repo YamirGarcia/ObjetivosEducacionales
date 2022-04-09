@@ -64,6 +64,12 @@
                                             {!! Form::open(['method' => 'GET', 'route' => ['ObjetivoEducacional.show', $carrera->id],'style'=>'margin: 4px']) !!}
                                             {!! Form::submit('Objetivos Educacionales', ['class' => 'dropdown-item']) !!}
                                             {!! Form::close() !!}
+
+                                            {!! Form::open(['method' => 'GET', 'route' => ['Atributos.show', $carrera->id],'style'=>'margin: 4px']) !!}
+                                            {!! Form::submit('Atributos', ['class' => 'dropdown-item']) !!}
+                                            {!! Form::close() !!}
+
+
                                         </div>
                                         </div>
                                         <div class="submenu"></div>                                        
