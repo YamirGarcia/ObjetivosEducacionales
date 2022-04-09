@@ -10,7 +10,11 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ObjetivosController;
 use App\Http\Controllers\AtributosController;
 use App\Http\Controllers\EvaluadoresController;
+use App\Http\Controllers\AspectosController;
 
+use App\Http\Controllers\PreguntaAspectoObjetivoController;
+
+use App\Http\Controllers\GrupoInteresController;
 Route::get('/test', function () {
     return view('home');
 });
@@ -32,10 +36,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('carreras', CarreraController::class);
     Route::resource('Atributos', AtributosController::class);
     Route::resource('evaluadores', EvaluadoresController::class);
+    Route::resource('aspectosObjetivos', AspectosController::class);
+    Route::resource('preguntaAspectosObjetivos', PreguntaAspectoObjetivoController::class);
+    Route::post('/cambiarpsw/{id}', [App\Http\Controllers\UsuarioController::class, 'cambiar'])->name('cambiar');
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');
     Route::delete('/eliminarObjetivo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarObjetivo'])->name('eliminarObjetivo');
+    Route::resource('ObjetivoEducacional', ObjetivosController::class);
+    Route::resource('GrupodeInteres', GrupoInteresController::class);
     
 });
 
@@ -44,9 +53,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Auth::routes();
 
 
+<<<<<<< HEAD
 Auth::routes();
 Route::resource('ObjetivoEducacional', ObjetivosController::class);
 
+=======
+Auth::routes();
+>>>>>>> 6803f3ef4031561a716da58105b92b2836409014

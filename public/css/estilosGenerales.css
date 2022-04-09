@@ -1,0 +1,19 @@
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+label,
+span,
+tr,
+th,
+td {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+}

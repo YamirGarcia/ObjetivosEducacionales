@@ -3,11 +3,11 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Alta de Usuarios</h3>
+            <h3 class="page__heading">Crear nuevo Usuario</h3>
         </div>
         <div class="section-body">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-11" style="margin: 0 auto">
                     <div class="card">
                         <div class="card-body">
 
@@ -24,95 +24,74 @@
                             @endif
                             {!! Form::open(array('route' => 'usuarios.store','method'=>'POST')) !!}
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
-                                    <label for="name">Nombre</label>
+                                    <label for="name" class="form-label">Nombre</label>
                                     {!! Form::text('name', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
                                     {!! Form::text('apellido', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                        </div>
+                        
+                            {{--  --}}
+                        <div class="row">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="email">Correo</label>
                                     {!! Form::text('email', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <label for="password">Contraseña</label>
-                                    {!! Form::password('password', array('class' => 'form-control')) !!}
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <label for="confirm-password">Confirmar Contraseña</label>
-                                    {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="telefono">Télefono</label>
                                     {!! Form::text('telefono', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <label for="">Roles</label>
-                                    {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
-                                </div>
-                                <input type="text" name="rol" value="otro" hidden>
-                            </div>
-
-                            <input type="text" readonly name="creadopor" class="form-control" style="visibility: hidden;" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
                             
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
-                              
                         </div>
+                            {{--  --}}
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="password">Contraseña</label>
+                                    {!! Form::password('password', array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirmar Contraseña</label>
+                                    {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                        </div>
+                            {{--  --}}
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="">Roles</label>
+                                        {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
+                                    </div>
+                                    <input type="text" name="rol" value="otro" hidden>
+                                </div>
+
+                                <input type="text" readonly name="creadopor" class="form-control" style="visibility: hidden;" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
+                            
+                                <div class="col-5" style="margin: 0 auto">
+                                    <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm">Guardar</button>
+                                </div>
+                            </div>
+                            
+
+
                         {!! Form::close() !!}
                             
-                            <!-- <form action="/edit" method="POST">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="name">Nombre</label>
-                                            <input type="text" name="name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="email">Correo</label>
-                                            <input type="text" name="email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="password">Contraseña</label>
-                                            <input type="password" name="password" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="confirm-password">Confirma Contraseña</label>
-                                            <input type="password" name="confirm-password" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Rol</label>
-                                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </form> -->
+                            
 
                         </div>
                     </div>

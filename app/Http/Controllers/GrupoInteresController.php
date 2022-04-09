@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ObjetivoEducacional;
-use App\Models\Carrera;
+use App\Models\GrupoDeInteres;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Evaluador;
 
-class ObjetivosController extends Controller
+class GrupoInteresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +21,8 @@ class ObjetivosController extends Controller
      */
     public function index()
     {
-        //
+        $datos['envio'] = ObjetivoEducacional::paginate();
+        return view('evaluadores.grupointeresModal',$datos);
     }
 
     /**
@@ -36,9 +43,9 @@ class ObjetivosController extends Controller
      */
     public function store(Request $request)
     {
-        $datosObjetivo = request()->except('_token');
-        ObjetivoEducacional::insert($datosObjetivo);
-        return redirect('ObjetivoEducacional/'.$request->idCarrera);
+        $datosGrupo = request()->except('_token');
+        GrupoDeInteres::insert($datosGrupo);
+        return redirect()->route('evaluadores.index');
     }
 
     /**
@@ -49,8 +56,7 @@ class ObjetivosController extends Controller
      */
     public function show($id)
     {
-        $datos['envio'] = ObjetivoEducacional::where('idCarrera','=', $id )->paginate();
-        return view('Objetivos.Objetivos', $datos, compact('id'));
+        //
     }
 
     /**
@@ -61,8 +67,8 @@ class ObjetivosController extends Controller
      */
     public function edit($id)
     {
-        $objetivo=ObjetivoEducacional::findorFail($id);
-        return redirect('ObjetivoEducacional', compact('objetivo'));
+        $grupo=GrupoDeInteres::findorFail($id);
+        return redirect('GrupodeInteres', compact('grupo'));
     }
 
     /**
@@ -74,9 +80,9 @@ class ObjetivosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosobjetivo = request()->except('_token','_method');
-        ObjetivoEducacional::where('id','=', $id )-> update($datosobjetivo);
-        return redirect('ObjetivoEducacional/'.$request->idCarrera);
+        $datosGrupo = request()->except('_token','_method');
+        GrupoDeInteres::where('id','=', $id )-> update($datosGrupo);
+        return redirect()->route('evaluadores.index');
     }
 
     /**
@@ -87,8 +93,7 @@ class ObjetivosController extends Controller
      */
     public function destroy($id)
     {
-        $objetivo=ObjetivoEducacional::findorFail($id);
-        ObjetivoEducacional::destroy($id);
-        return redirect('ObjetivoEducacional/'.$objetivo->idCarrera);
+        GrupoDeInteres::destroy($id);
+        return redirect()->route('evaluadores.index');
     }
 }

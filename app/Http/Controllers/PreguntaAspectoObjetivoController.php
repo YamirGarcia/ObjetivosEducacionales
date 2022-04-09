@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ObjetivoEducacional;
-use App\Models\Carrera;
+use App\Models\AspectosObjetivos;
+use App\Models\ObjetivoAspecto;
+use App\Models\PreguntaAspectoObjetivo;
 
-class ObjetivosController extends Controller
+class PreguntaAspectoObjetivoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,9 +38,12 @@ class ObjetivosController extends Controller
      */
     public function store(Request $request)
     {
-        $datosObjetivo = request()->except('_token');
-        ObjetivoEducacional::insert($datosObjetivo);
-        return redirect('ObjetivoEducacional/'.$request->idCarrera);
+        $pregunta = new PreguntaAspectoObjetivo;
+        $pregunta->Pregunta = $request->Pregunta;
+        $pregunta->idAspectoObjetivo = $request->idAspectoObjetivo;
+        $pregunta->save();
+
+        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
     }
 
     /**
@@ -49,8 +54,7 @@ class ObjetivosController extends Controller
      */
     public function show($id)
     {
-        $datos['envio'] = ObjetivoEducacional::where('idCarrera','=', $id )->paginate();
-        return view('Objetivos.Objetivos', $datos, compact('id'));
+        
     }
 
     /**
@@ -61,8 +65,7 @@ class ObjetivosController extends Controller
      */
     public function edit($id)
     {
-        $objetivo=ObjetivoEducacional::findorFail($id);
-        return redirect('ObjetivoEducacional', compact('objetivo'));
+        //
     }
 
     /**
@@ -74,9 +77,11 @@ class ObjetivosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosobjetivo = request()->except('_token','_method');
-        ObjetivoEducacional::where('id','=', $id )-> update($datosobjetivo);
-        return redirect('ObjetivoEducacional/'.$request->idCarrera);
+        $pregunta = PreguntaAspectoObjetivo::find($id);
+        $pregunta->Pregunta = $request->Pregunta;
+        $pregunta->save();
+
+        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
     }
 
     /**
@@ -87,8 +92,6 @@ class ObjetivosController extends Controller
      */
     public function destroy($id)
     {
-        $objetivo=ObjetivoEducacional::findorFail($id);
-        ObjetivoEducacional::destroy($id);
-        return redirect('ObjetivoEducacional/'.$objetivo->idCarrera);
+        //
     }
 }
