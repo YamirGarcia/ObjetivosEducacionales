@@ -1,0 +1,15 @@
+.bloque{
+    background: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 200px;
+    border-radius: 15px;
+    padding: 10px;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.opcion{
+    margin-left: 20px;
+}

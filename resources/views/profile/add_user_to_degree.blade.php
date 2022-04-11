@@ -54,7 +54,7 @@
                       </tbody>
                     </table>
                   </div>
-                    <div class="container" style="height: 10px; padding: 15px 0 0 0;">
+                    <div class="container" style="height: 10px; padding: 15px 0 0 0; background: none;">
                       <h3>Agregar Usuario:</h3>
                       <select name="carreraAtributo" id="carreraAtributo" class="form-control">
                         <option selected >Lista de Usuarios</option>
@@ -68,7 +68,7 @@
               </div>
               <input type="text" name="carrera" id="carrera" value="{{$carrera->id}}" hidden>
               <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
           </form>
       </div>

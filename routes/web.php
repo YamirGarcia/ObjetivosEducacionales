@@ -53,12 +53,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-<<<<<<< HEAD
 Auth::routes();
 Route::resource('ObjetivoEducacional', ObjetivosController::class);
 
-=======
-Auth::routes();
->>>>>>> 6803f3ef4031561a716da58105b92b2836409014

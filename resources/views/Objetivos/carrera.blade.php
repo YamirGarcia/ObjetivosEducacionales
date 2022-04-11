@@ -67,20 +67,6 @@
                                                     <label class="etiqueta">Editar</label>
                                                 </a>
                                             @endcan
-<<<<<<< HEAD
-                                            {!! Form::open(['method' => 'GET', 'route' => ['ObjetivoEducacional.show', $carrera->id],'style'=>'margin: 4px']) !!}
-                                            {!! Form::submit('Objetivos Educacionales', ['class' => 'dropdown-item']) !!}
-                                            {!! Form::close() !!}
-
-                                            {!! Form::open(['method' => 'GET', 'route' => ['Atributos.show', $carrera->id],'style'=>'margin: 4px']) !!}
-                                            {!! Form::submit('Atributos', ['class' => 'dropdown-item']) !!}
-                                            {!! Form::close() !!}
-
-
-                                        </div>
-                                        </div>
-                                        <div class="submenu"></div>                                        
-=======
                                             @can('borrar-carrera')
                                                 <form action="{{route ('carreras.destroy', $carrera->id)}}" method="POST">
                                                 @method('DELETE')
@@ -117,7 +103,6 @@
                                                 </button>
                                             </form>
                                         </div>                                  
->>>>>>> 6803f3ef4031561a716da58105b92b2836409014
                                     </td>
                                 </tr>
                                 @endforeach
