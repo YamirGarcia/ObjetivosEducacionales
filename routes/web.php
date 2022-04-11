@@ -11,6 +11,7 @@ use App\Http\Controllers\ObjetivosController;
 use App\Http\Controllers\AtributosController;
 use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
+use App\Http\Controllers\AsignarEncuestaController;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
