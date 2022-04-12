@@ -33,6 +33,10 @@ Route::get('/menu', function () {
 Route::group(['middleware' => ['auth']], function(){
     // -------------------------- ROLES --------------------------
     Route::resource('roles', RolController::class);
+    // prueba de buscador
+    Route::get('/buscador', [App\Http\Controllers\RolController::class, 'buscador'])->name('buscador');
+    Route::get('/ind', [App\Http\Controllers\RolController::class, 'index'])->name('ind');
+
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('carreras', CarreraController::class);
     Route::resource('Atributos', AtributosController::class);
