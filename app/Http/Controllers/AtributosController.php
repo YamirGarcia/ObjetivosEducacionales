@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ObjetivoEducacional;
-use App\Models\AspectosObjetivos;
-use App\Models\ObjetivoAspecto;
-use App\Models\PreguntaAspectoObjetivo;
+use App\Models\Atributo;
+use App\Models\Carrera;
 
-class PreguntaAspectoObjetivoController extends Controller
+
+
+class AtributosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,11 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function index()
     {
-        //
+        
+        $datos['envio'] = Atributo::paginate();
+        return view('Objetivos.Atributos',$datos);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -38,12 +41,9 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function store(Request $request)
     {
-        $pregunta = new PreguntaAspectoObjetivo;
-        $pregunta->Pregunta = $request->Pregunta;
-        $pregunta->idAspectoObjetivo = $request->idAspectoObjetivo;
-        $pregunta->save();
-
-        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
+        $datosObjetivo = request()->except('_token');
+        Atributo::insert($datosObjetivo);
+        return redirect('Atributos/'.$request->idCarrera);
     }
 
     /**
@@ -54,7 +54,10 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function show($id)
     {
+        // $Atributos = Atributo::paginate();
+        $datos['envio'] = Atributo::where('idCarrera','=', $id )->paginate();
         
+        return view('Objetivos.Atributos', $datos, compact('id'));
     }
 
     /**
@@ -65,7 +68,8 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $atributo=Atributo::findorFail($id);
+        return redirect('Atributos', compact('atributo'));
     }
 
     /**
@@ -77,11 +81,11 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pregunta = PreguntaAspectoObjetivo::find($id);
-        $pregunta->Pregunta = $request->Pregunta;
-        $pregunta->save();
-
-        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
+        $datosobjetivo = request()->except('_token','_method');
+        Atributo::where('id','=', $id )-> update($datosobjetivo);
+    //return redirect()->route('Atributo', compact('id'));
+       // return view('Atributos.Atributos');
+        return redirect('Atributos/'.$request->idCarrera);
     }
 
     /**
@@ -92,6 +96,10 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $atributo=Atributo::findorFail($id);
+        Atributo::destroy($id);
+        //return redirect('Atributo');
+        // return redirect('Atributo');
+        return redirect('Atributos/'.$atributo->idCarrera);
     }
 }

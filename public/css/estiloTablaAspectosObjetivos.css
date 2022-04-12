@@ -1,6 +1,3 @@
-/* Estilos Para tabla */
-
-
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 
@@ -8,15 +5,7 @@
     width: 100%;
     margin: 0 auto;
 }
-
 .container-table100 {
-    width: 100%;
-    min-height: 100vh;
-    background: #c850c0;
-    background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
-    background: -o-linear-gradient(45deg, #4158d0, #c850c0);
-    background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
-    background: linear-gradient(45deg, #4158d0, #c850c0);
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -25,7 +14,6 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 33px 30px;
 }
 
 .wrap-table100 {
@@ -93,6 +81,14 @@ table th.r {
     font-weight: unset;
 }
 
+.table100-head-modal th {
+    font-family: OpenSans-Regular;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
 tbody tr:nth-child(even) {
     background-color: #f5f5f5;
 }
@@ -100,7 +96,7 @@ tbody tr:nth-child(even) {
 tbody tr {
     font-family: OpenSans-Regular;
     font-size: 15px;
-    color: #fff;
+    color: black;
     line-height: 1.2;
     font-weight: unset;
 }
@@ -112,8 +108,11 @@ tbody tr:hover {
 }
 
 .column1 {
+    width: 45%;
+    text-align: center;
+}
+.column1-modal {
     width: 10%;
-    padding-left: 40px;
     text-align: center;
 }
 
@@ -121,19 +120,39 @@ tbody tr:hover {
     width: 15%;
     text-align: center;
 }
+.column2-modal {
+    width: 20%;
+    text-align: center;
+}
+.column2-modal-objetivos-atributos {
+    width: 90%;
+    text-align: center;
+}
 
 .column3 {
-    width: 25%;
+    width: 20%;
+    text-align: center;
+}
+.column3-modal {
+    width: 15%;
     text-align: center;
 }
 
 .column4 {
-    width: 110px;
+    width: 20%;
+    text-align: center;
+}
+.column4-modal {
+    width: 40%;
     text-align: center;
 }
 
 .column5 {
     width: 30%;
+    text-align: center;
+}
+.column5-modal {
+    width: 15%;
     text-align: center;
 }
 
@@ -144,31 +163,32 @@ tbody tr:hover {
 }
 
 @media screen and (max-width: 992px) {
-    table {
+    .tabla-general {
         display: block;
     }
-    table>*,
-    table tr,
-    table td,
-    table th {
+    .tabla-general>*,
+    .tabla-general tr,
+    .tabla-general td,
+    .tabla-general th {
         display: block;
     }
-    table thead {
+    .tabla-general thead {
         display: none;
     }
-    table tbody tr {
+    .tabla-general tbody tr {
         height: auto;
         padding: 37px 0;
     }
-    table tbody tr td {
+    .tabla-general tbody tr td {
         padding-left: 40% !important;
         margin-bottom: 24px;
+        width: 100%;
+        align-items: center;
     }
-    table tbody tr td:last-child {
+    .tabla-general tbody tr td:last-child {
         margin-bottom: 0;
     }
-    table tbody tr td:before {
-        font-family: OpenSans-Regular;
+    .tabla-general tbody tr td:before {
         font-size: 14px;
         color: #999999;
         line-height: 1.2;
@@ -178,38 +198,38 @@ tbody tr:hover {
         left: 30px;
         top: 0;
     }
-    table tbody tr td:nth-child(1):before {
-        content: "Nombre";
+    .tabla-general tbody tr td:nth-child(1):before {
+        content: "Carrera";
     }
-    table tbody tr td:nth-child(2):before {
-        content: "Nombre";
+    .tabla-general tbody tr td:nth-child(2):before {
+        content: "Plan de estudios:";
     }
-    table tbody tr td:nth-child(3):before {
-        content: "Correo";
+    .tabla-general tbody tr td:nth-child(3):before {
+        content: "Propiedades";
     }
-    table tbody tr td:nth-child(4):before {
-        content: "Rol";
-    }
-    table tbody tr td:nth-child(5):before {
+    .tabla-general tbody tr td:nth-child(4):before {
         content: "Acciones";
     }
-    table tbody tr td:nth-child(6):before {
+    .tabla-general tbody tr td:nth-child(5):before {
+        content: "Acciones";
+    }
+    .tabla-general tbody tr td:nth-child(6):before {
         content: "Total";
     }
-    .column4,
-    .column5,
-    .column6 {
+    .tabla-general.column1,
+    .tabla-general.column2,
+    .tabla-general.column6 {
         text-align: center;
     }
-    .column4,
-    .column5,
-    .column6,
-    .column1,
-    .column2,
-    .column3 {
+    .tabla-general.column4,
+    .tabla-general.column5,
+    .tabla-general.column6,
+    .tabla-general.column1,
+    .tabla-general.column2,
+    .tabla-general.column3 {
         width: 100%;
     }
-    tbody tr {
+    .tabla-general tbody tr {
         font-size: 14px;
     }
 }
@@ -219,44 +239,4 @@ tbody tr:hover {
         padding-left: 15px;
         padding-right: 15px;
     }
-}
-
-
-/* Estilos para El boton flotante de Agregar nuevo usuario */
-
-.btn-flotante {
-    font-size: 16px;
-    /* Cambiar el tamaÃ±o de la tipografia */
-    text-transform: uppercase;
-    /* Texto en mayusculas */
-    font-weight: bold;
-    /* Fuente en negrita o bold */
-    color: #ffffff;
-    /* Color del texto */
-    text-decoration: none;
-    font-family: Poppins;
-    border-radius: 5px;
-    /* Borde del boton */
-    letter-spacing: 2px;
-    /* Espacio entre letras */
-    background-color: #2c2fa5;
-    /* Color de fondo */
-    padding: 18px 30px;
-    /* Relleno del boton */
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    transition: all 300ms ease 0ms;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    z-index: 99;
-}
-
-.btn-flotante:hover {
-    background-color: #ffffff;
-    /* Color de fondo al pasar el cursor */
-    color: #2c2fa5;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid #2c2fa5;
-    transform: translateY(-7px);
-    text-decoration: none;
 }

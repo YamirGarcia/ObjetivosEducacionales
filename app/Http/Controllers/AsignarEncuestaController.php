@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ObjetivoEducacional;
-use App\Models\AspectosObjetivos;
-use App\Models\ObjetivoAspecto;
-use App\Models\PreguntaAspectoObjetivo;
 
-class PreguntaAspectoObjetivoController extends Controller
+class AsignarEncuestaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,12 +34,7 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function store(Request $request)
     {
-        $pregunta = new PreguntaAspectoObjetivo;
-        $pregunta->Pregunta = $request->Pregunta;
-        $pregunta->idAspectoObjetivo = $request->idAspectoObjetivo;
-        $pregunta->save();
-
-        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
+        //
     }
 
     /**
@@ -54,7 +45,7 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -77,11 +68,7 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pregunta = PreguntaAspectoObjetivo::find($id);
-        $pregunta->Pregunta = $request->Pregunta;
-        $pregunta->save();
-
-        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
+        //
     }
 
     /**

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ObjetivoEducacional;
-use App\Models\AspectosObjetivos;
-use App\Models\ObjetivoAspecto;
-use App\Models\PreguntaAspectoObjetivo;
+use App\Models\GrupoDeInteres;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Evaluador;
 
-class PreguntaAspectoObjetivoController extends Controller
+class GrupoInteresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +21,8 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function index()
     {
-        //
+        $datos['envio'] = ObjetivoEducacional::paginate();
+        return view('evaluadores.grupointeresModal',$datos);
     }
 
     /**
@@ -38,12 +43,9 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function store(Request $request)
     {
-        $pregunta = new PreguntaAspectoObjetivo;
-        $pregunta->Pregunta = $request->Pregunta;
-        $pregunta->idAspectoObjetivo = $request->idAspectoObjetivo;
-        $pregunta->save();
-
-        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
+        $datosGrupo = request()->except('_token');
+        GrupoDeInteres::insert($datosGrupo);
+        return redirect()->route('evaluadores.index');
     }
 
     /**
@@ -54,7 +56,7 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -65,7 +67,8 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $grupo=GrupoDeInteres::findorFail($id);
+        return redirect('GrupodeInteres', compact('grupo'));
     }
 
     /**
@@ -77,11 +80,9 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pregunta = PreguntaAspectoObjetivo::find($id);
-        $pregunta->Pregunta = $request->Pregunta;
-        $pregunta->save();
-
-        return redirect()->route('aspectosObjetivos.show',$request->idObjetivo);
+        $datosGrupo = request()->except('_token','_method');
+        GrupoDeInteres::where('id','=', $id )-> update($datosGrupo);
+        return redirect()->route('evaluadores.index');
     }
 
     /**
@@ -92,6 +93,7 @@ class PreguntaAspectoObjetivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        GrupoDeInteres::destroy($id);
+        return redirect()->route('evaluadores.index');
     }
 }
