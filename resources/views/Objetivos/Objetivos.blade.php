@@ -522,9 +522,9 @@ tbody tr:hover {
                                 </tbody>
                             </table>
                         </div>
-                        <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar Objetivo</a>
                     </div>
                     @endif
+                    <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar Objetivo</a>
                 </div>
             </div>
         </div>
