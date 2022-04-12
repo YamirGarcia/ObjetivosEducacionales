@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('respuesta_atributos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('idPreguntaAspecto');
             $table->string('respuesta');
-            $table->bigInteger('pregunta_aspecto_atributo_id');
-            $table->bigInteger('encuesta_asignada_atributo_id');
+            $table->bigInteger('idEncuestaAsignada');
             $table->timestamps();
-            $table->foreign('pregunta_aspecto_atributo_id')->references('id')->on('pregunta_aspecto_atributos');//->onDelete('cascade');
-            $table->foreign('encuesta_asignada_atributo_id')->references('id')->on('encuesta_asignada_atributos');//->onDelete('cascade');
+            
+            $table->foreign('idPreguntaAspecto')->references('id')->on('pregunta_aspecto_atributos');
+            $table->foreign('idEncuestaAsignada')->references('id')->on('encuesta_evaluador_atributos');
         });
     }
 

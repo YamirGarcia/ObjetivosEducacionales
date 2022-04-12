@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('encuesta_objetivos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('numero_encuesta_objetivo_id');
-            $table->bigInteger('objetivo_educacional_id');
+            $table->bigInteger('idEncuestaAsignada');
+            $table->bigInteger('idAspectoObjetivo');
             $table->timestamps();
-            $table->foreign('numero_encuesta_objetivo_id')->references('id')->on('numero_encuesta_objetivos');//->onDelete('cascade');
-            $table->foreign('objetivo_educacional_id')->references('id')->on('objetivo_educacionals');//->onDelete('cascade');
+            $table->foreign('idEncuestaAsignada')->references('id')->on('encuesta_evaluador_objetivos');
+            $table->foreign('idAspectoObjetivo')->references('id')->on('aspectos_objetivos');
         });
     }
 

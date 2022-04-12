@@ -20,11 +20,12 @@ class Carrera extends Model
         return $this->hasMany('App\Models\Atributo','idCarrera');
     }
 
-    public function numeroEncuestasAtributos(){
-        return $this->hasMany('App\Models\NumeroEncuestaAtributo', 'idCarrera');
+    public function EncuestasAtributos(){
+        return $this->hasMany('App\Models\EncuestaEvaluadorAtributo', 'idCarrera');
     }
 
-    public function numeroEncuestasObjetivos(){
-        return $this->hasMany('App\Models\NumeroEncuestaObjetivo', 'idCarrera');
+    public function EncuestasObjetivos(){
+        return $this->hasMany('App\Models\EncuestaEvaluadorObjetivo', 'idCarrera');
     }
+
 }

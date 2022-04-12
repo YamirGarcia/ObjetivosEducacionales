@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('encuesta_atributos', function (Blueprint $table) {
+        Schema::create('residentes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('idEncuestaAsignada');
-            $table->bigInteger('idAspectoAtributo');
+            $table->string('nombre');
             $table->timestamps();
-            $table->foreign('idEncuestaAsignada')->references('id')->on('encuesta_evaluador_atributos');
-            $table->foreign('idAspectoAtributo')->references('id')->on('aspectos_atributos');
-            
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('encuesta_atributos');
+        Schema::dropIfExists('residentes');
     }
 };

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AspectosAtributos extends Model
 {
     use HasFactory;
-    public function atributos () {
+    public function atributo () {
         return $this->belongsToMany('App\Models\Atributo', 'atributo_aspectos');
     }
 

@@ -2,6 +2,7 @@
 
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="css/estiloAdicionalRol.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 @endsection
 
 @section('content')
@@ -30,7 +31,7 @@
                             </form>
                         </div>
                         @foreach ($aspectos as $aspecto)
-                        <div class="accordion"  id="accordionExample{{$aspecto->id}}">
+                        {{-- <div class="accordion"  id="accordionExample{{$aspecto->id}}">
                             <div class="card" style="border: 1px solid black; margin-bottom: 0rem;">
                                 <div class="card-header" id="heading{{$aspecto->id}}">
                                   <h2 class="mb-0" style="display: flex">
@@ -89,7 +90,73 @@
                                   </div>
                                 </div>
                               </div>
-                        </div>
+                        </div> --}}
+
+
+                        <div class="accordion" id="accordionExample{{$aspecto->id}}">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading{{$aspecto->id}}">
+                                    
+                                    <div class="" style="display: flex">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$aspecto->id}}" aria-expanded="false" aria-controls="flush-collapse{{$aspecto->id}}">
+                                            {{$loop->iteration}}.- {{$aspecto->nombre}}
+                                        </button>
+                                        
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#modalEditar{{$aspecto->id}}" >Editar</button>
+                                        
+                                        <form action="{{route ('aspectosObjetivos.destroy', [$aspecto->id])}}" method="POST" >
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-danger"">Borrar</button>
+                                        </form>
+                                    </div>
+
+                                </h2>
+                                <div id="flush-collapse{{$aspecto->id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$aspecto->id}}" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <table class="table table-striped mt-2 text-center">
+                                            <thead style="background-color: #6777ef;">
+                                                <th style="display: none;">ID</th>
+                                                <th style="color: #fff;">No.</th>
+                                                <th style="color: #fff;">Pregunta</th>
+                                                <th style="color: #fff;">Opciones</th>
+                                            </thead>
+                                            <tbody>
+                                          @foreach ($aspecto->preguntas as $pregunta)
+                                                <tr>
+                                                    <td class="column1" style="display: none;">{{$pregunta->id}}</td>
+                                                    <td class="column2">{{$loop->iteration}}</td>
+                                                    <td class="column3">{{$pregunta->Pregunta}}</td>
+                                                    <td class="column4">
+                                                        <button class="btn btn-primary">Editar</button>
+                                                       <button class="btn btn-danger">Borrar</button>
+                                                    </td>
+                                                </tr>
+    
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                          <h4>Agregar Nueva Pregunta:</h4>
+                                        <form action="{{route ('preguntaAspectosObjetivos.store')}}" method="POST">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-11">
+                                                    <input type="text" class="form-control" style="margin-right: 1rem;" name="Pregunta">
+                                                </div>
+                                                <div class="col-1">
+                                                    <button type="submit" class="btn btn-success btn-hg">Agregar</button>
+                                                </div>
+                                            </div>
+                                            <input type="text" style="visibility: hidden;" value="{{$aspecto->id}}" name="idAspectoObjetivo">
+                                            <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
+                                        </form>
+                                
+                                    </div>
+                                </div>
+                              </div>
+                          </div>
+
+
                         @endforeach
                     </div>
                 </div>
@@ -105,10 +172,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">EDITAR ASPECTO</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                
                 <form action="{{route ('aspectosObjetivos.update', [$aspecto->id])}}" method="POST">
-                    @method('PATCH')
+                        @method('PATCH')
                     @csrf
                     <div class="modal-body">
                         <label for="nombre">Nombre:</label>
@@ -116,9 +184,10 @@
 
                         <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
                     </div>
+                
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
                         <button type="submit" class="btn btn-primary">ACTUALIZAR INFORMACION</button>
                     </div>
                 </form>

@@ -17,10 +17,10 @@ class Evaluador extends Model
     }
 
     public function encuestasObjetivos () {
-        return $this->hasMany('App\Models\EncuestaAsignadaObjetivo', 'idEvaluador');
+        return $this->hasMany('App\Models\EncuestaEvaluadorObjetivo', 'evaluador');
     }
 
     public function encuestasAtributos () {
-        return $this->hasMany('App\Models\EncuestaAsignadaAtributo', 'idEvaluador');
+        return $this->hasMany('App\Models\EncuestaEvaluadorAtributo', 'evaluador');
     }
 }
