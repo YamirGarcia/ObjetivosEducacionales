@@ -114,4 +114,13 @@ class RolController extends Controller
         DB::table('roles')->where('id', $id)->delete();
         return redirect()->route('roles.index');
     }
+
+    public function buscador(Request $request)
+    {   
+    //     dd($request->texto."%");
+        $roles = Role::where([
+            ['name', 'like', $request->texto."%"]
+        ])->paginate(10000);
+        return view('roles.tablaindex', compact('roles'));
+    }
 }
