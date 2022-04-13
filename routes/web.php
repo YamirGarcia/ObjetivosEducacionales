@@ -11,7 +11,7 @@ use App\Http\Controllers\ObjetivosController;
 use App\Http\Controllers\AtributosController;
 use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
-use App\Http\Controllers\AsignarEncuestaController;
+use App\Http\Controllers\AsignarEncuestasController;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('aspectosObjetivos', AspectosController::class);
     Route::resource('preguntaAspectosObjetivos', PreguntaAspectoObjetivoController::class);
     Route::post('/cambiarpsw/{id}', [App\Http\Controllers\UsuarioController::class, 'cambiar'])->name('cambiar');
+    Route::resource('encuestas', AsignarEncuestasController::class);
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');
