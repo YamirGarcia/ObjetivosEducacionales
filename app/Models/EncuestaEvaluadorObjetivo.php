@@ -16,4 +16,12 @@ class EncuestaEvaluadorObjetivo extends Model
     public function respuestasAspectos () {
         return $this->hasMany('App\Models\RespuestaObjetivo', 'idEncuestaAsignada');
     }
+
+    public function evaluadorAsignado () {
+        return $this->belongsTo('App\Models\Evaluador', 'evaluador');
+    }
+
+    public function carrera () {
+        return $this->belongsTo('App\Models\Carrera', 'idCarrera');
+    }
 }

@@ -41,8 +41,8 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">                                   
-                                    <label for="evaluador" class="form-label">Periodo de evaluacion</label>
-                                    <input type="text" class="form-control">
+                                    <label for="periodo" class="form-label">Periodo de evaluacion</label>
+                                    <input type="text" class="form-control" name="periodo" id="periodo">
                                     
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                                 <div class="card">
                                                     <div class="card-header" id="headingAspecto{{$aspecto->id}}">
                                                     <h2 class="mb-0" style="display: flex">
-                                                                <input id="checkAspecto{{$aspecto->id}}" class="vertical-centered" type="checkbox" name="encuesta[]" value="{{$aspecto->id}}">
+                                                                <input id="checkAspecto{{$aspecto->id}}" class="vertical-centered" type="checkbox" name="encuestaAspectos[]" value="{{$aspecto->id}}">
                                                                 <label for="checkAspecto{{$aspecto->id}}"></label>
                                                                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseAspecto{{$aspecto->id}}" aria-expanded="true" aria-controls="collapseAspecto{{$aspecto->id}}" style="text-decoration: none">
                                                                     {{$loop->iteration}}.- {{$aspecto->nombre}}
@@ -141,7 +141,8 @@
                                 </div>
                             </div>
                             
-
+                            <input type="text" name="tipoEncuesta" hidden id="tipoEncuesta" value="{{$tipoEncuesta}}">
+                            <input type="text" name="idCarrera" hidden id="idCarrera" value="{{$carrera}}">
 
                         {!! Form::close() !!}
                             

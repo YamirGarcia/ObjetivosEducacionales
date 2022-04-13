@@ -3,6 +3,7 @@
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="css/botonFlotante.css">
 <link rel="stylesheet" type="text/css" href="css/iconos.css">
+<link rel="stylesheet" type="text/css" href="css/estiloTablaCarreraIndex.css">
 @endsection
 
 @section('content')
@@ -13,9 +14,60 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
-                <div style="display: inline;">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
                         <div class="row">
+                            <table class="tabla-general">
+                                <thead>
+                                    <tr class="table100-head">
+                                        <th>ESTATUS</th>
+                                        <th>ID</th>
+                                        <th>EVALUADOR</th>
+                                        <th>CARRERA</th>
+                                        <th>PERIDO</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($encuestasObjetivos as $encuesta)
+                                        <tr class="table100-head">
+                                            <td>NONE</td>
+                                            <td>{{$encuesta->id}}</td>
+                                            <td>{{$encuesta->evaluadorAsignado->nombres}}</td>
+                                            <td>{{$encuesta->carrera->carrera}}</td>
+                                            <td>{{$encuesta->periodo}}</td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                            <table class="tabla-general">
+                                <thead>
+                                    <tr class="table100-head">
+                                        <th>ESTATUS</th>
+                                        <th>ID</th>
+                                        <th>EVALUADOR</th>
+                                        <th>CARRERA</th>
+                                        <th>PERIODO</th>
+                                        <th>RESIDENTE</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($encuestasAtributos as $encuesta)
+                                        <tr class="table100-head">
+                                            <td>NONE</td>
+                                            <td>{{$encuesta->id}}</td>
+                                            <td>{{$encuesta->evaluadorAsignado->nombres}}</td>
+                                            <td>{{$encuesta->carrera->carrera}}</td>
+                                            <td>{{$encuesta->periodo}}</td>
+                                            <td>NONE</td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                         <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Asignar Encuesta</a>
                     </div>

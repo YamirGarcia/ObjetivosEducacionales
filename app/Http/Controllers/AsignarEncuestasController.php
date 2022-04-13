@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Evaluador;
 use App\Models\Carrera;
 use App\Models\User;
+use App\Models\EncuestaEvaluadorObjetivo;
+use App\Models\EncuestaEvaluadorAtributo;
+use App\Models\EncuestaObjetivo;
+use App\Models\EncuestaAtributo;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,13 +25,15 @@ class AsignarEncuestasController extends Controller
         $user_session = Auth::user()->name;
         $user = Auth::user();
         $evaluadores = Evaluador::where('creadopor', $user_session)->get();
+        $encuestasObjetivos = EncuestaEvaluadorObjetivo::where('asignadoPor', $user->id)->get();
+        $encuestasAtributos = EncuestaEvaluadorAtributo::where('asignadoPor', $user->id)->get();
 
         if ($user->getRoleNames()[0] == "Administrador") {
             $carreras = Carrera::all();
         } else {
             $carreras = User::find($user->id)->carreras;   
         }
-        return view('encuestas.index', compact('evaluadores', 'carreras'));
+        return view('encuestas.index', compact('evaluadores', 'carreras', 'encuestasObjetivos', 'encuestasAtributos'));
     }
 
     /**
@@ -37,16 +43,7 @@ class AsignarEncuestasController extends Controller
      */
     public function create()
     {
-        $user_session = Auth::user()->name;
-        $user = Auth::user();
-        $evaluadores = Evaluador::where('creadopor', $user_session)->get();
-
-        if ($user->getRoleNames()[0] == "Administrador") {
-            $carreras = Carrera::all();
-        } else {
-            $carreras = User::find($user->id)->carreras;   
-        }
-        return view('encuestas.crear', compact('evaluadores', 'carreras'));
+        //
     }
 
     /**
@@ -57,7 +54,39 @@ class AsignarEncuestasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user_session = Auth::user()->id;
+        if($request->tipoEncuesta == 1){
+            $encuestaAsignada =  new EncuestaEvaluadorObjetivo;
+            $encuestaAsignada->evaluador = $request->evaluador;
+            $encuestaAsignada->periodo = $request->periodo;
+            $encuestaAsignada->asignadoPor = $user_session;
+            $encuestaAsignada->idCarrera = $request->idCarrera;
+            $encuestaAsignada->save();
+
+            foreach ($request->encuestaAspectos as $encuestaAspecto) {
+                $aspectosAsignados = new EncuestaObjetivo;
+                $aspectosAsignados->idEncuestaAsignada = $encuestaAsignada->id;
+                $aspectosAsignados->idAspectoObjetivo = $encuestaAspecto;
+                $aspectosAsignados->save();
+            }
+
+        }else{
+            $encuestaAsignada =  new EncuestaEvaluadorAtributo;
+            $encuestaAsignada->evaluador = $request->evaluador;
+            $encuestaAsignada->periodo = $request->periodo;
+            $encuestaAsignada->asignadoPor = $user_session;
+            $encuestaAsignada->idCarrera = $request->idCarrera;
+            $encuestaAsignada->save();
+
+            foreach ($request->encuestaAspectos as $encuestaAspecto) {
+                $aspectosAsignados = new EncuestaAtributo;
+                $aspectosAsignados->idEncuestaAsignada = $encuestaAsignada->id;
+                $aspectosAsignados->idAspectoAtributo = $encuestaAspecto;
+                $aspectosAsignados->save();
+            }
+        };
+        return redirect()->route('encuestas.index');
     }
 
     /**
