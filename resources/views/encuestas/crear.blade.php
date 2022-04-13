@@ -58,7 +58,7 @@
                             @foreach ($encuestas as $encuesta)
                             
                                 <div class="accordion"  id="accordionExample{{$encuesta->id}}">
-                                    <div class="card" style="border: 1px solid black; margin-bottom: 0rem;">
+                                    <div class="card">
                                         <div class="card-header" id="heading{{$encuesta->id}}">
                                         <h2 class="mb-0" style="display: flex">
                                                     <input class="vertical-centered" type="checkbox" id="check{{$encuesta->id}}" name="encuesta[]" value="{{$encuesta->id}}">
@@ -82,7 +82,7 @@
                                               });
                                             </script> --}}
                                             <div class="accordion"  id="accordionExampleAspecto{{$aspecto->id}}">
-                                                <div class="card" style="border: 1px solid black; margin-bottom: 0rem;">
+                                                <div class="card">
                                                     <div class="card-header" id="headingAspecto{{$aspecto->id}}">
                                                     <h2 class="mb-0" style="display: flex">
                                                                 <input id="checkAspecto{{$aspecto->id}}" class="vertical-centered" type="checkbox" name="encuesta[]" value="{{$aspecto->id}}">

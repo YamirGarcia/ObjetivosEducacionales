@@ -14,7 +14,7 @@ input[type="checkbox"] + label + button {
 }
 
 input[type="checkbox"]:checked + label + button {
-    color: #2b2d42;
+    color: black;
 }
 
 input[type="checkbox"] + label:before {
@@ -46,4 +46,10 @@ input[type="checkbox"]:checked + label:after {
 
 input[type="checkbox"] {
 	display: none;
+}
+
+.card{
+    border: 1px solid black;
+    margin-bottom: 0rem;
+    border-radius: 13px;
 }
