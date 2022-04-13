@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('estilos')
+<link rel="stylesheet" type="text/css" href="../css/estiloCrearEncuesta.css">
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -52,21 +56,16 @@
                             @endif
                             
                             @foreach ($encuestas as $encuesta)
+                            
                                 <div class="accordion"  id="accordionExample{{$encuesta->id}}">
                                     <div class="card" style="border: 1px solid black; margin-bottom: 0rem;">
                                         <div class="card-header" id="heading{{$encuesta->id}}">
                                         <h2 class="mb-0" style="display: flex">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <input type="checkbox" name="encuesta[]" value="{{$encuesta->id}}">
-                                                </div>
-                                                <div class="col">
+                                                    <input class="vertical-centered" type="checkbox" id="check{{$encuesta->id}}" name="encuesta[]" value="{{$encuesta->id}}">
+                                                    <label for="check{{$encuesta->id}}" ></label>
                                                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$encuesta->id}}" aria-expanded="true" aria-controls="collapse{{$encuesta->id}}" style="text-decoration: none">
                                                         {{$loop->iteration}}.- {{$encuesta->descripcion}}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                
+                                                    </button>                                
                                         </h2>
                                         </div>
                                 
@@ -74,21 +73,23 @@
                                         <div class="card-body">
                                             <h4>Aspectos (Disponibles: {{$encuesta->aspectos->count()}})</h4>
                                             @forelse ($encuesta->aspectos as $aspecto)
+                                            {{-- Esto es para que se selecciones todos los aspecots --}}
+                                            {{-- <script>
+                                                $(function(){
+                                                $('#check{{$encuesta->id}}').change(function() {
+                                                  $('#checkAspecto{{$aspecto->id}} > input[type=checkbox]').prop('checked', $(this).is(':checked'));
+                                                });
+                                              });
+                                            </script> --}}
                                             <div class="accordion"  id="accordionExampleAspecto{{$aspecto->id}}">
                                                 <div class="card" style="border: 1px solid black; margin-bottom: 0rem;">
                                                     <div class="card-header" id="headingAspecto{{$aspecto->id}}">
                                                     <h2 class="mb-0" style="display: flex">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <input type="checkbox" name="encuesta[]" value="{{$aspecto->id}}">
-                                                            </div>
-                                                            <div class="col">
+                                                                <input id="checkAspecto{{$aspecto->id}}" class="vertical-centered" type="checkbox" name="encuesta[]" value="{{$aspecto->id}}">
+                                                                <label for="checkAspecto{{$aspecto->id}}"></label>
                                                                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseAspecto{{$aspecto->id}}" aria-expanded="true" aria-controls="collapseAspecto{{$aspecto->id}}" style="text-decoration: none">
                                                                     {{$loop->iteration}}.- {{$aspecto->nombre}}
                                                                 </button>
-
-                                                            </div>
-                                                        </div>
                                             
                                                     </h2>
                                                     </div>
@@ -152,4 +153,6 @@
             </div>
         </div>
     </section>
+
+    
 @endsection
