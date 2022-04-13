@@ -16,7 +16,6 @@
                 <div style="display: inline;">
                     <div class="card-body">
                         <div class="row">
-                            <h2>{{$temp}}</h2>
                         </div>
                         <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Asignar Encuesta</a>
                     </div>
@@ -25,4 +24,49 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">EDITAR ASPECTO</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{route('crearEncuesta')}}" method="POST">
+                @csrf
+                <div class="modal-body">
+  
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="carrera">Carrera</label>
+                                <select name="carrera" id="carrera" class="form-select">
+                                    <option selected="selected" disabled></option>
+                                    @foreach ($carreras as $carrera)
+                                        <option value="{{$carrera->id}}">{{$carrera->carrera}}</option>                                        
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tipo" class="form-label">Seleccione la opcion a evaluar:</label>
+                                <select name="tipo" id="tipo" class="form-select">
+                                    <option selected="selected" disabled></option>
+                                    <option value="1">Objetivos Educacionales</option>
+                                    <option value="2">Atributos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    {{-- <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo"> --}}
+                </div>
+
+                <div class="modal-footer">
+                    
+                    <button type="submit" class="btn btn-primary">Prosigo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

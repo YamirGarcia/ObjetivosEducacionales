@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('preguntaAspectosObjetivos', PreguntaAspectoObjetivoController::class);
     Route::post('/cambiarpsw/{id}', [App\Http\Controllers\UsuarioController::class, 'cambiar'])->name('cambiar');
     Route::resource('encuestas', AsignarEncuestasController::class);
+    Route::post('/crearEncuesta', [App\Http\Controllers\AsignarEncuestasController::class, 'crearEncuesta'])->name('crearEncuesta');
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Evaluador;
+use App\Models\Carrera;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
 
 class AsignarEncuestasController extends Controller
 {
@@ -13,8 +18,16 @@ class AsignarEncuestasController extends Controller
      */
     public function index()
     {
-        $temp = "hola";
-        return view('encuestas.index', compact('temp'));
+        $user_session = Auth::user()->name;
+        $user = Auth::user();
+        $evaluadores = Evaluador::where('creadopor', $user_session)->get();
+
+        if ($user->getRoleNames()[0] == "Administrador") {
+            $carreras = Carrera::all();
+        } else {
+            $carreras = User::find($user->id)->carreras;   
+        }
+        return view('encuestas.index', compact('evaluadores', 'carreras'));
     }
 
     /**
@@ -24,7 +37,16 @@ class AsignarEncuestasController extends Controller
      */
     public function create()
     {
-        //
+        $user_session = Auth::user()->name;
+        $user = Auth::user();
+        $evaluadores = Evaluador::where('creadopor', $user_session)->get();
+
+        if ($user->getRoleNames()[0] == "Administrador") {
+            $carreras = Carrera::all();
+        } else {
+            $carreras = User::find($user->id)->carreras;   
+        }
+        return view('encuestas.crear', compact('evaluadores', 'carreras'));
     }
 
     /**
@@ -46,7 +68,7 @@ class AsignarEncuestasController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -81,5 +103,20 @@ class AsignarEncuestasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crearEncuesta(Request $request){
+        $user_session = Auth::user()->name;
+        $evaluadores = Evaluador::where('creadopor', $user_session)->get();
+
+        $carrera = $request->carrera; 
+        $tipoEncuesta = $request->tipo;
+        
+        if($tipoEncuesta == '1'){
+            $encuestas = Carrera::find($carrera)->objetivos;
+        }else{
+            $encuestas = Carrera::find($carrera)->atributos;
+        }
+        return view('encuestas.crear', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta'));
     }
 }
