@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/iconos.css">
     <link rel="stylesheet" type="text/css" href="css/estiloTablaEncuestas.css">
     <link rel="stylesheet" type="text/css" href="css/estiloAsignarEncuesta.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosBotones.css">
 @endsection
 
 @section('content')
@@ -177,7 +178,13 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Prosigo</button>
+                        <button type="submit" class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Continuar</span>
+                          </button>
+                        {{-- <button type="submit" class="btn btn-primary">Prosigo</button> --}}
                     </div>
                 </form>
                
