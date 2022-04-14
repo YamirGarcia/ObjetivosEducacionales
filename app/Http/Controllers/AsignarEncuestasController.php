@@ -58,7 +58,7 @@ class AsignarEncuestasController extends Controller
         $user_session = Auth::user()->id;
         if($request->tipoEncuesta == 1){
             $encuestaAsignada =  new EncuestaEvaluadorObjetivo;
-            $encuestaAsignada->estatus = "contestada";
+            $encuestaAsignada->estatus = "enviada";
             $encuestaAsignada->evaluador = $request->evaluador;
             $encuestaAsignada->periodo = $request->periodo;
             $encuestaAsignada->asignadoPor = $user_session;
@@ -74,6 +74,7 @@ class AsignarEncuestasController extends Controller
 
         }else{
             $encuestaAsignada =  new EncuestaEvaluadorAtributo;
+            // $encuestaAsignada->estatus = "enviada";
             $encuestaAsignada->evaluador = $request->evaluador;
             $encuestaAsignada->periodo = $request->periodo;
             $encuestaAsignada->asignadoPor = $user_session;
@@ -148,5 +149,10 @@ class AsignarEncuestasController extends Controller
             $encuestas = Carrera::find($carrera)->atributos;
         }
         return view('encuestas.crear', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta'));
+    }
+
+    public function verRespuestas(Request $request){
+        $encuestaObjetivo = EncuestaEvaluadorObjetivo::find($request->idEncuestaAsignada);
+        return view('encuestas.verRespuesta', compact('encuestaObjetivo'));
     }
 }

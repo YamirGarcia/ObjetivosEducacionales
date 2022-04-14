@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('evaluadors', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('empresa');

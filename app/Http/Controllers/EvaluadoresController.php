@@ -72,8 +72,19 @@ class EvaluadoresController extends Controller
             'rol' => 'required',
             'creadopor' => 'required'
         ]);     
-
+        $user = new User;
+        $user->name = $request->nombres;
+        $user->apellido = $request->apellidos;
+        $user->email = $request->correo;
+        $user->password= Hash::make($request->contraseña);;
+        $user->telefono = $request->telefono;
+        $user->creadopor = $request->creadopor;
+        $user->rol = $request->rol;
+        $user->assignRole($request->input('roles'));
+        $user->save();
+        
         $evaluador = new Evaluador;
+        $evaluador->id = $user->id;
         $evaluador->nombres = $request->nombres;
         $evaluador->apellidos = $request->apellidos;
         $evaluador->empresa = $request->empresa;
@@ -85,16 +96,6 @@ class EvaluadoresController extends Controller
         $evaluador->idGrupoDeInteres = $request->idGrupoDeInteres;
         $evaluador->save();
         
-        $user = new User;
-        $user->name = $request->nombres;
-        $user->apellido = $request->apellidos;
-        $user->email = $request->correo;
-        $user->password= Hash::make($request->contraseña);;
-        $user->telefono = $request->telefono;
-        $user->creadopor = $request->creadopor;
-        $user->rol = $request->rol;
-        $user->assignRole($request->input('roles'));
-        $user->save();
         return redirect()->route('evaluadores.index');
     }
 

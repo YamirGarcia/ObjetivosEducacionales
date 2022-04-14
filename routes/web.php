@@ -12,6 +12,7 @@ use App\Http\Controllers\AtributosController;
 use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
 use App\Http\Controllers\AsignarEncuestasController;
+use App\Http\Controllers\ContestarEncuestaController;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/cambiarpsw/{id}', [App\Http\Controllers\UsuarioController::class, 'cambiar'])->name('cambiar');
     Route::resource('encuestas', AsignarEncuestasController::class);
     Route::post('/crearEncuesta', [App\Http\Controllers\AsignarEncuestasController::class, 'crearEncuesta'])->name('crearEncuesta');
+    Route::post('/verRespuestas', [App\Http\Controllers\AsignarEncuestasController::class, 'verRespuestas'])->name('verRespuestas');
+    Route::resource('contestarEncuestas', ContestarEncuestaController::class);
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');

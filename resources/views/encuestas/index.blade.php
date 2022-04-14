@@ -90,7 +90,16 @@
                                                             <td class="column3">{{ $encuesta->carrera->carrera }}
                                                             </td>
                                                             <td class="column4">{{ $encuesta->periodo }}</td>
-                                                            <td class="column5"></td>
+                                                            <td class="column5">
+                                                                @if ($encuesta->estatus == "contestada")
+                                                                <form action="{{route('verRespuestas')}}" method="POST">
+                                                                    @csrf
+                                                                        
+                                                                    <button class="btn btn-primary">Ver respuestas</button>
+                                                                    <input type="text" name="idEncuestaAsignada" id="idEncuestaAsignada" hidden value="{{$encuesta->id}}">
+                                                                </form>
+                                                                @endif
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -119,7 +128,9 @@
                                                             <td>{{ $encuesta->evaluadorAsignado->nombres }}</td>
                                                             <td>{{ $encuesta->carrera->carrera }}</td>
                                                             <td>{{ $encuesta->periodo }}</td>
-                                                            <td>NONE</td>
+                                                            <td>
+                                                                <button class="btn btn-primary">Ver respuestas</button>
+                                                            </td>
                                                             <td></td>
                                                         </tr>
                                                 </tbody>
