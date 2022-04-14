@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('estilos')
+<link rel="stylesheet" type="text/css" href="../css/estilofondo.css">
 @endsection
 
 @section('content')
@@ -10,7 +11,7 @@
     </div>
     <div class="section-body">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="margin: 0 auto">
                 <div class="card">
                     <div class="card-body">
 

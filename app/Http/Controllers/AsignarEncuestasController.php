@@ -58,6 +58,7 @@ class AsignarEncuestasController extends Controller
         $user_session = Auth::user()->id;
         if($request->tipoEncuesta == 1){
             $encuestaAsignada =  new EncuestaEvaluadorObjetivo;
+            $encuestaAsignada->estatus = "contestada";
             $encuestaAsignada->evaluador = $request->evaluador;
             $encuestaAsignada->periodo = $request->periodo;
             $encuestaAsignada->asignadoPor = $user_session;

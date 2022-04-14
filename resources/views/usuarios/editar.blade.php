@@ -2,6 +2,7 @@
 
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="css/estiloBotonGuardar.css">
+<link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
 @endsection
 
 @section('cssObjetivos')

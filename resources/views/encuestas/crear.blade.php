@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('estilos')
-<link rel="stylesheet" type="text/css" href="../css/estiloCrearEncuesta.css">
+<link rel="stylesheet" type="text/css" href="css/estiloCrearEncuesta.css">
 @endsection
 
 @section('content')

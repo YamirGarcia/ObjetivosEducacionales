@@ -92,7 +92,7 @@
                                                     <label class="etiqueta-objetivos">Objetivo Educacional</label>
                                                 </button>
                                             </form>
-                                            <form action="#">
+                                            <form action="{{route ('Atributos.show', $carrera->id)}}">
                                                 <button class="btn-tabla" type="submit">
                                                     <div class="icon atributos-fill">
                                                         <i>                        

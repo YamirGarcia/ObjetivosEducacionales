@@ -3,6 +3,7 @@
 
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="/css/estiloRoles.css">
+<link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
 @endsection
 
 @section('content')

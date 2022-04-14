@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/estilofondo.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
     
     @yield('page_css')
     <!-- Template CSS -->
@@ -30,7 +32,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     @yield('estilos')
     @yield('css_login')
-    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 </head>
 @yield('cssObjetivos')
 <style>
@@ -43,13 +44,13 @@
         top: 50px
     }
 </style>
-<body style="overflow: scroll">
+<body style="overflow-y: scroll;">
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg" style="background: #11101d;"></div>
             <nav class="navbar navbar-expand-lg main-navbar nav-bar">
                 @include('layouts.header')
-
+                
             </nav>
             <div class="main-sidebar main-sidebar-postion">
                 @include('layouts.sidebar')
@@ -57,16 +58,19 @@
             <!-- Main Content -->
             <div class="main-content">
                 @yield('content')
+                @include('layouts.fondo')
             </div>
             <footer class="main-footer" style="border: none">
                 @include('layouts.footer')
             </footer>
         </div>
     </div>
-
+    
+    
+    
     @include('profile.change_password')
     @include('profile.edit_profile')
-
+    
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>

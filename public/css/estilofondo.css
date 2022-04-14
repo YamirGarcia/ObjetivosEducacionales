@@ -1,0 +1,88 @@
+.pruebaNC{
+    color: red;
+}
+
+.seleccion{
+    left: -30px;
+    position: fixed;
+    width: 105%;
+    height: 400px;
+    background: none;
+    overflow: hidden;
+    top: 70%;
+}
+
+.seleccion .wave{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    /* background: url(wave.png); */
+    background-size: 1000px 100px;
+}
+
+.seleccion .wave.wave1 {
+    animation: animate 5s linear infinite;
+    opacity: 1;
+    animation-delay: 0s;
+    background: url(wave1.png);
+}
+
+.seleccion .wave.wave2 {
+    animation: animate2 30s linear infinite;
+    opacity: 0.5;
+    animation-delay: 0.5s;
+    bottom: 10px;
+    background: url(wave2.png);
+}
+.seleccion .wave.wave3 {
+    animation: animate 15s linear infinite;
+    opacity: .2;
+    animation-delay: -5s;
+    bottom: 15;
+    background: url(wave3.png);
+}
+
+.seleccion .wave.wave4 {
+    animation: animate2 10s linear infinite;
+    opacity: 0.1;
+    animation-delay: -5s;
+    bottom: 20px;
+    background: url(wave4.png);
+}
+
+@keyframes animate{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: 1290px;
+    }
+}
+@keyframes animate2{
+    0%
+    {
+        background-position-x: 0;
+    }
+    100%
+    {
+        background-position-x: -1285px;
+    }
+}
+
+
+
+@media screen and (max-height: 930px) {
+    .seleccion{
+        top: 60%;
+    }
+}
+
+@media screen and (max-height: 1200px) {
+    .seleccion{
+        top: 73%;
+    }
+}
