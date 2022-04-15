@@ -1,0 +1,135 @@
+.aspecto{
+    color: black;
+}
+
+.pregunta{
+    margin-left: 15px;
+    /* background: red; */
+}
+
+.opciones{
+    padding: auto;
+    background: #ecf8f8;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.opcradio{
+    width: 400px;
+    margin-left: auto;
+    margin-top: 5px;
+}
+
+
+
+
+/* Opciones responder encuesta */
+.rating-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+    height: 80px;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 0.4rem 0.8rem;
+	width: 100%;
+}
+
+.rating {
+	background-color: rgba(0, 0, 16, 0.8);
+	padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+	border-radius: 2.2rem;
+}
+
+.iconoRespuesta {
+    padding-top: 10px;
+	fill: black;
+	height: 3.6rem;
+	width: 3.6rem;
+	margin: 0.2rem;
+}
+
+
+input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+}
+
+input[type="radio"] + svg {
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+input + svg {
+	cursor: pointer;
+}
+
+input[class="super-happy"]:hover + svg,
+input[class="super-happy"]:checked + svg,
+input[class="super-happy"]:focus + svg {
+	fill: rgb(0, 109, 217);
+}
+
+input[class="happy"]:hover + svg,
+input[class="happy"]:checked + svg,
+input[class="happy"]:focus + svg {
+	fill: rgb(0, 204, 79);
+}
+
+input[class="neutral"]:hover + svg,
+input[class="neutral"]:checked + svg,
+input[class="neutral"]:focus + svg {
+	fill: rgb(232, 214, 0);
+}
+
+input[class="sad"]:hover + svg,
+input[class="sad"]:checked + svg,
+input[class="sad"]:focus + svg {
+	fill: rgb(229, 132, 0);
+}
+
+input[class="super-sad"]:hover + svg,
+input[class="super-sad"]:checked + svg,
+input[class="super-sad"]:focus + svg {
+	fill: rgb(239, 42, 16);
+}
+
+
+button {
+    position: relative;
+    padding: .5em 2em;
+    left: 0;
+    right: 0;
+    margin: 0 15%;
+    /* bottom: 15px; */
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   button:active {
+    transform: translateY(-1px);
+   }
+
+
+
+   .boton{
+    margin-top: 20px;
+    text-align: center;
+}

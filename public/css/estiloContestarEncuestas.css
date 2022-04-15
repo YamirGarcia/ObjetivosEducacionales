@@ -1,0 +1,68 @@
+.cardEncuesta {
+    position: relative;
+    margin: 10px;
+    width: 12.5rem;
+    height: 17rem;
+    /* background-color: #caf0f8; */
+    border-radius: 1rem;
+    background: rgb(226, 234, 252);
+    background: linear-gradient(180deg, rgba(226, 234, 252, 1) 11%, rgba(255, 255, 255, 1) 100%);
+    /* border: #212121 0.2rem solid; */
+    transition: all 0.15s ease-in;
+    box-shadow: 0.4rem 0.4rem 0.6rem #00000040;
+}
+
+.cardEncuesta:hover {
+    transform: translateY(-.5rem);
+    /* border: #f2295bf0 0.2em solid; */
+    border-radius: 2.5rem 0 2.5rem 0;
+}
+
+
+.cardEncuesta button {
+    position: absolute;
+}
+
+.cardDentro {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.cardDentro span {
+    /* background: red; */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+
+button {
+    position: relative;
+    padding: .5em 2em;
+    left: 0;
+    right: 0;
+    margin: 0 15%;
+    bottom: 15px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease 0s;
+    cursor: pointer;
+    outline: none;
+   }
+   
+   button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+   }
+   
+   button:active {
+    transform: translateY(-1px);
+   }
