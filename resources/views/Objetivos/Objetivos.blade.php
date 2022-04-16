@@ -510,6 +510,7 @@ tbody tr:hover {
                                                         </div>
                                                     </button>
                                                 </form>
+                                                {{-- <form  action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET"> --}}
                                                 <form  action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET">
                                                     <button type="submit" class="btn-tabla">
                                                         <div class="icon search-fill">
