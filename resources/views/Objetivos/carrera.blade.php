@@ -68,7 +68,7 @@
                                                 </a>
                                             @endcan
                                             @can('borrar-carrera')
-                                                <form action="{{route ('carreras.destroy', $carrera->id)}}" method="POST">
+                                                <form action="{{route ('carreras.destroy', $carrera->id)}}" method="POST" class="form-eliminar">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" style="border: none; background: none">
@@ -132,4 +132,41 @@
     <!-- Modal para añadir carrera -->
     @include('profile.añadir_carrera')
 
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let forms = document.querySelectorAll('.form-eliminar');
+
+        forms.forEach(formulario => {
+            formulario.addEventListener('submit', event => {
+                // if(confirm('Desea eliminar?')){
+                //     return true;
+                // }
+
+                event.preventDefault();
+                Swal.fire({
+                title: '¿Está seguro de borrar esta Carrera',
+                text: "¡Se borrará la Carrera, sus Objetivos Educacionales,  sus Aspectos y sus preguntas relacionadas!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    // 
+                    Swal.fire(
+                    'Borrado',
+                    '',
+                    'success'
+                    )
+                    formulario.submit();
+                }
+                })
+            })
+        });
+    </script>
 @endsection

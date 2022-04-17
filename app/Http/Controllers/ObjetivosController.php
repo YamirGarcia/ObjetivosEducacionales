@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ObjetivoEducacional;
+use App\Models\ObjetivoAspecto;
 use App\Models\Carrera;
 
 class ObjetivosController extends Controller
@@ -87,7 +88,19 @@ class ObjetivosController extends Controller
      */
     public function destroy($id)
     {
+
         $objetivo=ObjetivoEducacional::findorFail($id);
+        $aspectos = $objetivo->aspectos;
+        foreach($aspectos as $aspecto){
+            foreach($aspecto->preguntas as $pregunta){
+                $pregunta->delete();
+            }
+        }
+        // $aspectos->each->preguntas->each->delete();
+        $relacion = ObjetivoAspecto::where('objetivo_educacional_id', $id)->get();
+        $relacion->each->delete();
+        $aspectos->each->delete();
+        
         ObjetivoEducacional::destroy($id);
         return redirect('ObjetivoEducacional/'.$objetivo->idCarrera);
     }

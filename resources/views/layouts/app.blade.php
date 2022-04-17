@@ -70,7 +70,7 @@
     
     @include('profile.change_password')
     @include('profile.edit_profile')
-    
+    @yield('js') 
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>

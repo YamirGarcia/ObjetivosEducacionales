@@ -498,7 +498,7 @@ tbody tr:hover {
                                                         </i>
                                                     </div>
                                                 </a>
-                                                <form action="{{url ('ObjetivoEducacional', [$objetivo->id])}}" method="POST">
+                                                <form action="{{url ('ObjetivoEducacional', [$objetivo->id])}}" method="POST" class="formulario-eliminar">
                                                     @method('DELETE')
                                                     @csrf
                                                     {{method_field('DELETE')}}
@@ -511,7 +511,7 @@ tbody tr:hover {
                                                     </button>
                                                 </form>
                                                 {{-- <form  action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET"> --}}
-                                                <form  action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET">
+                                                <form action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET">
                                                     <button type="submit" class="btn-tabla">
                                                         <div class="icon search-fill">
                                                             <i>
@@ -599,4 +599,41 @@ tbody tr:hover {
 @endforeach
 
 
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let forms = document.querySelectorAll('.formulario-eliminar');
+
+        forms.forEach(formulario => {
+            formulario.addEventListener('submit', event => {
+                // if(confirm('Desea eliminar?')){
+                //     return true;
+                // }
+
+                event.preventDefault();
+                Swal.fire({
+                title: '¿Está seguro de borrar este Objetivo Educacional',
+                text: "¡Se borrará el objetivo, sus aspectos y sus preguntas relacionadas!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    // 
+                    Swal.fire(
+                    'Borrado',
+                    '',
+                    'success'
+                    )
+                    formulario.submit();
+                }
+                })
+            })
+        });
+    </script>
 @endsection

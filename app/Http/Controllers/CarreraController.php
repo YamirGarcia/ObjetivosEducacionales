@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UsuarioCarrera;
 use App\Models\Atributo;
 use App\Models\ObjetivoEducacional;
+use App\Models\ObjetivoAspecto;
 use Illuminate\Support\Facades\Auth;
 
 class CarreraController extends Controller
@@ -160,6 +161,39 @@ class CarreraController extends Controller
     public function destroy($id)
     {
         $carrera = Carrera::find($id);
+        $objetivos = $carrera->objetivos;
+        foreach ($objetivos as $objetivo) {
+            foreach ($objetivo->aspectos as $aspecto){
+                foreach($aspecto->preguntas as $pregunta){
+                    $pregunta->delete();
+                }
+            }
+            $relacion = ObjetivoAspecto::where('objetivo_educacional_id', $objetivo->id)->get();
+            $relacion->each->delete();
+            $aspectos = $objetivo->aspectos;
+            $aspectos->each->delete();
+        }
+
+        $relacionObj = ObjetivoEducacional::where('idCarrera', $id)->get();
+        $relacionObj->each->delete();
+
+        $relacionUserCarrera = UsuarioCarrera::where('carrera_id', $id)->get();
+        $relacionUserCarrera->each->delete();
+
+        // $objetivo=ObjetivoEducacional::findorFail($id);
+        // $aspectos = $objetivo->aspectos;
+        // foreach($aspectos as $aspecto){
+        //     foreach($aspecto->preguntas as $pregunta){
+        //         $pregunta->delete();
+        //     }
+        // }
+        // $aspectos->each->preguntas->each->delete();
+        // $relacion = ObjetivoAspecto::where('objetivo_educacional_id', $id)->get();
+        // $relacion->each->delete();
+        // $aspectos->each->delete();
+
+
+
         $carrera->delete();
 
         return redirect()->route('carreras.index');

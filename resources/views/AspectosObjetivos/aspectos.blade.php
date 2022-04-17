@@ -510,6 +510,7 @@ tbody tr:hover {
         padding-right: 15px;
     }
 }
+    
 </style>
 <body style="overflow: scroll">
     <div class="" id="app">
@@ -538,6 +539,7 @@ tbody tr:hover {
     @include('profile.change_password')
     @include('profile.edit_profile')
     @livewireScripts
+    @stack('js')
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>

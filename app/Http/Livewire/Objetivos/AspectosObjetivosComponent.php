@@ -14,14 +14,28 @@ class AspectosObjetivosComponent extends Component
     public $aspectos, $idObj;
     public $descripcionAspectoObjetivo, $idAspecto, $nuevaDescripcion;
     public $preguntaNueva, $idPregunta, $pregunta, $textoPregunta;
+    public $cont, $array=[];
+
+    protected $listeners = ['render', 'eliminarAspecto'];
+    public function mount(){
+        $this->cont = 1;
+    }
 
     public function render()
     {
+        $this->cont++;
         $this->aspectos = ObjetivoEducacional::find($this->idObj)->aspectos;
         return view('livewire.objetivos.aspectos-objetivos-component');
     }
 
     public function guardarAspecto(){
+        $messages = [
+            'descripcionAspectoObjetivo.required' => 'Este campo no debe estar vacio.'
+        ];
+        $this->validate([
+            'descripcionAspectoObjetivo' => 'required',
+        ]);
+
         $aspecto = new AspectosObjetivos;
         $aspecto->nombre = $this->descripcionAspectoObjetivo;
         $aspecto->save();
@@ -31,6 +45,13 @@ class AspectosObjetivosComponent extends Component
         $relacion->aspectos_objetivos_id = $aspecto->id;
         $relacion->save();
         $this->descripcionAspectoObjetivo = '';
+
+        // session()->flash('message', 'Nuevo Aspecto Agregado');
+        $this->success();
+    }
+
+    public function success(){
+        $this->dispatchBrowserEvent('alert', ['message' => 'Usuario creado']);
     }
 
     public function prueba(){
@@ -53,6 +74,9 @@ class AspectosObjetivosComponent extends Component
     public function eliminarAspecto($id){
         $relacion = ObjetivoAspecto::where('aspectos_objetivos_id',$id)->get();
         $relacion->each->delete();
+
+        $preguntas = PreguntaAspectoObjetivo::where('idAspectoObjetivo', $id)->get();
+        $preguntas->each->delete();
 
         $aspecto = AspectosObjetivos::find($id);
         $aspecto->delete();
