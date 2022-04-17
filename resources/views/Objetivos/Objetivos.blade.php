@@ -491,6 +491,7 @@ tbody tr:hover {
                                         <td class="column2">{{$objetivo->descripcion}}</td>
                                         <td class="column3">
                                             <div class="acciones">
+                                                @can('editar-objetivos')
                                                 <a href="#" data-toggle="modal" data-target="#modalEditar{{$objetivo->id}}">
                                                     <div class="icon edit-fill">
                                                         <i>
@@ -498,6 +499,8 @@ tbody tr:hover {
                                                         </i>
                                                     </div>
                                                 </a>
+                                                @endcan
+                                                @can('borrar-objetivos')
                                                 <form action="{{url ('ObjetivoEducacional', [$objetivo->id])}}" method="POST" class="formulario-eliminar">
                                                     @method('DELETE')
                                                     @csrf
@@ -510,6 +513,7 @@ tbody tr:hover {
                                                         </div>
                                                     </button>
                                                 </form>
+                                                @endcan
                                                 {{-- <form  action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET"> --}}
                                                 <form action="{{route ('aspectosObjetivos.show', [$objetivo->id])}}" method="GET">
                                                     <button type="submit" class="btn-tabla">
@@ -529,7 +533,9 @@ tbody tr:hover {
                         </div>
                     </div>
                     @endif
-                    <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar Objetivo</a>
+                    @can('crear-objetivos')
+                        <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar Objetivo</a>
+                    @endcan
                 </div>
             </div>
         </div>

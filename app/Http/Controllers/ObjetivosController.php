@@ -9,6 +9,13 @@ use App\Models\Carrera;
 
 class ObjetivosController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-objetivos', ['only'=>['show']]);
+        $this->middleware('permission:crear-objetivos', ['only'=>['show', 'store']]);
+        $this->middleware('permission:editar-objetivos', ['only'=>['edit', 'update']]);
+        $this->middleware('permission:borrar-objetivos', ['only'=>['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

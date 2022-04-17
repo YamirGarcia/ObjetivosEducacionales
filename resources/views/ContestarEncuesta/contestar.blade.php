@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="card shadow p-3 mb-5 bg-body rounded "
-                        style="width: 700px; margin-left: auto; margin-right: auto; position:sticky; top: 70px; z-index: 4000;">
+                        style="width: 700px; margin-left: auto; margin-right: auto; position:sticky; top: 70px; z-index: 4000; margin-top: auto; margin-bottom: auto;">
                         <div class="card-body">
                             <div class="row" style="text-align: center; ">
                                 <label for="" style="width: 19%">

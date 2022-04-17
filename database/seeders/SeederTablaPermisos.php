@@ -35,6 +35,44 @@ class SeederTablaPermisos extends Seeder
             'crear-usuario',
             'editar-usuario',
             'borrar-usuario',
+
+            //permisos para objetivos educacionales
+            'ver-objetivos',
+            'crear-objetivos',
+            'editar-objetivos',
+            'borrar-objetivos',
+
+             //permisos para aspectos de objetivos educacionales
+             'ver-aspectosObjetivos',
+             'crear-aspectosObjetivos',
+             'editar-aspectosObjetivos',
+             'borrar-aspectosObjetivos',
+
+             //permisos para preguntas de objetivos educacionales
+             'ver-preguntasObjetivos',
+             'crear-preguntasObjetivos',
+             'editar-preguntasObjetivos',
+             'borrar-preguntasObjetivos',
+
+            //permisos para atributos
+            'ver-atributos',
+            'crear-atributos',
+            'editar-atributos',
+            'borrar-atributos',
+
+            //permisos para aspectos de objetivos educacionales
+            'ver-aspectosAtributos',
+            'crear-aspectosAtributos',
+            'editar-aspectosAtributos',
+            'borrar-aspectosAtributos',
+
+            //permisos para preguntas de objetivos educacionales
+            'ver-preguntasAtributos',
+            'crear-preguntasAtributos',
+            'editar-preguntasAtributos',
+            'borrar-preguntasAtributos',
+
+
         ]; 
         foreach($permisos as $permiso){
             Permission::create(['name'=>$permiso]);
