@@ -13,6 +13,7 @@ use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
 use App\Http\Controllers\AsignarEncuestasController;
 use App\Http\Controllers\ContestarEncuestaController;
+use App\Http\Controllers\AspectosAtributosController;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
@@ -65,4 +66,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 Route::resource('ObjetivoEducacional', ObjetivosController::class);
-
+Route::resource('AspectosAtributos', AspectosAtributosController::class);

@@ -560,7 +560,7 @@ tbody tr:hover {
                 <div class="modal-body">
                     <label for="carrera">Objetivo Educacional:</label>
                     <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;"></textarea>
-                    <input type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem; visibility: hidden;" value={{$id}}></textarea>
+                    <input type="text" class="form-control" name="idAtributo" style="margin-bottom: 2rem; visibility: hidden;" value={{$id}}></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

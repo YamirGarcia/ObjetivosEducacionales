@@ -74,11 +74,15 @@
                                         <td>{{$atributo->descripcion}}</td>
                                         <td>
                                             <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalEditar{{$atributo->id}}">Editar</button>
-                                            <form method="POST" action="{{url ('Atributos/'.$atributo->id)}}">
+                                            <form method="POST" action="{{url ('Atributos/'.$atributo->idAtributo)}}">
                                                 @csrf
                                                 {{method_field('DELETE')}}
                                                 <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar" class="btn btn-danger btn-md">
                                             </form>
+                                          <form action="{{ route('AspectosAtributos.show', $atributo->id) }}" method="GET">
+                                             <button >Aspectos</button>
+
+                                          </form>
                                         </td>
                                     </tr>
                                     @endforeach
