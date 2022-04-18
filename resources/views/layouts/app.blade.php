@@ -62,6 +62,7 @@
             </div>
             <footer class="main-footer" style="border: none">
                 @include('layouts.footer')
+                
             </footer>
         </div>
     </div>
