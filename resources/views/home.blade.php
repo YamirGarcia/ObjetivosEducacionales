@@ -12,7 +12,7 @@
     <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
-                <div style="display: inline;">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
                         <div class="row">
                         </div>
