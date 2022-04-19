@@ -196,7 +196,9 @@
                     '',
                     'success'
                     )
-                    formulario.submit();
+                    setTimeout(() => {
+                        formulario.submit(); 
+                    }, 900);
                 }
                 })
             })

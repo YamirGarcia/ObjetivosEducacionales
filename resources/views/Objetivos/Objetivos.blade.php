@@ -559,7 +559,7 @@ tbody tr:hover {
                 @csrf
                 <div class="modal-body">
                     <label for="carrera">Objetivo Educacional:</label>
-                    <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;"></textarea>
+                    <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;" autofocus></textarea>
                     <input type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem; visibility: hidden;" value={{$id}}></textarea>
                 </div>
                 <div class="modal-footer">
@@ -614,9 +614,6 @@ tbody tr:hover {
 
         forms.forEach(formulario => {
             formulario.addEventListener('submit', event => {
-                // if(confirm('Desea eliminar?')){
-                //     return true;
-                // }
 
                 event.preventDefault();
                 Swal.fire({

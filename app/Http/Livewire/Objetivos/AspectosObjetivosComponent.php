@@ -105,5 +105,6 @@ class AspectosObjetivosComponent extends Component
         $temp = PreguntaAspectoObjetivo::find($this->idPregunta);
         $temp->Pregunta = $this->preguntaEditar;
         $temp->save();
+        $this->preguntaEditar = '';
     }
 }

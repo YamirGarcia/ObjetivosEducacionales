@@ -40,7 +40,7 @@
                                             </a>
                                             @endcan
                                             @can('borrar-rol')
-                                            <form action="{{route ('roles.destroy', $role->id)}}"" method="POST">
+                                            <form action="{{route ('roles.destroy', $role->id)}}"" method="POST" class="form-eliminar">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn-tabla" type="submit" style="border: none; background: none">
@@ -72,3 +72,37 @@
     </div>
 
 </section>
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let forms = document.querySelectorAll('.form-eliminar');
+
+        forms.forEach(formulario => {
+            formulario.addEventListener('submit', event => {
+
+                event.preventDefault();
+                Swal.fire({
+                title: '¿Está seguro de borrar este Rol',
+                text: "¡Se borrará el rol y los permisos de sus usuarios asignados!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    // 
+                    Swal.fire(
+                    'Borrado',
+                    '',
+                    'success'
+                    )
+                    formulario.submit();
+                }
+                })
+            })
+        });
+    </script>
+@endsection

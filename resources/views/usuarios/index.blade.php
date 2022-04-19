@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
                     @if ($usuarios->count() == 0)
-                        <h1 class="text-center">No Existen Usuarios</h1> 
+                        <h1 class="text-center">No Existen Usuarios Asigandos</h1> 
                     @else
                         
                     
@@ -60,7 +60,7 @@
                                                 </div>
                                                 <label class="etiqueta">Editar</label>
                                             </a>
-                                            <form action="{{route ('usuarios.destroy', [$usuario->id])}}" method="POST">
+                                            <form action="{{route ('usuarios.destroy', [$usuario->id])}}" method="POST" class="form-eliminar">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" style="border: none; background: none">
@@ -90,5 +90,44 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let forms = document.querySelectorAll('.form-eliminar');
+
+        forms.forEach(formulario => {
+            formulario.addEventListener('submit', event => {
+                // if(confirm('Desea eliminar?')){
+                //     return true;
+                // }
+
+                event.preventDefault();
+                Swal.fire({
+                title: '¿Está seguro de borrar este Usuario',
+                text: "¡Se borrará el Usuario y no tendrá acceso al sistema!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    // 
+                    Swal.fire(
+                    'Borrado',
+                    '',
+                    'success'
+                    )
+                    setTimeout(() => {
+                        formulario.submit();
+                    }, 1000);
+                }
+                })
+            })
+        });
+    </script>
 @endsection
 

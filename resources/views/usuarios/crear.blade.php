@@ -25,7 +25,7 @@
                                     </button>
                                 </div>
                             @endif
-                            {!! Form::open(['route' => 'usuarios.store', 'method' => 'POST']) !!}
+                            {!! Form::open(['route' => 'usuarios.store', 'method' => 'POST', 'class' => 'form-guardar']) !!}
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
@@ -99,4 +99,28 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let forms = document.querySelectorAll('.form-guardar');
+
+        forms.forEach(formulario => {
+            formulario.addEventListener('submit', event => {
+
+                event.preventDefault();
+                
+                Swal.fire(
+                'Guardado',
+                '',
+                'success',
+                )
+                setTimeout(() => {
+                    formulario.submit();
+                }, 1000);
+                
+            })
+        });
+    </script>
 @endsection

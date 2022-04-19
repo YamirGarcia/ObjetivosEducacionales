@@ -13,6 +13,7 @@ use App\Http\Controllers\EvaluadoresController;
 use App\Http\Controllers\AspectosController;
 use App\Http\Controllers\AsignarEncuestasController;
 use App\Http\Controllers\ContestarEncuestaController;
+use App\Http\Controllers\Prueba;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
