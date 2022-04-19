@@ -48,20 +48,37 @@ class ContestarEncuestaController extends Controller
      */
     public function store(Request $request)
     {
-        $cont = 0;
-        $idPregunta = array_keys($request->pregunta);
-        foreach ($request->pregunta as $respuesta) {
-            $respuestaObjetivo = new RespuestaObjetivo();
-            $respuestaObjetivo->idPreguntaAspecto = $idPregunta[$cont];
-            $cont = $cont + 1;
-
-            $respuestaObjetivo->respuesta = $respuesta;
-            $respuestaObjetivo->idEncuestaAsignada = $request->idEncuestaAsignada;
-            $respuestaObjetivo->save();
+        if ($request->tipoEncuesta == 1) {
+            $cont = 0;
+            $idPregunta = array_keys($request->pregunta);
+            foreach ($request->pregunta as $respuesta) {
+                $respuestaObjetivo = new RespuestaObjetivo();
+                $respuestaObjetivo->idPreguntaAspecto = $idPregunta[$cont];
+                $cont = $cont + 1;
+    
+                $respuestaObjetivo->respuesta = $respuesta;
+                $respuestaObjetivo->idEncuestaAsignada = $request->idEncuestaAsignada;
+                $respuestaObjetivo->save();
+            }
+            $encuesta = EncuestaEvaluadorObjetivo::find($request->idEncuestaAsignada);
+            $encuesta->estatus = 'contestada';
+            $encuesta->save();
+        }else{
+            $cont = 0;
+            $idPregunta = array_keys($request->pregunta);
+            foreach ($request->pregunta as $respuesta) {
+                $respuestaAtributo = new RespuestaAtributo();
+                $respuestaAtributo->idPreguntaAspecto = $idPregunta[$cont];
+                $cont = $cont + 1;
+    
+                $respuestaAtributo->respuesta = $respuesta;
+                $respuestaAtributo->idEncuestaAsignada = $request->idEncuestaAsignada;
+                $respuestaAtributo->save();
+            }
+            $encuesta = EncuestaEvaluadorAtributo::find($request->idEncuestaAsignada);
+            $encuesta->estatus = 'contestada';
+            $encuesta->save(); 
         }
-        $encuesta = EncuestaEvaluadorObjetivo::find($request->idEncuestaAsignada);
-        $encuesta->estatus = 'contestada';
-        $encuesta->save();
 
         return redirect()->route('contestarEncuestas.index');
     }
@@ -97,12 +114,21 @@ class ContestarEncuestaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $encuesta = EncuestaEvaluadorObjetivo::find($id);
-        $encuesta->estatus = 'recibida';
-        $encuesta->save();
-
-        $encuestaObjetivo = EncuestaObjetivo::where('idEncuestaAsignada',$id)->get();
-        return view('ContestarEncuesta.contestar', compact('encuestaObjetivo','id'));
+        $tipoEncuesta = $request->tipoEncuesta;
+        if ($request->tipoEncueta == 1) {
+            $encuesta = EncuestaEvaluadorObjetivo::find($id);
+            $encuesta->estatus = 'recibida';
+            $encuesta->save();
+    
+            $encuestaObjetivo = EncuestaObjetivo::where('idEncuestaAsignada',$id)->get();
+            return view('ContestarEncuesta.contestar', compact('encuestaObjetivo','id','tipoEncuesta'));
+        }else{
+            $encuesta = EncuestaEvaluadorAtributo::find($id);
+            $encuesta->estatus = 'recibida';
+            $encuesta->save();   
+            $encuestaAtributo = EncuestaAtributo::where('idEncuestaAsignada',$id)->get();
+            return view('ContestarEncuesta.contestarAtributo', compact('encuestaAtributo','id','tipoEncuesta'));
+        }
     }
 
     /**
