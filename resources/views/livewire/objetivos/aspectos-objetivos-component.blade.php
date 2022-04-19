@@ -5,7 +5,7 @@
           <div class="section-header">
             <h3 class="page__heading">
               <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
-              <a style="text-decoration: none; color: #6c757d" href="{{route ('ObjetivoEducacional.show', $idObj)}}">/Objetivos Educacionales</a>
+              <a style="text-decoration: none; color: #6c757d" href="{{route ('ObjetivoEducacional.show', App\Models\ObjetivoEducacional::find($idObj)->carrera->id)}}">/Objetivos Educacionales</a>
               <a style="text-decoration: none; color: #6c757d" href="{{route ('aspectosObjetivos.show', $idObj)}}">/Aspectos</a>
           </h3>
           </div>
@@ -117,7 +117,6 @@
                     @endforelse
                   
           </div>
-        </div>
       </div>
     </div>
   </div>

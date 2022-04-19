@@ -14,6 +14,7 @@ use App\Http\Controllers\AspectosController;
 use App\Http\Controllers\AsignarEncuestasController;
 use App\Http\Controllers\ContestarEncuestaController;
 use App\Http\Controllers\AspectosAtributosController;
+use App\Http\Controllers\ResidentesController;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 

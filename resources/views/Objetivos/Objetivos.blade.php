@@ -464,7 +464,7 @@ tbody tr:hover {
     <div class="section-header">
         <h3 class="page__heading">
             <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
-            <a style="text-decoration: none; color: #6c757d" href="{{route ('ObjetivoEducacional.show', $id)}}">/Objetivos Educacionales</a>
+            <a style="text-decoration: none; color: #6c757d" href="{{route ('ObjetivoEducacional.show', $id)}}">/Objetivos Educacionales{{$id}}</a>
         </h3>
     </div>
     <div class="section-body">
@@ -559,13 +559,8 @@ tbody tr:hover {
                 @csrf
                 <div class="modal-body">
                     <label for="carrera">Objetivo Educacional:</label>
-<<<<<<< HEAD
                     <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;" autofocus></textarea>
                     <input type="text" class="form-control" name="idCarrera" style="margin-bottom: 2rem; visibility: hidden;" value={{$id}}></textarea>
-=======
-                    <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;"></textarea>
-                    <input type="text" class="form-control" name="idAtributo" style="margin-bottom: 2rem; visibility: hidden;" value={{$id}}></textarea>
->>>>>>> cd056706892e2a253e14c69d70b7129ee0f550c6
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

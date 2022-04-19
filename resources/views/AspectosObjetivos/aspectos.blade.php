@@ -43,12 +43,6 @@
     </style>
     @livewireStyles
 </head>
-<style>
-    /* Estilos generales */
-    
-    
-    
-</style>
 <body style="overflow: scroll">
     <div class="" id="app">
         <div class="main-wrapper main-wrapper-1">
