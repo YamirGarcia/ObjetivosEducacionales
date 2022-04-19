@@ -158,7 +158,6 @@ class EvaluadoresController extends Controller
         }else{
             $input = Arr::except($input, array('password'));
         }
-        dd('entro al if');
 
         $evaluador = Evaluador::find($id);
         $evaluador->nombres = $request->nombres;

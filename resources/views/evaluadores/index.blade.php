@@ -91,7 +91,7 @@
 </section>
 
 {{-- Modal para visualizar info del evaluador --}}
-<!-- Modal para editar carrera -->
+
 @foreach($evaluadores as $evaluador)
 <div class="modal fade" id="modalVisualizarInfo{{$evaluador->id}}" >
     <div class="modal-dialog modal-dialog-centered" style="z-index: 4000;">

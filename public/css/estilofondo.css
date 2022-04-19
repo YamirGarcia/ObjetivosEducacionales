@@ -1,3 +1,13 @@
+.blanco{
+    background: #f4f6f9;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 5000;
+}
+
 .pruebaNC{
     color: red;
 }
@@ -9,7 +19,7 @@
     height: 400px;
     background: none;
     overflow: hidden;
-    top: 70%;
+    bottom: -90px;
 }
 
 .seleccion .wave{
@@ -76,13 +86,13 @@
 
 
 @media screen and (max-height: 930px) {
-    .seleccion{
+    /* .seleccion{
         top: 60%;
-    }
+    } */
 }
 
 @media screen and (max-height: 1200px) {
-    .seleccion{
+    /* .seleccion{
         top: 73%;
-    }
+    } */
 }
