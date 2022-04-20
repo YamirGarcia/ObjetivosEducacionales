@@ -70,14 +70,14 @@ class UsuarioController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'telefono' => 'required',
-            'roles' => 'required',
+            'rol' => 'required',
             'creadopor' => 'required'
         ]);
 
         $input = $request->all();        
         $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('rol'));
 
         return redirect()->route('usuarios.index');
     }

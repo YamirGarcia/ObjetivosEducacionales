@@ -78,9 +78,10 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="">Roles</label>
-                                        {!! Form::select('roles[]', $roles, [], ['class' => 'form-control']) !!}
+                                        {{-- {!! Form::select('roles[]', $roles, [], ['class' => 'form-control']) !!} --}}
+                                        {!! Form::select('roles[]', $roles, [], array('class' => 'form-control', 'name' => 'rol')) !!}
                                     </div>
-                                    <input type="text" name="rol" value="otro" hidden>
+                                    {{-- <input type="text" name="rol" hidden> --}}
                                 </div>
 
                                 <input type="text" readonly name="creadopor" class="form-control"
