@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Models\PreguntaAspectoAtributo;
 use App\Models\AspectosAtributos;
 use App\Models\Atributo;
 use App\Models\AtributoAspecto;
 
-class AspectosAtributosController extends Controller
+use Illuminate\Http\Request;
+
+class PreguntaAspectoAtributoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class AspectosAtributosController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -37,21 +38,8 @@ class AspectosAtributosController extends Controller
      */
     public function store(Request $request)
     {
-        // $user_sesion = Auth::user()->name;
-        // $this->validate($request,[
-        //     'descripcionAspectoObjetivo' => 'required',
-        // ]);
-        
-        $aspecto = new AspectosAtributos;
-        $aspecto->nombre = $request->nombre;
-        //$aspecto->idObjetivo = $request->idObjetivo;
-        $aspecto->save();
-
-        $relacion =  new AtributoAspecto;
-        $relacion->atributo_id = $request->idAtributo;
-        $relacion->aspectos_atributos_id = $aspecto->id;
-        $relacion->save();
-
+        $datospregunta = request()->except('_token','idAtributo');
+        PreguntaAspectoAtributo::insert($datospregunta);
         return redirect()->route('AspectosAtributos.show',$request->idAtributo);
     }
 
@@ -63,9 +51,7 @@ class AspectosAtributosController extends Controller
      */
     public function show($id)
     {
-        $aspectos = Atributo::find($id)->aspectos;
-
-        return view('Objetivos.AspectosAtributos', ['envio'=>$aspectos, 'idAtributo'=>$id]);
+        //
     }
 
     /**
@@ -88,12 +74,9 @@ class AspectosAtributosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosaspecto = request()->except('_token','_method','idAtributo');
-        AspectosAtributos::where('id','=', $id )-> update($datosaspecto);
-        $idAtributo = $request->idAtributo;
-
+        $datospregunta = request()->except('_token','_method','idAtributo');
+        PreguntaAspectoAtributo::where('id','=', $id )-> update($datospregunta);
         return redirect()->route('AspectosAtributos.show',$request->idAtributo);
-       
     }
 
     /**
@@ -104,15 +87,7 @@ class AspectosAtributosController extends Controller
      */
     public function destroy($id)
     {
-        $relacion = AtributoAspecto::where('aspectos_atributos_id',$id)->get();
-        $temp = AtributoAspecto::where('aspectos_atributos_id',$id)->get();
-        $temp = $temp[0]->atributo_id;
-        $relacion->each->delete();
-
-        $aspecto = AspectosAtributos::find($id);
-
-        $aspecto->delete();
-
-        return redirect()->route('AspectosAtributos.show', $temp);
+        
+        
     }
 }

@@ -480,8 +480,8 @@ tbody tr:hover {
     <div class="section-header">
         <h3 class="page__heading">
             <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
-            <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', $id)}}">/Atributos</a>
-            <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $id)}}">/Aspectos</a>
+            <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', $idAtributo)}}">/Atributo</a>
+            <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $idAtributo)}}">/Aspectos</a>
         </h3>
     </div>
     <div class="section-body">
@@ -496,7 +496,6 @@ tbody tr:hover {
                                 <div class="row">
                                     <div class="col-11">
                                         <input type="text" class="form-control" style="margin-right: 1rem;" name="nombre">
-                                        
                                     </div>
                                     <div class="col-1">
                                         <button type="submit" class="btn btn-success btn-hg">Agregar</button>
@@ -521,7 +520,7 @@ tbody tr:hover {
                                                 </i>
                                             </div>
                                         </a>
-                                        <form action="{{route ('aspectosObjetivos.destroy', [$aspecto->id])}}" method="POST">
+                                        <form action="{{route ('AspectosAtributos.destroy', [$aspecto->id])}}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" style="border: none; background: none">
@@ -561,7 +560,7 @@ tbody tr:hover {
                                         </tbody>
                                     </table>
                                       <h4>Agregar Nueva Pregunta:</h4>
-                                    <form action="{{route ('preguntaAspectosObjetivos.store')}}" method="POST">
+                                    <form action="{{route ('PreguntaAspectosAtributos.store')}}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-11">
@@ -571,8 +570,8 @@ tbody tr:hover {
                                                 <button type="submit" class="btn btn-success btn-hg">Agregar</button>
                                             </div>
                                         </div>
-                                        <input type="text" style="visibility: hidden;" value="{{$aspecto->id}}" name="idAspectoObjetivo">
-                                        <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
+                                        <input type="text" style="visibility: hidden;" value="{{$aspecto->id}}" name="idAspectoAtributo">
+                                         <input type="text" style="visibility: hidden;" value="{{$idAtributo}}" name="idAtributo"> 
                                     </form>
                                   </div>
                                 </div>
@@ -595,14 +594,14 @@ tbody tr:hover {
                     <h5 class="modal-title" id="exampleModalLabel">EDITAR ASPECTO</h5>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route ('aspectosObjetivos.update', [$aspecto->id])}}" method="POST">
+                <form action="{{route ('AspectosAtributos.update', [$aspecto->id])}}" method="POST">
                     @method('PATCH')
                     @csrf
                     <div class="modal-body">
                         <label for="nombre">Nombre:</label>
                         <textarea name="nombre" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;">{{$aspecto->nombre}}</textarea>
 
-                        <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
+                        <input type="text" style="visibility: hidden;" value="{{$idAtributo}}" name="idAtributo">
                     </div>
 
                     <div class="modal-footer">
@@ -622,14 +621,14 @@ tbody tr:hover {
                         <h5 class="modal-title" id="exampleModalLabel">EDITAR PREGUNTA</h5>
                         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{route ('preguntaAspectosObjetivos.update', [$pregunta->id])}}" method="POST">
+                    <form action="{{route ('PreguntaAspectosAtributos.update', [$pregunta->id])}}" method="POST">
                         @method('PATCH')
                         @csrf
                         <div class="modal-body">
                             <label for="Pregunta">Pregunta:</label>
                             <textarea name="Pregunta" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;">{{$pregunta->Pregunta}}</textarea>
-                            <input type="text" style="visibility: hidden;" value="{{$aspecto->id}}" name="idAspectoObjetivo">
-                            <input type="text" style="visibility: hidden;" value="{{$id}}" name="idObjetivo">
+                            <!-- <input type="text" style="visibility: hidden;" value="{{$aspecto->id}}" name="idAspectoAtributo"> -->
+                            <input type="text" style="visibility: hidden;" value="{{$idAtributo}}" name="idAtributo">
                         </div>
 
                         <div class="modal-footer">
