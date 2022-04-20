@@ -49,11 +49,7 @@
                         </div>
                         
                         <div class="form-group">
-                            @if ($tipoEncuesta == '1')
-                                <label for="encuesta" class="form-label">Objetivos Educacionales</label>
-                            @else
-                            <label for="encuesta" class="form-label">Atributos</label>
-                            @endif
+                                <label for="encuesta" class="form-label">Objetivos Educacionales</label>      
                             
                             @foreach ($encuestas as $encuesta)
                             

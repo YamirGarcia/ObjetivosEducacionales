@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('encuesta_evaluador_atributos', function (Blueprint $table) {
             $table->id();
+            $table->string('estatus');
             $table->string('periodo');
             $table->bigInteger('asignadoPor');
             $table->bigInteger('evaluador');

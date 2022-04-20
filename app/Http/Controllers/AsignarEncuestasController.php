@@ -10,6 +10,7 @@ use App\Models\EncuestaEvaluadorObjetivo;
 use App\Models\EncuestaEvaluadorAtributo;
 use App\Models\EncuestaObjetivo;
 use App\Models\EncuestaAtributo;
+use App\Models\Residente;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -74,11 +75,12 @@ class AsignarEncuestasController extends Controller
 
         }else{
             $encuestaAsignada =  new EncuestaEvaluadorAtributo;
-            // $encuestaAsignada->estatus = "enviada";
+            $encuestaAsignada->estatus = "enviada";
             $encuestaAsignada->evaluador = $request->evaluador;
             $encuestaAsignada->periodo = $request->periodo;
             $encuestaAsignada->asignadoPor = $user_session;
             $encuestaAsignada->idCarrera = $request->idCarrera;
+            $encuestaAsignada->residente = $request->residente;
             $encuestaAsignada->save();
 
             foreach ($request->encuestaAspectos as $encuestaAspecto) {
@@ -145,14 +147,22 @@ class AsignarEncuestasController extends Controller
         
         if($tipoEncuesta == '1'){
             $encuestas = Carrera::find($carrera)->objetivos;
+            return view('encuestas.crear', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta'));
         }else{
+            $residentes = Residente::all();
             $encuestas = Carrera::find($carrera)->atributos;
+            return view('encuestas.crearAtributo', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta', 'residentes'));
         }
-        return view('encuestas.crear', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta'));
     }
 
     public function verRespuestas(Request $request){
-        $encuestaObjetivo = EncuestaEvaluadorObjetivo::find($request->idEncuestaAsignada);
-        return view('encuestas.verRespuesta', compact('encuestaObjetivo'));
+        if ($request->tipoEncuesta == 1) {
+            $encuestaObjetivo = EncuestaEvaluadorObjetivo::find($request->idEncuestaAsignada);
+            return view('encuestas.verRespuesta', compact('encuestaObjetivo'));
+            
+        }else{
+            $encuestaAtributo = EncuestaEvaluadorAtributo::find($request->idEncuestaAsignada);
+            return view('encuestas.verRespuestaAtributo', compact('encuestaAtributo'));
+        }
     }
 }

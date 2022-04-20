@@ -80,12 +80,12 @@
                             <div class="row">
                                 <form action="{{ route('contestarEncuestas.store') }}" method="POST">
                                     @csrf
-                                    @forelse ($encuestaObjetivo as $encuesta)
+                                    @forelse ($encuestaAtributo as $encuesta)
                                         <div class="aspecto">
-                                            {{ $loop->iteration }}.- {{ $encuesta->aspectoObjetivo->nombre }}
+                                            {{ $loop->iteration }}.- {{ $encuesta->aspectoAtributo->nombre }}
                                         </div>
                                         <ul class="list-group" style="position: relative;">
-                                            @forelse ($encuesta->aspectoObjetivo->preguntas as $pregunta)
+                                            @forelse ($encuesta->aspectoAtributo->preguntas as $pregunta)
                                                 <div class="pregunta">
                                                     {{ $pregunta->Pregunta }}
                                                 </div>

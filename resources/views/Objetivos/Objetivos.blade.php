@@ -464,7 +464,7 @@ tbody tr:hover {
     <div class="section-header">
         <h3 class="page__heading">
             <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
-            <a style="text-decoration: none; color: #6c757d" href="{{route ('ObjetivoEducacional.show', $id)}}">/Objetivos Educacionales</a>
+            <a style="text-decoration: none; color: #6c757d" href="{{route ('ObjetivoEducacional.show', $id)}}">/Objetivos Educacionales{{$id}}</a>
         </h3>
     </div>
     <div class="section-body">

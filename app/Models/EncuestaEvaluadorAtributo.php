@@ -23,4 +23,8 @@ class EncuestaEvaluadorAtributo extends Model
     public function carrera () {
         return $this->belongsTo('App\Models\Carrera', 'idCarrera');
     }
+
+    public function residenteAsignado () {
+        return $this->belongsTo('App\Models\Residente', 'residente');
+    }
 }
