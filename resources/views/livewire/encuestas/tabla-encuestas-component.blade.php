@@ -110,7 +110,7 @@
                                                 id="idEncuestaAsignada" 
                                                 value="{{ $encuesta->id }}">
                                             <input type="text" name="tipoEncuesta"
-                                                id="tipoEncuesta" hidden
+                                                id="tipoEncuesta"
                                                 value="1">
                                         </form>
                                     @endif
