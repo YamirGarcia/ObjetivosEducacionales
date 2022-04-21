@@ -107,7 +107,7 @@
                                             </button>
                                             {{-- <button class="btn btn-primary">Ver respuestas</button> --}}
                                             <input type="text" name="idEncuestaAsignada"
-                                                id="idEncuestaAsignada" hidden
+                                                id="idEncuestaAsignada" 
                                                 value="{{ $encuesta->id }}">
                                             <input type="text" name="tipoEncuesta"
                                                 id="tipoEncuesta" hidden
@@ -225,10 +225,10 @@
                                         </button>
                                         {{-- <button class="btn btn-primary">Ver respuestas</button> --}}
                                         <input type="text" name="idEncuestaAsignada"
-                                            id="idEncuestaAsignada" hidden
+                                            id="idEncuestaAsignada" 
                                             value="{{ $encuesta->id }}">
                                         <input type="text" name="tipoEncuesta"
-                                            id="tipoEncuesta" hidden
+                                            id="tipoEncuesta"
                                             value="2">
                                     </form>
                                     @endif

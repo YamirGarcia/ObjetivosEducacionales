@@ -81,11 +81,7 @@
                                         {{-- {!! Form::select('roles[]', $roles, [], ['class' => 'form-control']) !!} --}}
                                         {!! Form::select('roles[]', $roles, [], array('class' => 'form-control', 'name' => 'rol')) !!}
                                     </div>
-<<<<<<< HEAD
-                                    {{-- <input type="text" name="rol" value="otro" hidden> --}}
-=======
                                     {{-- <input type="text" name="rol" hidden> --}}
->>>>>>> 6fa548341c6fec5f1e72171fd80450eaa9dca145
                                 </div>
 
                                 <input type="text" readonly name="creadopor" class="form-control"
