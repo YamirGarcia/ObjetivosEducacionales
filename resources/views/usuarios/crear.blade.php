@@ -80,7 +80,7 @@
                                         <label for="">Roles</label>
                                         {!! Form::select('roles[]', $roles, [], ['class' => 'form-control']) !!}
                                     </div>
-                                    <input type="text" name="rol" value="otro" hidden>
+                                    {{-- <input type="text" name="rol" value="otro" hidden> --}}
                                 </div>
 
                                 <input type="text" readonly name="creadopor" class="form-control"
