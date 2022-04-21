@@ -27,19 +27,18 @@ class TablaEncuestasComponent extends Component
     {
         $user = Auth::user();
         $evaluadores = Evaluador::where('creadopor', $user->name)->get();
-        // $encuestasObjetivos = EncuestaEvaluadorObjetivo::where('asignadoPor', $user->id)->get();
-        // $encuestasAtributos = EncuestaEvaluadorAtributo::where('asignadoPor', $user->id)->get();
 
         $encuestasAtributos = db::table('encuesta_evaluador_atributos')
-                                ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_atributos.idCarrera')
                                 ->join('evaluadors', 'evaluadors.id', '=', 'encuesta_evaluador_atributos.evaluador')
                                 ->join('residentes', 'residentes.id', '=', 'encuesta_evaluador_atributos.residente')
+                                ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_atributos.idCarrera')
+                                ->select('encuesta_evaluador_atributos.*', 'evaluadors.*', 'residentes.*', 'carreras.*')
                                 ->where('asignadoPor', $user->id);
 
 
         $encuestasObjetivos = db::table('encuesta_evaluador_objetivos')
-                                ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_objetivos.idCarrera')
                                 ->join('evaluadors', 'evaluadors.id', '=', 'encuesta_evaluador_objetivos.evaluador')
+                                ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_objetivos.idCarrera')
                                 ->where('asignadoPor', $user->id);
                                 
         if($this->campoObj && $this->orderObj){
