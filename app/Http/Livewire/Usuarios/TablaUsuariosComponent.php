@@ -40,6 +40,7 @@ class TablaUsuariosComponent extends Component
             'usuarios' => $usuarios,
             'user_sesion' => Auth::user()->name,
             'roles' => Role::pluck('name', 'name')->all(),
+            'rolUsuario' => Auth::user()->rol,
         ]);
     }
 

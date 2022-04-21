@@ -7,7 +7,9 @@
         <div class="col-2 ">
             <button class="btn btn-info" wire:click='limpiar' style="margin: 0 auto">Limpiar</button>
         </div>
-        
+        <div class="col-2">
+            <h3>{{$cont}}</h3>
+        </div>
     </div>
     <table class="tabla-general">
         <thead>
@@ -38,20 +40,36 @@
                             <button class="chip primary" data-toggle="modal"
                                 data-target="#modalCarreraUsuario{{ $carrera->id }}">
                                 <span>
+                                    @if ($band)
                                     Usuarios: {{ $carrera->usuarios->count() }}
+                                    @else
+                                    Usuarios: {{App\Models\Carrera::find($carrera->carrera_id)->usuarios->count()}}
+                                    @endif
                                 </span>
                             </button>
                             <button class="chip primary" data-toggle="modal"
                                 data-target="#modalAtributosCarrera{{ $carrera->id }}">
                                 <span>
+                                    @if ($band)
                                     Atributos: {{ $carrera->atributos->count() }}
+                                        
+                                    @else
+                                    Atributos: {{App\Models\Carrera::find($carrera->carrera_id)->atributos->count()}}
+                                        
+                                    @endif
                                 </span>
                             </button>
                             @can('ver-objetivos')
                                 <button class="chip primary" data-toggle="modal"
                                     data-target="#modalObjetivosCarrera{{ $carrera->id }}">
                                     <span>
+                                        @if ($band)
                                         Objetivos: {{ $carrera->objetivos->count() }}
+                                            
+                                        @else
+                                        Objetivos: {{App\Models\Carrera::find($carrera->carrera_id)->objetivos->count()}}
+                                            
+                                        @endif
                                     </span>
                                 </button>
                             @endcan

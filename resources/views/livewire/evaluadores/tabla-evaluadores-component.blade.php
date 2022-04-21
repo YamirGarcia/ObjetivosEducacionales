@@ -1,14 +1,15 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+    
+
+    <h3>Evaluadores Component</h3>
     <div class="row mb-4">
-        <div class="col-8">
-            <input wire:model="search" type="text" placeholder="Ingresa término a buscar:" class="form-control">
+        <div class="col-9">
+            <input wire:model="search" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
         </div>
-        <div class="col-2 ">
-            <button class="btn btn-info" wire:click='prueba' style="margin: 0 auto">Limpiar</button>
+        <div class="col-1">
+            <button wire:click='clear' class="btn btn-info">Limpiar</button>
         </div>
     </div>
-
     <table class="tabla-general">
         <thead>
             <tr class="table100-head">
@@ -16,19 +17,19 @@
                 <th class="column2">
                     Nombre
                     <button class="bg-transparent" style="border: none" wire:click="sortable('nombres')">
-                        <span class="fa fa{{$campo === 'nombres' ? $icon : '-circle'}}" style="color: white"></span>
+                    <span class="fa fa{{$campo === 'nombres' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
                 <th class="column3">
                     Correo
                     <button class="bg-transparent" style="border: none" wire:click="sortable('correo')">
-                        <span class="fa fa{{$campo === 'correo' ? $icon : '-circle'}}" style="color: white"></span>
+                    <span class="fa fa{{$campo === 'correo' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
                 <th class="column4">
                     Empresa
                     <button class="bg-transparent" style="border: none" wire:click="sortable('empresa')">
-                        <span class="fa fa{{$campo === 'empresa' ? $icon : '-circle'}}" style="color: white"></span>
+                    <span class="fa fa{{$campo === 'empresa' ? $icon : '-circle'}}" style="color: white" ></span>
                     </button>
                 </th>
                 <th class="column5">
@@ -78,5 +79,6 @@
             @endif
             @endforeach
         </tbody>
-    </table>
+    </table> 
+                            
 </div>

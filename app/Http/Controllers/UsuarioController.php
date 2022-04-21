@@ -29,6 +29,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $user_sesion = Auth::user()->name;
+        
         $usuarios = User::where([
             ['creadopor', $user_sesion],
             ['rol', '!=', 'Evaluador']

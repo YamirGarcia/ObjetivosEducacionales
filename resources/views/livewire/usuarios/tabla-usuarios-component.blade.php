@@ -45,7 +45,7 @@
         </thead>
         <tbody>
             @foreach($usuarios as $usuario)
-            @if ($usuario->creadopor == $user_sesion)
+            @if ($usuario->creadopor == $user_sesion || $rolUsuario == 'Administrador')
             <tr class="table100-head">
                 <td class="column1" style="display: none;">{{$usuario->id}}</td>
                 <td class="column2">{{$usuario->name}}</td>
