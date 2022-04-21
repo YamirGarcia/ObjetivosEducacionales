@@ -197,5 +197,8 @@ class EvaluadoresController extends Controller
     public function destroy($id)
     {
         //
+        Evaluador::destroy($id);
+        return redirect()->route('evaluadores.index');
+
     }
 }

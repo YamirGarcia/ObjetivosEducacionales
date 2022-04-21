@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="css/botonFlotante.css">
 <link rel="stylesheet" type="text/css" href="css/iconos.css">
 <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
+@livewireScripts
 @endsection
 
 @section('content')
@@ -20,7 +21,8 @@
                         <h1 class="text-center">No existen Evaluadores</h1>
                         @else
                         <div class="card-body">
-                            <table class="tabla-general">
+                            {{-- @livewire('evaluadores.tabla-evaluadores-component') --}}
+                            {{-- <table class="tabla-general">
                                 <thead>
                                     <tr class="table100-head">
                                         <th class="column1" style="display: none;">ID</th>
@@ -72,7 +74,8 @@
                                     @endif
                                     @endforeach
                                 </tbody>
-                            </table>
+                            </table> --}}
+                            @livewire('evaluadores.tabla-evaluadores-component')
                             <div class="pagination justify-content-end">
                                 {!! $evaluadores->links() !!}
                             </div>
@@ -133,7 +136,7 @@
     </div>
 </div>
 @endforeach
-
+@livewireStyles
 @endsection
 
 @section('js')

@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="css/estiloTablaRolesIndex.css">
 <link rel="stylesheet" type="text/css" href="css/botonFlotante.css">
 <link rel="stylesheet" type="text/css" href="css/iconos.css">
+@livewireStyles
 @endsection
 
 @section('content')
@@ -19,6 +20,7 @@
                         @if ($roles->count()==0)
                         <h1 style="margin-top: 30px">No existen roles creados por mostrar</h1> 
                         @else
+<<<<<<< HEAD
                         <table style="margin-top: 30px">
                             <thead>
                                 <tr class="table100-head">
@@ -61,6 +63,9 @@
                             @endforeach
                         </tbody>
                     </table>
+=======
+                        @livewire('roles.tabla-roles-component')
+>>>>>>> 6fa548341c6fec5f1e72171fd80450eaa9dca145
                     <div class="pagination justify-content-end">
                         {!! $roles->links() !!}
                     </div>
@@ -73,6 +78,7 @@
     </div>
 
 </section>
+@livewireScripts
 @endsection
 
 @section('scripts')
