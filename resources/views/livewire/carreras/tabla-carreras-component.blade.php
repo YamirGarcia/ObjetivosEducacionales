@@ -7,22 +7,31 @@
         <div class="col-2 ">
             <button class="btn btn-info" wire:click='limpiar' style="margin: 0 auto">Limpiar</button>
         </div>
-        <div class="col-2">
-            <h3>{{$cont}}</h3>
-        </div>
     </div>
+
+    @if ($carreras->count() == 0)
+        @if ($search)
+            <h1 class="text-center"> 
+                Sin Resultados
+            </h1>
+        @else
+        <h1 class="text-center">No Existen Carreras Asignadas
+        </h1>
+        @endif
+    @else 
+    
     <table class="tabla-general">
         <thead>
             <tr class="table100-head">
                 <th class="column1">
-                    Carrera
                     <button class="bg-transparent" style="border: none" wire:click="sortable('carrera')">
+                        <span style="color: white" > Carrera </span>
                         <span class="fa fa{{$campo === 'carrera' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
                 <th class="column2">
-                    Plan de estudios
                     <button class="bg-transparent" style="border: none" wire:click="sortable('planEstudios')">
+                        <span style="color: white" > Plan de estudios </span>
                         <span class="fa fa{{$campo === 'planEstudios' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
@@ -155,4 +164,5 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>

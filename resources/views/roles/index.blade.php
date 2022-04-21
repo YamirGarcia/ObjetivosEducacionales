@@ -17,14 +17,14 @@
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
-                        @if ($roles->count()==0)
+                        {{-- @if ($roles->count()==0)
                         <h1 style="margin-top: 30px">No existen roles creados por mostrar</h1> 
-                        @else
+                        @else --}}
                         @livewire('roles.tabla-roles-component')
                     <div class="pagination justify-content-end">
                         {!! $roles->links() !!}
                     </div>
-                    @endif
+                    {{-- @endif --}}
                 </div>
                 
                 <a href="{{route('roles.create')}}" class="btn-flotante">Agregar Rol</a>

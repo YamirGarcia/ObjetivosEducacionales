@@ -29,17 +29,18 @@ class TablaEncuestasComponent extends Component
         $evaluadores = Evaluador::where('creadopor', $user->name)->get();
 
         $encuestasAtributos = db::table('encuesta_evaluador_atributos')
-                                ->join('evaluadors', 'evaluadors.id', '=', 'encuesta_evaluador_atributos.evaluador')
-                                ->join('residentes', 'residentes.id', '=', 'encuesta_evaluador_atributos.residente')
-                                ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_atributos.idCarrera')
-                                ->select('encuesta_evaluador_atributos.*', 'evaluadors.*', 'residentes.*', 'carreras.*')
-                                ->where('asignadoPor', $user->id);
+                                ->join('carreras', 'carreras.id', '=', 'idCarrera')
+                                ->join('evaluadors', 'evaluadors.id', '=', 'evaluador')
+                                ->join('residentes', 'residentes.id', '=', 'residente')
+                                ->where('asignadoPor', $user->id)
+                                ->select('encuesta_evaluador_atributos.*', 'carreras.carrera', 'evaluadors.nombres', 'residentes.nombre');
 
 
         $encuestasObjetivos = db::table('encuesta_evaluador_objetivos')
-                                ->join('evaluadors', 'evaluadors.id', '=', 'encuesta_evaluador_objetivos.evaluador')
                                 ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_objetivos.idCarrera')
-                                ->where('asignadoPor', $user->id);
+                                ->join('evaluadors', 'evaluadors.id', '=', 'encuesta_evaluador_objetivos.evaluador')
+                                ->where('asignadoPor', $user->id)
+                                ->select('encuesta_evaluador_objetivos.*', 'carreras.carrera', 'evaluadors.nombres');
                                 
         if($this->campoObj && $this->orderObj){
             $encuestasObjetivos = $encuestasObjetivos->orderBy($this->campoObj, $this->orderObj);

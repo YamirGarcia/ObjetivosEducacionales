@@ -3,6 +3,7 @@
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="../css/estiloRoles.css">
 <link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
+<link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
 @endsection
 
 @section('content')
@@ -182,7 +183,7 @@
                                     </div>
                                     
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="submit" class="boton-submit">Guardar</button>
                             </div>
                                 </div>
                             {!! Form::close() !!}

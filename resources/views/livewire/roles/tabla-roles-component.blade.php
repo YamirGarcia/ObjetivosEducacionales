@@ -8,12 +8,22 @@
             <button class="btn btn-info" wire:click="limpiar">Limpiar</button>
         </div>
     </div>
+    @if ($roles->count() == 0)
+        @if ($search)
+            <h1 class="text-center"> 
+                Sin Resultados
+            </h1>
+        @else
+        <h1 class="text-center">No Existen Roles Asignados
+        </h1>
+        @endif
+    @else 
     <table style="margin-top: 30px">
         <thead>
             <tr class="table100-head">
                 <th class="column1">
-                    Rol
                     <button class="bg-transparent" style="border: none" wire:click="sortable('name')">
+                        <span style="color: white"> Rol </span>
                         <span class="fa fa{{$campo === 'name' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
@@ -56,5 +66,6 @@
         </tr>
         @endforeach
     </tbody>
+    @endif
 </table>
 </div>

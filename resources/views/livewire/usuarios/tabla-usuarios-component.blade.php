@@ -17,21 +17,30 @@
         <div class="col-2 ">
             <button class="btn btn-info" wire:click='prueba' style="margin: 0 auto">Limpiar</button>
         </div>
-        
     </div>
+    @if ($usuarios->count() == 0)
+        @if ($search)
+            <h1 class="text-center"> 
+                Sin Resultados
+            </h1>
+        @else
+        <h1 class="text-center">No Existen Usuarios Asignados
+        </h1>
+        @endif
+    @else 
     <table>
         <thead>
             <tr class="table100-head">                                    
                 <th class="column1" style="display: none">ID</th>
                 <th class="column2" >
-                    Nombre 
                     <button class="bg-transparent" style="border: none" wire:click="sortable('name')">
+                        <span style="color: white"> Nombre </span>
                         <span class="fa fa{{$campo === 'name' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
                 <th class="column3" >
-                    Correo
                     <button class="bg-transparent" style="border: none" wire:click="sortable('email')">
+                        <span style="color: white"> Correo </span>
                         <span class="fa fa{{$campo === 'email' ? $icon : '-circle'}}" style="color: white"></span>
                     </button>
                 </th>
@@ -91,4 +100,5 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>

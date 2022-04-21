@@ -3,16 +3,8 @@
         <div wire:ignore.self class="tab-pane fade show active" id="home" role="tabpanel"
             aria-labelledby="home-tab">
 
-            @if ($encuestasObjetivos->count() == 0)
-                <h1 class="text-center">No Existen Encuestas Asignadas de Objetivos
-                    Educacionales
-                </h1>
-            @else
-
+            
             <div class="row mb-4">
-                <h2>
-                    {{Illuminate\Support\Facades\Auth::user()->id}}
-                </h2>
                 <div class="col-9">
                     <input wire:model="searchObj" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
                 </div>
@@ -20,6 +12,19 @@
                     <button wire:click='limpiarObj' class="btn btn-info">Limpiar</button>
                 </div>
             </div>
+            @if ($encuestasObjetivos->count() == 0)
+                @if ($searchObj)
+                    <h1 class="text-center"> 
+                        Sin Resultados
+                    </h1>
+                @else
+                <h1 class="text-center">No Existen Encuestas Asignadas de Objetivos
+                    Educacionales
+                </h1>
+                @endif
+            @else
+
+            
 
                 <table class="tabla-general">
                     <thead>
@@ -28,20 +33,20 @@
                                 Estatus
                             </th>
                             <th class="column2">
-                                Evaluador
                                 <button class="bg-transparent" style="border: none" wire:click="sortableObj('nombres')">
+                                    <span style="color: white">Evaluador</span>
                                     <span class="fa fa{{$campoObj === 'nombres' ? $iconObj : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column3">
-                                Carrera
                                 <button class="bg-transparent" style="border: none" wire:click="sortableObj('carrera')">
+                                    <span style="color: white"> Carrera </span>
                                     <span class="fa fa{{$campoObj === 'carrera' ? $iconObj : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column4">
-                                Periodo
                                 <button class="bg-transparent" style="border: none" wire:click="sortableObj('periodo')">
+                                    <span style="color:white"> Periodo </span>
                                     <span class="fa fa{{$campoObj === 'periodo' ? $iconObj : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
@@ -112,11 +117,11 @@
                                             </button>
                                             {{-- <button class="btn btn-primary">Ver respuestas</button> --}}
                                             <input type="text" name="idEncuestaAsignada"
-                                                id="idEncuestaAsignada" hidden
-                                                value="{{ $encuesta->id }}">
+                                                id="idEncuestaAsignada" 
+                                                value="{{ $encuesta->id }}" hidden>
                                             <input type="text" name="tipoEncuesta"
-                                                id="tipoEncuesta" hidden
-                                                value="1">
+                                                id="tipoEncuesta"
+                                                value="1" hidden>
                                         </form>
                                     @endif
                                 </td>
@@ -128,9 +133,6 @@
         </div>
         {{--  --}}
         <div wire:ignore.self class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            @if ($encuestasAtributos->count() == 0)
-                <h1 class="text-center">No Existen Encuestas Asignadas de Atributos</h1>
-            @else
             <div class="row mb-4">
                 <div class="col-9">
                     <input wire:model="searchAtr" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
@@ -139,31 +141,42 @@
                     <button wire:click='limpiarAtr' class="btn btn-info">Limpiar</button>
                 </div>
             </div>
+            @if ($encuestasAtributos->count() == 0)
+                @if ($searchAtr)
+                    <h1 class="text-center"> 
+                        Sin Resultados
+                    </h1>
+                @else
+                    <h1 class="text-center">No Existen Encuestas Asignadas de Objetivos
+                        Educacionales
+                    </h1>
+                @endif
+            @else
                 <table class="tabla-general">
                     <thead>
                         <tr class="table100-head">
                             <th class="column1">Estatus</th>
                             <th class="column2">
-                                Evaluador
                                 <button class="bg-transparent" style="border: none" wire:click="sortableAtr('nombres')">
+                                    <span style="color: white "> Evaluador </span>
                                     <span class="fa fa{{$campoAtr === 'nombres' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column3">
-                                Residente
                                 <button class="bg-transparent" style="border: none" wire:click="sortableAtr('nombre')">
+                                    <span style="color: white "> Residente </span>
                                     <span class="fa fa{{$campoAtr === 'nombre' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column4">
-                                Carrera
                                 <button class="bg-transparent" style="border: none" wire:click="sortableAtr('carrera')">
+                                    <span style="color: white "> Carrera </span>
                                     <span class="fa fa{{$campoAtr === 'carrera' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column5">
-                                Periodo
                                 <button class="bg-transparent" style="border: none" wire:click="sortableAtr('periodo')">
+                                    <span style="color: white "> Periodo </span>
                                     <span class="fa fa{{$campoAtr === 'periodo' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
@@ -232,11 +245,11 @@
                                         </button>
                                         {{-- <button class="btn btn-primary">Ver respuestas</button> --}}
                                         <input type="text" name="idEncuestaAsignada"
-                                            id="idEncuestaAsignada" hidden
-                                            value="{{ $encuesta->id }}">
+                                            id="idEncuestaAsignada" 
+                                            value="{{ $encuesta->id }}" hidden>
                                         <input type="text" name="tipoEncuesta"
-                                            id="tipoEncuesta" hidden
-                                            value="2">
+                                            id="tipoEncuesta"
+                                            value="2" hidden>
                                     </form>
                                     @endif
                                 </td>

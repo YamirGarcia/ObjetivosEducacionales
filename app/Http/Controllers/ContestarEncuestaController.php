@@ -115,16 +115,16 @@ class ContestarEncuestaController extends Controller
     public function update(Request $request, $id)
     {
         $tipoEncuesta = $request->tipoEncuesta;
-        if ($request->tipoEncueta == 1) {
+        if ($request->tipoEncuesta == 1) {
             $encuesta = EncuestaEvaluadorObjetivo::find($id);
-            $encuesta->estatus = 'recibida';
+            $encuesta->estatus = "recibida";
             $encuesta->save();
     
             $encuestaObjetivo = EncuestaObjetivo::where('idEncuestaAsignada',$id)->get();
             return view('ContestarEncuesta.contestar', compact('encuestaObjetivo','id','tipoEncuesta'));
         }else{
             $encuesta = EncuestaEvaluadorAtributo::find($id);
-            $encuesta->estatus = 'recibida';
+            $encuesta->estatus = "recibida";
             $encuesta->save();   
             $encuestaAtributo = EncuestaAtributo::where('idEncuestaAsignada',$id)->get();
             return view('ContestarEncuesta.contestarAtributo', compact('encuestaAtributo','id','tipoEncuesta'));

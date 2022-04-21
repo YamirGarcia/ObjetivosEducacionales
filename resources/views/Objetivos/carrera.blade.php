@@ -19,16 +19,16 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card shadow p-3 mb-5 bg-body rounded">
-                        @if ($carreras->count() == 0)
+                        {{-- @if ($carreras->count() == 0)
                             <h1 class="text-center">No existen carreras que mostrar</h1>
-                        @else
+                        @else --}}
                             <div class="card-body">
                                 @livewire('carreras.tabla-carreras-component')
                                 <div class="pagination justify-content-end">
                                     {{-- {!! $carreras->links() !!} --}}
                                 </div>
                             </div>
-                        @endif
+                        {{-- @endif --}}
                         @can('crear-carrera')
                             <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar">Agregar
                                 Carrera</a>

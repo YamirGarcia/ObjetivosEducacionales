@@ -18,9 +18,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
-                    @if ($usuarios->count() == 0)
+                    {{-- @if ($usuarios->count() == 0)
                         <h1 class="text-center">No Existen Usuarios Asigandos</h1> 
-                    @else
+                    @else --}}
                         
                     
                     <div class="card-body">
@@ -29,7 +29,7 @@
                             {!! $usuarios->links() !!}
                         </div>
                     </div>
-                    @endif
+                    {{-- @endif --}}
                     <a href="{{route('usuarios.create')}}" class="btn-flotante">Agregar Usuario</a>
                 </div>
             </div>

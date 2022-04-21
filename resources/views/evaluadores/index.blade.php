@@ -17,9 +17,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
-                        @if ($evaluadores->count()==0)
+                        {{-- @if ($evaluadores->count()==0)
                         <h1 class="text-center">No existen Evaluadores</h1>
-                        @else
+                        @else --}}
                         <div class="card-body">
                             {{-- @livewire('evaluadores.tabla-evaluadores-component') --}}
                             {{-- <table class="tabla-general">
@@ -83,7 +83,7 @@
                             
                         </div>
                         
-                        @endif
+                        {{-- @endif --}}
                         <a href="{{route('evaluadores.create')}}" class="btn-flotante">Agregar Evaluador</a>
                         @extends('evaluadores.grupointeresModal')
                     
