@@ -29,8 +29,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     @yield('estilos')
     @yield('css_login')
-    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
+    <link rel="stylesheet" type="text/css" href="/css/iconos.css">
     <link rel="stylesheet" type="text/css" href="/css/estiloFinalAspecto.css">
+    <link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
     <style>
         .nav-bar{
             position: fixed;

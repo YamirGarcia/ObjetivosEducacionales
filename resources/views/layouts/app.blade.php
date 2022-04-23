@@ -43,6 +43,11 @@
     .modal{
         top: 50px
     }
+    .section-header{
+        position: sticky;
+        top: 0;
+        /* z-index: 3000; */
+    }
 </style>
 <body style="overflow-y: scroll;">
     <div id="app">
@@ -50,7 +55,6 @@
             <div class="navbar-bg" style="background: #11101d;"></div>
             <nav class="navbar navbar-expand-lg main-navbar nav-bar">
                 @include('layouts.header')
-                
             </nav>
             <div class="main-sidebar main-sidebar-postion">
                 @include('layouts.sidebar')

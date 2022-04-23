@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">AGREGAR CARRERA</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear Carrera</h5>
                 <button class="btn-tabla" type="button" data-dismiss="modal">
                     <div class="icon trash-fill">
                       <i> 
@@ -17,12 +17,14 @@
                     <label for="carrera">Nombre de la Carrera:</label>
                     <input type="text" class="form-control" name="carrera" style="margin-bottom: 2rem;">
 
-                    <label for="planEstudios">Plan de estudios:</label>
+                    <label for="planEstudios">Plan de Estudios:</label>
                     <input type="text" class="form-control" name="planEstudios">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">GUARDAR</button>
+                    <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                        <button type="submit" class="boton-submit">Guardar</button>
+                    </div>
                 </div>
             </form>
         </div>
