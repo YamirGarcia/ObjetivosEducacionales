@@ -4,13 +4,20 @@
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="/css/estiloRoles.css">
 <link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
+
+<link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
 @endsection
 
 @section('content')
 
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Rol</h3>
+            <h3 class="page__heading">
+
+            <a style="text-decoration: none; color: #6c757d" href="/roles">Roles</a>
+
+            <a style="text-decoration: none; color: #6c757d" href="{{ route('roles.edit', $role->id) }}">/ Editar Rol</a>
+            </h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -346,8 +353,9 @@
                                 @endforeach
                             </div>
                         </div> --}}
-                        
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <button type="submit" class="boton-submit">Guardar</button>
+                        </div>
                         
                     </div>
                     {!! Form::close() !!}

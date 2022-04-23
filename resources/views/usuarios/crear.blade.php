@@ -2,12 +2,17 @@
 
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
+<link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Nuevo Usuario</h3>
+            <h3 class="page__heading">
+                
+            <a style="text-decoration: none; color: #6c757d" href="/usuarios">Usuarios</a>
+                
+            <a style="text-decoration: none; color: #6c757d" href="{{route ('usuarios.create')}}"> / Crear Usuario</a></h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -88,10 +93,13 @@
                                     style="visibility: hidden;"
                                     value="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
 
-                                <div class="col-5" style="margin: 0 auto">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <button type="submit" class="boton-submit">Guardar</button>
+                                    </div>
+                                {{-- <div class="col-5" style="margin: 0 auto">
                                     <button type="submit"
                                         class="btn btn-primary btn-block rounded-pill shadow-sm">Guardar</button>
-                                </div>
+                                </div> --}}
                             </div>
                             {!! Form::close() !!}
                         </div>

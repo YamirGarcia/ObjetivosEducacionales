@@ -10,12 +10,15 @@ label,
 span,
 tr,
 th,
-td {
+td,
+select,
+option {
     font-family: 'Poppins', sans-serif;
 }
 
 
 /* inputs */
+
 
 
 /* Botones de Guardar */
@@ -49,3 +52,144 @@ td {
    .boton-submit:active {
     transform: translateY(-1px);
    }
+
+
+/* buscador */
+.buscador{
+  display: block;
+  width: 400px;
+}
+
+.buscador form{
+  position: relative;
+  top: 50%;
+  left: 0;
+  transform: translate(0%, -50%);
+  transition: all .5s;
+  width: 50px;
+  height: 50px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: none;
+  padding: 5px;
+}
+
+.buscador input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;;
+  height: 50px;
+  line-height: 30px;
+  outline: 0;
+  border: 1px solid #4f5d75;
+  display: block;
+  font-size: 1.3em;
+  border-radius: 60px;
+  padding: 0 20px;
+  /* background: #ccdbdc90; */
+}
+
+.buscador .fa{
+  box-sizing: border-box;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #4f5d75;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.7em;
+  transition: all .1s;
+}
+.btn-clean{
+  margin: 0 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #90caf9;
+  border: none;
+}
+
+.fa-vc{line-height:inherit!important;}
+
+
+
+.buscador form:hover,
+.buscador form:valid{
+  width: 400px;
+  cursor: pointer;
+}
+
+.buscador form:hover ~  svg{
+  
+  top: 10px;
+}
+
+
+.buscador form:hover input,
+.buscador form:valid input{
+  display: block;
+  /* background: #878f9b; */
+  color: #000;
+}
+.buscador input:focus{
+  display: block;
+}
+
+/* icono de search */
+.buscador form:hover .fa,
+.buscador form:valid .fa{
+  background: #4f5d75;
+  color: white;
+  /* background: red; */
+}
+
+.form__select{
+  display: flex;
+  position: relative;
+  width: 300px;
+  top: 3px;
+}
+.form__select svg{
+  position: relative;
+  margin-right: 8px;
+  top: 10px;
+}
+
+
+/* estilo del select  */
+/* .form__select select{
+  appearance: none;
+}
+
+.form__select{
+  max-width: 250px;
+  position: relative;
+}
+
+.form__select select{
+  background: red;
+  text-decoration: none;
+  border: 0; */
+  /* display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 7px 10px;
+  height: 50px;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: #7b7b7b;
+  font-size: 1.7em;
+  color: #999;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 50px;
+  position: relative; */
+/* } */

@@ -25,7 +25,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                        <button type="submit" class="boton-submit">Actualizar</button>
+                    </div>
                 </div>
             </form>
         </div>

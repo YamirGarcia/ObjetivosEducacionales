@@ -129,12 +129,11 @@ i svg {
 
 .search-fill::before {
     transition-duration: 0.2s;
-    box-shadow: inset 0 0 0 2px #f4f4f9;
+    box-shadow: inset 0 0 0 2px #8e9aaf;
     border-radius: 50px;
 }
-
 .search-fill:hover::before {
-    box-shadow: inset 0 0 0 60px #f4f4f9;
+    box-shadow: inset 0 0 0 60px #8e9aaf;
     border-radius: 50px;
 }
 

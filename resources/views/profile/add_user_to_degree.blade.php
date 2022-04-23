@@ -68,7 +68,9 @@
               </div>
               <input type="text" name="carrera" id="carrera" value="{{$carrera->id}}" hidden>
               <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
+                <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                  <button type="submit" class="boton-submit">Guardar</button>
+              </div>
               </div>
           </form>
       </div>

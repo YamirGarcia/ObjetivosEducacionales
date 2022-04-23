@@ -1,58 +1,19 @@
 @extends('layouts.app')
 
 @section('estilos')
-<link rel="stylesheet" type="text/css" href="css/estiloBotonGuardar.css">
 <link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
-@endsection
-
-@section('cssObjetivos')
-    <style>
-    .button, .tick {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-    position: relative;
-  }
-  
-  .button {
-    left: calc((100% - 50px) / 2);
-    width: 130px;
-    height: 50px;
-    background: dodgerblue;
-    border-radius: 12px;
-    transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
-  }
-  
-  .button svg {
-    transform: rotate(180deg);
-    transition: all .5s;
-  }
-  
-  .button__circle {
-    width: 7rem;
-    height: 7rem;
-    background: mediumseagreen;
-    border-radius: 50px;
-    transform: rotate(-180deg);
-  }
-  
-  .button:hover {
-    cursor: pointer;
-  }
-  
-  .tick {
-    color: white;
-    font-size:1rem;
-    transition: all .9s;
-  }
-    </style>
+<link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Usuario</h3>
+            <h3 class="page__heading">
+
+            <a style="text-decoration: none; color: #6c757d" href="/usuarios">Usuarios</a>
+
+            <a style="text-decoration: none; color: #6c757d" href="{{ route('usuarios.edit', $user->id) }}">/ Editar Usuario</a>
+            </h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -117,10 +78,9 @@
                                 </div>
                             </div>
                                 
-                            <button type="submit" class="button">
-                                        <div class="tick">
-                                        </div>
-                            </button>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <button type="submit" class="boton-submit">Guardar</button>
+                            </div>
                         </div>
                         {!! Form::close() !!}
                     </div>
