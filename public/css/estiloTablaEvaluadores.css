@@ -74,7 +74,6 @@ table th.r {
 }
 
 .table100-head th {
-    font-family: OpenSans-Regular;
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
@@ -82,7 +81,6 @@ table th.r {
 }
 
 .table100-head-modal th {
-    font-family: OpenSans-Regular;
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
@@ -94,7 +92,6 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr {
-    font-family: OpenSans-Regular;
     font-size: 15px;
     color: black;
     line-height: 1.2;
