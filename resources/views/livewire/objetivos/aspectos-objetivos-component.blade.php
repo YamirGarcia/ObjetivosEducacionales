@@ -125,12 +125,11 @@
                                   <div class="row">
                                       <div class="col-9">
                                           <input wire:ignore type="text" class="form-control" style="margin-right: 1rem;" name="Pregunta" wire:model="preguntaNueva">
-                                          {{-- <input wire:ignore type="text" class="form-control" style="margin-right: 1rem;" name="Pregunta" wire:model="array[{{$aspecto->id}}]"> --}}
                                       </div>
 
-                                <div class="col-1" style="position: relative; right: 20px;">
-                                    <button type="submit" class="boton-submit">Agregar</button>
-                            </div>
+                                    <div class="col-1" style="position: relative; right: 20px;">
+                                        <button type="submit" class="boton-submit">Agregar</button>
+                                    </div>
                                   </div>
                               </form>
                             </div>

@@ -23,7 +23,6 @@ class AspectosObjetivosComponent extends Component
 
     public function render()
     {
-        $this->cont++;
         $this->aspectos = ObjetivoEducacional::find($this->idObj)->aspectos;
         return view('livewire.objetivos.aspectos-objetivos-component');
     }

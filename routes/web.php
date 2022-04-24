@@ -16,6 +16,7 @@ use App\Http\Controllers\ContestarEncuestaController;
 use App\Http\Controllers\AspectosAtributosController;
 use App\Http\Controllers\ResidentesController;
 use App\Http\Controllers\PreguntaAspectoAtributoController;
+use App\Http\Livewire\Atributos\AspectosAtributosComponent;
 
 use App\Http\Controllers\PreguntaAspectoObjetivoController;
 
@@ -66,8 +67,5 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Route::get('/live', AspectosAtributosComponent::class);
 Auth::routes();
