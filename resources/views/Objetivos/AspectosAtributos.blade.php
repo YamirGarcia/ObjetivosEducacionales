@@ -17,7 +17,7 @@
             <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $idAtributo)}}">/Aspectos</a>
         </h3>
     </div>
-    <div class="section-body">
+    {{-- <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">   
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         @livewire('atributos.aspectos-atributos-component', ['idAtributo' => $idAtributo])
     
