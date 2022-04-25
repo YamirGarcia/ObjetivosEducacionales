@@ -2,7 +2,8 @@
     {{-- Care about people's approval and you will be their prisoner. --}}
     <div class="row mb-4">
         <div style="display: flex">
-            <button class="btn-clean" wire:click='limpiar' data-toggle="tooltip" data-placement="bottom" title="Limpiar">
+            <button class="btn-clean" wire:click='limpiar' data-toggle="tooltip" data-placement="bottom"
+                title="Limpiar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" style="fill: #fff">
                     <path
                         d="M224 0H336C362.5 0 384 21.49 384 48V256H0V48C0 21.49 21.49 0 48 0H64L96 64L128 0H160L192 64L224 0zM384 288V320C384 355.3 355.3 384 320 384H256V448C256 483.3 227.3 512 192 512C156.7 512 128 483.3 128 448V384H64C28.65 384 0 355.3 0 320V288H384zM192 464C200.8 464 208 456.8 208 448C208 439.2 200.8 432 192 432C183.2 432 176 439.2 176 448C176 456.8 183.2 464 192 464z" />
@@ -66,17 +67,19 @@
                                         @endif
                                     </span>
                                 </button>
-                                <button class="chip primary" data-toggle="modal"
-                                    data-target="#modalAtributosCarrera{{ $carrera->id }}">
-                                    <span>
-                                        @if ($band)
-                                            Atributos: {{ $carrera->atributos->count() }}
-                                        @else
-                                            Atributos:
-                                            {{ App\Models\Carrera::find($carrera->carrera_id)->atributos->count() }}
-                                        @endif
-                                    </span>
-                                </button>
+                                @can('ver-atributos')
+                                    <button class="chip primary" data-toggle="modal"
+                                        data-target="#modalAtributosCarrera{{ $carrera->id }}">
+                                        <span>
+                                            @if ($band)
+                                                Atributos: {{ $carrera->atributos->count() }}
+                                            @else
+                                                Atributos:
+                                                {{ App\Models\Carrera::find($carrera->carrera_id)->atributos->count() }}
+                                            @endif
+                                        </span>
+                                    </button>
+                                @endcan
                                 @can('ver-objetivos')
                                     <button class="chip primary" data-toggle="modal"
                                         data-target="#modalObjetivosCarrera{{ $carrera->id }}">
@@ -95,7 +98,8 @@
                         <td class="column4">
                             <div class="acciones">
                                 @can('editar-carrera')
-                                    <a href="#" data-toggle="modal" data-target="#modalEditar{{ $carrera->id }}" data-placement="bottom" title="Editar">
+                                    <a href="#" data-toggle="modal" data-target="#modalEditar{{ $carrera->id }}"
+                                        data-placement="bottom" title="Editar">
                                         <div class="icon edit-fill">
                                             <i>
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -112,7 +116,8 @@
                                         class="form-eliminar">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" style="border: none; background: none" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+                                        <button type="submit" style="border: none; background: none" data-toggle="tooltip"
+                                            data-placement="bottom" title="Eliminar">
                                             <div class="icon trash-fill">
                                                 <i>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -128,7 +133,8 @@
                                 @can('ver-objetivos')
                                     <form action="{{ route('ObjetivoEducacional.show', $carrera->id) }}" method="GET">
                                         @csrf
-                                        <button class="btn-tabla" type="submit" data-toggle="tooltip" data-placement="bottom" title="Objetivos Educacionales">
+                                        <button class="btn-tabla" type="submit" data-toggle="tooltip"
+                                            data-placement="bottom" title="Objetivos Educacionales">
                                             <div class="icon objetivos-fill">
                                                 <i>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -141,19 +147,22 @@
                                         </button>
                                     </form>
                                 @endcan
-                                <form action="{{ route('Atributos.show', $carrera->id) }}">
-                                    <button class="btn-tabla" type="submit" data-toggle="tooltip" data-placement="bottom" title="Atributos">
-                                        <div class="icon atributos-fill">
-                                            <i>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                    <path
-                                                        d="M45.63 79.75L52 81.25v58.5C45 143.9 40 151.3 40 160c0 8.375 4.625 15.38 11.12 19.75L35.5 242C33.75 248.9 37.63 256 43.13 256h41.75c5.5 0 9.375-7.125 7.625-13.1L76.88 179.8C83.38 175.4 88 168.4 88 160c0-8.75-5-16.12-12-20.25V87.13L128 99.63l.001 60.37c0 70.75 57.25 128 128 128s127.1-57.25 127.1-128L384 99.62l82.25-19.87c18.25-4.375 18.25-27 0-31.5l-190.4-46c-13-3-26.62-3-39.63 0l-190.6 46C27.5 52.63 27.5 75.38 45.63 79.75zM359.2 312.8l-103.2 103.2l-103.2-103.2c-69.93 22.3-120.8 87.2-120.8 164.5C32 496.5 47.53 512 66.67 512h378.7C464.5 512 480 496.5 480 477.3C480 400 429.1 335.1 359.2 312.8z" />
-                                                </svg>
-                                            </i>
-                                        </div>
-                                    </button>
-                                </form>
+                                @can('ver-atributos')
+                                    <form action="{{ route('Atributos.show', $carrera->id) }}">
+                                        <button class="btn-tabla" type="submit" data-toggle="tooltip"
+                                            data-placement="bottom" title="Atributos">
+                                            <div class="icon atributos-fill">
+                                                <i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                        <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                        <path
+                                                            d="M45.63 79.75L52 81.25v58.5C45 143.9 40 151.3 40 160c0 8.375 4.625 15.38 11.12 19.75L35.5 242C33.75 248.9 37.63 256 43.13 256h41.75c5.5 0 9.375-7.125 7.625-13.1L76.88 179.8C83.38 175.4 88 168.4 88 160c0-8.75-5-16.12-12-20.25V87.13L128 99.63l.001 60.37c0 70.75 57.25 128 128 128s127.1-57.25 127.1-128L384 99.62l82.25-19.87c18.25-4.375 18.25-27 0-31.5l-190.4-46c-13-3-26.62-3-39.63 0l-190.6 46C27.5 52.63 27.5 75.38 45.63 79.75zM359.2 312.8l-103.2 103.2l-103.2-103.2c-69.93 22.3-120.8 87.2-120.8 164.5C32 496.5 47.53 512 66.67 512h378.7C464.5 512 480 496.5 480 477.3C480 400 429.1 335.1 359.2 312.8z" />
+                                                    </svg>
+                                                </i>
+                                            </div>
+                                        </button>
+                                    </form>
+                                @endcan
                             </div>
                         </td>
                     </tr>

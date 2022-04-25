@@ -65,7 +65,7 @@
                                     </a>
                                 @endcan
                                 @can('borrar-rol')
-                                    <form action="{{ route('roles.destroy', $role->id) }}"" method=" POST">
+                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn-tabla" type="submit" style="border: none; background: none" data-toggle="tooltip" data-placement="bottom" title="Eliminar">

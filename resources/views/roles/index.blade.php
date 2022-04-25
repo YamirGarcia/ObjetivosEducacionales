@@ -24,9 +24,9 @@
                         <h1 style="margin-top: 30px">No existen roles creados por mostrar</h1> 
                         @else --}}
                         @livewire('roles.tabla-roles-component')
-                    <div class="pagination justify-content-end">
+                    {{-- <div class="pagination justify-content-end">
                         {!! $roles->links() !!}
-                    </div>
+                    </div> --}}
                     {{-- @endif --}}
                 </div>
                 
