@@ -80,7 +80,7 @@ class EvaluadoresController extends Controller
         $user->telefono = $request->telefono;
         $user->creadopor = $request->creadopor;
         $user->rol = $request->rol;
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('rol'));
         $user->save();
         
         $evaluador = new Evaluador;

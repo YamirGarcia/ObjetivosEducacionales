@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Encuestas</h3>
@@ -22,16 +21,20 @@
                         <div class="card-body">
                             <div class="row">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home"
-                                            type="button" role="tab" aria-controls="home" aria-selected="true">Objetivos
-                                            Educacionales</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="profile-tab" data-toggle="tab"
-                                            data-target="#profile" type="button" role="tab" aria-controls="profile"
-                                            aria-selected="false">Atributos</button>
-                                    </li>
+                                    @can('ver-encuestasObjetivos')
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home"
+                                                type="button" role="tab" aria-controls="home" aria-selected="true">Objetivos
+                                                Educacionales</button>
+                                        </li>
+                                    @endcan
+                                    @can('ver-encuestasAtributos')
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="profile-tab" data-toggle="tab"
+                                                data-target="#profile" type="button" role="tab" aria-controls="profile"
+                                                aria-selected="false">Atributos</button>
+                                        </li>
+                                    @endcan
                                 </ul>
                                 {{-- ---------------------------------------------------------------------------------------------------------------------------------------------------- --}}
                                 @livewire('encuestas.tabla-encuestas-component')
@@ -42,19 +45,26 @@
                 </div>
             </div>
         </div>
-
-        <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar" style="z-index: 10000">Asignar
-            Encuesta</a>
+        @can('crear-encuestasObjetivos', 'crear-encuestasAtributos')
+            <a href="#" class="btn-flotante" data-toggle="modal" data-target="#modalAgregar" style="z-index: 10000">Asignar
+                Encuesta</a>
+        @endcan
 
     </section>
 
 
-    <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background: transparent">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Asignar Encuesta</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    <button class="btn-tabla" type="button" data-dismiss="modal">
+                        <div class="icon trash-fill">
+                          <i style="position: relative; top: 8px"> 
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+                          </i>
+                      </div>
+                      </button>
                 </div>
                 <form action="{{ route('crearEncuesta') }}" method="POST">
                     @csrf
@@ -63,7 +73,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="carrera">Carrera</label>
-                                <select name="carrera" id="carrera" class="form-select">
+                                <select name="carrera" id="carrera" class="form-select" required>
                                     <option selected="selected" disabled></option>
                                     @foreach ($carreras as $carrera)
                                         <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
@@ -74,10 +84,14 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="tipo" class="form-label">Seleccione la opcion a evaluar:</label>
-                                <select name="tipo" id="tipo" class="form-select">
+                                <select name="tipo" id="tipo" class="form-select" required>
                                     <option selected="selected" disabled></option>
-                                    <option value="1">Objetivos Educacionales</option>
-                                    <option value="2">Atributos</option>
+                                    @can('crear-encuestasObjetivos')
+                                        <option value="1">Objetivos Educacionales</option>
+                                    @endcan
+                                    @can('crear-encuestasAtributos')
+                                        <option value="2">Atributos</option>
+                                    @endcan
                                 </select>
                             </div>
                         </div>
@@ -86,12 +100,9 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="learn-more">
-                            <span class="circle" aria-hidden="true">
-                                <span class="icon arrow"></span>
-                            </span>
-                            <span class="button-text">Continuar</span>
-                        </button>
+                        <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                            <button type="submit" class="boton-submit">Continuar</button>
+                        </div>
                         {{-- <button type="submit" class="btn btn-primary">Prosigo</button> --}}
                     </div>
                 </form>
@@ -121,5 +132,5 @@
             })
         });
     </script>
-@livewireScripts
+    @livewireScripts
 @endsection

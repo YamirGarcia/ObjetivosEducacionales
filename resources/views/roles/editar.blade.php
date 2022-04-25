@@ -339,20 +339,134 @@
                                 @endforeach> Eliminar Preguntas 
                                 </div>                                           
                         </div>
-
-
-                        {{-- En teoria esto ya no sirve --}}
-                        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="">Permisos para este Rol:</label>
-                                <br/>
-                                @foreach($permission as $value)
-                                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                    {{ $value->name }}</label>
-                                <br/>
-                                @endforeach
+                        <div class="bloque">
+                            <h3>Evaluadores</h3>
+                            <div class="column">
+                                <input type="checkbox" id="Seleccion-Evaluadores"> Seleccionar Todos
                             </div>
-                        </div> --}}
+                                <div class="column" id="lista-evaluadores">
+                                    <input class="opcion" type="checkbox" name="permission[]" value="37"
+                                    @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 37) checked 
+                                        @endif
+                                @endforeach> Ver Evaluadores
+                                </div>
+                                <div class="opcion" class="column" id="lista-evaluadores">
+                                    <input type="checkbox" name="permission[]" value="38"
+                                    @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 38) checked 
+                                        @endif
+                                @endforeach> Crear Evaluadores
+                                </div>
+                                <div class="opcion" class="column" id="lista-evaluadores">
+                                    <input type="checkbox" name="permission[]" value="39"
+                                    @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 39) checked 
+                                        @endif
+                                @endforeach> Editar Evaluadores
+                                </div>
+                                <div class="opcion" class="column" id="lista-evaluadores">
+                                    <input type="checkbox" name="permission[]" value="40"
+                                    @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 40) checked 
+                                        @endif
+                                @endforeach> Eliminar Evaluadores
+                                </div>   
+                                <div class="opcion" class="column" id="lista-evaluadores">
+                                    <input type="checkbox" name="permission[]" value="41"
+                                    @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 41) checked 
+                                        @endif
+                                @endforeach> Visualizar Datos
+                                </div>                                       
+                        </div>
+
+                        <div class="bloque" style="width: auto; height: auto;">
+                            <h3>Encuestas</h3>
+                            <div class="column">
+                                <input type="checkbox" id="Seleccion-Encuestas"> Seleccionar Todos
+                            </div>
+                            <div class="row" style="display: flex;">
+                                <div style="width: 400px; margin-right: 20px; height: auto;">
+                                    <h5>Encuestas Objetivos Educaionales</h5>
+                                    <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="42"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 42) checked 
+                                        @endif
+                                @endforeach> Ver Encuestas de
+                                        Objetivos Educacioanles
+                                    </div>
+                                    <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="43"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 43) checked 
+                                        @endif
+                                @endforeach> Crear Encuestas de
+                                        Objetivos Educacioanles
+                                    </div>
+                                    {{-- <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="44"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 44) checked 
+                                        @endif
+                                @endforeach> Editar Encuestas de
+                                        Objetivos Educacioanles
+                                    </div>
+                                    <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="45"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 45) checked 
+                                        @endif
+                                @endforeach> Eliminar Encuestas de
+                                        Objetivos Educacioanles
+                                    </div> --}}
+                                </div>
+                                <div style="width: 400px">
+                                    <h5>Encuestas Atributos</h5>
+                                    <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="46"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 46) checked 
+                                        @endif
+                                @endforeach> Ver Encuestas de Atributos
+                                    </div>
+                                    <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="47"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 47) checked 
+                                        @endif
+                                @endforeach> Crear Encuestas de Atributos
+                                        Evaluaasdfdores
+                                    </div>
+                                    {{-- <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="48"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 48) checked 
+                                        @endif
+                                @endforeach> Ediar Encuestas de Atributos
+                                        Evalasdfuadores
+                                    </div>
+                                    <div class="opcion" id="lista-encuestas">
+                                        <input type="checkbox" name="permission[]" value="49"
+                                        @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 49) checked 
+                                        @endif
+                                @endforeach> Eliminar Encuestas de Atributos
+                                    </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bloque">
+                            <h3>Contestar Encuestas</h3>
+                            <div class="opcion" class="column" id="lista-Cencuestas">
+                                <input type="checkbox" name="permission[]" value="50"
+                                @foreach ( $rolePermissions as $rol)
+                                        @if ( $rol == 50) checked 
+                                        @endif
+                                @endforeach> Contestar Encuestas
+                            </div>
+                        </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <button type="submit" class="boton-submit">Guardar</button>
                         </div>
@@ -404,5 +518,19 @@
           $('#lista-atributos > input[type=checkbox]').prop('checked', $(this).is(':checked'));
         });
       });
+
+      // scirpt para evaluadores
+      $(function(){
+        $('#Seleccion-Evaluadores').change(function() {
+          $('#lista-evaluadores > input[type=checkbox]').prop('checked', $(this).is(':checked'));
+        });
+      });
+      
+      // scirpt para encuestas
+      $(function() {
+            $('#Seleccion-Encuestas').change(function() {
+                $('#lista-encuestas > input[type=checkbox]').prop('checked', $(this).is(':checked'));
+            });
+        });
 </script>
 @endsection

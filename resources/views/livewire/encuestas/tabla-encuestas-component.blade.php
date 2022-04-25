@@ -5,12 +5,27 @@
 
             
             <div class="row mb-4">
-                <div class="col-9">
+                <div style="display: flex">
+                    <button class="btn-clean" wire:click='limpiarObj' data-toggle="tooltip" data-placement="bottom"
+                        title="Limpiar">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" style="fill: #fff">
+                            <path
+                                d="M224 0H336C362.5 0 384 21.49 384 48V256H0V48C0 21.49 21.49 0 48 0H64L96 64L128 0H160L192 64L224 0zM384 288V320C384 355.3 355.3 384 320 384H256V448C256 483.3 227.3 512 192 512C156.7 512 128 483.3 128 448V384H64C28.65 384 0 355.3 0 320V288H384zM192 464C200.8 464 208 456.8 208 448C208 439.2 200.8 432 192 432C183.2 432 176 439.2 176 448C176 456.8 183.2 464 192 464z" />
+                        </svg>
+                    </button>
+                    <div class="buscador">
+                        <form action="">
+                            <input wire:model="searchObj" type="search" name="search" id="search" required>
+                            <i class="fa fa-search fa-vc" style="padding-top: 10px"></i>
+                        </form>
+                    </div>
+                </div>
+                {{-- <div class="col-9">
                     <input wire:model="searchObj" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
                 </div>
                 <div class="col-1">
                     <button wire:click='limpiarObj' class="btn btn-info">Limpiar</button>
-                </div>
+                </div> --}}
             </div>
             @if ($encuestasObjetivos->count() == 0)
                 @if ($searchObj)
@@ -67,7 +82,6 @@
                                                 d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L478.9 160.8C412.3 167.2 356.5 210.8 332.6 270.6L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM294.4 339.2L320.8 319.4C320.3 324.9 320 330.4 320 336C320 378.5 335.1 417.6 360.2 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2zM640 336C640 415.5 575.5 480 496 480C416.5 480 352 415.5 352 336C352 256.5 416.5 192 496 192C575.5 192 640 256.5 640 336zM540.7 292.7L480 353.4L451.3 324.7C445.1 318.4 434.9 318.4 428.7 324.7C422.4 330.9 422.4 341.1 428.7 347.3L468.7 387.3C474.9 393.6 485.1 393.6 491.3 387.3L563.3 315.3C569.6 309.1 569.6 298.9 563.3 292.7C557.1 286.4 546.9 286.4 540.7 292.7H540.7z" />
                                         </svg>
                                         {{-- {{!! dd($encuesta); !!}} --}}
-                                        {{$encuesta->id}}
                                     </td>
                                 @endif
                                 @if ($encuesta->estatus == 'recibida')
@@ -134,12 +148,27 @@
         {{--  --}}
         <div wire:ignore.self class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row mb-4">
-                <div class="col-9">
+                <div style="display: flex">
+                    <button class="btn-clean" wire:click='limpiarAtr' data-toggle="tooltip" data-placement="bottom"
+                        title="Limpiar">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" style="fill: #fff">
+                            <path
+                                d="M224 0H336C362.5 0 384 21.49 384 48V256H0V48C0 21.49 21.49 0 48 0H64L96 64L128 0H160L192 64L224 0zM384 288V320C384 355.3 355.3 384 320 384H256V448C256 483.3 227.3 512 192 512C156.7 512 128 483.3 128 448V384H64C28.65 384 0 355.3 0 320V288H384zM192 464C200.8 464 208 456.8 208 448C208 439.2 200.8 432 192 432C183.2 432 176 439.2 176 448C176 456.8 183.2 464 192 464z" />
+                        </svg>
+                    </button>
+                    <div class="buscador">
+                        <form action="">
+                            <input wire:model="searchAtr" type="search" name="search" id="search" required>
+                            <i class="fa fa-search fa-vc" style="padding-top: 10px"></i>
+                        </form>
+                    </div>
+                </div>
+                {{-- <div class="col-9">
                     <input wire:model="searchAtr" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
                 </div>
                 <div class="col-1">
                     <button wire:click='limpiarAtr' class="btn btn-info">Limpiar</button>
-                </div>
+                </div> --}}
             </div>
             @if ($encuestasAtributos->count() == 0)
                 @if ($searchAtr)
@@ -147,8 +176,7 @@
                         Sin Resultados
                     </h1>
                 @else
-                    <h1 class="text-center">No Existen Encuestas Asignadas de Objetivos
-                        Educacionales
+                    <h1 class="text-center">No Existen Encuestas Asignadas de Atributos
                     </h1>
                 @endif
             @else
@@ -194,7 +222,6 @@
                                             <path
                                                 d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L478.9 160.8C412.3 167.2 356.5 210.8 332.6 270.6L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM294.4 339.2L320.8 319.4C320.3 324.9 320 330.4 320 336C320 378.5 335.1 417.6 360.2 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2zM640 336C640 415.5 575.5 480 496 480C416.5 480 352 415.5 352 336C352 256.5 416.5 192 496 192C575.5 192 640 256.5 640 336zM540.7 292.7L480 353.4L451.3 324.7C445.1 318.4 434.9 318.4 428.7 324.7C422.4 330.9 422.4 341.1 428.7 347.3L468.7 387.3C474.9 393.6 485.1 393.6 491.3 387.3L563.3 315.3C569.6 309.1 569.6 298.9 563.3 292.7C557.1 286.4 546.9 286.4 540.7 292.7H540.7z" />
                                         </svg>
-                                        {{$encuesta->id}}
                                         {{-- {{!! dd($encuesta); !!}} --}}
                                     </td>
                                 @endif

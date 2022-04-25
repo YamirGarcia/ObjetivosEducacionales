@@ -72,6 +72,28 @@ class SeederTablaPermisos extends Seeder
             'editar-preguntasAtributos',
             'borrar-preguntasAtributos',
 
+             //permisos evaluadores
+             'ver-evaluadores',
+             'crear-evaluadores',
+             'editar-evaluadores',
+             'borrar-evaluadores',
+             'visualizar-evaluadores',
+
+             //permisos encuestas objetivos
+             'ver-encuestasObjetivos',
+             'crear-encuestasObjetivos',
+             'editar-encuestasObjetivos',
+             'borrar-encuestasObjetivos',
+
+             //permisos encuestas atributos
+             'ver-encuestasAtributos',
+             'crear-encuestasAtributos',
+             'editar-encuestasAtributos',
+             'borrar-encuestasAtributos',
+
+             //permisos contestar encuestas
+             'contestarEncuestas',
+
 
         ]; 
         foreach($permisos as $permiso){

@@ -19,9 +19,12 @@ class TablaUsuariosComponent extends Component
     public $cont=0;
     public function render()
     {
+        $user_sesion = Auth::user();
 
-        $usuarios = User::where('name', 'ilike', "%{$this->search}%")
-        ->orWhere('email', 'ilike', "%{$this->search}%");
+        $usuarios = User::where([
+            ['creadopor', $user_sesion->name],
+            ['rol', '!=', 'Evaluador']
+            ]);
         
         if($this->rol){
             $usuarios = User::where('rol', 'like', $this->rol)
