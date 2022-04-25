@@ -15,10 +15,10 @@ class CarreraController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:ver-carrera | crear-carrera | editar-carrera | borrar-carrera', ['only'=>['Objetivos.carrera']]);
-        $this->middleware('permission:crear-carrera', ['only'=>['guardarCarrera']]);
-        $this->middleware('permission:editar-carrera', ['only'=>['editarCarrera']]);
-        $this->middleware('permission:borrar-carrera', ['only'=>['eliminarCarrera']]);
+        $this->middleware('permission:ver-carrera | crear-carrera | editar-carrera | borrar-carrera', ['only'=>['index']]);
+        $this->middleware('permission:crear-carrera', ['only'=>['store']]);
+        $this->middleware('permission:editar-carrera', ['only'=>['update']]);
+        $this->middleware('permission:borrar-carrera', ['only'=>['destroy']]);
     }
     /**
      * Display a listing of the resource.

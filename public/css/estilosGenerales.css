@@ -29,7 +29,7 @@ option {
     right: 0;
     margin: 0 45%;
     /* bottom: 15px; */
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 2.5px;
     font-weight: 500;
     color: #000;
@@ -160,6 +160,26 @@ option {
   position: relative;
   margin-right: 8px;
   top: 10px;
+}
+
+
+.card-accordion{
+  /* border: 1px solid b;  */
+  border-radius: 12px;
+  background: #f5f3f4;
+  border: 1px solid #dee2e6;
+  margin-bottom: 0rem;
+}
+
+.btn-acordion{
+  background: red;
+  border: none;
+  background: #f5f3f4;
+  width: 1500px;
+  height: 50px;
+  font-size: 17px;
+  text-align: left;
+  margin-top: 0;
 }
 
 

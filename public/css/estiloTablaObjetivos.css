@@ -185,7 +185,7 @@ tbody tr:hover {
     }
     .tabla-general tbody tr td:before {
         font-size: 14px;
-        color: #999999;
+        color: #000;
         line-height: 1.2;
         font-weight: unset;
         position: absolute;
@@ -194,13 +194,13 @@ tbody tr:hover {
         top: 0;
     }
     .tabla-general tbody tr td:nth-child(1):before {
-        content: "Carrera";
+        content: "#";
     }
     .tabla-general tbody tr td:nth-child(2):before {
-        content: "Plan de estudios:";
+        content: "Descricpión:";
     }
     .tabla-general tbody tr td:nth-child(3):before {
-        content: "Propiedades";
+        content: "Acciones";
     }
     .tabla-general tbody tr td:nth-child(4):before {
         content: "Acciones";
