@@ -86,8 +86,10 @@ class PreguntaAspectoAtributoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        
-        
+    {   
+        $pregunta = PreguntaAspectoAtributo::findorFail($id);
+        $relacion = AtributoAspecto::where('aspectos_atributos_id','=',$pregunta->idAspectoAtributo);
+        PreguntaAspectoAtributo::destroy($id);
+        return redirect()->route('AspectosAtributos.show',1);
     }
 }

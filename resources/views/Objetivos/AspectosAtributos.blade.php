@@ -552,7 +552,12 @@ tbody tr:hover {
                                                 <td class="column2">{{$pregunta->Pregunta}}</td>
                                                 <td class="column3">
                                                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalEditar{{$pregunta->idAspectoObjetivo}}{{$pregunta->id}}" >Editar</button>
-                                                   <button class="btn btn-danger">Borrar</button>
+                                                   
+                                            <form method="POST" action="{{url ('PreguntaAspectosAtributos/'.$pregunta->id)}}">
+                                                @csrf
+                                                {{method_field('DELETE')}}
+                                                <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar" class="btn btn-danger btn-md">
+                                            </form>
                                                 </td>
                                             </tr>
 
