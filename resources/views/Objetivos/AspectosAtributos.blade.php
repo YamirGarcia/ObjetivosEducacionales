@@ -9,14 +9,14 @@
 @endsection
 
 @section('content')
-<section class="section">
+{{-- <section class="section">
     <div class="section-header">
         <h3 class="page__heading">
             <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
             <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', $idAtributo)}}">/Atributo</a>
             <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $idAtributo)}}">/Aspectos</a>
         </h3>
-    </div>
+    </div> --}}
     {{-- <div class="section-body">
         <div class="row">
             <div class="col-lg-12">
@@ -123,7 +123,7 @@
 
         @livewire('atributos.aspectos-atributos-component', ['idAtributo' => $idAtributo])
     
-    </section>
+    {{-- </section> --}}
 
     {{-- MODAL EDITAR ASPECTO --}}
     

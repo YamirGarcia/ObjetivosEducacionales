@@ -26,10 +26,7 @@ class TablaUsuariosComponent extends Component
             ['rol', '!=', 'Evaluador']
             ]);
         
-        if($this->rol){
-            $usuarios = User::where('rol', 'like', $this->rol)
-                        ->where('name', 'like', "%{$this->search}%");
-        }
+
 
         if($this->campo && $this->order){
             $usuarios = $usuarios->orderBy($this->campo, $this->order);
@@ -38,7 +35,17 @@ class TablaUsuariosComponent extends Component
             $this->order = null;
         }
 
-        $usuarios = $usuarios->get();      
+        $usuarios = $usuarios->get();     
+        
+        // FILTROS
+        $usuarios = $usuarios->filter(function ($usuario) {
+            if( str_contains(strtolower($usuario->rol),strtolower($this->rol)) ) return true;
+        });
+
+        $usuarios = $usuarios->filter(function ($usuario) {
+            if( str_contains(strtolower($usuario->name),strtolower($this->search)) || str_contains(strtolower($usuario->email),strtolower($this->search)) ) return true;
+        });
+
         return view('livewire.usuarios.tabla-usuarios-component', [
             'usuarios' => $usuarios,
             'user_sesion' => Auth::user()->name,
@@ -47,12 +54,12 @@ class TablaUsuariosComponent extends Component
         ]);
     }
 
-    public function prueba(){
+    public function limpiar(){
         $this->order = null;
         $this->campo = null;
         $this->icon = '-circle';
         $this->search = '';
-        $this->perPage = 20;
+        $this->rol = '';
     }
 
     public function sortable ($campo){

@@ -1,5 +1,13 @@
 <div>
     {{-- Be like water. --}}
+    <section class="section">
+        <div class="section-header">
+            <h3 class="page__heading">
+                <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
+                <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', $idAtributo)}}">/Atributo</a>
+                <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $idAtributo)}}">/Aspectos</a>
+            </h3>
+        </div>
 
     <div class="section-body">
         <div class="row">
@@ -100,8 +108,8 @@
                                                                     <td class="column3">
                                                                         <div class="acciones">
                                                                             @can('editar-preguntasAtributos')
-                                                                                <a href="#" data-bs-toggle="modal"
-                                                                                    data-bs-target="#exampleModal">
+                                                                                <a data-toggle="modal"
+                                                                                    data-target="#modalEditarPregunta" wire:click='cargarPregunta({{$pregunta->id}})'>
                                                                                     <div class="icon edit-fill">
                                                                                         <i>
                                                                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -170,6 +178,7 @@
                 </div>
             </div>
         </div>
+    </section>
 
         {{-- MODALES --}}
         {{-- MODAL EDITAR ASPECTO --}}
@@ -210,25 +219,42 @@
                 </div>
             </div>
         </div>
-    </div>
+   
 
     <!-- Button trigger modal -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     {{-- EDITAR PREGUNTA --}}
+     <div wire:ignore.self class="modal fade" id="modalEditarPregunta" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Pregunta</h5>
+                    <button class="btn-tabla" type="button" data-dismiss="modal">
+                        <div class="icon trash-fill">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path
+                                        d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
+                                </svg>
+                            </i>
+                        </div>
+                    </button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form wire:submit.prevent='guardarDatosPregunta'>
+                    <div class="modal-body">
+                        <label for="Pregunta">Pregunta:</label>
+                        <textarea name="Pregunta" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;"
+                            wire:model='textoPregunta'
+                             ></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                            <button type="submit" class="boton-submit">Actualizar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ class AspectosAtributosComponent extends Component
     public $aspectos = null, $idAtributo; 
     public $nuevoAspecto, $aspectoEditar = '', $idAspectoEditar;
 
-    public $nuevaPregunta;
+    public $nuevaPregunta, $idPregunta, $preguntaEditar, $textoPregunta = 'ASDF';
 
     public function render()
     {   $this->aspectos = Atributo::find($this->idAtributo)->aspectos;
@@ -65,5 +65,19 @@ class AspectosAtributosComponent extends Component
 
     public function borrarPregunta ($id){
         PreguntaAspectoAtributo::destroy($id);
+    }
+
+    public function cargarPregunta ($id){
+        $this->idPregunta = $id;
+        $pregunta = PreguntaAspectoAtributo::find($id)->Pregunta;
+        $this->textoPregunta = $pregunta;
+        $this->preguntaEditar = $pregunta;
+    } 
+
+    public function guardarDatosPregunta (){
+        $pregunta = PreguntaAspectoAtributo::find($this->idPregunta);
+        $pregunta->Pregunta = $this->textoPregunta;
+        $pregunta->save();
+        $this->textoPregunta = '';
     }
 }
