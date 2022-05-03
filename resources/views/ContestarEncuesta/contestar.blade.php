@@ -153,7 +153,8 @@
 
                                         </ul>
                                     @empty
-                                        <h2>No hay encuestas disponibles</h2>
+                                        
+                                    <h2>No hay encuestas disponibles</h2>
                                     @endforelse
                                     <input type="text" hidden name="idEncuestaAsignada" id="idEncuestaAsignada"
                                         value="{{ $id }}">
