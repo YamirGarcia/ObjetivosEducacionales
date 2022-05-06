@@ -39,7 +39,15 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <label for="">Nombre del Rol</label>
-                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                       {!! Form::text('name', null, ['class' => 'form-control']) !!}  --}}
+                                        {{-- <select class="form-control" name="rol">
+                                            <option value="Administrador">Administrador</option>
+                                            <option value="Jefe de Departamento">Jefe de Departamento</option>
+                                            <option value="Jefe de Vinculación">Jefe de Vinculación</option>
+                                            <option value="Director">Director</option>
+                                            <option value="Subdirector">Subdirector</option>
+                                            <option value="Evaluador">Evaluador</option>
+                                        </select> --}}
                                     </div>
                                 </div>
                                 <div class="bloque">

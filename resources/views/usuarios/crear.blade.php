@@ -57,7 +57,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="telefono">Télefono</label>
-                                        {!! Form::text('telefono', null, ['class' => 'form-control']) !!}
+                                        {!! Form::tel('telefono', null, ['class' => 'form-control', 'pattern' =>'^\d{10}$']) !!}
                                     </div>
                                 </div>
 
