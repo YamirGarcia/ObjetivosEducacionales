@@ -15,7 +15,23 @@
                 @csrf
                 <div class="modal-body">
                     <label for="carrera">Nombre de la Carrera:</label>
-                    <input type="text" class="form-control" name="carrera" style="margin-bottom: 2rem;">
+                    {{-- <input type="text" class="form-control" name="carrera" style="margin-bottom: 2rem;"> --}}
+                    <select class="form-control" name="carrera" style="margin-bottom: 2rem;">
+
+                        <option value="Administración">Administración</option>
+                        <option value="Bioquímica">Bioquímica</option>
+                        <option value="Contador Público">Contador Público</option>
+                        <option value="Eléctrica">Eléctrica</option>
+                        <option value="Electrónica">Electrónica</option>
+                        <option value="Gestión Empresarial">Gestión Empresarial</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Materiales">Materiales</option>
+                        <option value="Mecánica">Mecánica</option>
+                        <option value="Mecatrónica">Mecatrónica</option>
+                        <option value="Sistemas Computacionales">Sistemas Computacionales</option>
+                        <option value="TICS">TICS</option>
+
+                    </select>
 
                     <label for="planEstudios">Plan de Estudios:</label>
                     <input type="text" class="form-control" name="planEstudios">

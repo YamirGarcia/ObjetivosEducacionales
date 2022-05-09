@@ -48,7 +48,7 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'permission'=> 'required']);
+        $this->validate($request, [ 'permission'=> 'required']);
         $role = Role::create(['name'=> $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 

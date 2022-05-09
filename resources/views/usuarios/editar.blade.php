@@ -38,25 +38,25 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="name">Nombre</label>
-                                    {!! Form::text('name', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('name', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
-                                    {!! Form::text('apellido', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('name', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="telefono">Teléfono</label>
-                                    {!! Form::text('telefono', null, array('class' => 'form-control')) !!}
+                                    {!! Form::tel('telefono', null, ['class' => 'form-control', 'pattern' =>'^\d{10}$']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="email">Correo</label>
-                                    {!! Form::text('email', null, array('class' => 'form-control')) !!}
+                                    {!! Form::email('email', null, ['class' => 'form-control', 'pattern' =>"^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"]) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">

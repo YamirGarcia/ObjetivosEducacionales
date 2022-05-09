@@ -35,13 +35,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="name" class="form-label">Nombre</label>
-                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('name', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="apellido">Apellidos</label>
-                                        {!! Form::text('apellido', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('apellido', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -51,13 +51,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="email">Correo</label>
-                                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                        {!! Form::email('email', null, ['class' => 'form-control', 'pattern' =>"^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"]) !!}
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="telefono">Télefono</label>
-                                        {!! Form::text('telefono', null, ['class' => 'form-control']) !!}
+                                        {!! Form::tel('telefono', null, ['class' => 'form-control', 'pattern' =>'^\d{10}$']) !!}
                                     </div>
                                 </div>
 

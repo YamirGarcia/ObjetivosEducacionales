@@ -66,11 +66,11 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'apellido'=> 'required',
+            'name' => 'required|max:20',
+            'apellido'=> 'required|max:20',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'telefono' => 'required',
+            'telefono' => 'required|max:10',
             'rol' => 'required',
             'creadopor' => 'required'
         ]);

@@ -122,7 +122,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h2>No hay encuestas disponibles</h2>
+                                <!-- <h2>No hay encuestas disponibles</h2> -->
                             @endforelse
                             </div>
                         </div>
