@@ -44,7 +44,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
-                                    {!! Form::text('name', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
+                                    {!! Form::text('apellido', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
