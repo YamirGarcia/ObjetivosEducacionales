@@ -4,6 +4,14 @@
 <link rel="stylesheet" type="text/css" href="css/botonFlotante.css">
 <link rel="stylesheet" type="text/css" href="css/estiloTablaResidentes.css">
 <link rel="stylesheet" type="text/css" href="css/iconos.css">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 @endsection
 
 @section('content')
@@ -15,6 +23,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
+                    <div id="container" style="width:80%; height:400px; margin: 0 auto; background: black;"></div>
+
                     @if ($residentes->count()==0)
                         <h1 class="text-center">No existen Residentes</h1>
                         @else
@@ -65,5 +75,294 @@
         </div>
     </div>
     <a href="{{route('residentes.create')}}" class="btn-flotante">Agregar Residentes</a>
+
+
 </section>
+
+{{-- <div id="container2" style="width:100%; height:400px; margin-top: 100px;"></div> --}}
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div id="container3" style="width:100%; height:400px;"></div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> --}}
+
+{{-- <figure class="highcharts-figure" style="margin-top: 100px">
+    <div id="container"></div>
+    <p class="highcharts-description">
+      Basic line chart showing trends in a dataset. This chart includes the
+      <code>series-label</code> module, which adds a label to each line for
+      enhanced readability.
+    </p>
+  </figure> --}}
+
+
+
+<script>
+    
+    Highcharts.chart('container', {
+
+    title: {
+    text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
+    lang: {
+        printChart: 'Text',
+        downloadPNG: 'DESCARGAR PNG WEY',
+        downloadPDF: 'Translation'
+    },
+
+    credits: {
+        enabled: false
+    },
+
+    subtitle: {
+    text: 'Source: thesolarfoundation.com'
+    },
+
+    downloadPNG: "Descargar PNG",
+
+    yAxis: {
+    title: {
+        text: 'Number of Employees'
+    }
+    },
+
+    xAxis: {
+    accessibility: {
+        rangeDescription: 'Range: 2010 to 2017',
+    }
+    },
+
+    legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+    series: {
+        label: {
+        connectorAllowed: false
+        },
+        pointStart: 2010
+    }
+    },
+
+    series: [{
+    name: 'Installation',
+    data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+    name: 'Manufacturing',
+    data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+    name: 'Sales & Distribution',
+    data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }, {
+    name: 'Project Development',
+    data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+    }, {
+    name: 'Other',
+    data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+    }],
+
+    responsive: {
+    rules: [{
+        condition: {
+        maxWidth: 500
+        },
+        chartOptions: {
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+        }
+        }
+    }]
+    }
+
+    });
+
+    Highcharts.chart('container2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Browser market shares in January, 2018'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Chrome',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Internet Explorer',
+                y: 11.84
+            }, {
+                name: 'Firefox',
+                y: 10.85
+            }, {
+                name: 'Edge',
+                y: 4.67
+            }, {
+                name: 'Safari',
+                y: 4.18
+            }, {
+                name: 'Other',
+                y: 7.05
+            }]
+        }]
+    });
+    Highcharts.chart('container3', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Browser market shares in January, 2018'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Chrome',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Internet Explorer',
+                y: 11.84
+            }, {
+                name: 'Firefox',
+                y: 10.85
+            }, {
+                name: 'Edge',
+                y: 4.67
+            }, {
+                name: 'Safari',
+                y: 4.18
+            }, {
+                name: 'Other',
+                y: 7.05
+            }]
+        }]
+    });
+    Highcharts.chart('container4', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Browser market shares in January, 2018'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Chrome',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Internet Explorer',
+                y: 11.84
+            }, {
+                name: 'Firefox',
+                y: 10.85
+            }, {
+                name: 'Edge',
+                y: 4.67
+            }, {
+                name: 'Safari',
+                y: 4.18
+            }, {
+                name: 'Other',
+                y: 7.05
+            }]
+        }]
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 @endsection
