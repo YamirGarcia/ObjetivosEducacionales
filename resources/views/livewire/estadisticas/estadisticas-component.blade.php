@@ -22,9 +22,8 @@
                 'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
                 'Jeudi', 'Vendredi', 'Samedi'
             ],
-            carreras: [
-                <?= $data ?>
-            ]
+            carreras: <?= $nombres ?>
+            
         }
     });
     Highcharts.chart('container', {
