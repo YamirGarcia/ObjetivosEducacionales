@@ -22,14 +22,31 @@
 
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Residentes</h3>
+        <h3 class="page__heading">Estadísiticas</h3>
     </div>
     <div class="section-body" style="background:rgba(0,255,0,0)">
         <div class="row" style="background:rgba(123,200,255,0)">
             <div class="col-lg-12" style="background:rgba(180, 20, 174, 0)">
                 <div class="card shadow mb-5 bg-body rounded" style="background:rgba(9, 138, 82, 0);">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <button class="nav-link active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Objetivos Educacionales</button>
+                          <button class="nav-link" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Atributos</button>
+                          <button class="nav-link" id="nav-contact-tab" data-toggle="tab" data-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Otras Estadísiticas</button>
+                        </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            @livewire('estadisticas.estadisticas-component')
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            
+                        </div>
+                      </div>
 
-                        @livewire('estadisticas.estadisticas-component')
 
                 </div>
             </div>
