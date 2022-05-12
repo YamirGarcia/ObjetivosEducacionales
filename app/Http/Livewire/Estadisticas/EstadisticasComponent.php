@@ -13,7 +13,7 @@ class EstadisticasComponent extends Component
         $puntos = [];
         $carreras = \App\Models\Carrera::select('id','carrera')->get();
         foreach($carreras as $carrera){
-            $puntos[] = ['name' => $carrera['carrera'], 'carreras'=>$carrera['carrera'] , 'y' => $carrera['id']];
+            $puntos[] = ['name' => $carrera['carrera'] , 'y' => $carrera['id']];
         }
         return view('livewire.estadisticas.estadisticas-component', [
             'data' => json_encode($puntos),

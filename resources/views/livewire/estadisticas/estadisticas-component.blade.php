@@ -22,9 +22,7 @@
                 'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
                 'Jeudi', 'Vendredi', 'Samedi'
             ],
-            carreras: [
-                <?= $data ?>
-            ]
+            name:<?= $data ?>
         }
     });
     Highcharts.chart('container', {
@@ -49,7 +47,7 @@
             }
         },
         xAxis: {
-            categories: Highcharts.getOptions().lang.carreras,
+            categories: <?= $data?>,
             // data: <?= $data?>,
             labels: {
                 skew3d: true,
