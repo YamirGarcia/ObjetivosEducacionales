@@ -43,8 +43,6 @@
 
         const convertir = (cadena) => {
             let newCad = cadena.split(',');
-            [[123], [123], [123]]
-            ['[123]', '[123]', '[123]']
             newCad[0] = newCad[0].replace('[', '');
             newCad[newCad.length-1] = newCad[newCad.length-1].replace(']', '');
             // console.log('purgao ',newCad);
