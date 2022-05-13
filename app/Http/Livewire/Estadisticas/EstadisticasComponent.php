@@ -78,7 +78,7 @@ class EstadisticasComponent extends Component
                     // $dataBarras[] = [$sumatoria[$key]];
                 }
                 
-                $this->datos = json_encode($dataBarras);
+                $this->datos = $dataBarras;
         }
 
 

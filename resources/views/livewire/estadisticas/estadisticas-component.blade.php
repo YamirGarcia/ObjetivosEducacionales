@@ -68,7 +68,7 @@
             for (let i = 0; i < array.length; i += 2) {
                 pares.push([array[i], Number(array[i + 1])]);
             }
-            console.log(pares);
+            // console.log(pares);
             return pares;
         };
 
@@ -79,14 +79,22 @@
                 let datos = @this.datos;
                 let temp = '';
 
+                // let temp2 = new Object();
+                // temp2 = @this.datos;
+                // let temp2 = object(@this.datos);
 
-                for (let i = 0; i < datos.length; i++) {
-                    if (datos.charAt(i) !== '[' && datos.charAt(i) !== ']') {
-                        temp += datos.charAt(i);
-                    }
-                }
+                console.log(datos);
+                // console.log('------');
+                // console.log(<?= $data?>);
 
-                let informacion = convertir2(temp.split(','));
+
+                // for (let i = 0; i < datos.length; i++) {
+                //     if (datos.charAt(i) !== '[' && datos.charAt(i) !== ']') {
+                //         temp += datos.charAt(i);
+                //     }
+                // }
+
+                // let informacion = convertir2(temp.split(','));
 
 
                 Highcharts.chart('container', {
@@ -125,7 +133,7 @@
                         colorByPoint: true,
                         name: 'Population',
                         // ----------------------------------- AQUI ES LA DATA --------------------------------------
-                        data: informacion,
+                        data:  datos,
                         dataLabels: {
                             enabled: true,
                             rotation: 0,
@@ -140,6 +148,7 @@
                         }
                     }]
                 });
+                
             });
         });
     </script>
