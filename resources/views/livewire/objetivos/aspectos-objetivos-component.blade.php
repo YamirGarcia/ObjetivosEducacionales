@@ -276,6 +276,7 @@
 
         <script>
             Livewire.on('eliminarAspectoModal', id => {
+                console.log('Evento eliminar aspecto modal');
                 Swal.fire({
                     title: '¿Está seguro de borrar este aspecto',
                     text: "¡Se borrará el aspecto y sus preguntas relacionadas!",
