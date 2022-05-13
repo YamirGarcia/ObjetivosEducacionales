@@ -55,6 +55,7 @@
 
 
 </section>
+
 @livewireScripts
 @stack('js')
 @endsection
