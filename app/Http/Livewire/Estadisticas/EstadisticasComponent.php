@@ -11,16 +11,17 @@ class EstadisticasComponent extends Component
 {
     
     public $carreraSeleccionada = '';
+    public $contador = 0;
+    public $datos = null;
 
     public function mount(){
         $user = Auth::user();
-        $this->carreraSeleccionada = Carrera::where('creadopor', $user->id)->first()->id;
-        // $this->carreraSeleccionada = '4';
 
     }
 
     public function render()
     {
+        $this->contador++;
         // dd('here');
         $user = Auth::user();
         
@@ -31,6 +32,7 @@ class EstadisticasComponent extends Component
         $sumatoria = [];
         $contadores = []; 
         $nombresObjetivos = [];
+        if($this->carreraSeleccionada){
         $respuestasObjetivo = db::table('objetivo_educacionals')
                             ->join('objetivo_aspectos', 'objetivo_aspectos.objetivo_educacional_id', '=', 'objetivo_educacionals.id')
                             ->join('aspectos_objetivos', 'aspectos_objetivos.id', '=', 'objetivo_aspectos.aspectos_objetivos_id')
@@ -38,32 +40,36 @@ class EstadisticasComponent extends Component
                             ->join('respuesta_objetivos', 'respuesta_objetivos.idPreguntaAspecto', '=', 'pregunta_aspecto_objetivos.id')
                             ->where('objetivo_educacionals.idCarrera', $this->carreraSeleccionada)
                             ->select('objetivo_educacionals.id','objetivo_educacionals.descripcion' ,'respuesta_objetivos.respuesta')->get();
-
         
 
 
-        foreach($respuestasObjetivo as $item){
-            
-            if(isset($sumatoria[$item->id])){
-                $sumatoria[$item->id] += intval($item->respuesta);
-                $contadores[$item->id] += 1;
-            } else{
-                $sumatoria[$item->id] = intval($item->respuesta);
-                $contadores[$item->id] = 1;
-                $nombresObjetivos[] = $item->descripcion;
+            foreach($respuestasObjetivo as $item){
+                
+                if(isset($sumatoria[$item->id])){
+                    $sumatoria[$item->id] += intval($item->respuesta);
+                    $contadores[$item->id] += 1;
+                } else{
+                    $sumatoria[$item->id] = intval($item->respuesta);
+                    $contadores[$item->id] = 1;
+                    $nombresObjetivos[] = $item->descripcion;
+                }
             }
-        }
 
 
-        foreach ($sumatoria as $key => &$val) {
-            $sumatoria[$key] = $sumatoria[$key] / $contadores[$key];
-        }
+            foreach ($sumatoria as $key => &$val) {
+                $sumatoria[$key] = $sumatoria[$key] / $contadores[$key];
+            }
 
-        foreach ($sumatoria as $key => &$val) {
-            $dataBarras[] = [ObjetivoEducacional::find($key)->descripcion, $sumatoria[$key]];
-        }
-        
-        
+            foreach ($sumatoria as $key => &$val) {
+                // $dataBarras[] = [ObjetivoEducacional::find($key)->descripcion, $sumatoria[$key]];
+                $dataBarras[] = [$sumatoria[$key]];
+            }
+            
+            $this->datos = json_encode($dataBarras);
+        }else{
+            
+        } 
+        // dd($this->datos, json_encode($this->datos), );
 
         return view('livewire.estadisticas.estadisticas-component', [
             'data' => json_encode($dataBarras),
