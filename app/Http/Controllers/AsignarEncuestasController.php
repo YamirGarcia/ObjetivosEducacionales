@@ -55,6 +55,11 @@ class AsignarEncuestasController extends Controller
      */
     public function store(Request $request)
     {
+        // $this->validate($request, [
+        //     'encuestaAspectos[]' => 'required'
+        // ]);
+        
+        // dd($request->encuestaAspectos);
 
         $user_session = Auth::user()->id;
         if($request->tipoEncuesta == 1){

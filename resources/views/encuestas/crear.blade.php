@@ -26,12 +26,12 @@
                                     </button>
                                 </div>
                             @endif
-                            {!! Form::open(array('route' => 'encuestas.store','method'=>'POST')) !!}
+                            {!! Form::open(array('route' => 'encuestas.store','method'=>'POST', 'id'=>'form1')) !!}
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="evaluador" class="form-label">Evaluador</label>
-                                    <select name="evaluador" id="evaluador" class="form-select">
+                                    <select name="evaluador" id="evaluador" class="form-select" required>
                                         <option selected="selected" disabled></option>
                                         @foreach ($evaluadores as $evaluador)
                                             <option value="{{$evaluador->id}}">{{$evaluador->nombres}}</option>                                        
@@ -42,7 +42,13 @@
                             <div class="col">
                                 <div class="form-group">                                   
                                     <label for="periodo" class="form-label">Periodo de evaluacion</label>
-                                    <input type="text" class="form-control" name="periodo" id="periodo">
+                                    {{-- <input type="text" class="form-control" name="periodo" id="periodo"> --}}
+                                    <select name="periodo" id="periodo" class="form form-control" required>
+                                        <option value="" selected disabled>Seleccione periodo</option>
+                                        <option value="ENE-JUN-{{date("Y")}}">ENE-JUN {{date("Y")}}</option>
+                                        <option value="VERANO-{{date("Y")}}">VERANO {{date("Y")}}</option>
+                                        <option value="AGO-DIC-{{date("Y")}}">AGO-DIC {{date("Y")}}</option>
+                                    </select>
                                     
                                 </div>
                             </div>
@@ -81,7 +87,7 @@
                                                 <div class="card">
                                                     <div class="card-header" id="headingAspecto{{$aspecto->id}}">
                                                     <h2 class="mb-0" style="display: flex">
-                                                                <input id="checkAspecto{{$aspecto->id}}" class="vertical-centered" type="checkbox" name="encuestaAspectos[]" value="{{$aspecto->id}}">
+                                                                <input id="checkAspecto{{$aspecto->id}}" class="vertical-centered checkAspecto" type="checkbox" name="encuestaAspectos[]" value="{{$aspecto->id}}">
                                                                 <label for="checkAspecto{{$aspecto->id}}"></label>
                                                                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseAspecto{{$aspecto->id}}" aria-expanded="true" aria-controls="collapseAspecto{{$aspecto->id}}" style="text-decoration: none">
                                                                     {{$loop->iteration}}.- {{$aspecto->nombre}}
@@ -133,7 +139,7 @@
                                 <input type="text" readonly name="creadopor" class="form-control" style="visibility: hidden;" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
                             
                                 <div class="col-5" style="margin: 0 auto">
-                                    <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm">Guardar</button>
+                                    <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm" id="enviarForm">Guardar</button>
                                 </div>
                             </div>
                             
@@ -150,6 +156,27 @@
             </div>
         </div>
     </section>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const checks = document.querySelectorAll(".checkAspecto");
+        const btn = document.getElementById('enviarForm');
 
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            checks.forEach(element => {
+                if(element.checked){
+                    document.getElementById("form1").submit();
+                }
+            });
+
+            // Swal.fire({
+            // icon: 'warning',
+            // title: 'Oops...',
+            // text: 'Por favor seleccionado almenos 1 aspecto. '
+            // });
+        })
+        // console.log(checks);
+        
+    </script>
     
 @endsection
