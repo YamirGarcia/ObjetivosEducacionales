@@ -28,7 +28,7 @@
             <div class="row" style="background:rgba(123,200,255,0)">
                 <div class="col-lg-12" style="background:rgba(180, 20, 174, 0)">
                     <div class="card shadow mb-5 bg-body rounded" style="background:rgba(9, 138, 82, 0);">
-                        {{-- <nav>
+                        <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home"
                                     type="button" role="tab" aria-controls="nav-home" aria-selected="true">Objetivos
@@ -52,8 +52,8 @@
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
                             </div>
-                        </div> --}}
-                        @livewire('estadisticas.estadisticas-component')
+                        </div>
+                        {{-- @livewire('estadisticas.estadisticas-component') --}}
 
                     </div>
                 </div>

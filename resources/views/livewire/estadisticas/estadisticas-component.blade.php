@@ -1,14 +1,39 @@
 <div style="background:rgba(255,255,255,0.5 )">
 
     <div style="margin: 1rem 1rem">
-        <label for="">Carrera</label>
-        {{-- wire:change="$emit('refrescar')" --}}
-        <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
-            {{-- <option selected disabled>Seleccionar carrera</option> --}}
-            @foreach ($carreras2 as $carrera)
-                <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
-            @endforeach
-        </select>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Carrera</label>
+                {{-- wire:change="$emit('refrescar')" --}}
+                <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
+                    <option selected disabled value="">Seleccionar Carrera</option>
+                    @foreach ($carreras2 as $carrera)
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="">Periodo</label>
+                {{-- wire:change="$emit('refrescar')" --}}
+                <select name="" id="carrera" class="form-select" wire:model="periodoSeleccionado">
+                    <option selected disabled value="">Seleccionar Periodo </option>
+                    <option value="ENE-JUN-">ENE-JUN</option>
+                    <option value="VERANO-">VERANO</option>
+                    <option value="AGO-DIC-">AGO-DIC</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="">Año</label>
+                {{-- wire:change="$emit('refrescar')" --}}
+                <select name="" id="carrera" class="form-select" wire:model="añoSeleccionado">
+                    <option selected disabled value="">Seleccionar Año </option>
+                    @foreach (range(2017, date("Y")) as $year)
+                        <option value="{{$year}}">{{$year}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        
     </div>
 
 
