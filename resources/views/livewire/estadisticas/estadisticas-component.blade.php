@@ -4,7 +4,6 @@
         <div class="row">
             <div class="col-3">
                 <label for="">Carrera</label>
-                {{-- wire:change="$emit('refrescar')" --}}
                 <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
@@ -14,7 +13,6 @@
             </div>
             <div class="col-3">
                 <label for="">Periodo</label>
-                {{-- wire:change="$emit('refrescar')" --}}
                 <select name="" id="carrera" class="form-select" wire:model="periodoSeleccionado">
                     <option selected disabled value="">Seleccionar Periodo </option>
                     <option value="ENE-JUN-">ENE-JUN</option>
@@ -24,16 +22,15 @@
             </div>
             <div class="col-3">
                 <label for="">Año</label>
-                {{-- wire:change="$emit('refrescar')" --}}
                 <select name="" id="carrera" class="form-select" wire:model="añoSeleccionado">
                     <option selected disabled value="">Seleccionar Año </option>
-                    @foreach (range(2017, date("Y")) as $year)
-                        <option value="{{$year}}">{{$year}}</option>
+                    @foreach (range(2017, date('Y')) as $year)
+                        <option value="{{ $year }}">{{ $year }}</option>
                     @endforeach
                 </select>
             </div>
         </div>
-        
+
     </div>
 
 
@@ -42,24 +39,6 @@
 
 
     <script>
-
-        const convertir = (cadena) => {
-            let newCad = cadena.split(',');
-            newCad[0] = newCad[0].replace('[', '');
-            newCad[newCad.length-1] = newCad[newCad.length-1].replace(']', '');
-            // console.log('purgao ',newCad);
-
-            newCad = newCad.map( (x) => {
-                x = x.replace('[', '');
-                x = x.replace(']', '');
-
-                // console.log(Number(x));
-                return Number(x);
-            });
-            return newCad;
-            [123,123,123]
-        };
-        const selectCarrera = document.getElementById('carrera');
         Highcharts.setOptions({
             lang: {
                 months: [
@@ -83,19 +62,6 @@
             }
         });
 
-        const convertir = (cadena) => {
-            let newCad = cadena.split(',');
-            newCad[0] = newCad[0].replace('[', '');
-            newCad[newCad.length - 1] = newCad[newCad.length - 1].replace(']', '');
-
-            newCad = newCad.map((x) => {
-                x = x.replace('[', '');
-                x = x.replace(']', '');
-
-                return Number(x);
-            });
-            return newCad;
-        };
 
         const convertir2 = (array) => {
             let pares = [];
