@@ -9,56 +9,15 @@
                 <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
             @endforeach
         </select>
-
-        <button class="btn btn-success" wire:click=$emit('click')>CLICK</button>
     </div>
-    {{-- {{ $contador }} --}}
-    <?= $contador ?>
-    <br>
-    {{ $sumatoria }}
-    <br>
-    <span> datos --></span> {{ $datos }}
-    <br>
-    <span> data ---></span> <?= $data ?>
+
 
 
     <div id="container" style="width:85%; margin: 5rem auto; "></div>
 
-    {{-- <div id="container2" style="width:85%; margin: 5rem auto; "></div>
-
-    <div id="container10" style="width:85%; margin: 5rem auto;"></div> --}}
-
-    {{-- <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
-    <script src="https://code.highcharts.com/themes/high-contrast-light.js"></script> --}}
 
 
     <script>
-
-        const convertir = (cadena) => {
-            let newCad = cadena.split(',');
-            [[123], [123], [123]]
-            ['[123]', '[123]', '[123]']
-            newCad[0] = newCad[0].replace('[', '');
-            newCad[newCad.length-1] = newCad[newCad.length-1].replace(']', '');
-            // console.log('purgao ',newCad);
-
-            newCad = newCad.map( (x) => {
-                x = x.replace('[', '');
-                x = x.replace(']', '');
-
-                // console.log(Number(x));
-                return Number(x);
-            });
-            return newCad;
-            [123,123,123]
-        };
-        const selectCarrera = document.getElementById('carrera');
         Highcharts.setOptions({
             lang: {
                 months: [
@@ -82,14 +41,46 @@
             }
         });
 
+        const convertir = (cadena) => {
+            let newCad = cadena.split(',');
+            newCad[0] = newCad[0].replace('[', '');
+            newCad[newCad.length - 1] = newCad[newCad.length - 1].replace(']', '');
 
-        
+            newCad = newCad.map((x) => {
+                x = x.replace('[', '');
+                x = x.replace(']', '');
+
+                return Number(x);
+            });
+            return newCad;
+        };
+
+        const convertir2 = (array) => {
+            let pares = [];
+            for (let i = 0; i < array.length; i += 2) {
+                pares.push([array[i], Number(array[i + 1])]);
+            }
+            console.log(pares);
+            return pares;
+        };
 
         document.addEventListener('DOMContentLoaded', () => {
             Livewire.hook('message.processed', (el, component) => {
-                
-                let informacion =  convertir( @this.datos );
-                // let info2 = {{ Js::from($datos) }};
+
+
+                let datos = @this.datos;
+                let temp = '';
+
+
+                for (let i = 0; i < datos.length; i++) {
+                    if (datos.charAt(i) !== '[' && datos.charAt(i) !== ']') {
+                        temp += datos.charAt(i);
+                    }
+                }
+
+                let informacion = convertir2(temp.split(','));
+
+
                 Highcharts.chart('container', {
                     chart: {
                         type: 'column'
@@ -125,7 +116,7 @@
                     series: [{
                         colorByPoint: true,
                         name: 'Population',
-                        // AQUI ES LA DATA
+                        // ----------------------------------- AQUI ES LA DATA --------------------------------------
                         data: informacion,
                         dataLabels: {
                             enabled: true,
@@ -143,9 +134,6 @@
                 });
             });
         });
-
-       
-
     </script>
 
 

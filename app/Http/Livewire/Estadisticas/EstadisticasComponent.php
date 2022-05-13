@@ -61,8 +61,8 @@ class EstadisticasComponent extends Component
             }
 
             foreach ($sumatoria as $key => &$val) {
-                // $dataBarras[] = [ObjetivoEducacional::find($key)->descripcion, $sumatoria[$key]];
-                $dataBarras[] = [$sumatoria[$key]];
+                $dataBarras[] = [ObjetivoEducacional::find($key)->descripcion, $sumatoria[$key]];
+                // $dataBarras[] = [$sumatoria[$key]];
             }
             
             $this->datos = json_encode($dataBarras);
