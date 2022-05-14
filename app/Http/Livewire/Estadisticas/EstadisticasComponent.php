@@ -142,7 +142,7 @@ class EstadisticasComponent extends Component
             $this->datos =  json_encode($dataBarras);
             $this->datos2 = $dataBarras;
             $this->dataAspectos = $dataAspectos;
-            dd($dataAspectos);
+            // dd($dataAspectos);
 
             // dd($dataAspe);
         }
@@ -172,10 +172,10 @@ class EstadisticasComponent extends Component
                 $data[] = [
                     "name" => ObjetivoEducacional::find($key)->descripcion,
                      "id" => 'objetivo' . $key, 
-                     "data" => function($key, $keyAspectos){
+                     "data" => function($key, $keyAspectos, $objetivo){
                         $valores = [];
                         foreach($this->valoresAspectos as $keyObjetivos => &$valObjetivos){                            
-                            if($valObjetivos == $key){
+                            if($valObjetivos == $objetivo){
                                 $valores[] = [AspectosObjetivos::find($keyAspectos)->nombre, $keyObjetivos];
                             }
                         }
@@ -195,7 +195,7 @@ class EstadisticasComponent extends Component
         //         $data[] = [ AspectosObjetivos::find($key)->nombre,  floatval($val)];
         //     }
         // }
-        dd($data);
+        // dd($data);
         return $data;
     }
 }
