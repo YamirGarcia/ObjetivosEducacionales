@@ -26,12 +26,12 @@
                                     </button>
                                 </div>
                             @endif
-                            {!! Form::open(['route' => 'encuestas.store', 'method' => 'POST']) !!}
+                            {!! Form::open(['route' => 'encuestas.store', 'method' => 'POST', 'onsubmit' => 'return verificar();']) !!}
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="evaluador" class="form-label">Evaluador</label>
-                                        <select name="evaluador" id="evaluador" class="form-select">
+                                        <select name="evaluador" id="evaluador" class="form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($evaluadores as $evaluador)
                                                 <option value="{{ $evaluador->id }}">{{ $evaluador->nombres }}</option>
@@ -42,7 +42,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="periodo" class="form-label">Periodo de evaluacion</label>
-                                        <input type="text" class="form-control" name="periodo" id="periodo">
+                                        {{-- <input type="text" class="form-control" name="periodo" id="periodo"> --}}
+                                        <select name="periodo" id="periodo" class="form form-control" required>
+                                            <option value="" selected disabled>Seleccione periodo</option>
+                                            <option value="ENE-JUN-{{ date('Y') }}">ENE-JUN {{ date('Y') }}</option>
+                                            <option value="VERANO-{{ date('Y') }}">VERANO {{ date('Y') }}</option>
+                                            <option value="AGO-DIC-{{ date('Y') }}">AGO-DIC {{ date('Y') }}</option>
+                                        </select>
 
                                     </div>
                                 </div>
@@ -52,7 +58,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="residente" class="form-label">Residente</label>
-                                        <select name="residente" id="residente" class="form-select">
+                                        <select name="residente" id="residente" class="form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($residentes as $residente)
                                                 <option value="{{ $residente->id }}">{{ $residente->nombre }}</option>
@@ -193,6 +199,35 @@
             </div>
         </div>
     </section>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        function verificar() {
+            var suma = 0;
+            var boxes = document.getElementsByName('encuestaAspectos[]');
+            for (var i = 0, j = boxes.length; i < j; i++) {
+                if (boxes[i].checked == true) {
+                    suma++;
+                }
+            }
+
+            if (suma == 0) {
+                // alert('No existe ningun aspecto seleccionada');
+                Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Por favor seleccionado almenos 1 aspecto. '
+                });
+                return false;
+            } else {
+                
+                return true;
+            }
+
+        }
+        //]]>
+    </script>
 
 
 @endsection
