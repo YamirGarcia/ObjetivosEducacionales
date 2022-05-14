@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Carrera;
 use App\Models\ObjetivoEducacional;
 use App\Models\AspectosObjetivos;
+
+use function PHPSTORM_META\type;
+
 class EstadisticasComponent extends Component
 {
     
@@ -19,6 +22,10 @@ class EstadisticasComponent extends Component
     public $periodoSeleccionado = '';
     public $respuestaAtributoArray = null;
     public $sumatoriaAspectosArray = null;
+    public $valoresAspectos = null;
+
+    public $sumatoriaPublic = null;
+    public $sumatoriaAspectosPublic = null;
 
     public function mount(){
         $user = Auth::user();
@@ -39,6 +46,8 @@ class EstadisticasComponent extends Component
         $contadoresAspectos = [];
         $nombresObjetivos = [];
         $nombresAspectos = [];
+        // variables de prueba
+        $idObjetivos = [];
 
         if($this->carreraSeleccionada && $this->añoSeleccionado && $this->periodoSeleccionado){
 
@@ -60,9 +69,10 @@ class EstadisticasComponent extends Component
                             ->where([['encuesta_evaluador_objetivos.idCarrera', '=', $this->carreraSeleccionada], ['encuesta_evaluador_objetivos.periodo', '=', $periodo] ]);               
 
             $respuestasObjetivo = $respuestasTemp->select('objetivo_educacionals.id','objetivo_educacionals.descripcion' ,'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo')->get();
-            $respuestasAtributos = $respuestasTemp2->select('aspectos_objetivos.id','aspectos_objetivos.nombre' ,'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo')->get();
+            $respuestasAtributos = $respuestasTemp->select('aspectos_objetivos.id','aspectos_objetivos.nombre' ,'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo', 'objetivo_educacionals.id as objetivo')->get();
             $this->respuestaAtributoArray = $respuestasAtributos;
             // ------------------------------ SUMATORIAS ------------------------------
+            // dd($respuestasAtributos);
             foreach($respuestasObjetivo as $item){
                     
                     if(isset($sumatoria[$item->id])){
@@ -79,34 +89,48 @@ class EstadisticasComponent extends Component
                 
                 if(isset($sumatoriaAspectos[$item->id])){
                     $sumatoriaAspectos[$item->id] += intval($item->respuesta);
+                    // $valoresAspectos[$item->objetivo] += intval($item->respuesta);
                     $contadoresAspectos[$item->id] += 1;
                 } else{
                     $sumatoriaAspectos[$item->id] = intval($item->respuesta);
+                    $this->valoresAspectos[$item->id] = $item->objetivo;
                     $contadoresAspectos[$item->id] = 1;
-                    $nombresAspectos[] = $item->nombre;
+                    $nombresAspectos[$item->id] = $item->nombre;
                 }
             }
+
+            // dd($sumatoria);
+
+            // dd(gettype($sumatoriaAspectos));
 
             // -------------------------------- PROMEDIOS ----------------------------------------------
 
             foreach ($sumatoria as $key => &$val) {
                 $sumatoria[$key] = $sumatoria[$key] / $contadores[$key];
             }
-
             foreach ($sumatoriaAspectos as $key => &$val) {
                 $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
+                // $valoresAspectos[$key] = $valoresAspectos[$key] / $contadoresAspectos[$key];
             }
+            
+            $this->sumatoriaPublic = $sumatoria;
+            $this->sumatoriaAspectosPublic = $sumatoriaAspectos;
+            // dd($sumatoria);
 
             // --------------------------------  ----------------------------------------------
-            $this->sumatoriaAspectosArray = $sumatoriaAspectos;
+            // $this->sumatoriaAspectosArray = $valoresAspectos;
+            // dd($valoresAspectos);
             foreach ($sumatoria as $key => &$val) {
                 // $drilldown = ;
                 // $dataBarras[] = [ObjetivoEducacional::find($key)->descripcion, $sumatoria[$key]];
                 // $dataBarras[] = [$sumatoria[$key]];
+                // dd($sumatoriaAspectos);
                 $dataBarras[] = ["name" => ObjetivoEducacional::find($key)->descripcion, "y"=> $sumatoria[$key], "drilldown" => 'objetivo' . $key];
-                foreach ($sumatoriaAspectos as $keyAspectos => &$valAspectos){
-                    $dataAspectos[] = ["name" => AspectosObjetivos::find($keyAspectos)->nombre, "id" => 'objetivo' . $key, "data" => $this->arregloAspectos($keyAspectos) ];
-                }
+                $dataAspectos[] = $this->arregloAspectos($key);
+                // foreach ($sumatoriaAspectos as $keyAspectos => &$valAspectos){
+                    // $this->arregloAspectos($keyAspectos);
+                    // $dataAspectos[] = ["name" => AspectosObjetivos::find($keyAspectos)->nombre, "id" => 'objetivo' . $key, "data" => $this->arregloAspectos($valAspectos) ];
+                // }
                 // dd($sumatoriaAspectos);
             }
             // dd($sumatoriaAspectos);
@@ -114,9 +138,11 @@ class EstadisticasComponent extends Component
                 $dataBarras[] = ["name" => ObjetivoEducacional::find($key)->descripcion, "y"=> $sumatoria[$key], "drilldown" => 'objetivo' . $key];
             }
 
+
             $this->datos =  json_encode($dataBarras);
             $this->datos2 = $dataBarras;
             $this->dataAspectos = $dataAspectos;
+            dd($dataAspectos);
 
             // dd($dataAspe);
         }
@@ -136,14 +162,40 @@ class EstadisticasComponent extends Component
         ])->layout('estadisticas.baseEstadisticas');
     }
 
-    public function arregloAspectos ($aspecto){
+    public function arregloAspectos ($objetivo){
+        $sumatoria = $this->sumatoriaPublic;
+        $sumatoriaAspectos = $this->sumatoriaAspectosPublic;
+        $valoresAspectos = $this->valoresAspectos;
         $data = [];
-        foreach($this->sumatoriaAspectosArray as $key => &$val){
-            if($aspecto == $key){
-                $data[] = [ AspectosObjetivos::find($key)->nombre,  floatval($val)];
+        foreach($sumatoria as $key => &$val){
+            foreach($sumatoriaAspectos as $keyAspectos => &$valAspectos){
+                $data[] = [
+                    "name" => ObjetivoEducacional::find($key)->descripcion,
+                     "id" => 'objetivo' . $key, 
+                     "data" => function($key, $keyAspectos){
+                        $valores = [];
+                        foreach($this->valoresAspectos as $keyObjetivos => &$valObjetivos){                            
+                            if($valObjetivos == $key){
+                                $valores[] = [AspectosObjetivos::find($keyAspectos)->nombre, $keyObjetivos];
+                            }
+                        }
+                        return $valores;
+                     }
+                    //  AspectosObjetivos::find($keyAspectos)->nombre
+                    //  $this->arregloAspectos($valAspectos) 
+                    ];
             }
         }
-
+        // dd($this->sumatoriaAspectosArray);
+        // for($i=0;$i<count($this->sumatoriaAspectosArray);$i ++){
+        //     dd($this->sumatoriaAspectosArray[]->);
+        // }
+        // foreach($this->sumatoriaAspectosArray as $key => &$val){
+        //     if($objetivo == $this->valoresAspectos[$key]){
+        //         $data[] = [ AspectosObjetivos::find($key)->nombre,  floatval($val)];
+        //     }
+        // }
+        dd($data);
         return $data;
     }
 }
