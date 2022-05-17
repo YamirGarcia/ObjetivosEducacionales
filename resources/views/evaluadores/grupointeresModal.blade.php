@@ -80,7 +80,7 @@
                 @csrf
                 <div class="modal-body">
                     <label for="carrera">Nuevo Grupo de Interes:</label>
-                    <input type="text" class="form-control" name="nombre" style="margin-bottom: 2rem;">
+                    <input type="text" class="form-control" name="nombre" style="margin-bottom: 2rem;" pattern = '[a-zA-Z ]{2,254}'>
 
                 </div>
                 <div class="modal-footer">
@@ -111,7 +111,7 @@
                 @csrf
                 <div class="modal-body">
                     <label for="carrera">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre" style="margin-bottom: 2rem;" value="{{$grupoI->nombre}}">
+                    <input type="text" class="form-control" name="nombre" style="margin-bottom: 2rem;" pattern ='[a-zA-Z ]{2,254}' value="{{$grupoI->nombre}}">
                     <input type="text" class="form-control" name="id" style="margin-bottom: 2rem; visibility: hidden;" value="{{$grupoI->id}}">
                 </div>
                 <div class="modal-footer">

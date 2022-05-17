@@ -31,13 +31,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="nombres">Nombre</label>
-                                    {!! Form::text('nombres', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('nombres', null, array('class' => 'form-control', 'pattern' => '[a-zA-Z ]{2,254}')) !!}
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos</label>
-                                    {!! Form::text('apellidos', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('apellidos', null, array('class' => 'form-control', 'pattern' => '[a-zA-Z ]{2,254}')) !!}
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="idDepartamento">Departamento</label>
-                                        {!! Form::text('idDepartamento', null, array('class' => 'form-control')) !!}
+                                        {!! Form::text('idDepartamento', null, array('class' => 'form-control', 'pattern' => '[a-zA-Z ]{2,254}')) !!}
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label for="telefono">Télefono</label>
-                                    {!! Form::text('telefono', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('telefono', null, array('class' => 'form-control', 'pattern' =>'^\d{10}$')) !!}
                                 </div>
                             </div>
                             <div class="col">
@@ -101,7 +101,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label for="correo">Correo</label>
-                                    {!! Form::text('correo', null, array('class' => 'form-control')) !!}
+                                    {!! Form::text('correo', null, array('class' => 'form-control', 'pattern' =>"^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")) !!}
                                 </div>
                             </div>
                             <div class="col">
