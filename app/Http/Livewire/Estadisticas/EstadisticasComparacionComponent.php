@@ -2,19 +2,16 @@
 
 namespace App\Http\Livewire\Estadisticas;
 
-use Illuminate\Support\Facades\Auth;
-
 use Livewire\Component;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Carrera;
 use App\Models\ObjetivoEducacional;
 use App\Models\AspectosObjetivos;
 
-use function PHPSTORM_META\type;
-
-class EstadisticasComponent extends Component
+class EstadisticasComparacionComponent extends Component
 {
-
     public $tipoSeleccionado = '';
     public $carreraSeleccionada = '';
     public $añoSeleccionado = '';
@@ -189,7 +186,7 @@ class EstadisticasComponent extends Component
 
 
             // ["name" => ObjetivoEducacional::find($key)->descripcion, "id" => 'objetivo' . $key, "data" => $this->function($objetivo)];
-            return view('livewire.estadisticas.estadisticas-component', [
+            return view('livewire.estadisticas.estadisticas-comparacion-component', [
                 // 'data' => json_encode($dataBarrasObjetivos),
                 // 'carreras' => json_encode($nombreCarreras),
                 // 'dataBarras3D' => json_encode($dataBarras3D),
@@ -208,13 +205,13 @@ class EstadisticasComponent extends Component
             $contadoresAspectos = [];
             $nombresObjetivos = [];
             $nombresAspectos = [];
-            return view('livewire.estadisticas.estadisticas-component', [
-                'data' => json_encode($dataBarrasObjetivos),
-                'carreras' => json_encode($nombreCarreras),
+            return view('livewire.estadisticas.estadisticas-comparacion-component', [
+                // 'data' => json_encode($dataBarrasObjetivos),
+                // 'carreras' => json_encode($nombreCarreras),
                 // 'dataBarras3D' => json_encode($dataBarras3D),
                 'carreras2' => $carreras,
-                'sumatoria' => json_encode($sumatoria),
-                'nombresObjetivos' => json_encode($nombresObjetivos)
+                // 'sumatoria' => json_encode($sumatoria),
+                // 'nombresObjetivos' => json_encode($nombresObjetivos)
             ])->layout('estadisticas.baseEstadisticas');
         }
     }
@@ -276,7 +273,7 @@ class EstadisticasComponent extends Component
         $this->dataAspectos = null;
         // $this->sumatoriaAspectosArray = null;
         // $this->valoresAspectos = null;
-
+    
         // $this->sumatoriaPublic = null;
         // $this->sumatoriaAspectosPublic = null;
         $this->dicAspectos = null;

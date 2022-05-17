@@ -43,9 +43,9 @@
     {{-- rojo verder azul cyan magenta amarillo --}}
     @if ($datosObjetivos)
         @if ($tipoSeleccionado == 'Objetivos')
-            <div id="containerObjetivos" style="width:85%; margin: 5rem auto; "></div>
+            <div id="containerObjetivos2" style="width:85%; margin: 5rem auto; "></div>
         @else
-            <div id="containerAtributos" style="width:85%; margin: 5rem auto; "></div>
+            {{-- <div id="containerAtributos" style="width:85%; margin: 5rem auto; "></div> --}}
         @endif
     @else
         <h2>No existen datos capturados.</h2>
@@ -84,7 +84,7 @@
         var drilldownTitleObjetivos = "Promedios Por Aspectos";
         document.addEventListener('DOMContentLoaded', () => {
             Livewire.hook('message.processed', (el, component) => {
-                const chart = Highcharts.chart('containerObjetivos', {
+                const chart = Highcharts.chart('containerObjetivos2', {
                     chart: {
                         type: 'column',
                         renderTo: 'container',
@@ -159,7 +159,4 @@
             });
         });
     </script>
-
-
-
 </div>
