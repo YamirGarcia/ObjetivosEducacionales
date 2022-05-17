@@ -29,7 +29,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Año</label>
-                <select name="" id="carrera" class="form-select" wire:model="añoSeleccionado">
+                <select name="" id="año" class="form-select" wire:model="añoSeleccionado">
                     <option selected disabled value="">Seleccionar Año </option>
                     @foreach (range(2017, date('Y')) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -77,17 +77,16 @@
             }
         });
 
-
-
+        
 
         var defaultTitleObjetivos = "Promedios Por Objetivos Educacionales";
-        var drilldownTitleObjetivos = "Promedios Por Aspectos";
+        var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
         document.addEventListener('DOMContentLoaded', () => {
             Livewire.hook('message.processed', (el, component) => {
                 const chart = Highcharts.chart('containerObjetivos', {
                     chart: {
                         type: 'column',
-                        renderTo: 'container',
+                        renderTo: 'containerObjetivos',
                         events: {
                             drilldown: function(e) {
                                 chart.setTitle({

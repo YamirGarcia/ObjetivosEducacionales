@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Tipo</label>
-                <select name="" id="tipo" class="form-select" wire:model="tipoSeleccionado">
+                <select name="" id="tipo2" class="form-select" wire:model="tipoSeleccionado2">
                     <option selected disabled value="">Seleccionar Tipo Encuesta </option>
                     <option value="Objetivos">Objetivos Educacionales</option>
                     <option value="Atributos">Atributos</option>
@@ -11,7 +11,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Carrera</label>
-                <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
+                <select name="" id="carrera2" class="form-select" wire:model="carreraSeleccionada2">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
                         <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Periodo</label>
-                <select name="" id="carrera" class="form-select" wire:model="periodoSeleccionado">
+                <select name="" id="carrera2" class="form-select" wire:model="periodoSeleccionado2">
                     <option selected disabled value="">Seleccionar Periodo </option>
                     <option value="ENE-JUN-">ENE-JUN</option>
                     <option value="VERANO-">VERANO</option>
@@ -29,7 +29,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Año</label>
-                <select name="" id="carrera" class="form-select" wire:model="añoSeleccionado">
+                <select name="" id="carrera2" class="form-select" wire:model="añoSeleccionado2">
                     <option selected disabled value="">Seleccionar Año </option>
                     @foreach (range(2017, date('Y')) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -41,8 +41,8 @@
     </div>
 
     {{-- rojo verder azul cyan magenta amarillo --}}
-    @if ($datosObjetivos)
-        @if ($tipoSeleccionado == 'Objetivos')
+    @if ($datos2Objetivos)
+        @if ($tipoSeleccionado2 == 'Objetivos')
             <div id="containerObjetivos2" style="width:85%; margin: 5rem auto; "></div>
         @else
             {{-- <div id="containerAtributos" style="width:85%; margin: 5rem auto; "></div> --}}
@@ -87,7 +87,7 @@
                 const chart = Highcharts.chart('containerObjetivos2', {
                     chart: {
                         type: 'column',
-                        renderTo: 'container',
+                        renderTo: 'containerObjetivos2',
                         events: {
                             drilldown: function(e) {
                                 chart.setTitle({
@@ -143,7 +143,7 @@
                         name: 'Objetivos',
                         colorByPoint: true,
                         // PRIMERAS COLUMNAS A MOSTRAR
-                        data: @this.datosObjetivos
+                        data: @this.datos2Objetivos
                     }],
                     // ------------------- SUBTABLAS -------------------
                     drilldown: {
@@ -152,7 +152,7 @@
                                 align: 'left'
                             }
                         },
-                        series: @this.dataAspectos
+                        series: @this.data2Aspectos
 
                     }
                 });

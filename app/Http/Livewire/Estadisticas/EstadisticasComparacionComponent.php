@@ -12,14 +12,14 @@ use App\Models\AspectosObjetivos;
 
 class EstadisticasComparacionComponent extends Component
 {
-    public $tipoSeleccionado = '';
-    public $carreraSeleccionada = '';
-    public $añoSeleccionado = '';
-    public $periodoSeleccionado = '';
+    public $tipoSeleccionado2 = '';
+    public $carreraSeleccionada2 = '';
+    public $añoSeleccionado2 = '';
+    public $periodoSeleccionado2 = '';
 
-    public $datos = null;
-    public $datosObjetivos = null;
-    public $dataAspectos = null;
+    public $datos2 = null;
+    public $datos2Objetivos = null;
+    public $data2Aspectos = null;
     // public $respuestaAtributoArray = null;
     // public $sumatoriaAspectosArray = null;
     // public $valoresAspectos = null;
@@ -51,8 +51,8 @@ class EstadisticasComparacionComponent extends Component
         $nombresObjetivos = [];
         $nombresAspectos = [];
 
-        if ($this->tipoSeleccionado && $this->carreraSeleccionada && $this->añoSeleccionado && $this->periodoSeleccionado) {
-            if ($this->tipoSeleccionado == "Objetivos") {
+        if ($this->tipoSeleccionado2 && $this->carreraSeleccionada2 && $this->añoSeleccionado2 && $this->periodoSeleccionado2) {
+            if ($this->tipoSeleccionado2 == "Objetivos") {
                 $this->limpiar();
                 $dataBarrasObjetivos = [];
                 $dataAspectos = [];
@@ -64,7 +64,7 @@ class EstadisticasComparacionComponent extends Component
                 $nombresObjetivos = [];
                 $nombresAspectos = [];
                 // dd('hols');
-                $periodo = $this->periodoSeleccionado . $this->añoSeleccionado;
+                $periodo = $this->periodoSeleccionado2 . $this->añoSeleccionado2;
                 // dd($periodo);
                 $respuestasTemp = db::table('objetivo_educacionals')
                     ->join('objetivo_aspectos', 'objetivo_aspectos.objetivo_educacional_id', '=', 'objetivo_educacionals.id')
@@ -73,7 +73,7 @@ class EstadisticasComparacionComponent extends Component
                     ->join('respuesta_objetivos', 'respuesta_objetivos.idPreguntaAspecto', '=', 'pregunta_aspecto_objetivos.id')
                     // ->join('encuesta_objetivos', 'encuesta_objetivos.idAspectoObjetivo', '=', 'aspectos_objetivos.id')
                     ->join('encuesta_evaluador_objetivos', 'encuesta_evaluador_objetivos.id', '=', 'respuesta_objetivos.idEncuestaAsignada')
-                    ->where([['objetivo_educacionals.idCarrera', '=', $this->carreraSeleccionada], ['encuesta_evaluador_objetivos.periodo', '=', $periodo]]);
+                    ->where([['objetivo_educacionals.idCarrera', '=', $this->carreraSeleccionada2], ['encuesta_evaluador_objetivos.periodo', '=', $periodo]]);
 
                 // $respuestasTemp2 = db::table('respuesta_objetivos')
                 //     ->join('pregunta_aspecto_objetivos', 'pregunta_aspecto_objetivos.id', '=', 'respuesta_objetivos.idPreguntaAspecto')
@@ -176,8 +176,8 @@ class EstadisticasComparacionComponent extends Component
 
 
                 // $this->datos =  json_encode($dataBarrasObjetivos);
-                $this->datosObjetivos = $dataBarrasObjetivos;
-                $this->dataAspectos = $dataAspectos;
+                $this->datos2Objetivos = $dataBarrasObjetivos;
+                $this->data2Aspectos = $dataAspectos;
                 // dd($dataAspectos);
 
                 // dd($dataAspe);
@@ -268,9 +268,9 @@ class EstadisticasComparacionComponent extends Component
         // $this->carreraSeleccionada = '';
         // $this->añoSeleccionado = '';
         // $this->periodoSeleccionado = '';
-        $this->datos = null;
-        $this->datosObjetivos = null;
-        $this->dataAspectos = null;
+        $this->datos2 = null;
+        $this->datos2Objetivos = null;
+        $this->data2Aspectos = null;
         // $this->sumatoriaAspectosArray = null;
         // $this->valoresAspectos = null;
     

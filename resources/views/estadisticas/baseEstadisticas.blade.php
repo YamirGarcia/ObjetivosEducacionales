@@ -34,16 +34,6 @@
                 </div>
             </div>
         </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card shadow mb-5 bg-body rounded" >
-                        @livewire('estadisticas.estadisticas-comparacion-component')
-                        {{-- @livewire('estadisticas.estadisticas-component') --}}
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </section>
