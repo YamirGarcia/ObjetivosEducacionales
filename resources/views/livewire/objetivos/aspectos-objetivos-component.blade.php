@@ -75,7 +75,7 @@
                                                     @can('borrar-aspectosObjetivos')
                                                         <button wire:ignore.self style="border: none; background: none"
                                                             wire:click="$emit('eliminarAspectoModal', {{ $aspecto->id }})"
-                                                            data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+                                                             title="Eliminar">
                                                             <div wire:ignore.self class="icon trash-fill">
                                                                 <i wire:ignore.self>
                                                                     <svg wire:ignore.self class="svg-delete"

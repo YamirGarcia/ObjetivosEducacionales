@@ -83,7 +83,7 @@ table th.r {
 }
 
 .table100-head th {
-    font-family: OpenSans-Regular;
+    /* font-family: OpenSans-Regular; */
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
@@ -95,7 +95,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr {
-    font-family: OpenSans-Regular;
+    /* font-family: OpenSans-Regular; */
     font-size: 15px;
     color: black;
     line-height: 1.2;
@@ -109,32 +109,32 @@ tbody tr:hover {
 }
 
 .column1 {
-    width: 60%;
+    width: 16%;
     text-align: center;
 }
 
 .column2 {
-    width: 40%;
+    width: 16%;
     text-align: center;
 }
 
 .column3 {
-    width: 25%;
+    width: 16%;
     text-align: center;
 }
 
 .column4 {
-    width: 110px;
+    width: 16%;
     text-align: center;
 }
 
 .column5 {
-    width: 30%;
+    width: 16%;
     text-align: center;
 }
 
 .column6 {
-    width: 222px;
+    width: 16%;
     text-align: center;
     padding-right: 62px;
 }
@@ -167,7 +167,7 @@ tbody tr:hover {
         margin-bottom: 0;
     }
     table tbody tr td:before {
-        font-family: OpenSans-Regular;
+        /* font-family: OpenSans-Regular; */
         font-size: 14px;
         color: #999999;
         line-height: 1.2;
