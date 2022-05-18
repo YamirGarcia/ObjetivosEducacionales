@@ -11,6 +11,7 @@
                 <a style="text-decoration: none; color: #6c757d"
                     href="{{ route('aspectosObjetivos.show', $idObj) }}">/
                     Aspectos</a>
+                    
             </h3>
         </div>
         <div class="section-body">
@@ -23,8 +24,9 @@
                                 {{ session('message') }}
                             @endif
                             @can('crear-aspectosObjetivos')
-                                <label for="" class="bg-indigo-100">Agregar Nuevo Aspecto:</label>
-                                <div class="mb-2">
+                                <label for="" class="bg-indigo-100"> <b> Agregar Nuevo Aspecto: </b></label>
+                                <i class="fa-solid fa-bars"></i>
+                                <div class="mb-4">
                                     <form wire:submit.prevent="guardarAspecto()">
                                         <div class="row">
                                             <div class="col-10">
@@ -35,29 +37,33 @@
                                                     <em style="color: red">{{ $message }}</em>
                                                 @enderror
                                             </div>
-                                            <div class="col-1" style="position: relative; left: -40px ;">
+                                            <div class="col-1"
+                                                style="position: relative; left: -40px ; margin: 0 auto;">
                                                 <button type="submit" class="boton-submit">Agregar</button>
                                             </div>
                                         </div>
                                     </form>
-                                @endcan
-                            </div>
+                                </div>
+                            @endcan
                             @forelse ($aspectos as $aspecto)
                                 <div wire:ignore.self class="accordion" id="accordionExample{{ $aspecto->id }}">
                                     <div wire:ignore.self class="card card-accordion">
                                         <div wire:ignore.self class="card-header" id="heading{{ $aspecto->id }}">
                                             <h2 wire:ignore.self class="mb-0" style="display: flex">
-                                                <button wire:ignore.self class="btn-acordion" type="button"
+                                                <button wire:ignore.self class="btn-acordion collapsed" type="button"
                                                     data-toggle="collapse" data-target="#collapse{{ $aspecto->id }}"
                                                     aria-expanded="true" aria-controls="collapse{{ $aspecto->id }}"
                                                     style="text-decoration: none">
-                                                    {{ $loop->iteration }}.- {{ $aspecto->nombre }}
+                                                    <b> {{ $loop->iteration }}.- {{ $aspecto->nombre }} </b> <span
+                                                        class="ml-2">
+                                                        Preguntas({{ count($aspecto->preguntas) }}) </span>
                                                 </button>
                                                 <div wire:ignore.self class="acciones2">
                                                     @can('editar-aspectosObjetivos')
                                                         <a wire:ignore.self href="#" data-toggle="modal"
                                                             data-target="#modalEditarAspecto"
-                                                            wire:click="cargarDatosAspecto({{ $aspecto->id }})">
+                                                            wire:click="cargarDatosAspecto({{ $aspecto->id }})"
+                                                            style="margin-top: 15px">
                                                             <div wire:ignore.self class="icon edit-fill">
                                                                 <i wire:ignore.self>
                                                                     <svg wire:ignore.self class="svg"
@@ -75,8 +81,9 @@
                                                     @can('borrar-aspectosObjetivos')
                                                         <button wire:ignore.self style="border: none; background: none"
                                                             wire:click="$emit('eliminarAspectoModal', {{ $aspecto->id }})"
-                                                             title="Eliminar">
-                                                            <div wire:ignore.self class="icon trash-fill">
+                                                            title="Eliminar">
+                                                            <div wire:ignore.self class="icon trash-fill"
+                                                                style="margin-top: 15px">
                                                                 <i wire:ignore.self>
                                                                     <svg wire:ignore.self class="svg-delete"
                                                                         xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +176,8 @@
                                                                 <div class="col-9">
                                                                     <input wire:ignore type="text" class="form-control"
                                                                         style="margin-right: 1rem;" name="Pregunta"
-                                                                        wire:model="preguntaNueva">
+                                                                        wire:model="array.{{ $aspecto->id }}"
+                                                                        {{-- wire:click="$emit('guardarPreguntaEvento')" --}}>
                                                                 </div>
 
                                                                 <div class="col-1"
@@ -193,6 +201,7 @@
                     </div>
                 </div>
             </div>
+            
     </section>
     {{-- </div> --}}
 
@@ -302,7 +311,13 @@
                 $('#modalEditarAspecto').modal('hide');
                 $('.card-b').click();
                 console.log('Editamos');
-            })
+            });
+
+
+            Livewire.on('guardarPreguntaEvento', (id, textoPregunta) => {
+                console.log('id', id, 'textoPregunta', textoPregunta);
+                // Livewire.emitTo('objetivos.aspectos-objetivos-component', 'guardarPreguntaEvento', id,textoPregunta);
+            });
         </script>
     @endpush
 
