@@ -40,7 +40,7 @@
 
 
 
-    @stack('scripts')
-
+    
     @livewireScripts
+    @stack('scripts')
 @endsection

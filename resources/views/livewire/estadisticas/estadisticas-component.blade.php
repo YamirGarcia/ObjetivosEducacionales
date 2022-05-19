@@ -1,7 +1,7 @@
 <div>
     <div class="card-body">
         <div class="row">
-            <div class="col-3" style="margin: 0 auto;">
+            <div class="col-3 tabla1" style="margin: 0 auto;">
                 <label for="">Tipo</label>
                 <select name="" id="tipo" class="form-select" wire:model="tipoSeleccionado">
                     <option selected disabled value="">Seleccionar Tipo Encuesta </option>
@@ -9,7 +9,7 @@
                     <option value="Atributos">Atributos</option>
                 </select>
             </div>
-            <div class="col-3" style="margin: 0 auto;">
+            <div class="col-3 tabla1" style="margin: 0 auto;">
                 <label for="">Carrera</label>
                 <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
                     <option selected disabled value="">Seleccionar Carrera</option>
@@ -18,7 +18,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-3" style="margin: 0 auto;">
+            <div class="col-3 tabla1" style="margin: 0 auto;">
                 <label for="">Periodo</label>
                 <select name="" id="carrera" class="form-select" wire:model="periodoSeleccionado">
                     <option selected disabled value="">Seleccionar Periodo </option>
@@ -27,7 +27,7 @@
                     <option value="AGO-DIC-">AGO-DIC</option>
                 </select>
             </div>
-            <div class="col-3" style="margin: 0 auto;">
+            <div class="col-3 tabla1" style="margin: 0 auto;">
                 <label for="">Año</label>
                 <select name="" id="año" class="form-select" wire:model="añoSeleccionado">
                     <option selected disabled value="">Seleccionar Año </option>
@@ -36,6 +36,7 @@
                     @endforeach
                 </select>
             </div>
+            <button type="button" wire:click="$emit('graficarTabla1')">Graficar</button>
         </div>
 
     </div>
@@ -50,7 +51,7 @@
     @else
         <h2>No existen datos capturados.</h2>
     @endif
-{{-- 
+
     <br>
     <br>
     <div class="card-body">
@@ -58,7 +59,7 @@
         <div class="row">
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Tipo</label>
-                <select name="" class="form-select" wire:model="tipoSeleccionadoC2">
+                <select name="" class="form-select" wire:model="tipoSeleccionadoC1">
                     <option selected disabled value="">Seleccionar Tipo Encuesta </option>
                     <option value="Objetivos">Objetivos Educacionales</option>
                     <option value="Atributos">Atributos</option>
@@ -66,7 +67,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Carrera</label>
-                <select name="" class="form-select" wire:model="carreraSeleccionadaC2">
+                <select name="" class="form-select" wire:model="carreraSeleccionadaC1">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
                         <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
@@ -75,7 +76,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Periodo</label>
-                <select name="" class="form-select" wire:model="periodoSeleccionadoC2">
+                <select name="" class="form-select" wire:model="periodoSeleccionadoC1">
                     <option selected disabled value="">Seleccionar Periodo </option>
                     <option value="ENE-JUN-">ENE-JUN</option>
                     <option value="VERANO-">VERANO</option>
@@ -84,7 +85,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Año</label>
-                <select name="" class="form-select" wire:model="añoSeleccionadoC2">
+                <select name="" class="form-select" wire:model="añoSeleccionadoC1">
                     <option selected disabled value="">Seleccionar Año </option>
                     @foreach (range(2017, date('Y')) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -135,39 +136,11 @@
 
     <div id="containerComparative" style="width:85%; margin: 5rem auto; "></div>
 
- --}}
-
-    <script>
-        Highcharts.setOptions({
-            lang: {
-                months: [
-                    'Janvier', 'Février', 'Mars', 'Avril',
-                    'Mai', 'Juin', 'Juillet', 'Août',
-                    'Septembre', 'Octobre', 'Novembre', 'Décembre'
-                ],
-                weekdays: [
-                    'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
-                    'Jeudi', 'Vendredi', 'Samedi'
-                ],
-                viewFullscreen: "Ver en Pantalla Completa",
-                printChart: "Imprimir Tabla",
-                downloadPNG: "Descargar en PNG",
-                downloadJPEG: "Descargar en JPEG",
-                downloadPDF: "Descargar en PDF",
-                downloadSVG: "Descargar en SVG (Vector de Imagen)",
-                downloadCSV: false,
-                downloadXLS: "Descargar en .xls",
-                viewData: false
-            }
-        });
-
-
-
-        var defaultTitleObjetivos = "Promedios Por Objetivos Educacionales";
-        var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
-        document.addEventListener('DOMContentLoaded', () => {
-            Livewire.hook('message.processed', (el, component) => {
-                const chart = Highcharts.chart('containerObjetivos', {
+    @push('scripts')
+        <script>
+            Livewire.on('graficarTabla1', () => {
+                console.log("evento");
+                Highcharts.chart('containerObjetivos', {
                     chart: {
                         type: 'column',
                         renderTo: 'containerObjetivos',
@@ -239,7 +212,50 @@
 
                     }
                 });
+            })
+        </script>
+    @endpush
+    <script>
+        Highcharts.setOptions({
+            lang: {
+                months: [
+                    'Janvier', 'Février', 'Mars', 'Avril',
+                    'Mai', 'Juin', 'Juillet', 'Août',
+                    'Septembre', 'Octobre', 'Novembre', 'Décembre'
+                ],
+                weekdays: [
+                    'Dimanche', 'Lundi', 'Mardi', 'Mercredi',
+                    'Jeudi', 'Vendredi', 'Samedi'
+                ],
+                viewFullscreen: "Ver en Pantalla Completa",
+                printChart: "Imprimir Tabla",
+                downloadPNG: "Descargar en PNG",
+                downloadJPEG: "Descargar en JPEG",
+                downloadPDF: "Descargar en PDF",
+                downloadSVG: "Descargar en SVG (Vector de Imagen)",
+                downloadCSV: false,
+                downloadXLS: "Descargar en .xls",
+                viewData: false
+            }
+        });
 
+
+
+
+        var defaultTitleObjetivos = "Promedios Por Objetivos Educacionales";
+        var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
+        document.addEventListener('DOMContentLoaded', () => {
+            Livewire.hook('message.processed', (el, component) => {
+                // if(selecttabla1 cambian)
+                // let selectTabla1 = document.querySelectorAll(".tabla1");
+                // selectTabla1.forEach(element => {
+                //     element.addEventListener('change', () => {
+                //         console.log("cambio");
+                //     });
+                // });
+
+
+                // console.log(@this.nombresObjetivosC1);
                 Highcharts.chart('containerComparative', {
                     chart: {
                         type: 'column'
@@ -248,7 +264,7 @@
                         text: 'Tabla comparativa'
                     },
                     xAxis: {
-                        categories: ["a", "b", "c", "d", "e", "f", "g"]
+                        categories: @this.nombresObjetivosC1
                     },
                     plotOptions: {
                         series: {
@@ -263,16 +279,17 @@
                         enabled: false
                     },
                     series: [{
-                        name: 'John',
-                        data: [5, 3, 4, 7, 2, 8, 0]
+                        name: 'Tabla 1',
+                        data: [5, 3]
                     }, {
-                        name: 'Jane',
-                        data: [0, 1, 4, 0, 2, 5, 3.2]
+                        name: 'Tabla 2',
+                        data: [0, 1]
                     }]
                 });
             });
         });
     </script>
+
 
 
 
