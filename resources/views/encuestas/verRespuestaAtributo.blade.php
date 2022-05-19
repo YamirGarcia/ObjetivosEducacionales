@@ -19,7 +19,7 @@
                                 <h4>Encuesta realizada por:</h4>
                                 <h5>Nombre: {{$encuestaAtributo->evaluadorAsignado->nombres}}</h5>
                                 <h5>Empresa: {{$encuestaAtributo->evaluadorAsignado->empresa}}</h5>
-                                <h5>Residente: {{$encuestaAtributo->residenteAsignado->nombre}}</h5>
+                                <h5>Residente: {{$encuestaAtributo->residenteAsignado->nombres}}</h5>
                             </div>
                         </div>
                     </div>

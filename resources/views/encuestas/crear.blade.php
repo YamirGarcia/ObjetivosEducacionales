@@ -62,9 +62,9 @@
                                         <div class="card">
                                             <div class="card-header" id="heading{{ $encuesta->id }}">
                                                 <h2 class="mb-0" style="display: flex">
-                                                    <input class="vertical-centered" type="checkbox"
+                                                    {{-- <input class="vertical-centered" type="checkbox"
                                                         id="check{{ $encuesta->id }}" name="encuesta[]"
-                                                        value="{{ $encuesta->id }}">
+                                                        value="{{ $encuesta->id }}"> --}}
                                                     <label for="check{{ $encuesta->id }}"></label>
                                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
                                                         data-toggle="collapse" data-target="#collapse{{ $encuesta->id }}"

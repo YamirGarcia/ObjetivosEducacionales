@@ -48,7 +48,7 @@
             <div id="containerAtributos" style="width:85%; margin: 5rem auto; "></div>
         @endif
     @else
-        <h2>No existen datos capturados.</h2>
+        <h2 style="text-align: center">No existen datos a mostrar.</h2>
     @endif
 
 

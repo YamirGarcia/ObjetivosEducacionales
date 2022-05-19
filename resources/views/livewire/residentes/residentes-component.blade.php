@@ -1,6 +1,5 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <h2>Residentes Component</h2>
     <div class="row mb-4">
         <div style="display: flex">
             <button class="btn-clean" wire:click='limpiar' data-toggle="tooltip" data-placement="bottom"
