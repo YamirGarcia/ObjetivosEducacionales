@@ -15,16 +15,27 @@ use function PHPSTORM_META\type;
 class EstadisticasComponent extends Component
 {
 
+    // Varibales para la primer tabla
     public $tipoSeleccionado = '';
     public $carreraSeleccionada = '';
     public $añoSeleccionado = '';
     public $periodoSeleccionado = '';
-
     public $datos = null;
     public $datosObjetivos = null;
     public $dataAspectos = null;
-
     public $dicAspectos = null;
+
+
+
+    // Variables para la tabla comparativa
+    public $tipoSeleccionadoC1 = '';
+    public $carreraSeleccionadaC1 = '';
+    public $periodoSeleccionadoC1 = '';
+    public $añoSeleccionadoC1 = '';    
+    public $tipoSeleccionadoC2 = '';
+    public $carreraSeleccionadaC2 = '';
+    public $periodoSeleccionadoC2 = '';
+    public $añoSeleccionadoC2 = '';
 
     public function mount()
     {
@@ -47,7 +58,8 @@ class EstadisticasComponent extends Component
         $contadoresAspectos = [];
         $nombresObjetivos = [];
         $nombresAspectos = [];
-
+        
+        // if para la primer tabla
         if ($this->tipoSeleccionado && $this->carreraSeleccionada && $this->añoSeleccionado && $this->periodoSeleccionado) {
             if ($this->tipoSeleccionado == "Objetivos") {
                 $this->limpiar();
@@ -147,6 +159,16 @@ class EstadisticasComponent extends Component
                 'carreras2' => $carreras,
             ])->layout('estadisticas.baseEstadisticas');
         }
+
+        // if de la tabla comparativa
+        if ($this->tipoSeleccionadoC1 && $this->carreraSeleccionadaC1 && $this->añoSeleccionadoC1 && $this->periodoSeleccionadoC2 && $this->tipoSeleccionadoC2 && $this->carreraSeleccionadaC2 && $this->añoSeleccionadoC2 && $this->periodoSeleccionadoC2){
+            return view('livewire.estadisticas.estadisticas-component', [
+                'carreras2' => $carreras,
+            ])->layout('estadisticas.baseEstadisticas'); 
+        }
+
+
+
     }
 
     public function arregloAspectos($objetivo)

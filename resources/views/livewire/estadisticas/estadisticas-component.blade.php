@@ -50,8 +50,92 @@
     @else
         <h2 style="text-align: center">No existen datos a mostrar.</h2>
     @endif
+{{-- 
+    <br>
+    <br>
+    <div class="card-body">
+        <h5>Comparar:</h5>
+        <div class="row">
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Tipo</label>
+                <select name="" class="form-select" wire:model="tipoSeleccionadoC2">
+                    <option selected disabled value="">Seleccionar Tipo Encuesta </option>
+                    <option value="Objetivos">Objetivos Educacionales</option>
+                    <option value="Atributos">Atributos</option>
+                </select>
+            </div>
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Carrera</label>
+                <select name="" class="form-select" wire:model="carreraSeleccionadaC2">
+                    <option selected disabled value="">Seleccionar Carrera</option>
+                    @foreach ($carreras2 as $carrera)
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Periodo</label>
+                <select name="" class="form-select" wire:model="periodoSeleccionadoC2">
+                    <option selected disabled value="">Seleccionar Periodo </option>
+                    <option value="ENE-JUN-">ENE-JUN</option>
+                    <option value="VERANO-">VERANO</option>
+                    <option value="AGO-DIC-">AGO-DIC</option>
+                </select>
+            </div>
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Año</label>
+                <select name="" class="form-select" wire:model="añoSeleccionadoC2">
+                    <option selected disabled value="">Seleccionar Año </option>
+                    @foreach (range(2017, date('Y')) as $year)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <br>
+        <h5>con:</h5>
+        <div class="row">
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Tipo</label>
+                <select name="" class="form-select" wire:model="tipoSeleccionadoC2">
+                    <option selected disabled value="">Seleccionar Tipo Encuesta </option>
+                    <option value="Objetivos">Objetivos Educacionales</option>
+                    <option value="Atributos">Atributos</option>
+                </select>
+            </div>
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Carrera</label>
+                <select name="" class="form-select" wire:model="carreraSeleccionadaC2">
+                    <option selected disabled value="">Seleccionar Carrera</option>
+                    @foreach ($carreras2 as $carrera)
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Periodo</label>
+                <select name="" class="form-select" wire:model="periodoSeleccionadoC2">
+                    <option selected disabled value="">Seleccionar Periodo </option>
+                    <option value="ENE-JUN-">ENE-JUN</option>
+                    <option value="VERANO-">VERANO</option>
+                    <option value="AGO-DIC-">AGO-DIC</option>
+                </select>
+            </div>
+            <div class="col-3" style="margin: 0 auto;">
+                <label for="">Año</label>
+                <select name="" class="form-select" wire:model="añoSeleccionadoC2">
+                    <option selected disabled value="">Seleccionar Año </option>
+                    @foreach (range(2017, date('Y')) as $year)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
 
+    <div id="containerComparative" style="width:85%; margin: 5rem auto; "></div>
 
+ --}}
 
     <script>
         Highcharts.setOptions({
@@ -77,7 +161,7 @@
             }
         });
 
-        
+
 
         var defaultTitleObjetivos = "Promedios Por Objetivos Educacionales";
         var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
@@ -154,6 +238,37 @@
                         series: @this.dataAspectos
 
                     }
+                });
+
+                Highcharts.chart('containerComparative', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Tabla comparativa'
+                    },
+                    xAxis: {
+                        categories: ["a", "b", "c", "d", "e", "f", "g"]
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:.2f}'
+                            }
+                        }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'John',
+                        data: [5, 3, 4, 7, 2, 8, 0]
+                    }, {
+                        name: 'Jane',
+                        data: [0, 1, 4, 0, 2, 5, 3.2]
+                    }]
                 });
             });
         });
