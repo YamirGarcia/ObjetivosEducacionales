@@ -220,8 +220,7 @@
                 text: 'Por favor seleccionado almenos 1 aspecto. '
                 });
                 return false;
-            } else {
-                
+            } else {     
                 return true;
             }
 
