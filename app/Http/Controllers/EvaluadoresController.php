@@ -182,7 +182,7 @@ class EvaluadoresController extends Controller
         $user->rol = $request->rol;
 
         DB::table('model_has_roles')->where('model_id', $request->idUserSession)->delete();
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('rol'));
         $user->save();
         return redirect()->route('evaluadores.index');
 
