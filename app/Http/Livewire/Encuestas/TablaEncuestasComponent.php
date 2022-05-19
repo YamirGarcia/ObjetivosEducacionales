@@ -33,7 +33,7 @@ class TablaEncuestasComponent extends Component
                                 ->join('evaluadors', 'evaluadors.id', '=', 'evaluador')
                                 ->join('residentes', 'residentes.id', '=', 'residente')
                                 ->where('asignadoPor', $user->id)
-                                ->select('encuesta_evaluador_atributos.*', 'carreras.carrera', 'evaluadors.nombres', 'residentes.nombre');
+                                ->select('encuesta_evaluador_atributos.*', 'carreras.carrera', 'evaluadors.nombres as evaluadorNombre', 'residentes.nombres');
 
 
         $encuestasObjetivos = db::table('encuesta_evaluador_objetivos')
@@ -68,7 +68,7 @@ class TablaEncuestasComponent extends Component
         });
 
         $encuestasAtributos = $encuestasAtributos->filter(function ($encuesta) {
-            if(str_contains(strtolower($encuesta->nombres),strtolower($this->searchAtr)) || str_contains(strtolower($encuesta->carrera), strtolower($this->searchAtr)) || str_contains(strtolower($encuesta->periodo), strtolower($this->searchAtr)) || str_contains(strtolower($encuesta->nombre), strtolower($this->searchAtr))){
+            if(str_contains(strtolower($encuesta->evaluadorNombre),strtolower($this->searchAtr)) || str_contains(strtolower($encuesta->carrera), strtolower($this->searchAtr)) || str_contains(strtolower($encuesta->periodo), strtolower($this->searchAtr)) || str_contains(strtolower($encuesta->nombres), strtolower($this->searchAtr))){
                 return true;
             } else{
                 return false;
