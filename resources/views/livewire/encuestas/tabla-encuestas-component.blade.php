@@ -185,15 +185,15 @@
                         <tr class="table100-head">
                             <th class="column1">Estatus</th>
                             <th class="column2">
-                                <button class="bg-transparent" style="border: none" wire:click="sortableAtr('nombres')">
+                                <button class="bg-transparent" style="border: none" wire:click="sortableAtr('evaluadorNombre')">
                                     <span style="color: white "> Evaluador </span>
-                                    <span class="fa fa{{$campoAtr === 'nombres' ? $iconAtr : '-circle'}}" style="color: white"></span>
+                                    <span class="fa fa{{$campoAtr === 'evaluadorNombre' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column3">
-                                <button class="bg-transparent" style="border: none" wire:click="sortableAtr('nombre')">
+                                <button class="bg-transparent" style="border: none" wire:click="sortableAtr('nombres')">
                                     <span style="color: white "> Residente </span>
-                                    <span class="fa fa{{$campoAtr === 'nombre' ? $iconAtr : '-circle'}}" style="color: white"></span>
+                                    <span class="fa fa{{$campoAtr === 'nombres' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
                             <th class="column4">
@@ -246,10 +246,10 @@
                                     </td>
                                 @endif
                                 <td class="column2">
-                                    {{ $encuesta->nombres }}
+                                    {{ $encuesta->evaluadorNombre }}
                                 </td>
                                 <td class="column3">
-                                    {{ $encuesta->nombre }}
+                                    {{ $encuesta->nombres }}
                                 </td>
                                 <td class="column4">{{ $encuesta->carrera }}
                                 </td>

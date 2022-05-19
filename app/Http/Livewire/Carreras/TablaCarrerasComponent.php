@@ -43,20 +43,14 @@ class TablaCarrerasComponent extends Component
             }     
             
             $carreras = $carreras->get();
-                        // ->where('carreras.carrera', 'ilike', "%{$this->search}%")
-                        // ->orWhere('carreras.planEstudios', 'ilike', "%{$this->search}%");
             $this->band = false;
-            // $temp = collect();
             $carreras = $carreras->filter(function ($value){
-                // dd($value);
                 if(str_contains(strtolower($value->carrera),strtolower($this->search)) || str_contains(strtolower($value->planEstudios), strtolower($this->search))){
-                    // $this->cont++;
                     return true;
                 } else{
                     return false;
                 }
             });
-            // dd($carreras);
             $usuarios = User::where('creadopor', $user->name)->get();
             return view('livewire.carreras.tabla-carreras-component',[
             'carreras' => $carreras,
@@ -64,7 +58,6 @@ class TablaCarrerasComponent extends Component
             ]);
         }
 
-            // $carreras = $carreras->distinct();
         if($this->campo && $this->order){
             $carreras = $carreras->orderBy($this->campo, $this->order);
         }else{

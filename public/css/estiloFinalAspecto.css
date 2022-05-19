@@ -312,7 +312,7 @@ tbody tr {
 
 tbody tr:hover {
     color: #555555;
-    background-color: #f5f5f5;
+    background-color: #bde0fe;
     cursor: pointer;
 }
 
@@ -449,3 +449,15 @@ tbody tr:hover {
         padding-right: 15px;
     }
 }
+
+.card-header h2 .btn-acordion::after{
+    float: left;
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0aa";
+    margin-right: 1rem;
+}
+
+.card-header  h2 .btn-acordion.collapsed::after{
+    content: "";
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0ab";
+}
+

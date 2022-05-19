@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('residentes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->string('numeroControl');
+            $table->string('correo');
+            $table->string('carrera');
             $table->timestamps();
         });
     }
