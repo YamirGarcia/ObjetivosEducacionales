@@ -37,13 +37,30 @@ class ResidentesController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
-            'nombre' => 'required'
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'numeroControl' => 'required',
+            'correo' => 'required',
+            'carrera' => 'required',
         ]);
 
-        $residente = new Residente();
-        $residente -> nombre = $request -> nombre;
-        $residente->save();
+        // $residente = new Residente();
+        // $residente -> nombres = $request -> nombre;
+        // $residente -> apellidos= $request -> nombre;
+        // $residente -> numeroControl = $request -> nombre;
+        // $residente -> nombre = $request -> nombre;
+        // $residente -> nombre = $request -> nombre;
+        // $residente->save();
+
+        Residente::create([
+            'nombres' => $request->nombres,
+            'apellidos' =>$request->apellidos,
+            'numeroControl' => $request->numeroControl,
+            'correo' => $request->correo,
+            'carrera' => $request->carrera,
+        ]);
 
         return redirect()->route('residentes.index');
     }

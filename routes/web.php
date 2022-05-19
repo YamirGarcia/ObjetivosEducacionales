@@ -72,3 +72,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/estadisticas', EstadisticasComponent::class)->name('estadisticas');
+// php artisan db:seed --class=SeederTablaPermisos
+// php artisan db:seed --class=SuperAdminSeeder

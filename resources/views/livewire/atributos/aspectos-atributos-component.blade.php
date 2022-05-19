@@ -156,7 +156,7 @@
                                                             <div class="col-9">
                                                                 <input type="text" class="form-control"
                                                                     style="margin-right: 1rem;" name="Pregunta"
-                                                                    wire:model='nuevaPregunta'>
+                                                                    wire:model='array.{{$aspecto->id}}'>
                                                             </div>
                                                             <div class="col-1"
                                                                 style="position: relative; right: 20px;">

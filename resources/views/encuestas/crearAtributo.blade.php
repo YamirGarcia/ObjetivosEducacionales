@@ -61,7 +61,7 @@
                                         <select name="residente" id="residente" class="form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($residentes as $residente)
-                                                <option value="{{ $residente->id }}">{{ $residente->nombre }}</option>
+                                                <option value="{{ $residente->id }}">{{ $residente->nombres }}</option>
                                             @endforeach
                                         </select>
                                     </div>

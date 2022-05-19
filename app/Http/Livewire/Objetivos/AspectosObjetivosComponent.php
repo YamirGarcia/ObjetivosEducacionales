@@ -83,10 +83,10 @@ class AspectosObjetivosComponent extends Component
 
     public function guardarPregunta($id){
         $preguntatemp = new PreguntaAspectoObjetivo;
-        $preguntatemp->Pregunta = $this->preguntaNueva;
+        $preguntatemp->Pregunta = $this->array[$id];
         $preguntatemp->idAspectoObjetivo = $id;
         $preguntatemp->save();
-        $this->preguntaNueva = '';
+        $this->array[$id] = '';
     }
 
     public function borrarPregunta ($id){
