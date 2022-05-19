@@ -4,7 +4,7 @@
         <div class="section-header">
             <h3 class="page__heading">
                 <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
-                <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', $idAtributo)}}">/Atributo</a>
+                <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', App\Models\Atributo::find($idAtributo)->carrera->id  )}}">/Atributos</a>
                 <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $idAtributo)}}">/Aspectos</a>
             </h3>
         </div>
