@@ -177,6 +177,7 @@
                                                                     <input wire:ignore type="text" class="form-control"
                                                                         style="margin-right: 1rem;" name="Pregunta"
                                                                         wire:model="array.{{ $aspecto->id }}"
+                                                                        required
                                                                         {{-- wire:click="$emit('guardarPreguntaEvento')" --}}>
                                                                 </div>
 

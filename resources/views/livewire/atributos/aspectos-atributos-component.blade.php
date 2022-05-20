@@ -4,7 +4,7 @@
         <div class="section-header">
             <h3 class="page__heading">
                 <a style="text-decoration: none; color: #6c757d" href="/carreras">Carreras</a>
-                <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', $idAtributo)}}">/Atributo</a>
+                <a style="text-decoration: none; color: #6c757d" href="{{route ('Atributos.show', App\Models\Atributo::find($idAtributo)->carrera->id)}}">/Atributo</a>
                 <a style="text-decoration: none; color: #6c757d" href="{{route ('AspectosAtributos.show', $idAtributo)}}">/Aspectos</a>
             </h3>
         </div>
@@ -156,7 +156,7 @@
                                                             <div class="col-9">
                                                                 <input type="text" class="form-control"
                                                                     style="margin-right: 1rem;" name="Pregunta"
-                                                                    wire:model='array.{{$aspecto->id}}'>
+                                                                    wire:model='array.{{$aspecto->id}}' required>
                                                             </div>
                                                             <div class="col-1"
                                                                 style="position: relative; right: 20px;">
