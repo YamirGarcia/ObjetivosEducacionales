@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('carrera');
             $table->string('planEstudios');
             $table->bigInteger('creadopor');
-            $table->boolean('noBorrar');
-            $table->boolean('oculto');
+            $table->boolean('noBorrar')->default('False');
+            $table->boolean('oculto')->default('False');
             $table->timestamps();
 
             $table->foreign('creadopor')->references('id')->on('users');//->onDelete('cascade');

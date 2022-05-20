@@ -80,6 +80,7 @@ table th.r {
     font-weight: unset;
 }
 
+
 .table100-head-modal th {
     font-size: 18px;
     color: #fff;
@@ -157,6 +158,10 @@ tbody tr:hover {
     width: 222px;
     text-align: center;
     padding-right: 62px;
+}
+
+.table100-head-oculto{
+    background: #fb54073a !important;
 }
 
 @media screen and (max-width: 992px) {

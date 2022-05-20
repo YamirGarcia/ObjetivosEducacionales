@@ -78,6 +78,10 @@ class AsignarEncuestasController extends Controller
                 $aspectosAsignados->save();
             }
 
+            $carrera = Carrera::find($request->idCarrera);
+            $carrera->noBorrar = True;
+            $carrera->save();
+
         }else{
             $encuestaAsignada =  new EncuestaEvaluadorAtributo;
             $encuestaAsignada->estatus = "enviada";
@@ -94,6 +98,9 @@ class AsignarEncuestasController extends Controller
                 $aspectosAsignados->idAspectoAtributo = $encuestaAspecto;
                 $aspectosAsignados->save();
             }
+            $carrera = Carrera::find($request->idCarrera);
+            $carrera->noBorrar = True;
+            $carrera->save();
         };
         return redirect()->route('encuestas.index');
     }
