@@ -59,7 +59,7 @@
                       <select name="carreraAtributo" id="carreraAtributo" class="form-control">
                         <option selected >Lista de Usuarios</option>
                         @foreach ($usuarios as $usuario)                    
-                          @if (!($carrera->usuarios->find($usuario->id)))
+                          @if (!($carrera->usuarios->find($usuario->id)) && ($usuario->rol !='Evaluador'))
                           <option value="{{$usuario->id}}">{{$usuario->name}} {{$usuario->apellido}}</option>
                           @endif
                         @endforeach

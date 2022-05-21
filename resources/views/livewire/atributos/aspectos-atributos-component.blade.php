@@ -14,6 +14,21 @@
             <div class="col-lg-12">
                 <div class="card shadow p-3 mb-5 bg-body rounded">
                     <div class="card-body">
+                        <div style="font-size: 18px">
+                            <div>
+                                <label for="">Carrera: </label>
+                                {{App\Models\Atributo::find($idAtributo)->carrera->carrera}}
+                            </div>
+                            <div>
+                                <label for="">Atributo: </label>
+                                {{App\Models\Atributo::find($idAtributo)->descripcion}}
+                            </div>
+                            <div>
+                                <label for="">Plan de estudios: </label>
+                                {{App\Models\Atributo::find($idAtributo)->carrera->planEstudios}}
+                            </div>
+
+                        </div>
                         @can('crear-aspectosAtributos')
                             <label for="">Agrega un nuevo aspecto:</label>
                             <div class="mb-4">
@@ -63,6 +78,7 @@
                                                 @endcan
                                                 {{-- <form wire:submit.prevent = 'eliminarAspecto({{$aspecto->id}})'> --}}
                                                 @can('borrar-aspectosAtributos')
+                                                @if (App\Models\Atributo::find($idAtributo)->carrera->noBorrar == False)
                                                     <button wire:ignore.self type="submit"
                                                         style="border: none; background: none" data-toggle="tooltip"
                                                         data-placement="bottom" title="Eliminar"
@@ -79,6 +95,8 @@
                                                             </i>
                                                         </div>
                                                     </button>
+                                                    
+                                                @endif
                                                 @endcan
                                                 {{-- </form> --}}
                                             </div>
@@ -123,6 +141,7 @@
                                                                                 </a>
                                                                             @endcan
                                                                             @can('borrar-preguntasAtributos')
+                                                                            @if (App\Models\Atributo::find($idAtributo)->carrera->noBorrar == False)
                                                                                 <button class="btn-tabla"
                                                                                     wire:click='borrarPregunta({{ $pregunta->id }})'
                                                                                     data-toggle="tooltip"
@@ -138,6 +157,8 @@
                                                                                         </i>
                                                                                     </div>
                                                                                 </button>
+                                                                                
+                                                                            @endif
                                                                             @endcan
                                                                         </div>
                                                                     </td>
@@ -179,6 +200,7 @@
             </div>
         </div>
     </section>
+    {{-- </div> --}}
 
         {{-- MODALES --}}
         {{-- MODAL EDITAR ASPECTO --}}
@@ -245,8 +267,7 @@
                     <div class="modal-body">
                         <label for="Pregunta">Pregunta:</label>
                         <textarea name="Pregunta" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;"
-                            wire:model='textoPregunta'
-                             ></textarea>
+                            wire:model='textoPregunta'></textarea>
                     </div>
 
                     <div class="modal-footer">
