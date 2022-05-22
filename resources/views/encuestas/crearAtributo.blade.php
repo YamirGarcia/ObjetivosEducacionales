@@ -14,7 +14,9 @@
                 <div class="col-lg-11" style="margin: 0 auto">
                     <div class="card">
                         <div class="card-body">
-
+                            <h3 class="mb-4"> {{ App\Models\Carrera::find($carrera)->carrera }} |
+                                {{ App\Models\Carrera::find($carrera)->planEstudios }}</h3>
+                            <hr>
                             @if ($errors->any())
                                 <div class="alert alert-dark alert-dismissible fade show" role="alert">
                                     <strong>¡Revisa los Campos!</strong>
@@ -30,7 +32,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="evaluador" class="form-label">Evaluador</label>
+                                        <label for="evaluador" class="form-label fs-4">Evaluador</label>
                                         <select name="evaluador" id="evaluador" class="form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($evaluadores as $evaluador)
@@ -41,13 +43,14 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="periodo" class="form-label">Periodo de evaluacion</label>
+                                        <label for="periodo" class="form-label fs-4">Periodo de evaluación</label>
                                         {{-- <input type="text" class="form-control" name="periodo" id="periodo"> --}}
                                         <select name="periodo" id="periodo" class="form form-control" required>
                                             <option value="" selected disabled>Seleccione periodo</option>
                                             <option value="ENE-JUN-{{ date('Y') }}">ENE-JUN {{ date('Y') }}</option>
                                             <option value="VERANO-{{ date('Y') }}">VERANO {{ date('Y') }}</option>
-                                            <option value="AGO-DIC-{{ date('Y') }}">AGO-DIC {{ date('Y') }}</option>
+                                            <option value="AGO-DIC-{{ date('Y') }}">AGO-DIC {{ date('Y') }}
+                                            </option>
                                         </select>
 
                                     </div>
@@ -57,11 +60,18 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="residente" class="form-label">Residente</label>
-                                        <select name="residente" id="residente" class="form-select" required>
+                                        <label for="residente" class="form-label fs-4">Residente</label>
+                                        {{-- <select name="residente" id="residente" class="form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($residentes as $residente)
-                                                <option value="{{ $residente->id }}">{{ $residente->nombres }}</option>
+                                                <option value="{{ $residente->id }}">{{ $residente->nombres }}
+                                                </option>
+                                            @endforeach
+                                        </select> --}}
+                                        <select name="residente" id="select2-dropdown" class="form-control">
+                                            <option value="" selected disabled>Seleccionar Residente Buey</option>
+                                            @foreach ($residentes as $residente)
+                                                <option value="{{$residente->id}}">{{$residente->nombres}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -72,7 +82,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="encuesta" class="form-label">Atributos</label>
+                                <label for="encuesta" class="form-label fs-5">Atributos</label>
 
                                 @foreach ($encuestas as $encuesta)
                                     <div class="accordion" id="accordionExample{{ $encuesta->id }}">
@@ -202,7 +212,6 @@
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-
         function verificar() {
             var suma = 0;
             var boxes = document.getElementsByName('encuestaAspectos[]');
@@ -215,17 +224,23 @@
             if (suma == 0) {
                 // alert('No existe ningun aspecto seleccionada');
                 Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Por favor seleccionado almenos 1 aspecto. '
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Por favor seleccionado almenos 1 aspecto. '
                 });
                 return false;
-            } else {     
+            } else {
                 return true;
             }
 
         }
-        //]]>
+        document.addEventListener('DOMContentLoaded', () => {
+            $('#select2-dropdown').select2();
+            $('#select2-dropdown').on('change', event => {
+                let pId = $('#select2-dropdown').select2("val");
+                let pName = $('$select2-dropdown option:selected').text();
+            }
+        });
     </script>
 
 

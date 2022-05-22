@@ -76,7 +76,9 @@
                                 <select name="carrera" id="carrera" class="form-select" required>
                                     <option selected="selected" disabled></option>
                                     @foreach ($carreras as $carrera)
+                                    @if (!$carrera->oculto)
                                         <option value="{{ $carrera->id }}">{{ $carrera->carrera }} {{$carrera->planEstudios}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>

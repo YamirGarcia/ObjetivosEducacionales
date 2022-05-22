@@ -79,7 +79,13 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="">Roles</label>
-                                    {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
+                                    {{-- <select name="roles" id="" class="form-control">
+                                        <option value="" selected disabled>Selecciona rol a asignar.</option>
+                                        @foreach ($collection as $item)
+                                            
+                                        @endforeach
+                                    </select> --}}
+                                    {!! Form::select('rol', $roles,$userRole, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                                 
