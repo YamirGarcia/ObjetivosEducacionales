@@ -76,7 +76,7 @@
                                 <select name="carrera" id="carrera" class="form-select" required>
                                     <option selected="selected" disabled></option>
                                     @foreach ($carreras as $carrera)
-                                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }} {{$carrera->planEstudios}}</option>
                                     @endforeach
                                 </select>
                             </div>

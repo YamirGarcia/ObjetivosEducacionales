@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
+    public $carrerasUsuario;
+    // protected $listeners = [
+    //     'cargarCarrerasUsuario'
+    // ];
     function __construct()
     {
         $this->middleware('permission:ver-usuario | crear-usuario | editar-usuario | borrar-usuario', ['only'=>['usuarios.index']]);
@@ -159,5 +163,9 @@ class UsuarioController extends Controller
         $user->update($input);
         return redirect()->route('home');
     }
+
+    // public function cargarCarrerasUsuario($idUsuario){
+    //     dd($idUsuario);
+    // }
 }
 

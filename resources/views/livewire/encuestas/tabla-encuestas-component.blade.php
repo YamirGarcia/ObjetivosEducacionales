@@ -19,6 +19,14 @@
                             <i class="fa fa-search fa-vc" style="padding-top: 10px"></i>
                         </form>
                     </div>
+                    <div class="buscador">
+                        <select name="estatus" id="estatus" class="form form-control" wire:model="inputEstatusObj">
+                            <option value="" selected disabled>Selecciona estatus</option>
+                            <option value="enviada">Enviada</option>
+                            <option value="recibida">Abierta</option>
+                            <option value="contestada">Contestada</option>
+                        </select>
+                    </div>
                 </div>
                 {{-- <div class="col-9">
                     <input wire:model="searchObj" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
@@ -44,6 +52,7 @@
                 <table class="tabla-general">
                     <thead>
                         <tr class="table100-head">
+                            <th class="column7">#</th>
                             <th class="column1">
                                 Estatus
                             </th>
@@ -59,6 +68,12 @@
                                     <span class="fa fa{{$campoObj === 'carrera' ? $iconObj : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
+                            <th class="column3">
+                                <button class="bg-transparent" style="border: none" wire:click="sortableObj('planEstudios')">
+                                    <span style="color: white"> Plan de Estudios </span>
+                                    <span class="fa fa{{$campoObj === 'planEstudios' ? $iconObj : '-circle'}}" style="color: white"></span>
+                                </button>
+                            </th>
                             <th class="column4">
                                 <button class="bg-transparent" style="border: none" wire:click="sortableObj('periodo')">
                                     <span style="color:white"> Periodo </span>
@@ -72,7 +87,9 @@
                     </thead>
                     <tbody>
                         @foreach ($encuestasObjetivos as $encuesta)
+
                             <tr class="table100-head">
+                                <td class="column7">{{$loop->iteration}}</td>
                                 @if ($encuesta->estatus == 'enviada')
                                     <td class="column1">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -109,8 +126,8 @@
                                     {{ $encuesta->nombres }}
                                 </td>
                                 {{-- <td class="column3">{{ $encuesta->carrera->carrera }} --}}
-                                <td class="column3">{{ $encuesta->carrera }}
-                                </td>
+                                <td class="column3">{{ $encuesta->carrera }}</td>
+                                <td class="column3">{{ $encuesta->planEstudios }}</td>
                                 <td class="column4">{{ $encuesta->periodo }}</td>
                                 <td class="column5">
                                     @if ($encuesta->estatus == 'contestada')
@@ -162,6 +179,14 @@
                             <i class="fa fa-search fa-vc" style="padding-top: 10px"></i>
                         </form>
                     </div>
+                    <div class="buscador">
+                        <select name="estatus" id="estatus" class="form form-control" wire:model="inputEstatusAtr">
+                            <option value="" selected disabled>Selecciona estatus</option>
+                            <option value="enviada">Enviada</option>
+                            <option value="recibida">Abierta</option>
+                            <option value="contestada">Contestada</option>
+                        </select>
+                    </div>
                 </div>
                 {{-- <div class="col-9">
                     <input wire:model="searchAtr" type="text" name="search" id="search" class="form-control" placeholder="Ingrese termino de busqueda">
@@ -183,6 +208,7 @@
                 <table class="tabla-general">
                     <thead>
                         <tr class="table100-head">
+                            <th class="column7">#</th>
                             <th class="column1">Estatus</th>
                             <th class="column2">
                                 <button class="bg-transparent" style="border: none" wire:click="sortableAtr('evaluadorNombre')">
@@ -202,6 +228,12 @@
                                     <span class="fa fa{{$campoAtr === 'carrera' ? $iconAtr : '-circle'}}" style="color: white"></span>
                                 </button>
                             </th>
+                            <th class="column4">
+                                <button class="bg-transparent" style="border: none" wire:click="sortableAtr('planEstudios')">
+                                    <span style="color: white "> Plan de Estudios </span>
+                                    <span class="fa fa{{$campoAtr === 'planEstudios' ? $iconAtr : '-circle'}}" style="color: white"></span>
+                                </button>
+                            </th>
                             <th class="column5">
                                 <button class="bg-transparent" style="border: none" wire:click="sortableAtr('periodo')">
                                     <span style="color: white "> Periodo </span>
@@ -213,7 +245,8 @@
                     </thead>
                     <tbody>
                         @foreach ($encuestasAtributos as $encuesta)
-                            <tr class="table100-head">
+                        <tr class="table100-head">
+                            <td class="column7">{{$loop->iteration}}</td>
                                 @if ($encuesta->estatus == 'enviada')
                                     <td class="column1">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -251,8 +284,8 @@
                                 <td class="column3">
                                     {{ $encuesta->nombres }}
                                 </td>
-                                <td class="column4">{{ $encuesta->carrera }}
-                                </td>
+                                <td class="column4">{{ $encuesta->carrera }}</td>
+                                <td class="column4">{{ $encuesta->planEstudios }}</td>
                                 <td class="column5">{{ $encuesta->periodo }}</td>
                                 <td class="column6">
                                     @if ($encuesta->estatus == 'contestada')

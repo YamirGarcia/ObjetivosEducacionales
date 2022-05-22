@@ -14,7 +14,8 @@
                 <div class="col-lg-11" style="margin: 0 auto">
                     <div class="card">
                         <div class="card-body">
-
+                            <h3 class="mb-4"> {{App\Models\Carrera::find($carrera)->carrera}} | {{App\Models\Carrera::find($carrera)->planEstudios}}</h3>
+                            <hr>
                             @if ($errors->any())
                                 <div class="alert alert-dark alert-dismissible fade show" role="alert">
                                     <strong>¡Revisa los Campos!</strong>
@@ -30,7 +31,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="evaluador" class="form-label">Evaluador</label>
+                                        <label for="evaluador" class="form-label fs-4">Evaluador</label>
                                         <select name="evaluador" id="evaluador" class="form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($evaluadores as $evaluador)
@@ -41,7 +42,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="periodo" class="form-label">Periodo de evaluacion</label>
+                                        <label for="periodo" class="form-label fs-4">Periodo de evaluacion</label>
                                         {{-- <input type="text" class="form-control" name="periodo" id="periodo"> --}}
                                         <select name="periodo" id="periodo" class="form form-control" required>
                                             <option value="" selected disabled>Seleccione periodo</option>
@@ -55,7 +56,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="encuesta" class="form-label">Objetivos Educacionales</label>
+                                <label for="encuesta" class="form-label fs-5">Objetivos Educacionales</label>
 
                                 @foreach ($encuestas as $encuesta)
                                     <div class="accordion" id="accordionExample{{ $encuesta->id }}">
