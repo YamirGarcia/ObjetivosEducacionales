@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Tipo</label>
-                <select name="" class="form-select" wire:model="tipoSeleccionadoC1">
+                <select id="tipoC1" name="" class="form-select" wire:model="tipoSeleccionadoC1">
                     <option selected disabled value="">Seleccionar Tipo Encuesta </option>
                     <option value="Objetivos">Objetivos Educacionales</option>
                     <option value="Atributos">Atributos</option>
@@ -66,7 +66,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Carrera</label>
-                <select name="" class="form-select" wire:model="carreraSeleccionadaC1">
+                <select id="carreraC1" name="" class="form-select" wire:model="carreraSeleccionadaC1">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
                         <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Periodo</label>
-                <select name="" class="form-select" wire:model="periodoSeleccionadoC1">
+                <select id="periodoC1" name="" class="form-select" wire:model="periodoSeleccionadoC1">
                     <option selected disabled value="">Seleccionar Periodo </option>
                     <option value="ENE-JUN-">ENE-JUN</option>
                     <option value="VERANO-">VERANO</option>
@@ -84,7 +84,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Año</label>
-                <select name="" class="form-select" wire:model="añoSeleccionadoC1">
+                <select id="añoC1" name="" class="form-select" wire:model="añoSeleccionadoC1">
                     <option selected disabled value="">Seleccionar Año </option>
                     @foreach (range(2017, date('Y')) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -97,7 +97,7 @@
         <div class="row">
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Tipo</label>
-                <select name="" class="form-select" wire:model="tipoSeleccionadoC2">
+                <select id="tipoC2" name="" class="form-select" wire:model="tipoSeleccionadoC2">
                     <option selected disabled value="">Seleccionar Tipo Encuesta </option>
                     <option value="Objetivos">Objetivos Educacionales</option>
                     <option value="Atributos">Atributos</option>
@@ -105,7 +105,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Carrera</label>
-                <select name="" class="form-select" wire:model="carreraSeleccionadaC2">
+                <select id="carreraC2" name="" class="form-select" wire:model="carreraSeleccionadaC2">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
                         <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
@@ -114,7 +114,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Periodo</label>
-                <select name="" class="form-select" wire:model="periodoSeleccionadoC2">
+                <select id="periodoC2" name="" class="form-select" wire:model="periodoSeleccionadoC2">
                     <option selected disabled value="">Seleccionar Periodo </option>
                     <option value="ENE-JUN-">ENE-JUN</option>
                     <option value="VERANO-">VERANO</option>
@@ -123,7 +123,7 @@
             </div>
             <div class="col-3" style="margin: 0 auto;">
                 <label for="">Año</label>
-                <select name="" class="form-select" wire:model="añoSeleccionadoC2">
+                <select id="añoC2" name="" class="form-select" wire:model="añoSeleccionadoC2">
                     <option selected disabled value="">Seleccionar Año </option>
                     @foreach (range(2017, date('Y')) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -133,7 +133,11 @@
         </div>
     </div>
 
-    <div id="containerComparative" style="width:85%; margin: 5rem auto; "></div>
+    @if ($dataTablaComparativaC1 && $dataTablaComparativaC2)
+        <div id="containerComparative" style="width:85%; margin: 5rem auto; "></div>
+    @else
+        <h2 style="text-align: center">No existen datos a mostrar.</h2>
+    @endif
     {{-- @foreach ($objetivos as $item)
         {{$item}}    
     @endforeach --}}
@@ -171,121 +175,142 @@
         var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
         // let x = @this.nombresObjetivosC1;
         // console.log(x);
-            document.addEventListener('DOMContentLoaded', () => {
-                Livewire.hook('message.processed', (el, component) => {
-                    if (@this.renderizar) {
-                        const chart = Highcharts.chart('containerObjetivos', {
-                            chart: {
-                                type: 'column',
-                                renderTo: 'containerObjetivos',
-                                events: {
-                                    drilldown: function(e) {
-                                        chart.setTitle({
-                                            text: drilldownTitleObjetivos
-                                        });
-                                    },
-                                    drillup: function(e) {
-                                        chart.setTitle({
-                                            text: defaultTitleObjetivos
-                                        });
-                                    }
-                                }
-                            },
-                            title: {
-                                text: defaultTitleObjetivos
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            accessibility: {
-                                announceNewData: {
-                                    enabled: true
-                                }
-                            },
-                            xAxis: {
-                                type: 'category'
-                            },
-                            yAxis: {
-                                title: {
-                                    text: 'Promedios'
-                                }
-                            },
-                            legend: {
-                                enabled: false
-                            },
-                            plotOptions: {
-                                series: {
-                                    borderWidth: 0,
-                                    dataLabels: {
-                                        enabled: true,
-                                        format: '{point.y:.2f}'
-                                    }
-                                }
-                            },
-                            tooltip: {
-                                headerFormat: '<span style="font-size:11px">{point.name}</span><br>',
-                                pointFormat: '<span style="color:{point.color}">{point.name}</span><br>Promedio: <b>{point.y:.2f}</b>'
-                            },
-                            series: [{
-                                name: 'Objetivos',
-                                colorByPoint: true,
-                                // PRIMERAS COLUMNAS A MOSTRAR
-                                data: @this.datosObjetivos
-                            }],
-                            // ------------------- SUBTABLAS -------------------
-                            drilldown: {
-                                breadcrumbs: {
-                                    position: {
-                                        align: 'left'
-                                    }
+        var carrerac1;
+        var carrerac1S;
+        var periodoc1;
+        var periodoc1S
+        var añoc1;
+        var añoc1S;
+        var carrerac2;
+        var carrerac2S;
+        var periodoc2;
+        var periodoc2S
+        var añoc2;
+        var añoc2S;
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            Livewire.hook('message.processed', (el, component) => {
+                carrerac1 = document.getElementById("carreraC1");
+                carrerac1S = carrerac1.options[carrerac1.selectedIndex].text;
+                periodoc1 = document.getElementById("periodoC1");
+                periodoc1S = periodoc1.options[periodoc1.selectedIndex].text;
+                añoc1 = document.getElementById("añoC1");
+                añoc1S = añoc1.options[añoc1.selectedIndex].text;
+                carrerac2 = document.getElementById("carreraC2");
+                carrerac2S = carrerac2.options[carrerac2.selectedIndex].text;
+                periodoc2 = document.getElementById("periodoC2");
+                periodoc2S = periodoc2.options[periodoc2.selectedIndex].text;
+                añoc2 = document.getElementById("añoC2");
+                añoc2S = añoc2.options[añoc2.selectedIndex].text;
+                if (@this.renderizar) {
+                    const chart = Highcharts.chart('containerObjetivos', {
+                        chart: {
+                            type: 'column',
+                            renderTo: 'containerObjetivos',
+                            events: {
+                                drilldown: function(e) {
+                                    chart.setTitle({
+                                        text: drilldownTitleObjetivos
+                                    });
                                 },
-                                series: @this.dataAspectos
+                                drillup: function(e) {
+                                    chart.setTitle({
+                                        text: defaultTitleObjetivos
+                                    });
+                                }
                             }
-                        });
-                    }
-                    if (@this.renderizarT2) {
-                        Highcharts.chart('containerComparative', {
-                            chart: {
-                                type: 'column'
-                            },
+                        },
+                        title: {
+                            text: defaultTitleObjetivos
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        accessibility: {
+                            announceNewData: {
+                                enabled: true
+                            }
+                        },
+                        xAxis: {
+                            type: 'category'
+                        },
+                        yAxis: {
                             title: {
-                                text: 'Tabla comparativa'
-                            },
-                            xAxis: {
-                                categories: @this.nombresObjetivosC1
-                            },
-                            plotOptions: {
-                                series: {
-                                    borderWidth: 0,
-                                    dataLabels: {
-                                        enabled: true,
-                                        format: '{point.y:.2f}'
-                                    }
+                                text: 'Promedios'
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            series: {
+                                borderWidth: 0,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.y:.2f}'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:11px">{point.name}</span><br>',
+                            pointFormat: '<span style="color:{point.color}">{point.name}</span><br>Promedio: <b>{point.y:.2f}</b>'
+                        },
+                        series: [{
+                            name: 'Objetivos',
+                            colorByPoint: true,
+                            // PRIMERAS COLUMNAS A MOSTRAR
+                            data: @this.datosObjetivos
+                        }],
+                        // ------------------- SUBTABLAS -------------------
+                        drilldown: {
+                            breadcrumbs: {
+                                position: {
+                                    align: 'left'
                                 }
                             },
-                            credits: {
-                                enabled: false
-                            },
-                            series: [{
-                                name: 'Tabla 1',
-                                data: @this.dataTablaComparativaC1
-                            }, {
-                                name: 'Tabla 2',
-                                data: @this.dataTablaComparativaC2
-                            }]
-                        });
-                        // Livewire.emit('resetear');
-                    }
-    
-                    
-                    // Livewire.emit('resetear');
-    
-                    // @this.renderizarT2 = false;
-    
-                    // @this.renderizar = false;
-                });
+                            series: @this.dataAspectos
+                        }
+                    });
+                }
+                if (@this.renderizarT2) {
+                    Highcharts.chart('containerComparative', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Tabla comparativa'
+                        },
+                        xAxis: {
+                            categories: @this.nombresObjetivosC1
+                        },
+                        plotOptions: {
+                            series: {
+                                borderWidth: 0,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.y:.2f}'
+                                }
+                            }
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        series: [{
+                            name: carrerac1S + " | " + periodoc1S + "-" + añoc1S,
+                            data: @this.dataTablaComparativaC1
+                        }, {
+                            name: carrerac2S + " | " + periodoc2S + "-" + añoc2S,
+                            data: @this.dataTablaComparativaC2
+                        }]
+                    });
+                    // Esto es para hacer que se vaya al final solo que no se como hacer para que identifique cuando los select de abajo se modificaron
+                    // $('html, body').animate({scrollTop: document.body.scrollHeight}, 'fast');
+                    //Para ir al principio de la pagina
+                    // $('html, body').animate({scrollTop: 0}, 'fast');
+                }
             });
-        
+        });
     </script>
 
 

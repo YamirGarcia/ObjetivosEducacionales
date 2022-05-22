@@ -47,7 +47,7 @@ class EstadisticasComponent extends Component
 
     public $dataTablaComparativaC1 = null;
     public $dataTablaComparativaC2 = null;
-    public $idObjetivos =[];
+    public $idObjetivos = [];
 
     protected $listeners = ['resetear'];
     public $termino = false;
@@ -234,60 +234,47 @@ class EstadisticasComponent extends Component
                     $sumatoriaAspectos = [];
                     $contadoresAspectos = [];
                     // dd($sumatoriaAspectos);
-                    foreach ($this->dicAspectosC1 as $key => &$val) {
-                        if (isset($sumatoriaAspectos[$val["objetivo"]])) {
-                            $sumatoriaAspectos[$val["objetivo"]] += floatval($val["valor"]);
-                            $contadoresAspectos[$val["objetivo"]] += 1;
-                        } else {
-                            $sumatoriaAspectos[$val["objetivo"]] = floatval($val["valor"]);
-                            // $this->dicAspectosC1[] = ["aspecto" => $item->id, "valor" => intval($item->respuesta), "objetivo" => $item->objetivo];
-                            $contadoresAspectos[$val["objetivo"]] = 1;
-                            // $nombresAspectos[$item->id] = $item->nombre;
+                    if ($this->dicAspectosC1) {
+                        foreach ($this->dicAspectosC1 as $key => &$val) {
+                            if (isset($sumatoriaAspectos[$val["objetivo"]])) {
+                                $sumatoriaAspectos[$val["objetivo"]] += floatval($val["valor"]);
+                                $contadoresAspectos[$val["objetivo"]] += 1;
+                            } else {
+                                $sumatoriaAspectos[$val["objetivo"]] = floatval($val["valor"]);
+                                $contadoresAspectos[$val["objetivo"]] = 1;
+                            }
                         }
-                        // if ($val["aspecto"] == $item->id) {
-                        //     $val["valor"] = intval($val["valor"]) + intval($item->respuesta);
-                        // }
                     }
                 }
 
                 // -------------------------------- PROMEDIOS ----------------------------------------------
                 // se obtiene el pormedio por objetivo segun los aspectos que tenga
-                foreach ($sumatoriaAspectos as $key => &$val) {
-                    $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
-                }
-
-
-
-                // se crea el arreglo con el nombre de todos los objetivos para mostrarlo en la tabla 
-                // en la seccion de category
-                foreach ($sumatoriaAspectos as $key => &$val) {
-                    if (isset($this->idObjetivos[$key])) {                        
-                        $this->nombresObjetivosC1[] = "hola";
-                    } else {
-                        $this->nombresObjetivosC1[] = ObjetivoEducacional::find($key)->descripcion;
-                        $this->idObjetivos[$key] = $key;
+                if ($sumatoriaAspectos) {
+                    foreach ($sumatoriaAspectos as $key => &$val) {
+                        $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
                     }
-                    // $idObjetivos[$key] = $key;
-                }
 
-                // se compara idObjetivos para saber si existe en nuestra sumatria para poner el valor por default en 0;
-                foreach($this->idObjetivos as $key => &$val){
-                    if (isset($sumatoriaAspectos[$key])) {
-                        $this->dataTablaComparativaC1[] = $sumatoriaAspectos[$key];
-                    }else{
-                        $this->dataTablaComparativaC1[] = 0;
+                    // se crea el arreglo con el nombre de todos los objetivos para mostrarlo en la tabla 
+                    // en la seccion de category
+                    foreach ($sumatoriaAspectos as $key => &$val) {
+                        if (isset($this->idObjetivos[$key])) {
+                            $this->nombresObjetivosC1[] = "hola";
+                        } else {
+                            $this->nombresObjetivosC1[] = ObjetivoEducacional::find($key)->descripcion;
+                            $this->idObjetivos[$key] = $key;
+                        }
+                        // $idObjetivos[$key] = $key;
+                    }
+
+                    // se compara idObjetivos para saber si existe en nuestra sumatria para poner el valor por default en 0;
+                    foreach ($this->idObjetivos as $key => &$val) {
+                        if (isset($sumatoriaAspectos[$key])) {
+                            $this->dataTablaComparativaC1[] = $sumatoriaAspectos[$key];
+                        } else {
+                            $this->dataTablaComparativaC1[] = 0;
+                        }
                     }
                 }
-                // foreach ($sumatoriaAspectos as $key => &$val) {
-                //     if ($key == $this->idObjetivos[$key]) {
-                //         $this->dataTablaComparativaC1[] = $val;
-                //     } else {
-                //         $this->dataTablaComparativaC1[] = 0;
-                //     }
-                // }
-                // Se asignan los valroes a las variables globales para poder renderizarlo en los templates
-                // $this->datosObjetivosC1 = $dataBarrasObjetivos;
-                // $this->dataAspectosC1 = $dataAspectos;
             }
             if ($this->tipoSeleccionadoC2 == "Objetivos") {
                 // Se mandan llamar la funcion que limpia las varibales globales para que no duplique información
@@ -346,69 +333,50 @@ class EstadisticasComponent extends Component
                     // se reinicican las variables para podr obtener la sumatoria del promedio por objetivo
                     $sumatoriaAspectos = [];
                     $contadoresAspectos = [];
-                    // dd($sumatoriaAspectos);
-                    foreach ($this->dicAspectosC2 as $key => &$val) {
-                        if (isset($sumatoriaAspectos[$val["objetivo"]])) {
-                            $sumatoriaAspectos[$val["objetivo"]] += floatval($val["valor"]);
-                            $contadoresAspectos[$val["objetivo"]] += 1;
-                        } else {
-                            $sumatoriaAspectos[$val["objetivo"]] = floatval($val["valor"]);
-                            // $this->dicAspectosC1[] = ["aspecto" => $item->id, "valor" => intval($item->respuesta), "objetivo" => $item->objetivo];
-                            $contadoresAspectos[$val["objetivo"]] = 1;
-                            // $nombresAspectos[$item->id] = $item->nombre;
+                    if ($this->dicAspectosC2) {
+
+                        foreach ($this->dicAspectosC2 as $key => &$val) {
+                            if (isset($sumatoriaAspectos[$val["objetivo"]])) {
+                                $sumatoriaAspectos[$val["objetivo"]] += floatval($val["valor"]);
+                                $contadoresAspectos[$val["objetivo"]] += 1;
+                            } else {
+                                $sumatoriaAspectos[$val["objetivo"]] = floatval($val["valor"]);
+                                // $this->dicAspectosC1[] = ["aspecto" => $item->id, "valor" => intval($item->respuesta), "objetivo" => $item->objetivo];
+                                $contadoresAspectos[$val["objetivo"]] = 1;
+                                // $nombresAspectos[$item->id] = $item->nombre;
+                            }
                         }
-                        // if ($val["aspecto"] == $item->id) {
-                        //     $val["valor"] = intval($val["valor"]) + intval($item->respuesta);
-                        // }
                     }
                 }
 
                 // -------------------------------- PROMEDIOS ----------------------------------------------
                 // se obtiene el pormedio por objetivo segun los aspectos que tenga
-                foreach ($sumatoriaAspectos as $key => &$val) {
-                    $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
-                }
+                if ($sumatoriaAspectos) {
+                    foreach ($sumatoriaAspectos as $key => &$val) {
+                        $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
+                    }
 
 
 
-                // se crea el arreglo con el nombre de todos los objetivos para mostrarlo en la tabla 
-                // en la seccion de category
-                foreach ($sumatoriaAspectos as $key => &$val) {
-                    if (isset($this->idObjetivos[$key])) {
-                    } else {
-                        $this->nombresObjetivosC1[] = ObjetivoEducacional::find($key)->descripcion;
-                        $this->idObjetivos[$key] = $key;
+                    // se crea el arreglo con el nombre de todos los objetivos para mostrarlo en la tabla 
+                    // en la seccion de category
+                    foreach ($sumatoriaAspectos as $key => &$val) {
+                        if (isset($this->idObjetivos[$key])) {
+                        } else {
+                            $this->nombresObjetivosC1[] = ObjetivoEducacional::find($key)->descripcion;
+                            $this->idObjetivos[$key] = $key;
+                        }
+                    }
+                    // se compara idObjetivos para saber si existe en nuestra sumatria para poner el valor por default en 0;
+                    foreach ($this->idObjetivos as $key => &$val) {
+                        if (isset($sumatoriaAspectos[$key])) {
+                            $this->dataTablaComparativaC2[] = $sumatoriaAspectos[$key];
+                        } else {
+                            $this->dataTablaComparativaC2[] = 0;
+                        }
                     }
                 }
-                // se compara idObjetivos para saber si existe en nuestra sumatria para poner el valor por default en 0;
-                foreach($this->idObjetivos as $key => &$val){
-                    if (isset($sumatoriaAspectos[$key])) {
-                        $this->dataTablaComparativaC2[] = $sumatoriaAspectos[$key];
-                    }else{
-                        $this->dataTablaComparativaC2[] = 0;
-                    }
-                }
-                // foreach ($sumatoriaAspectos as $key => &$val) {
-                //     if ($key == $this->idObjetivos[$key]) {
-                //         $this->dataTablaComparativaC2[] = $val;
-                //     } else {
-                //         $this->dataTablaComparativaC2[] = 0;
-                //     }
-                // }
-
-                // dd($this->dataTablaComparativaC2);
-                // Se asignan los valroes a las variables globales para poder renderizarlo en los templates
-                // $this->datosObjetivosC1 = $dataBarrasObjetivos;
-                // $this->dataAspectosC1 = $dataAspectos;
             }
-            $this->tipoSeleccionadoC1 = '';
-            $this->carreraSeleccionadaC1 = '';
-            $this->periodoSeleccionadoC1 = '';
-            $this->añoSeleccionadoC1 = '';
-            $this->tipoSeleccionadoC2 = '';
-            $this->carreraSeleccionadaC2 = '';
-            $this->periodoSeleccionadoC2 = '';
-            $this->añoSeleccionadoC2 = '';
         }
 
         return view('livewire.estadisticas.estadisticas-component', [
@@ -452,9 +420,9 @@ class EstadisticasComponent extends Component
         $this->dicAspectosC2 = null;
         $this->dataTablaComparativaC2 = null;
     }
-    public function resetear(){
+    public function resetear()
+    {
         $this->renderizar = false;
         $this->renderizarT2 = false;
     }
-    
 }
