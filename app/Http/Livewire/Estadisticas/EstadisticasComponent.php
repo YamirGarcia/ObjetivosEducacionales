@@ -39,11 +39,17 @@ class EstadisticasComponent extends Component
     public $dataAspectosC1 = null;
     public $dicAspectosC1 = null;
     public $nombresObjetivosC1 = null;
+    public $encuestasC1 = null;
+    public $evaluadoresC1 = null;
+    public $tablaC1 = '';
 
     public $tipoSeleccionadoC2 = '';
     public $carreraSeleccionadaC2 = '';
     public $periodoSeleccionadoC2 = '';
     public $añoSeleccionadoC2 = '';
+    public $encuestasC2 = null;
+    public $evaluadoresC2 = null;
+    public $tablaC2 = '';
 
     public $dataTablaComparativaC1 = null;
     public $dataTablaComparativaC2 = null;
@@ -59,21 +65,16 @@ class EstadisticasComponent extends Component
 
     public function render()
     {
-        // $this->renderizar = false;
-        // $this->renderizarT2 = false;
         $this->dicAspectos = null;
         $user = Auth::user();
         $carreras = \App\Models\Carrera::select('id', 'carrera')->where('creadopor', $user->id)->get();
 
         $dataBarrasObjetivos = [];
         $dataAspectos = [];
-        $nombreCarreras = [];
         $sumatoria = [];
         $sumatoriaAspectos = [];
         $contadores = [];
         $contadoresAspectos = [];
-        $nombresObjetivos = [];
-        // $nombresAspectos = [];
 
         // if para la primer tabla
         if ($this->tipoSeleccionado && $this->carreraSeleccionada && $this->añoSeleccionado && $this->periodoSeleccionado) {
@@ -181,14 +182,12 @@ class EstadisticasComponent extends Component
                 // Se crean las variables necearias para extrar los promedios 
                 $dataBarrasObjetivos = [];
                 $dataAspectos = [];
-                $nombreCarreras = [];
                 $sumatoria = [];
                 $sumatoriaAspectos = [];
                 $contadores = [];
                 $contadoresAspectos = [];
-                $nombresObjetivos = [];
-                // $nombresAspectos = [];
                 $periodo = $this->periodoSeleccionadoC1 . $this->añoSeleccionadoC1;
+                $this->tablaC1 = \App\Models\Carrera::find($this->carreraSeleccionadaC1)->carrera." ".$this->periodoSeleccionadoC1.$this->añoSeleccionadoC1;
                 // Se hace la consulta a la base de datos
                 $respuestasTemp = db::table('objetivo_educacionals')
                     ->join('objetivo_aspectos', 'objetivo_aspectos.objetivo_educacional_id', '=', 'objetivo_educacionals.id')
@@ -198,8 +197,23 @@ class EstadisticasComponent extends Component
                     ->join('encuesta_evaluador_objetivos', 'encuesta_evaluador_objetivos.id', '=', 'respuesta_objetivos.idEncuestaAsignada')
                     ->where([['objetivo_educacionals.idCarrera', '=', $this->carreraSeleccionadaC1], ['encuesta_evaluador_objetivos.periodo', '=', $periodo]]);
 
-                $respuestasC2 = $respuestasTemp->select('aspectos_objetivos.id', 'aspectos_objetivos.nombre', 'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo', 'objetivo_educacionals.id as objetivo')->get();
                 $respuestasAtributos = $respuestasTemp->select('aspectos_objetivos.id', 'aspectos_objetivos.nombre', 'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo', 'objetivo_educacionals.id as objetivo')->get();
+
+                $this->encuestasC1 = db::table('encuesta_evaluador_objetivos')
+                    ->where([
+                        ['idCarrera', '=', $this->carreraSeleccionadaC1],
+                        ['periodo', '=', $periodo]
+                    ])
+                    ->get();
+                $this->evaluadoresC1 = db::table('encuesta_evaluador_objetivos')
+                    ->select('evaluador')
+                    ->where([
+                        ['idCarrera', '=', $this->carreraSeleccionadaC1],
+                        ['periodo', '=', $periodo]
+                    ])
+                    ->groupBy('evaluador')
+                    ->get();
+                // dd($this->evaluadoresC1);
                 // ------------------------------ SUMATORIAS ------------------------------
 
                 if ($respuestasAtributos) {
@@ -289,6 +303,8 @@ class EstadisticasComponent extends Component
                 $contadoresAspectos = [];
                 // $nombresAspectos = [];
                 $periodo = $this->periodoSeleccionadoC2 . $this->añoSeleccionadoC2;
+
+                $this->tablaC2 = \App\Models\Carrera::find($this->carreraSeleccionadaC2)->carrera." ".$this->periodoSeleccionadoC2.$this->añoSeleccionadoC2;
                 // Se hace la consulta a la base de datos
                 $respuestasTemp = db::table('objetivo_educacionals')
                     ->join('objetivo_aspectos', 'objetivo_aspectos.objetivo_educacional_id', '=', 'objetivo_educacionals.id')
@@ -298,8 +314,22 @@ class EstadisticasComponent extends Component
                     ->join('encuesta_evaluador_objetivos', 'encuesta_evaluador_objetivos.id', '=', 'respuesta_objetivos.idEncuestaAsignada')
                     ->where([['objetivo_educacionals.idCarrera', '=', $this->carreraSeleccionadaC2], ['encuesta_evaluador_objetivos.periodo', '=', $periodo]]);
 
-                $respuestasC2 = $respuestasTemp->select('aspectos_objetivos.id', 'aspectos_objetivos.nombre', 'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo', 'objetivo_educacionals.id as objetivo')->get();
                 $respuestasAtributos = $respuestasTemp->select('aspectos_objetivos.id', 'aspectos_objetivos.nombre', 'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo', 'objetivo_educacionals.id as objetivo')->get();
+                $this->encuestasC2 = db::table('encuesta_evaluador_objetivos')
+                                    ->where([
+                                        ['idCarrera', '=', $this->carreraSeleccionadaC2],
+                                        ['periodo', '=', $periodo]
+                                    ])
+                                    ->get();
+                $this->evaluadoresC2 = db::table('encuesta_evaluador_objetivos')
+                                    ->select('evaluador')
+                                    ->where([
+                                        ['idCarrera', '=', $this->carreraSeleccionadaC2],
+                                        ['periodo', '=', $periodo]
+                                    ])
+                                    ->groupBy('evaluador')
+                                    ->get();
+
                 // ------------------------------ SUMATORIAS ------------------------------
 
                 if ($respuestasAtributos) {
@@ -381,7 +411,7 @@ class EstadisticasComponent extends Component
 
         return view('livewire.estadisticas.estadisticas-component', [
             'carreras2' => $carreras,
-            'objetivos' => json_encode($this->nombresObjetivosC1),
+            'objetivos' => json_encode($this->nombresObjetivosC1)
         ])->layout('estadisticas.baseEstadisticas');
     }
 

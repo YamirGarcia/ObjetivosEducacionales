@@ -14,7 +14,7 @@
                 <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
-                        <option value="{{ $carrera->id }}">{{ $carrera->carrera}}</option>
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
                     @endforeach
                 </select>
             </div>
@@ -135,13 +135,72 @@
 
     @if ($dataTablaComparativaC1 && $dataTablaComparativaC2)
         <div id="containerComparative" style="width:85%; margin: 5rem auto; "></div>
+        <div class="card-stadistics">
+            <div class="item item--1">
+                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="#014f86"
+                        d="M17 15.245v6.872a.5.5 0 0 1-.757.429L12 20l-4.243 2.546a.5.5 0 0 1-.757-.43v-6.87a8 8 0 1 1 10 0zm-8 1.173v3.05l3-1.8 3 1.8v-3.05A7.978 7.978 0 0 1 12 17a7.978 7.978 0 0 1-3-.582zM12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
+                    </path>
+                </svg>
+                <span id="span-info" class="text text--1"> {{$tablaC1}} </span>
+            </div>
+            <div class="item item--2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0L24 0 24 24 0 24z"></path>
+                    <path
+                        d="M16 16c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zM6 12c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm10 6c-.552 0-1 .448-1 1s.448 1 1 1 1-.448 1-1-.448-1-1-1zM6 14c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm8.5-12C17.538 2 20 4.462 20 7.5S17.538 13 14.5 13 9 10.538 9 7.5 11.462 2 14.5 2zm0 2C12.567 4 11 5.567 11 7.5s1.567 3.5 3.5 3.5S18 9.433 18 7.5 16.433 4 14.5 4z"
+                        fill="#014f86"></path>
+                </svg> <span class="quantity"> {{count($encuestasC1)}} </span>
+                <span class="text text--2"> Encuestas </span>
+            </div>
+            <div class="item item--3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="#014f86"
+                        d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z">
+                    </path>
+                </svg>
+                <span class="quantity"> {{count($evaluadoresC1)}} </span>
+                <span class="text text--3"> Evaluadores </span>
+            </div>
+        </div>
+        <div class="card-stadistics">
+            <div class="item item--1">
+                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="#014f86"
+                        d="M17 15.245v6.872a.5.5 0 0 1-.757.429L12 20l-4.243 2.546a.5.5 0 0 1-.757-.43v-6.87a8 8 0 1 1 10 0zm-8 1.173v3.05l3-1.8 3 1.8v-3.05A7.978 7.978 0 0 1 12 17a7.978 7.978 0 0 1-3-.582zM12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
+                    </path>
+                </svg>
+                <span id="span-info" class="text text--1"> {{$tablaC2}} </span>
+            </div>
+            <div class="item item--2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0L24 0 24 24 0 24z"></path>
+                    <path
+                        d="M16 16c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zM6 12c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm10 6c-.552 0-1 .448-1 1s.448 1 1 1 1-.448 1-1-.448-1-1-1zM6 14c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm8.5-12C17.538 2 20 4.462 20 7.5S17.538 13 14.5 13 9 10.538 9 7.5 11.462 2 14.5 2zm0 2C12.567 4 11 5.567 11 7.5s1.567 3.5 3.5 3.5S18 9.433 18 7.5 16.433 4 14.5 4z"
+                        fill="#014f86"></path>
+                </svg> <span class="quantity"> {{count($encuestasC2)}} </span>
+                <span class="text text--2"> Encuestas </span>
+            </div>
+            <div class="item item--3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="#014f86"
+                        d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z">
+                    </path>
+                </svg>
+                <span class="quantity"> {{count($evaluadoresC2)}} </span>
+                <span class="text text--3"> Evaluadores </span>
+            </div>
+        </div>
     @else
         <h2 style="text-align: center">No existen datos a mostrar.</h2>
     @endif
-    {{-- @foreach ($objetivos as $item)
-        {{$item}}    
-    @endforeach --}}
-    {{-- {{$objetivos}} --}}
+    
+
+
+
+
 
     <script>
         Highcharts.setOptions({
@@ -163,13 +222,14 @@
                 downloadSVG: "Descargar en SVG (Vector de Imagen)",
                 downloadCSV: false,
                 downloadXLS: "Descargar en .xls",
-                viewData: false
+                // viewData: false
             },
             plotOptions: {
                 series: {
                     animation: false
                 }
-            }
+            },
+            colors: ['#72efdd', '#5e60ce', '#99d98c', '#144552', '#ff9e00', '#ff4d6d', '#56ab91', '#FFF263', '#c19ee0', '#cc3399']
         });
         var defaultTitleObjetivos = "Promedios Por Objetivos Educacionales";
         var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
@@ -187,6 +247,7 @@
         var periodoc2S
         var añoc2;
         var añoc2S;
+        const span = document.getElementById('span-info');
 
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -203,6 +264,7 @@
                 periodoc2S = periodoc2.options[periodoc2.selectedIndex].text;
                 añoc2 = document.getElementById("añoC2");
                 añoc2S = añoc2.options[añoc2.selectedIndex].text;
+
                 if (@this.renderizar) {
                     const chart = Highcharts.chart('containerObjetivos', {
                         chart: {
@@ -274,6 +336,7 @@
                     });
                 }
                 if (@this.renderizarT2) {
+
                     Highcharts.chart('containerComparative', {
                         chart: {
                             type: 'column'
@@ -293,14 +356,17 @@
                                 }
                             }
                         },
+                        tooltip: {
+                            pointFormat: '<span style="color:{point.color}">{point.name}</span><br>Promedio: <b>{point.y:.2f}</b>'
+                        },
                         credits: {
                             enabled: false
                         },
                         series: [{
-                            name: carrerac1S + " | " + periodoc1S + "-" + añoc1S,
+                            name: @this.tablaC1,
                             data: @this.dataTablaComparativaC1
                         }, {
-                            name: carrerac2S + " | " + periodoc2S + "-" + añoc2S,
+                            name: @this.tablaC2,
                             data: @this.dataTablaComparativaC2
                         }]
                     });

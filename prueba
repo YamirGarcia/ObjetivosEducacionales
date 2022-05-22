@@ -254,6 +254,18 @@
 
 
 
+
+
+
+
+
+
+                
+
+
+
+
+
                 if (@this.renderizarT2) {
                     Highcharts.chart('containerComparative', {
                         chart: {
