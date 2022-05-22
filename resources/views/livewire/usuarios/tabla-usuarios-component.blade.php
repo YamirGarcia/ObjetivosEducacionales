@@ -25,7 +25,9 @@
                                         <select class="form-control" wire:model='rol'>
                                             <option value="" selected>Todos los roles</option>
                                             @foreach ($roles as $rol)
-                                                <option value="{{ $rol }}">{{ $rol }}</option>
+                                                @if ($rol != 'Evaluador')
+                                                    <option value="{{ $rol }}">{{ $rol }}</option>    
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>

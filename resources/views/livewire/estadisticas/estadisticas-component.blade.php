@@ -14,7 +14,7 @@
                 <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
-                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera}}</option>
                     @endforeach
                 </select>
             </div>
