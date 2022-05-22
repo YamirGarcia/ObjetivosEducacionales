@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
+    public $carrerasUsuario;
+    // protected $listeners = [
+    //     'cargarCarrerasUsuario'
+    // ];
     function __construct()
     {
         $this->middleware('permission:ver-usuario | crear-usuario | editar-usuario | borrar-usuario', ['only'=>['usuarios.index']]);
@@ -53,6 +57,11 @@ class UsuarioController extends Controller
     {
         $user = User::find($id);
         $roles = Role::pluck('name', 'name')->all();
+        // dd(gettype( $roles));
+        $roles = array_filter($roles, function ($key){
+            if($key == 'Evaluador') {return false;}
+            else {return true;}
+        });
         $userRole = $user->roles->pluck('name', 'name')->all();
         return view('usuarios.editar', compact('user', 'roles', 'userRole'));
 
@@ -111,13 +120,14 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'apellido'=> 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
             'telefono' => 'required',
-            'roles' => 'required'
+            'rol' => 'required'
         ]);   
         $input = $request->all();
         if (!empty($input['password'])){
@@ -130,7 +140,9 @@ class UsuarioController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
 
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('rol'));
+        $user->save();
+        // dd($user->rol);
         return redirect()->route('usuarios.index');
     }
 
@@ -159,5 +171,9 @@ class UsuarioController extends Controller
         $user->update($input);
         return redirect()->route('home');
     }
+
+    // public function cargarCarrerasUsuario($idUsuario){
+    //     dd($idUsuario);
+    // }
 }
 
