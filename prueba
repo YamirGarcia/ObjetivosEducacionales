@@ -38,6 +38,7 @@
             </div>
             {{-- <button type="button" wire:click="$emit('graficarTabla1')">Graficar</button> --}}
         </div>
+
     </div>
 
     {{-- rojo verder azul cyan magenta amarillo --}}
@@ -134,10 +135,6 @@
     </div>
 
     <div id="containerComparative" style="width:85%; margin: 5rem auto; "></div>
-    {{-- @foreach ($objetivos as $item)
-        {{$item}}    
-    @endforeach --}}
-    {{-- {{$objetivos}} --}}
 
     <script>
         Highcharts.setOptions({
@@ -160,132 +157,139 @@
                 downloadCSV: false,
                 downloadXLS: "Descargar en .xls",
                 viewData: false
-            },
-            plotOptions: {
-                series: {
-                    animation: false
-                }
             }
         });
+
+
+
+
         var defaultTitleObjetivos = "Promedios Por Objetivos Educacionales";
         var drilldownTitleObjetivos = "Promedios Por Aspectos de ";
-        // let x = @this.nombresObjetivosC1;
-        // console.log(x);
-            document.addEventListener('DOMContentLoaded', () => {
-                Livewire.hook('message.processed', (el, component) => {
-                    if (@this.renderizar) {
-                        const chart = Highcharts.chart('containerObjetivos', {
-                            chart: {
-                                type: 'column',
-                                renderTo: 'containerObjetivos',
-                                events: {
-                                    drilldown: function(e) {
-                                        chart.setTitle({
-                                            text: drilldownTitleObjetivos
-                                        });
-                                    },
-                                    drillup: function(e) {
-                                        chart.setTitle({
-                                            text: defaultTitleObjetivos
-                                        });
-                                    }
-                                }
-                            },
-                            title: {
-                                text: defaultTitleObjetivos
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            accessibility: {
-                                announceNewData: {
-                                    enabled: true
-                                }
-                            },
-                            xAxis: {
-                                type: 'category'
-                            },
-                            yAxis: {
-                                title: {
-                                    text: 'Promedios'
-                                }
-                            },
-                            legend: {
-                                enabled: false
-                            },
-                            plotOptions: {
-                                series: {
-                                    borderWidth: 0,
-                                    dataLabels: {
-                                        enabled: true,
-                                        format: '{point.y:.2f}'
-                                    }
-                                }
-                            },
-                            tooltip: {
-                                headerFormat: '<span style="font-size:11px">{point.name}</span><br>',
-                                pointFormat: '<span style="color:{point.color}">{point.name}</span><br>Promedio: <b>{point.y:.2f}</b>'
-                            },
-                            series: [{
-                                name: 'Objetivos',
-                                colorByPoint: true,
-                                // PRIMERAS COLUMNAS A MOSTRAR
-                                data: @this.datosObjetivos
-                            }],
-                            // ------------------- SUBTABLAS -------------------
-                            drilldown: {
-                                breadcrumbs: {
-                                    position: {
-                                        align: 'left'
-                                    }
-                                },
-                                series: @this.dataAspectos
-                            }
-                        });
-                    }
-                    if (@this.renderizarT2) {
-                        Highcharts.chart('containerComparative', {
-                            chart: {
-                                type: 'column'
-                            },
-                            title: {
-                                text: 'Tabla comparativa'
-                            },
-                            xAxis: {
-                                categories: @this.nombresObjetivosC1
-                            },
-                            plotOptions: {
-                                series: {
-                                    borderWidth: 0,
-                                    dataLabels: {
-                                        enabled: true,
-                                        format: '{point.y:.2f}'
-                                    }
-                                }
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            series: [{
-                                name: 'Tabla 1',
-                                data: @this.dataTablaComparativaC1
-                            }, {
-                                name: 'Tabla 2',
-                                data: @this.dataTablaComparativaC2
-                            }]
-                        });
-                        // Livewire.emit('resetear');
-                    }
-    
+        document.addEventListener('DOMContentLoaded', () => {
+            Livewire.hook('message.processed', (el, component) => {
+                // if(selecttabla1 cambian)
+                // let selectTabla1 = document.querySelectorAll(".tabla1");
+                // selectTabla1.forEach(element => {
+                //     element.addEventListener('change', () => {
+                //         console.log("cambio");
+                //     });
+                // });
+                if (@this.renderizar) {
                     
-                    // Livewire.emit('resetear');
-    
-                    // @this.renderizarT2 = false;
-    
-                    // @this.renderizar = false;
+                }
+                Highcharts.chart('containerObjetivos', {
+                    chart: {
+                        type: 'column',
+                        renderTo: 'containerObjetivos',
+                        events: {
+                            drilldown: function(e) {
+                                chart.setTitle({
+                                    text: drilldownTitleObjetivos
+                                });
+                            },
+                            drillup: function(e) {
+                                chart.setTitle({
+                                    text: defaultTitleObjetivos
+                                });
+                            }
+                        }
+                    },
+                    title: {
+                        text: defaultTitleObjetivos
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    accessibility: {
+                        announceNewData: {
+                            enabled: true
+                        }
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Promedios'
+                        }
+
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:.2f}'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{point.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span><br>Promedio: <b>{point.y:.2f}</b>'
+                    },
+
+                    series: [{
+                        name: 'Objetivos',
+                        colorByPoint: true,
+                        // PRIMERAS COLUMNAS A MOSTRAR
+                        data: @this.datosObjetivos
+                    }],
+                    // ------------------- SUBTABLAS -------------------
+                    drilldown: {
+                        breadcrumbs: {
+                            position: {
+                                align: 'left'
+                            }
+                        },
+                        series: @this.dataAspectos
+
+                    }
                 });
+
+
+
+
+
+                if (@this.renderizarT2) {
+                    Highcharts.chart('containerComparative', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Tabla comparativa'
+                        },
+                        xAxis: {
+                            categories: @this.nombresObjetivosC1
+                        },
+                        plotOptions: {
+                            series: {
+                                borderWidth: 0,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.y:.2f}'
+                                }
+                            }
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        series: [{
+                            name: 'Tabla 1',
+                            data: [5, 3]
+                        }, {
+                            name: 'Tabla 2',
+                            data: [0, 1]
+                        }]
+                    });
+                }
+                // console.log(@this.nombresObjetivosC1);
+
             });
-        
+        });
     </script>
 
 
