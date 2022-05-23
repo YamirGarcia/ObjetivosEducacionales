@@ -29,7 +29,7 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card shadow mb-5 bg-body rounded">
+                    <div>
                         @livewire('estadisticas.estadisticas-component')
                     </div>
                 </div>

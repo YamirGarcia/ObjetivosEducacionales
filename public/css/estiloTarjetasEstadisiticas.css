@@ -1,75 +1,78 @@
-.card-stadistics {
-    width: 90%;
-    height: 150px;
-    color: rgb(255, 254, 254);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* grid-template-rows: 1fr 1fr; */
-    gap: 5px;
-    overflow: visible;
-    margin: 20px auto;
-}
-
-.card-stadistics .item {
+.container-tabla-filtros{
+    /* display: inline-block; */
+    position: relative;
+    display: flex;
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    background-color: white;
+}
+.filtros{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: auto;
+    width: 20%;
+    /* background-color: blue; */
+    padding: 10px;
+}
+.filtros select{
+    border: none;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+}
+
+.preview{
+    height: 500px;
+    padding: 0;
+    margin: 0;
+}
+
+.tabla{
+    height: auto;
+    width: 80%;
+    /* background-color: red; */
+    text-align: center;
+}
+
+
+
+.fil1, .fil2{
+    /* background-color: red; */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+}
+.fil1 select{
+    border: none;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    /* background-color: red; */
+}
+
+.fil2 select{
+    border: none;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    /* background-color: red; */
+}
+.fil2{
+    margin-top: 10px;
+}
+
+.container-card{
+    display: flex;
+    width: 100%;
     justify-content: center;
 }
 
-.item:hover {
-    transform: scale(0.95);
-    transition: all 0.3s;
+.card-informativa{
+    width: 400px;
+    height: 120px;
+    margin: 15px;
+    /* background-color: red; */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    vertical-align: middle;
 }
 
-.item svg {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 7px;
-}
-
-.item--1 {
-    background: #468faf9c;
-}
-
-.item--2 {
-    background: #61a5c29c;
-}
-
-.item--3 {
-    background: #89c2d99c;
-}
-
-.item--4 {
-    background: #f3bbe1;
-}
-
-.quantity {
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.text {
-    font-size: 16px;
-    font-family: inherit;
-    font-weight: 600;
-}
-
-.text--1 {
-    color: #014f86;
-}
-
-.text--2 {
-    color: #014f86;
-}
-
-.text--3 {
-    color: #014f86;
-}
-
-.text--4 {
-    color: black;
+.quantity{
+    font-size: 24px;
+    font-weight: 900;
 }
