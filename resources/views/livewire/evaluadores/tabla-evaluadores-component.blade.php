@@ -45,6 +45,13 @@
                                 style="color: white"></span>
                         </button>
                     </th>
+                    <th class="column3">
+                        <button class="bg-transparent" style="border: none" wire:click="sortable('telefono')">
+                            <span style="color: white"> Telefono </span>
+                            <span class="fa fa{{ $campo === 'telefono' ? $icon : '-circle' }}"
+                                style="color: white"></span>
+                        </button>
+                    </th>
                     <th class="column4">
                         <button class="bg-transparent" style="border: none" wire:click="sortable('empresa')">
                             <span style="color: white"> Empresa </span>
@@ -64,6 +71,7 @@
                             <td class="column1" style="display: none;">{{ $evaluador->id }}</td>
                             <td class="column2">{{ $evaluador->nombres }}</td>
                             <td class="column3">{{ $evaluador->correo }}</td>
+                            <td class="column3">{{ $evaluador->telefono }}</td>
                             <td class="column4">{{ $evaluador->empresa }}</td>
                             <td class="column5">
                                 <div class="acciones">

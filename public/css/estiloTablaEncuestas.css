@@ -178,6 +178,7 @@ tbody tr:hover {
     padding-right: 62px;
 }
 
+
 @media screen and (max-width: 992px) {
     .etiqueta {
         visibility: visible;
