@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Estadisticas;
 
-use App\Models\AspectosAtributos;
 use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
@@ -30,9 +29,6 @@ class EstadisticasComponent extends Component
     public $datosObjetivos = null;
     public $dataAspectos = null;
     public $dicAspectos = null;
-    public $encuestas = null;
-    public $evaluadores = null;
-    public $tabla = '';
 
     // Variables para la tabla comparativa
     public $tipoSeleccionadoC1 = '';
@@ -97,8 +93,6 @@ class EstadisticasComponent extends Component
                 $nombresObjetivos = [];
                 // $nombresAspectos = [];
                 $periodo = $this->periodoSeleccionado . $this->añoSeleccionado;
-
-                $this->tabla = \App\Models\Carrera::find($this->carreraSeleccionada)->carrera . " " . $this->periodoSeleccionado . $this->añoSeleccionado;
                 $respuestasTemp = db::table('objetivo_educacionals')
                     ->join('objetivo_aspectos', 'objetivo_aspectos.objetivo_educacional_id', '=', 'objetivo_educacionals.id')
                     ->join('aspectos_objetivos', 'aspectos_objetivos.id', '=', 'objetivo_aspectos.aspectos_objetivos_id')
@@ -109,40 +103,23 @@ class EstadisticasComponent extends Component
 
                 $respuestasObjetivo = $respuestasTemp->select('objetivo_educacionals.id', 'objetivo_educacionals.descripcion', 'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo')->get();
                 $respuestasAtributos = $respuestasTemp->select('aspectos_objetivos.id', 'aspectos_objetivos.nombre', 'respuesta_objetivos.respuesta', 'encuesta_evaluador_objetivos.periodo', 'objetivo_educacionals.id as objetivo')->get();
-                $this->encuestas = db::table('encuesta_evaluador_objetivos')
-                    ->where([
-                        ['idCarrera', '=', $this->carreraSeleccionada],
-                        ['periodo', '=', $periodo]
-                    ])
-                    ->get();
-                $this->evaluadores = db::table('encuesta_evaluador_objetivos')
-                    ->select('evaluador')
-                    ->where([
-                        ['idCarrera', '=', $this->carreraSeleccionada],
-                        ['periodo', '=', $periodo]
-                    ])
-                    ->groupBy('evaluador')
-                    ->get();
                 // ------------------------------ SUMATORIAS ------------------------------
-                // foreach ($respuestasObjetivo as $item) {
+                foreach ($respuestasObjetivo as $item) {
 
-                //     if (isset($sumatoria[$item->id])) {
-                //         $sumatoria[$item->id] += intval($item->respuesta);
-                //         $contadores[$item->id] += 1;
-                //     } else {
-                //         $sumatoria[$item->id] = intval($item->respuesta);
-                //         $contadores[$item->id] = 1;
-                //     }
-                // }
+                    if (isset($sumatoria[$item->id])) {
+                        $sumatoria[$item->id] += intval($item->respuesta);
+                        $contadores[$item->id] += 1;
+                    } else {
+                        $sumatoria[$item->id] = intval($item->respuesta);
+                        $contadores[$item->id] = 1;
+                    }
+                }
 
                 if ($respuestasAtributos) {
 
                     foreach ($respuestasAtributos as $item) {
 
                         if (isset($sumatoriaAspectos[$item->id])) {
-
-                            $sumatoria[$item->id] += intval($item->respuesta);
-                            $contadores[$item->id] += 1;
                             $sumatoriaAspectos[$item->id] += intval($item->respuesta);
                             $contadoresAspectos[$item->id] += 1;
                             // ---------Creamos un diccionario con el vlaor del objetivo del aspecto y su sumatoria de las respuestas---------
@@ -153,51 +130,26 @@ class EstadisticasComponent extends Component
                             }
                         } else {
                             $sumatoriaAspectos[$item->id] = intval($item->respuesta);
-                            $contadoresAspectos[$item->id] = 1;
-                            $sumatoria[$item->id] = intval($item->respuesta);
-                            $contadores[$item->id] = 1;
                             $this->dicAspectos[] = ["aspecto" => $item->id, "valor" => intval($item->respuesta), "objetivo" => $item->objetivo];
+                            $contadoresAspectos[$item->id] = 1;
                             // $nombresAspectos[$item->id] = $item->nombre;
                         }
                     }
                 }
-                // Se obtiene el promedio por aspecto
+
+                // -------------------------------- PROMEDIOS ----------------------------------------------
+
+                foreach ($sumatoria as $key => &$val) {
+                    $sumatoria[$key] = $sumatoria[$key] / $contadores[$key];
+                }
+                foreach ($sumatoriaAspectos as $key => &$val) {
+                    $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
+                }
                 if ($this->dicAspectos != null) {
                     foreach ($this->dicAspectos as $key => &$val) {
                         $val["valor"] = $val["valor"] / $contadoresAspectos[$val["aspecto"]];
                     }
                 }
-                // dd($this->dicAspectos);
-
-                // -------------------------------- PROMEDIOS ----------------------------------------------
-                $sumatoria = [];
-                $contadores = [];
-                if ($this->dicAspectos) {
-                    foreach ($this->dicAspectos as $key => &$val) {
-                        if (isset($sumatoria[$val["objetivo"]])) {
-                            $sumatoria[$val["objetivo"]] += floatval($val["valor"]);
-                            $contadores[$val["objetivo"]] += 1;
-                        } else {
-                            $sumatoria[$val["objetivo"]] = floatval($val["valor"]);
-                            $contadores[$val["objetivo"]] = 1;
-                        }
-                    }
-                }
-                foreach ($sumatoria as $key => &$val) {
-                    $sumatoria[$key] = $sumatoria[$key] / $contadores[$key];
-                }
-
-
-                foreach ($sumatoriaAspectos as $key => &$val) {
-                    $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
-                }
-
-                // dd($sumatoria, $sumatoriaAspectos, $this->dicAspectos);
-                // if ($this->dicAspectos != null) {
-                //     foreach ($this->dicAspectos as $key => &$val) {
-                //         $val["valor"] = $val["valor"] / $contadoresAspectos[$val["objetivo"]];
-                //     }
-                // }
                 foreach ($sumatoria as $key => &$val) {
                     $dataBarrasObjetivos[] = ["name" => ObjetivoEducacional::find($key)->descripcion, "y" => $sumatoria[$key], "drilldown" => 'objetivo' . $key];
                     $dataAspectos[] = ["name" => ObjetivoEducacional::find($key)->descripcion, "colorByPoint" => true, "id" => 'objetivo' . $key, "data" =>  $this->arregloAspectos($key)];
@@ -207,123 +159,19 @@ class EstadisticasComponent extends Component
                 }
                 $this->datosObjetivos = $dataBarrasObjetivos;
                 $this->dataAspectos = $dataAspectos;
-            } else {
-                $this->limpiar();
-                $dataBarrasObjetivos = [];
-                $dataAspectos = [];
-                $nombreCarreras = [];
-                $sumatoria = [];
-                $sumatoriaAspectos = [];
-                $contadores = [];
-                $contadoresAspectos = [];
-                $nombresObjetivos = [];
-                // $nombresAspectos = [];
-                $periodo = $this->periodoSeleccionado . $this->añoSeleccionado;
-
-                $this->tabla = \App\Models\Carrera::find($this->carreraSeleccionada)->carrera . " " . $this->periodoSeleccionado . $this->añoSeleccionado;
-                $respuestasTemp = db::table('atributos')
-                    ->join('atributo_aspectos', 'atributo_aspectos.atributo_id', '=', 'atributos.id')
-                    ->join('aspectos_atributos', 'aspectos_atributos.id', '=', 'atributo_aspectos.aspectos_atributos_id')
-                    ->join('pregunta_aspecto_atributos', 'pregunta_aspecto_atributos.idAspectoAtributo', '=', 'aspectos_atributos.id')
-                    ->join('respuesta_atributos', 'respuesta_atributos.idPreguntaAspecto', '=', 'pregunta_aspecto_atributos.id')
-                    ->join('encuesta_evaluador_atributos', 'encuesta_evaluador_atributos.id', '=', 'respuesta_atributos.idEncuestaAsignada')
-                    ->where([['atributos.idCarrera', '=', $this->carreraSeleccionada], ['encuesta_evaluador_atributos.periodo', '=', $periodo]]);
-
-                $respuestasAtributos = $respuestasTemp->select('aspectos_atributos.id', 'aspectos_atributos.nombre', 'respuesta_atributos.respuesta', 'encuesta_evaluador_atributos.periodo', 'atributos.id as atributo')->get();
-                $this->encuestas = db::table('encuesta_evaluador_atributos')
-                    ->where([
-                        ['idCarrera', '=', $this->carreraSeleccionada],
-                        ['periodo', '=', $periodo]
-                    ])
-                    ->get();
-                $this->evaluadores = db::table('encuesta_evaluador_atributos')
-                    ->select('evaluador')
-                    ->where([
-                        ['idCarrera', '=', $this->carreraSeleccionada],
-                        ['periodo', '=', $periodo]
-                    ])
-                    ->groupBy('evaluador')
-                    ->get();
-                // ------------------------------ SUMATORIAS ------------------------------
-                // foreach ($respuestasObjetivo as $item) {
-
-                //     if (isset($sumatoria[$item->id])) {
-                //         $sumatoria[$item->id] += intval($item->respuesta);
-                //         $contadores[$item->id] += 1;
-                //     } else {
-                //         $sumatoria[$item->id] = intval($item->respuesta);
-                //         $contadores[$item->id] = 1;
-                //     }
-                // }
-
-                if ($respuestasAtributos) {
-
-                    foreach ($respuestasAtributos as $item) {
-
-                        if (isset($sumatoriaAspectos[$item->id])) {
-
-                            $sumatoria[$item->id] += intval($item->respuesta);
-                            $contadores[$item->id] += 1;
-                            $sumatoriaAspectos[$item->id] += intval($item->respuesta);
-                            $contadoresAspectos[$item->id] += 1;
-                            // ---------Creamos un diccionario con el vlaor del objetivo del aspecto y su sumatoria de las respuestas---------
-                            foreach ($this->dicAspectos as $key => &$val) {
-                                if ($val["aspecto"] == $item->id) {
-                                    $val["valor"] = intval($val["valor"]) + intval($item->respuesta);
-                                }
-                            }
-                        } else {
-                            $sumatoriaAspectos[$item->id] = intval($item->respuesta);
-                            $contadoresAspectos[$item->id] = 1;
-                            $sumatoria[$item->id] = intval($item->respuesta);
-                            $contadores[$item->id] = 1;
-                            $this->dicAspectos[] = ["aspecto" => $item->id, "valor" => intval($item->respuesta), "atributo" => $item->atributo];
-                            // $nombresAspectos[$item->id] = $item->nombre;
-                        }
-                    }
-                }
-                // Se obtiene el promedio por aspecto
-                if ($this->dicAspectos != null) {
-                    foreach ($this->dicAspectos as $key => &$val) {
-                        $val["valor"] = $val["valor"] / $contadoresAspectos[$val["aspecto"]];
-                    }
-                }
-                // dd($this->dicAspectos);
-
-                // -------------------------------- PROMEDIOS ----------------------------------------------
-                $sumatoria = [];
-                $contadores = [];
-                if ($this->dicAspectos) {
-                    foreach ($this->dicAspectos as $key => &$val) {
-                        if (isset($sumatoria[$val["atributo"]])) {
-                            $sumatoria[$val["atributo"]] += floatval($val["valor"]);
-                            $contadores[$val["atributo"]] += 1;
-                        } else {
-                            $sumatoria[$val["atributo"]] = floatval($val["valor"]);
-                            $contadores[$val["atributo"]] = 1;
-                        }
-                    }
-                }
-                foreach ($sumatoria as $key => &$val) {
-                    $sumatoria[$key] = $sumatoria[$key] / $contadores[$key];
-                }
-
-
-                foreach ($sumatoriaAspectos as $key => &$val) {
-                    $sumatoriaAspectos[$key] = $sumatoriaAspectos[$key] / $contadoresAspectos[$key];
-                }
-                foreach ($sumatoria as $key => &$val) {
-                    $dataBarrasObjetivos[] = ["name" => Atributo::find($key)->descripcion, "y" => $sumatoria[$key], "drilldown" => 'objetivo' . $key];
-                    $dataAspectos[] = ["name" => Atributo::find($key)->descripcion, "colorByPoint" => true, "id" => 'objetivo' . $key, "data" =>  $this->arregloAspectosAtributo($key)];
-                }
-                foreach ($sumatoria as $key => &$val) {
-                    $dataBarrasObjetivos[] = ["name" => Atributo::find($key)->descripcion, "y" => $sumatoria[$key], "drilldown" => 'objetivo' . $key];
-                }
-                $this->datosObjetivos = $dataBarrasObjetivos;
-                $this->dataAspectos = $dataAspectos;
             }
+        } else {
+            $this->limpiar();
+            $dataBarrasObjetivos = [];
+            $dataAspectos = [];
+            $nombreCarreras = [];
+            $sumatoria = [];
+            $sumatoriaAspectos = [];
+            $contadores = [];
+            $contadoresAspectos = [];
+            $nombresObjetivos = [];
+            // $nombresAspectos = [];
         }
-
 
         // if de la tabla comparativa
         if ($this->tipoSeleccionadoC1 && $this->carreraSeleccionadaC1 && $this->añoSeleccionadoC1 && $this->periodoSeleccionadoC2 && $this->tipoSeleccionadoC2 && $this->carreraSeleccionadaC2 && $this->añoSeleccionadoC2 && $this->periodoSeleccionadoC2) {
@@ -830,17 +678,6 @@ class EstadisticasComponent extends Component
         foreach ($this->dicAspectos as $key => &$val) {
             if ($val["objetivo"] == $objetivo) {
                 $data[] = [AspectosObjetivos::find($val["aspecto"])->nombre, $val["valor"]];
-            }
-        }
-        return $data;
-    }
-
-    public function arregloAspectosAtributo($atributo)
-    {
-        $data = [];
-        foreach ($this->dicAspectos as $key => &$val) {
-            if ($val["atributo"] == $atributo) {
-                $data[] = [AspectosAtributos::find($val["aspecto"])->nombre, $val["valor"]];
             }
         }
         return $data;

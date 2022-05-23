@@ -18,6 +18,7 @@ class TablaCarrerasComponent extends Component
     public $icon = '-circle';
     public $band = true;
     public $cont = 0;
+    public $botonMostrar = true;
 
     public function render()
     {
@@ -33,7 +34,7 @@ class TablaCarrerasComponent extends Component
             $carreras = db::table('usuario_carreras')
                         ->join('users', 'users.id', '=', 'usuario_carreras.user_id')
                         ->join('carreras', 'carreras.id', '=', 'usuario_carreras.carrera_id')
-                        ->where('user_id', $user->id);
+                        ->where('user_id','=', $user->id);
                         
             if($this->campo && $this->order){
             $carreras = $carreras->orderBy($this->campo, $this->order);
@@ -66,6 +67,18 @@ class TablaCarrerasComponent extends Component
         }
 
         $carreras = $carreras->get();
+        if($this->botonMostrar == true){
+            $carreras = $carreras->filter(function($item){
+                if($item->oculto == false){
+                    return true;
+                }
+            });
+        }
+        // $carreras = $carreras->filter(function($item){
+        //     if($item->oculto == false){
+        //         return true;
+        //     }
+        // });
         
         $usuarios = User::where('creadopor', $user->name)->get();
         return view('livewire.carreras.tabla-carreras-component',[
@@ -109,6 +122,26 @@ class TablaCarrerasComponent extends Component
         $this->campo = null;
         $this->icon = '-circle';
         $this->search = '';
+    }
+
+    public function mostrarOcultos(){
+        if($this->botonMostrar){
+            $this->botonMostrar = false;
+        }else{
+            $this->botonMostrar = true;
+        }
+        // $carreras = $carreras->get();
+        // $carreras = $carreras->filter(function($item){
+        //     if($item->oculto == true){
+        //         return true;
+        //     }
+        // });
+
+        // $usuarios = User::where('creadopor', $user->name)->get();
+        // return view('livewire.carreras.tabla-carreras-component',[
+        //     'carreras' => $carreras,
+        //     'usuarios' => $usuarios,
+        // ]);
     }
 
 }

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Objetivos Educacionales</title>
+    {{-- <link rel="icon" href="img/tecnm.png" type="image/icon type"> --}}
+    {{-- <link rel = "icon" href = "" type = "image/x-icon"> --}}
+    <link rel="icon" type="image/png" href="img/tecnm.png" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 4.1.1 -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
