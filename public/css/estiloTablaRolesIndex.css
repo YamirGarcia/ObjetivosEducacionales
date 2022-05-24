@@ -107,17 +107,17 @@ tbody tr:hover {
 }
 
 .column1 {
-    width: 60%;
+    width: 5%;
     text-align: center;
 }
 
 .column2 {
-    width: 40%;
+    width: 55%;
     text-align: center;
 }
 
 .column3 {
-    width: 25%;
+    width: 40%;
     text-align: center;
 }
 
@@ -131,12 +131,46 @@ tbody tr:hover {
     text-align: center;
 }
 
+
 .column6 {
     width: 222px;
     text-align: center;
     padding-right: 62px;
 }
 
+.column1-modal {
+    width: 5%;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    /* color: white; */
+    text-align: center;
+    font-weight: bold;
+    /* color: white; */
+}
+.column2-modal {
+    width: 10%;
+    /* padding-left: 40px; */
+    /* padding-right: 40px; */
+    /* color: white; */
+    /* color: white; */
+    text-align: center;
+    font-weight: bold;
+}
+/* CLASES DE MODAL PERMISOS EN USUARIOS */
+.column3-modal {
+    width: 20%;
+    font-weight: bold;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    text-align: center;
+}
+.column4-modal {
+    width: 80%;
+    font-weight: bold;
+    /* padding-left: 40px; */
+    /* padding-right: 40px; */
+    text-align: center;
+}
 @media screen and (max-width: 992px) {
     .etiqueta {
         visibility: visible;
