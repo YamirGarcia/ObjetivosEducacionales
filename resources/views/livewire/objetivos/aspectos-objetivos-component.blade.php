@@ -25,7 +25,7 @@
                                     {{App\Models\ObjetivoEducacional::find($idObj)->carrera->carrera}}
                                 </div>
                                 <div>
-                                    <label for="">Atributo: </label>
+                                    <label for="">Objetivo: </label>
                                     {{App\Models\ObjetivoEducacional::find($idObj)->descripcion}}
                                 </div>
                                 <div>
