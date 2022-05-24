@@ -35,50 +35,61 @@
 
                         {!! Form::model($user, ['method' => 'PATCH','route' => ['usuarios.update', $user->id]]) !!}
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="name">Nombre</label>
                                     {!! Form::text('name', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="apellido">Apellidos</label>
                                     {!! Form::text('apellido', null, ['class' => 'form-control','pattern' => '[a-zA-Z ]{2,254}']) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="telefono">Teléfono</label>
                                     {!! Form::tel('telefono', null, ['class' => 'form-control', 'pattern' =>'^\d{10}$']) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="email">Correo</label>
                                     {!! Form::email('email', null, ['class' => 'form-control', 'pattern' =>"^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     {!! Form::password('password', array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="confirm-password">Confirmar Password</label>
                                     {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                        </div>
+                            <div class="col">
                                 <div class="form-group">
                                     <label for="">Roles</label>
-                                    {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control')) !!}
+                                    {{-- <select name="roles" id="" class="form-control">
+                                        <option value="" selected disabled>Selecciona rol a asignar.</option>
+                                        @foreach ($collection as $item)
+                                            
+                                        @endforeach
+                                    </select> --}}
+                                    {!! Form::select('rol', $roles,$userRole, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                                 
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="col">
                                 <button type="submit" class="boton-submit">Guardar</button>
                             </div>
                         </div>

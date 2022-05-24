@@ -11,7 +11,7 @@
                 <a style="text-decoration: none; color: #6c757d"
                     href="{{ route('aspectosObjetivos.show', $idObj) }}">/
                     Aspectos</a>
-                    
+
             </h3>
         </div>
         <div class="section-body">
@@ -19,27 +19,26 @@
                 <div class="col-lg-12">
                     <div class="card shadow p-3 mb-5 bg-body rounded">
                         <div class="card-body" id="card-b">
-                            <div style="font-size: 18px">
+                            <div>
                                 <div>
-                                    <label for="" >Carrera: </label>
-                                    {{App\Models\ObjetivoEducacional::find($idObj)->carrera->carrera}}
+                                    <h2 class="mb-4">
+                                        {{ $carreraActual->carrera }} | {{ $carreraActual->planEstudios }}
+                                    </h2>
                                 </div>
+
                                 <div>
-                                    <label for="">Objetivo: </label>
-                                    {{App\Models\ObjetivoEducacional::find($idObj)->descripcion}}
+                                    <h3 class="mb-4">
+                                        Objetivo: {{ App\Models\ObjetivoEducacional::find($idObj)->descripcion }}
+                                    </h3>
                                 </div>
-                                <div>
-                                    <label for="">Plan de estudios: </label>
-                                    {{App\Models\ObjetivoEducacional::find($idObj)->carrera->planEstudios}}
-                                </div>
+                                <hr>
                             </div>
                             {{-- {{$cont}} --}}
                             @if (session()->has('message'))
                                 {{ session('message') }}
                             @endif
                             @can('crear-aspectosObjetivos')
-                                <label for="" class="bg-indigo-100"> <b> Agregar Nuevo Aspecto: </b></label>
-                                <i class="fa-solid fa-bars"></i>
+                                <label for="" class="bg-indigo-100 fs-5"> <b> Agregar Nuevo Aspecto: </b></label>
                                 <div class="mb-4">
                                     <form wire:submit.prevent="guardarAspecto()">
                                         <div class="row">
@@ -93,25 +92,24 @@
                                                     @endcan
                                                     {{-- <form wire:prevent.submit="eliminarAspecto({{$aspecto->id}})""> --}}
                                                     @can('borrar-aspectosObjetivos')
-                                                    @if (App\Models\ObjetivoEducacional::find($idObj)->carrera->noBorrar == False)
-                                                        <button wire:ignore.self style="border: none; background: none"
-                                                            wire:click="$emit('eliminarAspectoModal', {{ $aspecto->id }})"
-                                                            title="Eliminar">
-                                                            <div wire:ignore.self class="icon trash-fill"
-                                                                style="margin-top: 15px">
-                                                                <i wire:ignore.self>
-                                                                    <svg wire:ignore.self class="svg-delete"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 448 512">
-                                                                        <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                                        <path
-                                                                            d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM31.1 128H416V448C416 483.3 387.3 512 352 512H95.1C60.65 512 31.1 483.3 31.1 448V128zM111.1 208V432C111.1 440.8 119.2 448 127.1 448C136.8 448 143.1 440.8 143.1 432V208C143.1 199.2 136.8 192 127.1 192C119.2 192 111.1 199.2 111.1 208zM207.1 208V432C207.1 440.8 215.2 448 223.1 448C232.8 448 240 440.8 240 432V208C240 199.2 232.8 192 223.1 192C215.2 192 207.1 199.2 207.1 208zM304 208V432C304 440.8 311.2 448 320 448C328.8 448 336 440.8 336 432V208C336 199.2 328.8 192 320 192C311.2 192 304 199.2 304 208z" />
-                                                                    </svg>
-                                                                </i>
-                                                            </div>
-                                                        </button>
-                                                        
-                                                    @endif
+                                                        @if (App\Models\ObjetivoEducacional::find($idObj)->carrera->noBorrar == false)
+                                                            <button wire:ignore.self style="border: none; background: none"
+                                                                wire:click="$emit('eliminarAspectoModal', {{ $aspecto->id }})"
+                                                                title="Eliminar">
+                                                                <div wire:ignore.self class="icon trash-fill"
+                                                                    style="margin-top: 15px">
+                                                                    <i wire:ignore.self>
+                                                                        <svg wire:ignore.self class="svg-delete"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 448 512">
+                                                                            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                                            <path
+                                                                                d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM31.1 128H416V448C416 483.3 387.3 512 352 512H95.1C60.65 512 31.1 483.3 31.1 448V128zM111.1 208V432C111.1 440.8 119.2 448 127.1 448C136.8 448 143.1 440.8 143.1 432V208C143.1 199.2 136.8 192 127.1 192C119.2 192 111.1 199.2 111.1 208zM207.1 208V432C207.1 440.8 215.2 448 223.1 448C232.8 448 240 440.8 240 432V208C240 199.2 232.8 192 223.1 192C215.2 192 207.1 199.2 207.1 208zM304 208V432C304 440.8 311.2 448 320 448C328.8 448 336 440.8 336 432V208C336 199.2 328.8 192 320 192C311.2 192 304 199.2 304 208z" />
+                                                                        </svg>
+                                                                    </i>
+                                                                </div>
+                                                            </button>
+                                                        @endif
                                                     @endcan
                                                     {{-- <button wire:click="eliminarAspecto({{$aspecto->id}})">Hola</button> --}}
                                                     {{-- </form> --}}
@@ -158,25 +156,24 @@
                                                                                     </a>
                                                                                 @endcan
                                                                                 @can('borrar-preguntasObjetivos')
-                                                                                @if (App\Models\ObjetivoEducacional::find($idObj)->carrera->noBorrar == False)
-                                                                                <button class="btn-tabla"
-                                                                                    wire:click='borrarPregunta({{ $preguntaAsp->id }})'
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    title="Eliminar">
-                                                                                    <div class="icon trash-fill">
-                                                                                        <i>
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                viewBox="0 0 448 512">
-                                                                                                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                                                                <path
-                                                                                                    d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM31.1 128H416V448C416 483.3 387.3 512 352 512H95.1C60.65 512 31.1 483.3 31.1 448V128zM111.1 208V432C111.1 440.8 119.2 448 127.1 448C136.8 448 143.1 440.8 143.1 432V208C143.1 199.2 136.8 192 127.1 192C119.2 192 111.1 199.2 111.1 208zM207.1 208V432C207.1 440.8 215.2 448 223.1 448C232.8 448 240 440.8 240 432V208C240 199.2 232.8 192 223.1 192C215.2 192 207.1 199.2 207.1 208zM304 208V432C304 440.8 311.2 448 320 448C328.8 448 336 440.8 336 432V208C336 199.2 328.8 192 320 192C311.2 192 304 199.2 304 208z" />
-                                                                                            </svg>
-                                                                                        </i>
-                                                                                    </div>
-                                                                                </button>
-                                                                                    
-                                                                                @endif
+                                                                                    @if (App\Models\ObjetivoEducacional::find($idObj)->carrera->noBorrar == false)
+                                                                                        <button class="btn-tabla"
+                                                                                            wire:click='borrarPregunta({{ $preguntaAsp->id }})'
+                                                                                            data-toggle="tooltip"
+                                                                                            data-placement="bottom"
+                                                                                            title="Eliminar">
+                                                                                            <div class="icon trash-fill">
+                                                                                                <i>
+                                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                                        viewBox="0 0 448 512">
+                                                                                                        <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                                                                        <path
+                                                                                                            d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM31.1 128H416V448C416 483.3 387.3 512 352 512H95.1C60.65 512 31.1 483.3 31.1 448V128zM111.1 208V432C111.1 440.8 119.2 448 127.1 448C136.8 448 143.1 440.8 143.1 432V208C143.1 199.2 136.8 192 127.1 192C119.2 192 111.1 199.2 111.1 208zM207.1 208V432C207.1 440.8 215.2 448 223.1 448C232.8 448 240 440.8 240 432V208C240 199.2 232.8 192 223.1 192C215.2 192 207.1 199.2 207.1 208zM304 208V432C304 440.8 311.2 448 320 448C328.8 448 336 440.8 336 432V208C336 199.2 328.8 192 320 192C311.2 192 304 199.2 304 208z" />
+                                                                                                    </svg>
+                                                                                                </i>
+                                                                                            </div>
+                                                                                        </button>
+                                                                                    @endif
                                                                                 @endcan
                                                                             </div>
                                                                             {{-- <button class="btn btn-primary" data-toggle="modal" data-target="#modalEditarPregunta" wire:click="cargarDatosPregunta({{$preguntaAsp->id}})">Editar</button>
@@ -196,8 +193,7 @@
                                                                 <div class="col-9">
                                                                     <input wire:ignore type="text" class="form-control"
                                                                         style="margin-right: 1rem;" name="Pregunta"
-                                                                        wire:model="array.{{ $aspecto->id }}"
-                                                                        required
+                                                                        wire:model="array.{{ $aspecto->id }}" required
                                                                         {{-- wire:click="$emit('guardarPreguntaEvento')" --}}>
                                                                 </div>
 
@@ -215,7 +211,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h2>No existen Aspectos Asignados a Este Objetivo Educacional</h2>
+                                <h2>No existen aspectos asignados a este Objetivo Educacional</h2>
                             @endforelse
 
                         </div>
@@ -267,43 +263,43 @@
     </div>
 
 
-<!-- Button trigger modal -->
+    <!-- Button trigger modal -->
 
- {{-- EDITAR PREGUNTA --}}
- <div wire:ignore.self class="modal fade" id="modalEditarPregunta" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Pregunta</h5>
-                <button class="btn-tabla" type="button" data-dismiss="modal">
-                    <div class="icon trash-fill">
-                        <i>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                <path
-                                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
-                            </svg>
-                        </i>
+    {{-- EDITAR PREGUNTA --}}
+    <div wire:ignore.self class="modal fade" id="modalEditarPregunta" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Pregunta</h5>
+                    <button class="btn-tabla" type="button" data-dismiss="modal">
+                        <div class="icon trash-fill">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path
+                                        d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
+                                </svg>
+                            </i>
+                        </div>
+                    </button>
+                </div>
+                <form wire:submit.prevent='guardarDatosPregunta'>
+                    <div class="modal-body">
+                        <label for="Pregunta">Pregunta:</label>
+                        <textarea name="Pregunta" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;"
+                            wire:model='preguntaEditar' value="{{ $textoPregunta }}"></textarea>
                     </div>
-                </button>
+
+                    <div class="modal-footer">
+                        <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                            <button type="submit" class="boton-submit">Actualizar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <form wire:submit.prevent='guardarDatosPregunta'>
-                <div class="modal-body">
-                    <label for="Pregunta">Pregunta:</label>
-                    <textarea name="Pregunta" class="form-control" id="nombre" rows="5" style="resize: none; height: 6rem;"
-                        wire:model='preguntaEditar' value="{{$textoPregunta}}"></textarea>
-                </div>
-
-                <div class="modal-footer">
-                    <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
-                        <button type="submit" class="boton-submit">Actualizar</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
-</div>
-    
+
 
     @push('js')
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

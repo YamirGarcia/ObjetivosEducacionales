@@ -11,12 +11,13 @@ class AspectosAtributosComponent extends Component
 {
     public $aspectos = null, $idAtributo; 
     public $nuevoAspecto, $aspectoEditar = '', $idAspectoEditar;
-
+    public $carreraActual = '';
     public $nuevaPregunta, $idPregunta, $preguntaEditar, $textoPregunta = 'ASDF';
     public $array = [];
 
     public function render()
     {   $this->aspectos = Atributo::find($this->idAtributo)->aspectos;
+        $this->carreraActual = Atributo::find($this->idAtributo)->carrera;
         return view('livewire.atributos.aspectos-atributos-component');
     }
 

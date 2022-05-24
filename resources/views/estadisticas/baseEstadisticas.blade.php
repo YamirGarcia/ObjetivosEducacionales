@@ -15,6 +15,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
+    <link rel="stylesheet" type="text/css" href="/css/estiloTarjetasEstadisiticas.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     @livewireStyles
@@ -28,7 +29,7 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card shadow mb-5 bg-body rounded">
+                    <div>
                         @livewire('estadisticas.estadisticas-component')
                     </div>
                 </div>

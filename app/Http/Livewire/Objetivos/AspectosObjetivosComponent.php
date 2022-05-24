@@ -15,9 +15,10 @@ class AspectosObjetivosComponent extends Component
     public $descripcionAspectoObjetivo, $idAspecto, $nuevaDescripcion;
     public $preguntaNueva, $idPregunta, $pregunta, $textoPregunta;
     public $cont, $array=[];
-
+    public $carreraActual = '';
     protected $listeners = ['render', 'eliminarAspecto'];
     public function mount(){
+        $this->carreraActual = \App\Models\ObjetivoEducacional::find($this->idObj)->carrera;
         $this->cont = 1;
     }
 

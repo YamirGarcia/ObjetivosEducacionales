@@ -1,0 +1,78 @@
+.container-tabla-filtros{
+    /* display: inline-block; */
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    background-color: white;
+}
+.filtros{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 20%;
+    /* background-color: blue; */
+    padding: 10px;
+}
+.filtros select{
+    border: none;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+}
+
+.preview{
+    height: 500px;
+    padding: 0;
+    margin: 0;
+}
+
+.tabla{
+    height: auto;
+    width: 80%;
+    /* background-color: red; */
+    text-align: center;
+}
+
+
+
+.fil1, .fil2{
+    /* background-color: red; */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+}
+.fil1 select{
+    border: none;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    /* background-color: red; */
+}
+
+.fil2 select{
+    border: none;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    /* background-color: red; */
+}
+.fil2{
+    margin-top: 10px;
+}
+
+.container-card{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.card-informativa{
+    width: 400px;
+    height: 120px;
+    margin: 15px;
+    /* background-color: red; */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 1px #e1e5f2;
+    vertical-align: middle;
+}
+
+.quantity{
+    font-size: 24px;
+    font-weight: 900;
+}
