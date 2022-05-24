@@ -71,6 +71,11 @@ class TablaUsuariosComponent extends Component
         48 => 'Editar Encuestas de Atributos',
         49 => 'Borrar Encuestas de Atributos',
         50 => 'Contestar Encuestas',
+        51 => 'Ver Residentes',
+        52 => 'Crear Residentes',
+        53 => 'Editar Residentes',
+        54 => 'Borrar Residentes',
+        55 => 'Ver Estadísticas',
     ];
     public $permisosRol = null;
     public function render()

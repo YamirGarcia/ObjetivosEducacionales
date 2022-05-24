@@ -108,7 +108,7 @@
                                         <input type="checkbox" name="permission[]" value="12"> Eliminar Usuarios
                                     </div>
                                 </div>
-                                <div class="bloque" style="width: 400px; height: 400px">
+                                <div class="bloque" style="width: 400px; height: 430px">
                                     <h3>Objetivos Educacionales</h3>
                                     <div class="column">
                                         <input type="checkbox" id="Seleccion-Objetivos"> Seleccionar Todos
@@ -156,7 +156,7 @@
                                     </div>
 
                                 </div>
-                                <div class="bloque" style="height: 400px">
+                                <div class="bloque" style="height: 430px">
                                     <h3>Atributos</h3>
                                     <div class="column">
                                         <input type="checkbox" id="Seleccion-Atributos"> Seleccionar Todos
@@ -220,7 +220,7 @@
                                         <input type="checkbox" name="permission[]" value="40"> Eliminar Evaluadores
                                     </div>
                                     <div class="opcion" class="column" id="lista-evaluadores">
-                                        <input type="checkbox" name="permission[]" value="41"> Visualizar Datos
+                                        <input type="checkbox" name="permission[]" value="41"> Visualizar Información
                                     </div>
                                 </div>
                                 <div class="bloque" style="width: auto; height: auto;">
@@ -271,6 +271,31 @@
                                     <h3>Contestar Encuestas</h3>
                                     <div class="opcion" class="column" id="lista-Cencuestas">
                                         <input type="checkbox" name="permission[]" value="50"> Contestar Encuestas
+                                    </div>
+                                </div>
+                                <div class="bloque">
+                                    <h3>Residentes</h3>
+                                    <div class="column">
+                                        <input type="checkbox" id="Seleccion-Residentes"> Seleccionar Todos
+                                    </div>
+                                    <div class="column" id="lista-residentes">
+                                        <input class="opcion" type="checkbox" name="permission[]" value="51"> Ver
+                                        Residentes
+                                    </div>
+                                    <div class="opcion" class="column" id="lista-residentes">
+                                        <input type="checkbox" name="permission[]" value="52"> Crear Residentes
+                                    </div>
+                                    <div class="opcion" class="column" id="lista-residentes">
+                                        <input type="checkbox" name="permission[]" value="53"> Editar Residentes
+                                    </div>
+                                    <div class="opcion" class="column" id="lista-residentes">
+                                        <input type="checkbox" name="permission[]" value="54"> Eliminar Residentes
+                                    </div>
+                                </div>
+                                <div class="bloque">
+                                    <h3>Estadísticas</h3>
+                                    <div class="opcion" class="column" id="lista-estadisticas">
+                                        <input type="checkbox" name="permission[]" value="55"> Estadísticas 
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -334,6 +359,13 @@
         $(function() {
             $('#Seleccion-Encuestas').change(function() {
                 $('#lista-encuestas > input[type=checkbox]').prop('checked', $(this).is(':checked'));
+            });
+        });
+
+        // scirpt para residentes
+        $(function() {
+            $('#Seleccion-Residentes').change(function() {
+                $('#lista-residentes > input[type=checkbox]').prop('checked', $(this).is(':checked'));
             });
         });
     </script>

@@ -94,6 +94,15 @@ class SeederTablaPermisos extends Seeder
              //permisos contestar encuestas
              'contestarEncuestas',
 
+             //permisos residentes
+             'ver-residentes',
+             'crear-residentes',
+             'editar-residentes',
+             'borrar-residentes',
+
+             //permisos Estadisticas
+             'ver-estadisticas',
+
 
         ]; 
         foreach($permisos as $permiso){
