@@ -6,30 +6,220 @@
     {{-- <script src="https://code.highcharts.com/modules/exporting.js"></script> --}}
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estiloDashboard.css">
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Dashboard</h3>
+            <h3 class="page__heading">Bienvenido {{ \Illuminate\Support\Facades\Auth::user()->name }}</h3>
         </div>
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card shadow p-3 mb-5 bg-body rounded">
-                        <div class="card-body">
-                            <div class="row">
+                    <div class="">
+                        <div class="card-body" >
+                            <div class="container-button" style="width: 500px;">
+                                
+                            </div>
+                            <div id="carrusel" class="carousel slide" data-ride="carousel" style="width: 420px;">
 
-                                <div id="container" style="width:350px; margin: 0 auto;"></div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="progres-container">
+                                            <h5>Ingenieria en sistemas Computacionales | ENE-JUN 2022</h5>
+                                            <div class="bar-container">
+                                                {{-- <div> --}}
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                {{-- </div> --}}
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-success" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-incomplete" style="width: 70%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-wrong" style="width: 50%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-incomplete" style="width: 63%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="progres-container">
+                                            <h5>Ingenieria Tecnologias de la Información y Comunicaciónes| ENE-JUN 2022</h5>
+                                            <div class="bar-container">
+                                                {{-- <div> --}}
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                {{-- </div> --}}
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-success" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-incomplete" style="width: 70%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-wrong" style="width: 50%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-incomplete" style="width: 63%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="progres-container">
+                                            <h5>333333 ENE-JUN 2022</h5>
+                                            <div class="bar-container">
+                                                {{-- <div> --}}
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                {{-- </div> --}}
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-success" style="width: 100%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-incomplete" style="width: 70%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-wrong" style="width: 50%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues muy
+                                                    grande y
+                                                    queiro
+                                                    ver como se veria</p>
+                                                <p class="texto-valor">4.3</p>
+                                                <p class="texto-meta">5</p>
+                                                <div class="progres-bar">
+                                                    <div class="complete-bar bar-incomplete" style="width: 63%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <button class="carousel-control-prev" type="button" data-target="#carrusel"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-target="#carrusel"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true">
+                                    </span>
+                                </button> --}}
+
+                                <button class="btn-metas" type="button" data-target="#carrusel"
+                                data-slide="prev">Atras</button>
+                                <button class="btn-metas" type="button" data-target="#carrusel"
+                                data-slide="next">Siguiente</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
     <script>
+        var myCarousel = document.getElementById('carrusel');
+        var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 1000000,
+            pause: true
+        })
         /**
          * Get the current time
          */

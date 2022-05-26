@@ -1,0 +1,113 @@
+.card-body{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+.carousel-inner{
+    /* align-content: center; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-left: 7px;
+}
+
+.container{
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    padding: 0;
+    /* flex-direction: column; */
+}
+.container-button{
+    height: 500px;
+    width: 400px;
+    background: white;
+    box-shadow: 0px 0px 10px 1px #c8d3fd;
+    padding: 8px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    margin: 5px 5px 0px 4px;
+    overflow: auto;
+    }
+.progres-container{
+    height: 500px;
+    width: 400px;
+    background: white;
+    box-shadow: 0px 0px 10px 1px #c8d3fd;
+    padding: 8px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    margin: 5px 5px 0px 4px;
+    overflow: auto;
+}
+.bar-container{
+    position: relative;
+    padding: 4px 0;
+}
+.progres-bar {
+    width: 97%;
+    /* margin: 0 30px 0 5px; */
+    border-radius: 30px;
+    padding: 2px;
+    box-shadow: 0px 0px 10px 1px #c8d3fd;
+    margin-right: 2000px;
+}
+
+.complete-bar {
+    /* background-color: #75c059; */
+    height: 20px;
+    border-radius: 30px;
+    
+}
+
+.bar-success {
+    background: linear-gradient(90deg, rgba(188, 236, 170, 1) 0%, rgba(117, 192, 89, 1) 49%, rgba(117, 192, 89, 1) 100%);
+}
+
+.bar-incomplete {
+    background: linear-gradient(90deg, rgba(255, 237, 146, 1) 0%, rgba(255, 215, 18, 1) 49%, rgba(255, 215, 18, 1) 100%);
+}
+
+.bar-wrong {
+    background: linear-gradient(90deg, rgba(247, 173, 168, 1) 0%, rgba(238, 96, 85, 1) 49%, rgba(238, 96, 85, 1) 100%);
+}
+
+.progres-container p{
+    position: absolute;
+}
+
+.progres-container .texto-objetivo{
+    position: relative;
+    font-size: 12px;
+}
+
+.texto-meta{
+    font-size: 20px;
+    right: 0;
+}
+
+.texto-valor{
+    left: 50%;
+    font-weight: bold !important;
+}
+
+.card-body span{
+    color: black;
+    fill: black;
+    box-shadow: 0px 0px 10px 1px #c8d3fd;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #ced4da;
+}
+
+.btn-metas{
+    width: 43%;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 1px #c8d3fd;
+    margin-top: 5px;
+}
+
+.carousel{
+    text-align: center;
+}
