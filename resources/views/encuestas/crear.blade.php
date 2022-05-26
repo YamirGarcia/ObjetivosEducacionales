@@ -15,7 +15,8 @@
                 <div class="col-lg-11" style="margin: 0 auto">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="mb-4"> {{App\Models\Carrera::find($carrera)->carrera}} | {{App\Models\Carrera::find($carrera)->planEstudios}}</h3>
+                            <h3 class="mb-4"> {{ App\Models\Carrera::find($carrera)->carrera }} |
+                                {{ App\Models\Carrera::find($carrera)->planEstudios }}</h3>
                             <hr>
                             @if ($errors->any())
                                 <div class="alert alert-dark alert-dismissible fade show" role="alert">
@@ -33,7 +34,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="evaluador" class="form-label fs-4">Evaluador</label>
-                                        <select name="evaluador" id="evaluador" class="form-select" required>
+                                        <select name="evaluador" id="evaluador" class="select2 form-select" required>
                                             <option selected="selected" disabled></option>
                                             @foreach ($evaluadores as $evaluador)
                                                 <option value="{{ $evaluador->id }}">{{ $evaluador->nombres }}</option>
@@ -49,7 +50,8 @@
                                             <option value="" selected disabled>Seleccione periodo</option>
                                             <option value="ENE-JUN-{{ date('Y') }}">ENE-JUN {{ date('Y') }}</option>
                                             <option value="VERANO-{{ date('Y') }}">VERANO {{ date('Y') }}</option>
-                                            <option value="AGO-DIC-{{ date('Y') }}">AGO-DIC {{ date('Y') }}</option>
+                                            <option value="AGO-DIC-{{ date('Y') }}">AGO-DIC {{ date('Y') }}
+                                            </option>
                                         </select>
 
                                     </div>
@@ -186,6 +188,9 @@
     </section>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        document.addEventListener('livewire:load', () => {
+            $('.select2').select2();
+        })
 
         function verificar() {
             var suma = 0;
@@ -199,13 +204,13 @@
             if (suma == 0) {
                 // alert('No existe ningun aspecto seleccionada');
                 Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Por favor seleccionado almenos 1 aspecto. '
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Por favor seleccionado almenos 1 aspecto. '
                 });
                 return false;
             } else {
-                
+
                 return true;
             }
 

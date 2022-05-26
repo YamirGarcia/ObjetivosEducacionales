@@ -33,8 +33,15 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="evaluador" class="form-label fs-4">Evaluador</label>
-                                        <select name="evaluador" id="evaluador" class="form-select" required>
+
+                                        {{-- <select name="evaluador" id="evaluador" class="form-select" required>
                                             <option selected="selected" disabled></option>
+                                            @foreach ($evaluadores as $evaluador)
+                                                <option value="{{ $evaluador->id }}">{{ $evaluador->nombres }}</option>
+                                            @endforeach
+                                        </select> --}}
+                                        {{-- SELECT CON SELECT2 --}}
+                                        <select name="evaluador" id="evaluador" class="select2 form-select" required>
                                             @foreach ($evaluadores as $evaluador)
                                                 <option value="{{ $evaluador->id }}">{{ $evaluador->nombres }}</option>
                                             @endforeach
@@ -45,7 +52,7 @@
                                     <div class="form-group">
                                         <label for="periodo" class="form-label fs-4">Periodo de evaluación</label>
                                         {{-- <input type="text" class="form-control" name="periodo" id="periodo"> --}}
-                                        <select name="periodo" id="periodo" class="form form-control" required>
+                                        <select name="periodo" id="periodo" class="form form-select" required>
                                             <option value="" selected disabled>Seleccione periodo</option>
                                             <option value="ENE-JUN-{{ date('Y') }}">ENE-JUN {{ date('Y') }}</option>
                                             <option value="VERANO-{{ date('Y') }}">VERANO {{ date('Y') }}</option>
@@ -68,12 +75,20 @@
                                                 </option>
                                             @endforeach
                                         </select> --}}
-                                        <select name="residente" id="select2-dropdown" class="form-control">
+                                        {{-- <select name="residente" id="select2-dropdown" class="form-control">
                                             <option value="" selected disabled>Seleccionar Residente Buey</option>
                                             @foreach ($residentes as $residente)
                                                 <option value="{{$residente->id}}">{{$residente->nombres}}</option>
                                             @endforeach
+                                        </select> --}}
+
+                                        <select name="residente" id="residente" class="select2 form-select" required>
+                                            @foreach ($residentes as $residente)
+                                                <option value="{{ $residente->id }}">{{ $residente->nombres }} {{$residente->apellidos}} - {{$residente->numeroControl}}</option>
+                                            @endforeach
                                         </select>
+
+                                        
                                     </div>
                                 </div>
 
@@ -241,6 +256,9 @@
                 let pName = $('$select2-dropdown option:selected').text();
             }
         });
+        document.addEventListener('livewire:load', () => {
+            $('.select2').select2();
+        })
     </script>
 
 
