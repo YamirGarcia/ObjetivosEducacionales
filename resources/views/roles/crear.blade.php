@@ -127,8 +127,93 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="courses-container" >
-                                        <div class="course" style="width: 1050px">
+                                    <div class="courses-container">
+                                        <div class="course">
+                                            <div class="course-preview" style="width: 420px">
+                                                <h2>Evaluadores</h2>
+                                            </div>
+                                            <div class="course-info">
+                                                <input type="checkbox" id="Seleccion-Evaluadores"> Seleccionar Todos
+                                                <div class="column" id="lista-evaluadores">
+                                                    <input class="opcion" type="checkbox" name="permission[]"
+                                                        value="37"> Ver
+                                                    Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="38"> Crear Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="39"> Editar
+                                                    Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="40"> Eliminar
+                                                    Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="41"> Visualizar
+                                                    Información
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="courses-container">
+                                        <div class="course">
+                                            <div class="course-preview" style="width: 420px">
+                                                <h2>Evaluadores</h2>
+                                            </div>
+                                            <div class="course-info">
+                                                <input type="checkbox" id="Seleccion-Evaluadores"> Seleccionar Todos
+                                                <div class="column" id="lista-evaluadores">
+                                                    <input class="opcion" type="checkbox" name="permission[]"
+                                                        value="37"> Ver
+                                                    Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="38"> Crear Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="39"> Editar
+                                                    Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="40"> Eliminar
+                                                    Evaluadores
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-evaluadores">
+                                                    <input type="checkbox" name="permission[]" value="41"> Visualizar
+                                                    Información
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="courses-container">
+                                        <div class="course">
+                                            <div class="course-preview" style="width: 420px">
+                                                <h2>Contestar Encuestas</h2>
+                                            </div>
+                                            <div class="course-info">
+                                                <div class="opcion" class="column" id="lista-Cencuestas">
+                                                    <input type="checkbox" name="permission[]" value="50"> Contestar
+                                                    Encuestas
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="courses-container">
+                                        <div class="course">
+                                            <div class="course-preview" style="width: 420px">
+                                                <h2>Estadísticas</h2>
+                                            </div>
+                                            <div class="course-info">
+                                                <div class="opcion" class="column" id="lista-estadisticas">
+                                                    <input type="checkbox" name="permission[]" value="55"> Ver Estadísticas
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="courses-container">
+                                        <div class="course" style="width: 1050px; height: 200px">
                                             <div class="course-preview">
                                                 <h2>Objetivos Educacionales</h2>
                                             </div>
@@ -210,211 +295,137 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-
-
-                                <div class="bloque" style="width: 400px; height: 430px">
-                                    <h3>Objetivos Educacionales</h3>
-                                    <div class="column">
-                                        <input type="checkbox" id="Seleccion-Objetivos"> Seleccionar Todos
-                                    </div>
-                                    <div class="column" id="lista-objetivos">
-                                        <input class="opcion" type="checkbox" name="permission[]" value="13"> Ver
-                                        Objetivos Educacionales
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="14"> Crear Objetivos Educacionales
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="15"> Editar Objetivos
-                                        Educacionales
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="16"> Eliminar Objetivos
-                                        Educacionales
-                                    </div>
-                                    <h5>Aspectos</h5>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="17"> Ver Aspectos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="18"> Crear Aspectos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="19"> Editar Aspectos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="20"> Eliminar Aspectos
-                                    </div>
-                                    <h5>Preguntas</h5>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="21"> Ver Preguntas
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="22"> Crear Preguntas
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="23"> Editar Preguntas
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-objetivos">
-                                        <input type="checkbox" name="permission[]" value="24"> Eliminar Preguntas
-                                    </div>
-
-                                </div>
-                                <div class="bloque" style="height: 430px">
-                                    <h3>Atributos</h3>
-                                    <div class="column">
-                                        <input type="checkbox" id="Seleccion-Atributos"> Seleccionar Todos
-                                    </div>
-                                    <div class="column" id="lista-atributos">
-                                        <input class="opcion" type="checkbox" name="permission[]" value="25"> Ver
-                                        Atributos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="26"> Crear Atributos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="27"> Editar Atributos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="28"> Eliminar Atributos
-                                    </div>
-                                    <h5>Aspectos</h5>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="29"> Ver Aspectos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="30"> Crear Aspectos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="31"> Editar Aspectos
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="32"> Eliminar Aspectos
-                                    </div>
-                                    <h5>Preguntas</h5>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="33"> Ver Preguntas
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="34"> Crear Preguntas
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="35"> Editar Preguntas
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-atributos">
-                                        <input type="checkbox" name="permission[]" value="36"> Eliminar Preguntas
-                                    </div>
-                                </div>
-                                <div class="bloque">
-                                    <h3>Evaluadores</h3>
-                                    <div class="column">
-                                        <input type="checkbox" id="Seleccion-Evaluadores"> Seleccionar Todos
-                                    </div>
-                                    <div class="column" id="lista-evaluadores">
-                                        <input class="opcion" type="checkbox" name="permission[]" value="37"> Ver
-                                        Evaluadores
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-evaluadores">
-                                        <input type="checkbox" name="permission[]" value="38"> Crear Evaluadores
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-evaluadores">
-                                        <input type="checkbox" name="permission[]" value="39"> Editar Evaluadores
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-evaluadores">
-                                        <input type="checkbox" name="permission[]" value="40"> Eliminar Evaluadores
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-evaluadores">
-                                        <input type="checkbox" name="permission[]" value="41"> Visualizar Información
-                                    </div>
-                                </div>
-                                <div class="bloque" style="width: auto; height: auto;">
-                                    <h3>Encuestas</h3>
-                                    <div class="column">
-                                        <input type="checkbox" id="Seleccion-Encuestas"> Seleccionar Todos
-                                    </div>
-                                    <div class="row" style="display: flex;">
-                                        <div style="width: 400px; margin-right: 20px; height: auto;">
-                                            <h5>Encuestas Objetivos Educaionales</h5>
-                                            <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="42"> Ver Encuestas de
-                                                Objetivos Educacioanles
+                                    <div class="courses-container">
+                                        <div class="course" style="width: 1050px; height: 180px">
+                                            <div class="course-preview">
+                                                <h2>Atributos</h2>
                                             </div>
-                                            <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="43"> Crear Encuestas de
-                                                Objetivos Educacioanles
+                                            <div class="course-info">
+                                                <input type="checkbox" id="Seleccion-Atributos"> Seleccionar Todos
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5>Atributos</h5>
+                                                        <div class="column" id="lista-atributos">
+                                                            <input class="opcion" type="checkbox"
+                                                                name="permission[]" value="25"> Ver
+                                                            Atributos
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="26"> Crear
+                                                            Atributos
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="27"> Editar
+                                                            Atributos
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="28"> Eliminar
+                                                            Atributos
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Aspectos</h5>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="29"> Ver
+                                                            Aspectos
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="30"> Crear
+                                                            Aspectos
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="31"> Editar
+                                                            Aspectos
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="32"> Eliminar
+                                                            Aspectos
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Preguntas</h5>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="33"> Ver
+                                                            Preguntas
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="34"> Crear
+                                                            Preguntas
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="35"> Editar
+                                                            Preguntas
+                                                        </div>
+                                                        <div class="opcion" class="column"
+                                                            id="lista-atributos">
+                                                            <input type="checkbox" name="permission[]" value="36"> Eliminar
+                                                            Preguntas
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            {{-- <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="44"> Editar Encuestas de
-                                                Objetivos Educacioanles
-                                            </div>
-                                            <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="45"> Eliminar Encuestas de
-                                                Objetivos Educacioanles
-                                            </div> --}}
-                                        </div>
-                                        <div style="width: 400px">
-                                            <h5>Encuestas Atributos</h5>
-                                            <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="46"> Ver Encuestas de
-                                                Atributos
-                                            </div>
-                                            <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="47"> Crear Encuestas de
-                                                Atributos
-                                                Evaluaasdfdores
-                                            </div>
-                                            {{-- <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="48"> Ediar Encuestas de Atributos
-                                                Evalasdfuadores
-                                            </div>
-                                            <div class="opcion" id="lista-encuestas">
-                                                <input type="checkbox" name="permission[]" value="49"> Eliminar Encuestas de Atributos
-                                            </div> --}}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="bloque">
-                                    <h3>Contestar Encuestas</h3>
-                                    <div class="opcion" class="column" id="lista-Cencuestas">
-                                        <input type="checkbox" name="permission[]" value="50"> Contestar Encuestas
+                                    <div class="courses-container">
+                                        <div class="course" style="width: 1050px">
+                                            <div class="course-preview">
+                                                <h2>Encuestas</h2>
+                                            </div>
+                                            <div class="course-info">
+                                                <input type="checkbox" id="Seleccion-Encuestas"> Seleccionar Todos
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5>Encuestas Objetivos Educaionales</h5>
+                                                        <div class="opcion" id="lista-encuestas">
+                                                            <input type="checkbox" name="permission[]" value="42"> Ver
+                                                            Encuestas
+                                                            de
+                                                            Objetivos Educacioanles
+                                                        </div>
+                                                        <div class="opcion" id="lista-encuestas">
+                                                            <input type="checkbox" name="permission[]" value="43"> Crear
+                                                            Encuestas de
+                                                            Objetivos Educacioanles
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Encuestas Atributos</h5>
+                                                        <div class="opcion" id="lista-encuestas">
+                                                            <input type="checkbox" name="permission[]" value="46"> Ver
+                                                            Encuestas de
+                                                            Atributos
+                                                        </div>
+                                                        <div class="opcion" id="lista-encuestas">
+                                                            <input type="checkbox" name="permission[]" value="47"> Crear
+                                                            Encuestas de
+                                                            Atributos
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="bloque">
-                                    <h3>Residentes</h3>
-                                    <div class="column">
-                                        <input type="checkbox" id="Seleccion-Residentes"> Seleccionar Todos
-                                    </div>
-                                    <div class="column" id="lista-residentes">
-                                        <input class="opcion" type="checkbox" name="permission[]" value="51"> Ver
-                                        Residentes
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-residentes">
-                                        <input type="checkbox" name="permission[]" value="52"> Crear Residentes
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-residentes">
-                                        <input type="checkbox" name="permission[]" value="53"> Editar Residentes
-                                    </div>
-                                    <div class="opcion" class="column" id="lista-residentes">
-                                        <input type="checkbox" name="permission[]" value="54"> Eliminar Residentes
-                                    </div>
-                                </div>
-                                <div class="bloque">
-                                    <h3>Estadísticas</h3>
-                                    <div class="opcion" class="column" id="lista-estadisticas">
-                                        <input type="checkbox" name="permission[]" value="55"> Estadísticas
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <button type="submit" class="boton-submit">Guardar</button>
                                 </div>
                             </div>
-                            {!! Form::close() !!}
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <button type="submit" class="boton-submit">Guardar</button>
+                            </div>
                         </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 @endsection
