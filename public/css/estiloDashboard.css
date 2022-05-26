@@ -1,3 +1,4 @@
+
 .card-body{
     display: flex;
     flex-wrap: wrap;
@@ -28,10 +29,12 @@
     border-radius: 10px;
     margin: 5px 5px 0px 4px;
     overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
     }
 .progres-container{
     height: 500px;
-    width: 400px;
+    width: 600px;
     background: white;
     box-shadow: 0px 0px 10px 1px #c8d3fd;
     padding: 8px;
@@ -110,4 +113,87 @@
 
 .carousel{
     text-align: center;
+}
+
+
+/* From uiverse.io by @alexruix */
+.card-home {
+ width: 190px;
+ height: 230px;
+ margin: 0 1rem;
+ position: relative;
+ background: #a2d2ff;
+ transition: box-shadow .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ border-radius: 20px;
+}
+
+.card-img {
+ position: absolute;
+ height: 100%;
+ width: 100%;
+ padding-top: 6px;
+ /* align-items: center; */
+ /* justify-content: center; */
+ color: black;
+ font-size: 30px;
+ text-align: center;
+ background-color: #a2d2ff;
+ border-radius: 10px;
+ box-shadow: 10px 3px 5px#c8d3fd;
+ /* float: right; */
+}
+
+.card-info {
+ position: absolute;
+ width: 100%;
+ bottom: 0;
+ padding: 1rem;
+ display: flex;
+ align-items: flex-end;
+ justify-content: space-between;
+}
+
+.card-icon {
+ opacity: 0;
+ transform: translateX(-20%);
+ width: 2em;
+ height: 2em;
+ transition: all .3s ease-in-out;
+}
+
+/* .card-home svg {
+ --size: 20px;
+ width: var(--size);
+ height: var(--size);
+} */
+
+/*Text*/
+.card-home p {
+ line-height: 140%;
+}
+
+.text-title {
+ font-weight: 900;
+ font-size: 18px;
+}
+
+.text-subtitle {
+ color: #333;
+ font-weight: 500;
+ font-size: 16px;
+}
+
+/*Hover*/
+.card-home:hover {
+ box-shadow: 0 10px 20px 4px rgba(35, 35, 35, .1);
+ cursor: pointer;
+}
+
+.card-home:hover .card-icon {
+ opacity: 1;
+ transform: translateX(20%);
+}
+
+.bg-card-blue {
+    background-color: steelblue;
 }
