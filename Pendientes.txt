@@ -1,11 +1,14 @@
 ✅❌🟠Pendientes por hacer
+
+General
+    ❌-cambiar hover en todas las tablas
 Login
     ❌-Recuperar Contraseña
     ❌-Quitar boton de recordar ya que no sirve
 
 Dashboard
     ❌-Tarjetas funcionales
-    ❌-mostrar Objetivos con Metas
+    ✅❌-mostrar Objetivos con Metas
 
 Usuarios
     Crear Usuario
@@ -15,15 +18,20 @@ Roles
     ❌-Agregar diseño de checkbox de asignar encuestas
 Carreras
     ❌-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
-    ❌-Al ocultar una carrera que también se pueda desocultar
+    ❌🟠-Al ocultar una carrera que también se pueda desocultar
     ❌-Boton asignas usuarios a carrera no funciona eliminar usuario
 
     Objetivos
-        ❌-Metas
+        ❌-Dar de alta Metas
         ❌-modal Editar aspecto no cierra
         ❌-modal editar pregunta no cierra
     Atributos
-        ❌-Metas
+        ❌-Dar de alta Metas
+        Editar
+            ❌-Quitar boton de cerrar
+            ❌-Agregar boton de cross esquina superior derecha
+            ❌-boton actualizar poner leyende "actualizar" y poner estilo del boton
+            ❌-El text area ponerlo igual que en la parte de agregar atributo
 
 Evaluadores
     Grupo de interes
@@ -55,7 +63,7 @@ Encuestas
         ❌-ver como mostrar lo de los residentes de solo esa carrera
         ❌-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
         ❌-boton guardar no tiene estilo
-        
+
 residentes
     Editar residentes
         ❌-Barra de navegación
@@ -65,9 +73,10 @@ residentes
         ❌-Barra de navegación
         ❌-boton guardar no tiene estilo
     Formulario para crear residentes los alumnos
+
 Estadísticas
     ❌-Select carrera mostrar elplan de estudio de la carrera
-    ❌-Agregar Tabla para la comparación de metas con resultados
+    ✅❌-Agregar Tabla para la comparación de metas con resultados
 
 
 
