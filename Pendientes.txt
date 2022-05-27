@@ -20,11 +20,11 @@ Carreras
     ❌-Boton asignas usuarios a carrera no funciona eliminar usuario
 
     Objetivos
-        ❌-Dar de alta Metas
+        ✅-Dar de alta Metas
         ❌-modal Editar aspecto no cierra
         ❌-modal editar pregunta no cierra
     Atributos
-        ❌-Dar de alta Metas
+        ✅-Dar de alta Metas
         Editar
             ✅-Quitar boton de cerrar
             ✅-Agregar boton de cross esquina superior derecha
@@ -70,7 +70,7 @@ residentes
     Crear residentes
         ✅--Barra de navegación
         ✅--boton guardar no tiene estilo
-        
+
     Formulario para crear residentes los alumnos
 
 Estadísticas
