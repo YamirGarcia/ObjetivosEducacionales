@@ -2,6 +2,7 @@
 
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="../css/estilofondo.css">
+<link rel="stylesheet" type="text/css" href="../css/estilosGenerales.css">
 @livewireStyles
 @endsection
 

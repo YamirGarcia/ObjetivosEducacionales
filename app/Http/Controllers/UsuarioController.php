@@ -50,6 +50,10 @@ class UsuarioController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
+        $roles = array_filter($roles, function ($key){
+            if($key == 'Evaluador') {return false;}
+            else {return true;}
+        });
         return view('usuarios.crear', compact('roles'));
     }
 
