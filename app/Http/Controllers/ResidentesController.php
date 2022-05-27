@@ -24,8 +24,7 @@ class ResidentesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
+    {        
         return view('Residentes.crear');
     }
 
@@ -99,11 +98,19 @@ class ResidentesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nombre' => 'required',
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'numeroControl' => 'required',
+            'correo' => 'required',
+            'carrera' => 'required',
         ]);
 
         $evaluador = Residente::find($id);
-        $evaluador->nombre = $request->nombre;
+        $evaluador->nombres = $request->nombres;
+        $evaluador->apellidos = $request->apellidos;
+        $evaluador->numeroControl = $request->numeroControl;
+        $evaluador->correo = $request->correo;
+        $evaluador->carrera = $request->carrera;
         $evaluador->save();
         return redirect()->route('residentes.index');
     }
