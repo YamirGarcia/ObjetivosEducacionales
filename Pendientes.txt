@@ -20,11 +20,11 @@ Carreras
     ❌-Boton asignas usuarios a carrera no funciona eliminar usuario
 
     Objetivos
-        ❌-Dar de alta Metas
+        ✅-Dar de alta Metas
         ❌-modal Editar aspecto no cierra
         ❌-modal editar pregunta no cierra
     Atributos
-        ❌-Dar de alta Metas
+        ✅-Dar de alta Metas
         Editar
             ✅-Quitar boton de cerrar
             ✅-Agregar boton de cross esquina superior derecha
@@ -52,24 +52,25 @@ Encuestas
         ✅--Barra de navegación
     Crear Encuesta Objetivos
         ✅-barra de navegación
-        ❌-En evaluadores que solo se muestren los que el usuarios a creado
+        ✅--En evaluadores que solo se muestren los que el usuarios a creado
         ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
         ✅--boton guardar no tiene estilo
     Crear Encuesta Atributos
-        ❌-barra de navegación
-        ❌-En evaluadores que solo se muestren los que el usuarios a creado
+        ✅-barra de navegación
+        ✅--En evaluadores que solo se muestren los que el usuarios a creado
         ❌-ver como mostrar lo de los residentes de solo esa carrera
-        ❌-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
-        ❌-boton guardar no tiene estilo
+        ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
+        ✅-boton guardar no tiene estilo
 
 residentes
     Editar residentes
-        ❌-Barra de navegación
-        ❌-Editar no tiene todos los campos que en el de crear
-        ❌-boton guardar no tiene estilo
+        ✅--Barra de navegación
+        ✅-Editar no tiene todos los campos que en el de crear
+        ✅-boton guardar no tiene estilo
     Crear residentes
-        ❌-Barra de navegación
-        ❌-boton guardar no tiene estilo
+        ✅--Barra de navegación
+        ✅--boton guardar no tiene estilo
+
     Formulario para crear residentes los alumnos
 
 Estadísticas
