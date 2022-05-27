@@ -52,15 +52,15 @@ Encuestas
         ✅--Barra de navegación
     Crear Encuesta Objetivos
         ✅-barra de navegación
-        ❌-En evaluadores que solo se muestren los que el usuarios a creado
+        ✅--En evaluadores que solo se muestren los que el usuarios a creado
         ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
         ✅--boton guardar no tiene estilo
     Crear Encuesta Atributos
-        ❌-barra de navegación
-        ❌-En evaluadores que solo se muestren los que el usuarios a creado
+        ✅-barra de navegación
+        ✅--En evaluadores que solo se muestren los que el usuarios a creado
         ❌-ver como mostrar lo de los residentes de solo esa carrera
-        ❌-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
-        ❌-boton guardar no tiene estilo
+        ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
+        ✅-boton guardar no tiene estilo
 
 residentes
     Editar residentes
