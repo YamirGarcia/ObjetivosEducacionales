@@ -2,12 +2,17 @@
 
 @section('estilos')
 <link rel="stylesheet" type="text/css" href="/css/estilofondo.css">
+<link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
 @endsection
 
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Editar Evaluador</h3>
+        <h3 class="page__heading">
+            <a style="text-decoration: none; color: #6c757d" href="/evaluadores">Evaluadores</a>
+            <a style="text-decoration: none; color: #6c757d" href="{{ route('evaluadores.edit', $evaluador->id) }}">/
+                Editar Evaluador</a>
+        </h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -114,9 +119,10 @@
                             {{--  --}}
                             <input type="text" readonly name="creadopor" class="form-control" style="visibility: hidden;" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
 
-                            <div class="col-5" style="margin: 0 auto">
-                                <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm">Guardar</button>
-                            </div>
+                            
+                        <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                            <button type="submit" class="boton-submit">Guardar</button>
+                        </div>
                             <input type="text" name="idUserSession" style="visibility: hidden" value="{{$idUserSession[0]->id}}">
                         
                         {!! Form::close() !!}

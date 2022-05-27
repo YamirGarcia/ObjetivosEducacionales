@@ -2,18 +2,22 @@
 
 @section('estilos')
     <link rel="stylesheet" type="text/css" href="css/estiloCrearEncuesta.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear nueva Encuesta</h3>
+            <h3 class="page__heading">
+                <a style="text-decoration: none; color: #6c757d" href="/encuestas" >Encuestas</a>
+                <a style="text-decoration: none; color: #6c757d" >/
+                    Crear Encuesta</a></h3>
         </div>
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-11" style="margin: 0 auto">
-                    <div class="card">
+                    <div class="card shadow p-3 mb-5 bg-body rounded">
                         <div class="card-body">
                             <h3 class="mb-4"> {{ App\Models\Carrera::find($carrera)->carrera }} |
                                 {{ App\Models\Carrera::find($carrera)->planEstudios }}</h3>
@@ -63,14 +67,14 @@
 
                                 @foreach ($encuestas as $encuesta)
                                     <div class="accordion" id="accordionExample{{ $encuesta->id }}">
-                                        <div class="card">
+                                        <div class="card card-accordion">
                                             <div class="card-header" id="heading{{ $encuesta->id }}">
                                                 <h2 class="mb-0" style="display: flex">
                                                     {{-- <input class="vertical-centered" type="checkbox"
                                                         id="check{{ $encuesta->id }}" name="encuesta[]"
                                                         value="{{ $encuesta->id }}"> --}}
                                                     <label for="check{{ $encuesta->id }}"></label>
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                    <button class="btn-acordion collapsed" type="button"
                                                         data-toggle="collapse" data-target="#collapse{{ $encuesta->id }}"
                                                         aria-expanded="true" aria-controls="collapse{{ $encuesta->id }}"
                                                         style="text-decoration: none">
@@ -95,7 +99,7 @@
                                             </script> --}}
                                                         <div class="accordion"
                                                             id="accordionExampleAspecto{{ $aspecto->id }}">
-                                                            <div class="card">
+                                                            <div class="card card-accordion">
                                                                 <div class="card-header"
                                                                     id="headingAspecto{{ $aspecto->id }}">
                                                                     <h2 class="mb-0" style="display: flex">
@@ -106,7 +110,7 @@
                                                                         <label
                                                                             for="checkAspecto{{ $aspecto->id }}"></label>
                                                                         <button
-                                                                            class="btn btn-link btn-block text-left collapsed"
+                                                                            class="btn-acordion collapsed"
                                                                             type="button" data-toggle="collapse"
                                                                             data-target="#collapseAspecto{{ $aspecto->id }}"
                                                                             aria-expanded="true"
@@ -126,9 +130,9 @@
                                                                     <div class="card-body">
                                                                         <h4>Preguntas (Disponibles:
                                                                             {{ $aspecto->preguntas->count() }})</h4>
-                                                                        <ol class="list-group list-group-numbered">
+                                                                        <ol class="list-group list-group-numbered" >
                                                                             @forelse ($aspecto->preguntas as $pregunta)
-                                                                                <li class="list-group-item">
+                                                                                <li class="list-group-item" style="background: #f5f3f4">
                                                                                     {{ $pregunta->Pregunta }}</li>
                                                                             @empty
                                                                                 <p>No hay preguntas disponibles</p>
@@ -167,9 +171,12 @@
                                     style="visibility: hidden;"
                                     value="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
 
-                                <div class="col-5" style="margin: 0 auto">
+                                {{-- <div class="col-5" style="margin: 0 auto">
                                     <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-sm"
                                         id="enviarForm">Guardar</button>
+                                </div> --}}
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <button type="submit" class="boton-submit" id="enviarForm">Guardar</button>
                                 </div>
                             </div>
 

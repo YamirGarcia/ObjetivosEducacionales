@@ -39,22 +39,22 @@ Evaluadores
         Editar grupo de interes
             ✅--boton actualizar no tiene estilo 
     Editar
-        ❌-Ruta navegación
-        ❌-Boton guardar no tiene estilo
+        ✅-Ruta navegación
+        ✅-Boton guardar no tiene estilo
     Agregar evaluador
-        ❌-Ruta navegación
-        ❌-Boton guardar no tiene estilo
+        ✅-Ruta navegación
+        ✅-Boton guardar no tiene estilo
 
 Encuestas
     Ver Respuestas Objetivos
-        ❌-Barra de navegación
+        ✅-Barra de navegación
     Ver Respuestas Atributos
-        ❌-Barra de navegación
+        ✅--Barra de navegación
     Crear Encuesta Objetivos
-        ❌-barra de navegación
+        ✅-barra de navegación
         ❌-En evaluadores que solo se muestren los que el usuarios a creado
-        ❌-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
-        ❌-boton guardar no tiene estilo
+        ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
+        ✅--boton guardar no tiene estilo
     Crear Encuesta Atributos
         ❌-barra de navegación
         ❌-En evaluadores que solo se muestren los que el usuarios a creado
