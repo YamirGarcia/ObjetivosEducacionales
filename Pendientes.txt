@@ -64,12 +64,13 @@ Encuestas
 
 residentes
     Editar residentes
-        ❌-Barra de navegación
-        ❌-Editar no tiene todos los campos que en el de crear
-        ❌-boton guardar no tiene estilo
+        ✅--Barra de navegación
+        ✅-Editar no tiene todos los campos que en el de crear
+        ✅-boton guardar no tiene estilo
     Crear residentes
-        ❌-Barra de navegación
-        ❌-boton guardar no tiene estilo
+        ✅--Barra de navegación
+        ✅--boton guardar no tiene estilo
+        
     Formulario para crear residentes los alumnos
 
 Estadísticas
