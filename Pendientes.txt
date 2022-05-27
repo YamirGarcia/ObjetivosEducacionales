@@ -15,8 +15,8 @@ Usuarios
         ✅-Que no se pueda asignar el rol de evaluador
 
 Carreras
-    ❌-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
-    ❌🟠-Al ocultar una carrera que también se pueda desocultar
+    ✅-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
+    ✅🟠-Al ocultar una carrera que también se pueda desocultar
     ❌-Boton asignas usuarios a carrera no funciona eliminar usuario
 
     Objetivos

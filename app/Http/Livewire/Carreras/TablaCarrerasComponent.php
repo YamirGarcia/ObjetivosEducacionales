@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Carrera;
 use App\Models\User;
 use App\Models\UsuarioCarrera;
+use App\Models\ObjetivoEducacional;
 use Illuminate\Support\Facades\DB;
 
 
@@ -19,6 +20,7 @@ class TablaCarrerasComponent extends Component
     public $band = true;
     public $cont = 0;
     public $botonMostrar = true;
+    protected $listeners = ['eliminarCarrera'];
 
     public function render()
     {
@@ -74,11 +76,6 @@ class TablaCarrerasComponent extends Component
                 }
             });
         }
-        // $carreras = $carreras->filter(function($item){
-        //     if($item->oculto == false){
-        //         return true;
-        //     }
-        // });
         
         $usuarios = User::where('creadopor', $user->name)->get();
         return view('livewire.carreras.tabla-carreras-component',[
@@ -130,18 +127,36 @@ class TablaCarrerasComponent extends Component
         }else{
             $this->botonMostrar = true;
         }
-        // $carreras = $carreras->get();
-        // $carreras = $carreras->filter(function($item){
-        //     if($item->oculto == true){
-        //         return true;
-        //     }
-        // });
+    }
 
-        // $usuarios = User::where('creadopor', $user->name)->get();
-        // return view('livewire.carreras.tabla-carreras-component',[
-        //     'carreras' => $carreras,
-        //     'usuarios' => $usuarios,
-        // ]);
+    public function eliminarCarrera($id) {
+        $carrera = Carrera::find($id);
+
+        if ($carrera->noBorrar == True) {
+            $carrera->oculto = $carrera->oculto ? False : True ;
+            $carrera->save();
+        }else{
+            $objetivos = $carrera->objetivos;
+            foreach ($objetivos as $objetivo) {
+                foreach ($objetivo->aspectos as $aspecto){
+                    foreach($aspecto->preguntas as $pregunta){
+                        $pregunta->delete();
+                    }
+                }
+                $relacion = ObjetivoAspecto::where('objetivo_educacional_id', $objetivo->id)->get();
+                $relacion->each->delete();
+                $aspectos = $objetivo->aspectos;
+                $aspectos->each->delete();
+            }
+    
+            $relacionObj = ObjetivoEducacional::where('idCarrera', $id)->get();
+            $relacionObj->each->delete();
+    
+            $relacionUserCarrera = UsuarioCarrera::where('carrera_id', $id)->get();
+            $relacionUserCarrera->each->delete();
+    
+            $carrera->delete();
+        }
     }
 
 }

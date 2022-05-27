@@ -49,43 +49,9 @@
     <!-- Modal para añadir carrera -->
     @include('profile.añadir_carrera')
     @livewireScripts
+    @stack('scripts')
 @endsection
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        let forms = document.querySelectorAll('.form-eliminar');
 
-        forms.forEach(formulario => {
-            formulario.addEventListener('submit', event => {
-                // if(confirm('Desea eliminar?')){
-                //     return true;
-                // }
-
-                event.preventDefault();
-                Swal.fire({
-                title: '¿Está seguro de borrar esta Carrera',
-                text: "¡Se borrará la Carrera, sus Objetivos Educacionales,  sus Aspectos y sus preguntas relacionadas!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Eliminar',
-                cancelButtonText: 'Cancelar',
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    // 
-                    Swal.fire(
-                    'Borrado',
-                    '',
-                    'success'
-                    )
-                    setTimeout(() => {
-                        formulario.submit(); 
-                    }, 900);
-                }
-                })
-            })
-        });
-    </script>
 @endsection

@@ -25,6 +25,7 @@ class CarreraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // protected $listeners = ['destroy'];
     public function index()
     {
         $user_session = Auth::user()->name;
@@ -164,10 +165,9 @@ class CarreraController extends Controller
 
         if ($carrera->noBorrar == True) {
             // dd('no se puede borrar');
-            $carrera->oculto = True;
+            $carrera->oculto = $carrera->oculto ? False : True ;
             $carrera->save();
         }else{
-            // dd('si se puede borrar');
             $objetivos = $carrera->objetivos;
             foreach ($objetivos as $objetivo) {
                 foreach ($objetivo->aspectos as $aspecto){
@@ -186,20 +186,6 @@ class CarreraController extends Controller
     
             $relacionUserCarrera = UsuarioCarrera::where('carrera_id', $id)->get();
             $relacionUserCarrera->each->delete();
-    
-            // $objetivo=ObjetivoEducacional::findorFail($id);
-            // $aspectos = $objetivo->aspectos;
-            // foreach($aspectos as $aspecto){
-            //     foreach($aspecto->preguntas as $pregunta){
-            //         $pregunta->delete();
-            //     }
-            // }
-            // $aspectos->each->preguntas->each->delete();
-            // $relacion = ObjetivoAspecto::where('objetivo_educacional_id', $id)->get();
-            // $relacion->each->delete();
-            // $aspectos->each->delete();
-    
-    
     
             $carrera->delete();
         }
