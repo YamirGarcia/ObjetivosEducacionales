@@ -15,16 +15,16 @@ Usuarios
         ✅-Que no se pueda asignar el rol de evaluador
 
 Carreras
-    ❌-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
-    ❌🟠-Al ocultar una carrera que también se pueda desocultar
+    ✅-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
+    ✅🟠-Al ocultar una carrera que también se pueda desocultar
     ❌-Boton asignas usuarios a carrera no funciona eliminar usuario
 
     Objetivos
-        ❌-Dar de alta Metas
+        ✅-Dar de alta Metas
         ❌-modal Editar aspecto no cierra
         ❌-modal editar pregunta no cierra
     Atributos
-        ❌-Dar de alta Metas
+        ✅-Dar de alta Metas
         Editar
             ✅-Quitar boton de cerrar
             ✅-Agregar boton de cross esquina superior derecha
@@ -70,7 +70,7 @@ residentes
     Crear residentes
         ✅--Barra de navegación
         ✅--boton guardar no tiene estilo
-        
+
     Formulario para crear residentes los alumnos
 
 Estadísticas
