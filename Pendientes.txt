@@ -77,8 +77,8 @@ residentes
     Formulario para crear residentes los alumnos
 
 Estadísticas
-    ❌-Select carrera mostrar elplan de estudio de la carrera
-    🟠❌-Agregar Tabla para la comparación de metas con resultados
+    ✅-Select carrera mostrar elplan de estudio de la carrera
+    ✅-Agregar Tabla para la comparación de metas con resultados
 
 
 

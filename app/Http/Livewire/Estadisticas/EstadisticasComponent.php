@@ -92,12 +92,6 @@ class EstadisticasComponent extends Component
         $user = Auth::user();
         $carreras = \App\Models\Carrera::select('id', 'carrera', 'planEstudios')->where('creadopor', $user->id)->get();
 
-        $dataBarrasObjetivos = [];
-        $dataAspectos = [];
-        $sumatoria = [];
-        $sumatoriaAspectos = [];
-        $contadores = [];
-        $contadoresAspectos = [];
 
         // if para la primer tabla
         if ($this->tipoSeleccionado && $this->carreraSeleccionada && $this->añoSeleccionado && $this->periodoSeleccionado) {
