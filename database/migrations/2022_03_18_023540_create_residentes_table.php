@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('numeroControl');
             $table->string('correo');
             $table->string('carrera');
+            $table->string('asignadoPor')->default('');
+            $table->boolean('aceptado')->default('False');
             $table->timestamps();
         });
     }
