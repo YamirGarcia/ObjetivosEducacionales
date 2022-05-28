@@ -157,7 +157,6 @@
         </div>
     </div>
 
-
     <br>
     <br>
     <div class="card-body">
@@ -192,7 +191,7 @@
                 </select>
             </div>
             <div class="tabla">
-                @if ($dataColumnaMetas)
+                @if ($dataTablaMetasC3)
                     {{-- @if ($tipoSeleccionado == 'Objetivos') --}}
                     <div id="containerMetas" style="width:95%; margin: 5rem auto; "></div>
                     <div class="container-card">
@@ -218,6 +217,10 @@
             </div>
         </div>
     </div>
+
+
+
+
 
     <script>
         Highcharts.setOptions({
@@ -268,6 +271,8 @@
         var añoc2;
         var añoc2S;
         const span = document.getElementById('span-info');
+
+
         document.addEventListener('DOMContentLoaded', () => {
             Livewire.hook('message.processed', (el, component) => {
                 carrerac1 = document.getElementById("carreraC1");
@@ -282,6 +287,7 @@
                 periodoc2S = periodoc2.options[periodoc2.selectedIndex].text;
                 añoc2 = document.getElementById("añoC2");
                 añoc2S = añoc2.options[añoc2.selectedIndex].text;
+
                 if (@this.renderizar) {
                     const chart = Highcharts.chart('containerObjetivos', {
                         chart: {
@@ -298,7 +304,8 @@
                                         text: defaultTitleObjetivos
                                     });
                                 }
-                            }
+                            },
+                            borderRadius: 10 px,
                         },
                         title: {
                             text: defaultTitleObjetivos
@@ -353,6 +360,7 @@
                     });
                 }
                 if (@this.renderizarT2) {
+
                     Highcharts.chart('containerComparative', {
                         chart: {
                             type: 'column'
@@ -392,45 +400,56 @@
                     // $('html, body').animate({scrollTop: 0}, 'fast');
                 }
 
-                if (@this.renderizarT3) {
-                    Highcharts.chart('containerMetas', {
-                        title: {
-                            text: 'Tabla de Metas'
-                        },
-                        xAxis: {
-                            categories: @this.nombresObjetivosC3
-                        },
-                        labels: {
-                            items: [{
-                                style: {
-                                    left: '50px',
-                                    top: '18px'
-                                }
-                            }]
-                        },
-                        credits: {
-                            enabled: false
-                        },
-                        series: [{
-                            type: 'column',
-                            colorByPoint: true,
-                            name: 'Nombre de la carrera',
-                            data: @this.dataColumnaMetas,
-                        }, {
-                            type: 'spline',
-                            name: 'Metas',
-                            data: @this.dataMetas,
-                            marker: {
-                                lineWidth: 2,
-                                lineColor: Highcharts.getOptions().colors[6],
-                                fillColor: 'white'
+
+
+                Highcharts.chart('containerMetas', {
+                    title: {
+                        text: 'Tabla de Metas'
+                    },
+                    xAxis: {
+                        categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+                    },
+                    labels: {
+                        items: [{
+                            style: {
+                                left: '50px',
+                                top: '18px'
                             }
                         }]
-                    });
-                }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        type: 'column',
+                        colorByPoint: true,
+                        name: 'Nombre de la carrera',
+                        data: [3, 2, 1, 3, 4]
+                    }, {
+                        type: 'spline',
+                        name: 'Metas',
+                        data: [3, 2.67, 3, 6.33, 3.33],
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: Highcharts.getOptions().colors[3],
+                            fillColor: 'white'
+                        }
+                    }]
+                });
+
+
+
+
+
+
+
+
             });
         });
     </script>
+
+
+    <script></script>
 
 
 
