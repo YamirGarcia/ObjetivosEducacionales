@@ -16,6 +16,7 @@ use App\Http\Controllers\ContestarEncuestaController;
 use App\Http\Controllers\AspectosAtributosController;
 use App\Http\Controllers\ResidentesController;
 use App\Http\Controllers\PreguntaAspectoAtributoController;
+use App\Http\Controllers\FormularioResidentesController;
 use App\Http\Livewire\Atributos\AspectosAtributosComponent;
 use App\Http\Livewire\Estadisticas\EstadisticasComponent;
 
@@ -35,6 +36,11 @@ Route::get('/menu', function () {
     return view('Objetivos.menu');
 })->name('menu');
 
+Route::get('/formularioResidentes', function () {
+    return view('Residentes.formulario');
+})->name('formularioResidentes');
+
+Route::resource('formularioResidentes', FormularioResidentesController::class);
 
 Route::group(['middleware' => ['auth']], function(){
     // -------------------------- ROLES --------------------------
@@ -65,6 +71,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('ObjetivoEducacional', ObjetivosController::class);
     Route::resource('AspectosAtributos', AspectosAtributosController::class);
     Route::resource('PreguntaAspectosAtributos', PreguntaAspectoAtributoController::class);
+
     
     
 });

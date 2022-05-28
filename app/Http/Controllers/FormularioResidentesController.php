@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Residente;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ResidentesController extends Controller
+
+class FormularioResidentesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +17,7 @@ class ResidentesController extends Controller
      */
     public function index()
     {
-        $user_session = Auth::user()->name;
-        $residentes = Residente::all();
-        return view('Residentes.index', [
-            'residentes' => $residentes,
-            'user_session' => $user_session,
-        ]);
+        return view('Residentes.formulario');
     }
 
     /**
@@ -30,8 +27,7 @@ class ResidentesController extends Controller
      */
     public function create()
     {
-        
-        return view('Residentes.crear');
+        //
     }
 
     /**
@@ -42,7 +38,7 @@ class ResidentesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        
         $this->validate($request, [
             'nombres' => 'required',
             'apellidos' => 'required',
@@ -50,14 +46,6 @@ class ResidentesController extends Controller
             'correo' => 'required',
             'carrera' => 'required',
         ]);
-
-        // $residente = new Residente();
-        // $residente -> nombres = $request -> nombre;
-        // $residente -> apellidos= $request -> nombre;
-        // $residente -> numeroControl = $request -> nombre;
-        // $residente -> nombre = $request -> nombre;
-        // $residente -> nombre = $request -> nombre;
-        // $residente->save();
 
         Residente::create([
             'nombres' => $request->nombres,
@@ -67,7 +55,7 @@ class ResidentesController extends Controller
             'carrera' => $request->carrera,
         ]);
 
-        return redirect()->route('residentes.index');
+        return redirect()->route('formularioResidentes.index');
     }
 
     /**
@@ -89,9 +77,12 @@ class ResidentesController extends Controller
      */
     public function edit($id)
     {
+        $user_session = Auth::user()->name;
         $residente = Residente::find($id);
-        // dd($idUserSession[0]->id);
-        return view('Residentes.editar', compact('residente'));
+        $residente->aceptado = true;
+        $residente->asignadoPor = $user_session;
+        $residente->save();
+        return redirect()->route('residentes.index');
     }
 
     /**
@@ -103,14 +94,7 @@ class ResidentesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nombre' => 'required',
-        ]);
-
-        $evaluador = Residente::find($id);
-        $evaluador->nombre = $request->nombre;
-        $evaluador->save();
-        return redirect()->route('residentes.index');
+        //
     }
 
     /**
