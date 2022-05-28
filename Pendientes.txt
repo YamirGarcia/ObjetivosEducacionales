@@ -71,6 +71,8 @@ residentes
     Crear residentes
         ✅--Barra de navegación
         ✅--boton guardar no tiene estilo
+        ❌-Al crear un residente que ya le asigne el cmapo de asignadoPor
+        ❌-filtro por carrera no funciona
 
     Formulario para crear residentes los alumnos
 
