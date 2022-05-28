@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('residentes', ResidentesController::class);
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
+    Route::post('/eliminarUsuarioCarrera/{idUsuario}/{idCarrera}', [App\Http\Controllers\CarreraController::class, 'eliminarUsuarioCarrera'])->name('eliminarUsuarioCarrera');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');
     Route::delete('/eliminarObjetivo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarObjetivo'])->name('eliminarObjetivo');
     Route::resource('ObjetivoEducacional', ObjetivosController::class);
@@ -64,6 +65,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('ObjetivoEducacional', ObjetivosController::class);
     Route::resource('AspectosAtributos', AspectosAtributosController::class);
     Route::resource('PreguntaAspectosAtributos', PreguntaAspectoAtributoController::class);
+    
     
 });
 

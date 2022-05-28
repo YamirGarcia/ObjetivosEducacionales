@@ -139,12 +139,12 @@
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" style="border: none; background: none" data-toggle="tooltip"
+                                        wire:click="$emit('EliminarCarrera', {{ $carrera->id }}, {{App\Models\Carrera::find($carrera->id)->noBorrar}})"
                                             data-placement="bottom"
                                             @if ($carrera->noBorrar == true) title="Ocultar"
                                             @else 
                                                 title="Eliminar" 
                                             @endif
-                                            wire:click="$emit('EliminarCarrera', {{ $carrera }})"
                                             >
                                             <div class="icon trash-fill">
                                                 <i>
@@ -221,9 +221,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         console.log('Hola Mundo');
-        Livewire.on('EliminarCarrera', (carrera) => {
-            let leyenda = carrera.noBorrar ? carrera.oculto ? 'Dejar de Ocultar' : 'Ocultar' : 'Eliminar';
-            
+        Livewire.on('EliminarCarrera', (carrera, noBorrar) => {
+            // console.log(estado);
+            // let leyenda = carrera.noBorrar ? carrera.oculto ? 'Dejar de Ocultar' : 'Ocultar' : 'Eliminar';
+            // console.log('noBorrar = ', noBorrar, 'oculto = ',oculto);
+            let leyenda = noBorrar ?   'Realizar esta acción': 'Borrar';
 
             Swal.fire({
                 title: `¿Está seguro de ${leyenda} esta Carrera?`,
@@ -243,10 +245,9 @@
                     'success'
                     )
                     setTimeout(() => {
-                        // formulario.submit(); 
                     }, 900);
 
-                    Livewire.emit('eliminarCarrera', carrera.id);
+                    Livewire.emit('eliminarCarrera', carrera);
                 }
                 });
 

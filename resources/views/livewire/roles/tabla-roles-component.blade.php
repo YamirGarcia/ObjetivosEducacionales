@@ -66,9 +66,9 @@
                                                 <td class="column2">{{ $role->name }}</td>
                                                 <td class="column3">
                                                     <span class="badge badge-dark"
-                                                        wire:click='mostrarPermisos({{ $role->id }})'
+                                                        wire:click.prefetch='mostrarPermisos({{ $role->id }})'
                                                         data-toggle="modal" data-target="#modalPermisos">
-                                                        Permisos
+                                                        Permisos: {{$this->numeroPermisos($role->id)}}
                                                     </span>
                                                 </td>
                                                 <td class="column4">
