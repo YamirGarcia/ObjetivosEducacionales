@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Residente;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class FormularioResidentesController extends Controller
 {
@@ -34,7 +38,24 @@ class FormularioResidentesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $this->validate($request, [
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'numeroControl' => 'required',
+            'correo' => 'required',
+            'carrera' => 'required',
+        ]);
+
+        Residente::create([
+            'nombres' => $request->nombres,
+            'apellidos' =>$request->apellidos,
+            'numeroControl' => $request->numeroControl,
+            'correo' => $request->correo,
+            'carrera' => $request->carrera,
+        ]);
+
+        return redirect()->route('formularioResidentes.index');
     }
 
     /**
@@ -56,7 +77,12 @@ class FormularioResidentesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_session = Auth::user()->name;
+        $residente = Residente::find($id);
+        $residente->aceptado = true;
+        $residente->asignadoPor = $user_session;
+        $residente->save();
+        return redirect()->route('residentes.index');
     }
 
     /**

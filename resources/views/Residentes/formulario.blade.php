@@ -72,16 +72,57 @@
                 @include('layouts.header')
             </nav> --}}
             <!-- Main Content -->
-            <div class="main-content">
+            <div style="margin-top: 2rem">
                 @yield('content')
                 @include('layouts.fondo')
 
-                <div class="section-body">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <div class="card shadow p-3 mb-5 bg-body rounded">
-                                <div class="card-body" style="border-top: 30px red !important">
-                                   
+                <div >
+                    <div class="row" style="justify-content: center;">
+                        <div class="col-lg-5">
+                            <div class="card shadow p-3 mb-5 bg-body rounded" style="border-top:10px solid #562685">
+                                <div class="card-body">
+                                    <div class="title">
+                                        <h3 style="border-bottom: 1px solid gray; padding-bottom: 1rem; margin-bottom:1rem;">Registrar Residente</h3>
+                                        <p style="margin-bottom: 2rem;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, quo. Nam a nobis, molestiae, ab itaque reiciendis blanditiis cumque non quos debitis maxime ducimus laborum architecto vero id temporibus saepe!</p>
+                                    </div>
+                                    {!! Form::open(['method' => 'POST', 'route' => ['formularioResidentes.store']]) !!}
+                                    <div>
+                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">1</label><label for="nombres">Nombre:</label>
+                                        <input type="text" class="form-control" name="nombres" id="nombres" style="margin-bottom: 1rem;">
+                                    </div>
+                                    <div>
+                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">2</label><label for="apellidos">Apellidos:</label>
+                                        <input type="text" class="form-control" name="apellidos" id="apellidos" style="margin-bottom: 1rem;">
+                                    </div>
+                                    <div>
+                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">3</label><label for="numeroControl">Numero de Control:</label>
+                                        <input type="text" class="form-control" name="numeroControl" id="numeroControl" style="margin-bottom: 1rem;">
+                                    </div>
+                                    <div>
+                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">4</label><label for="correo">Correo:</label>
+                                        <input type="text" class="form-control" name="correo" id="correo" style="margin-bottom: 1rem;">
+                                    </div>
+                                    <div>
+                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">5</label><label for="carrera">Carrera:</label>
+                                        <select name="carrera" id="carrera" class="form-select" style="margin-bottom: 2rem;">
+                                            <option value="" selected disabled></option>
+                                            <option value="Ingenieria en Sistemas computacionales">Ingenieria en Sistemas Computacionales</option>
+                                            <option value="Electrica">Electrica</option>
+                                            <option value="Gestion Empresarial">Gestion Empresarial</option>
+                                            <option value="Ingenieria en Bioquimica">Ingenieria en Bioquimica</option>
+                                            <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                            <option value="Ingenieria en Materiales">Ingenieria en Materiales</option>
+                                            <option value="Ingenieria Mecanica">Ingenieria Mecanica</option>
+                                            <option value="Ingenieria Mecatronica">Ingenieria Mecatronica</option>
+                                            <option value="Ingenieria en Electronica">Ingenieria en Electronica</option>
+                                        </select>
+                                        
+                                    </div>
+
+                                    <div class="col-xs-6 col-sm-6 col-md-10">
+                                        <button type="submit" class="boton-submit" id="enviarForm">Guardar</button>
+                                    </div>
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>

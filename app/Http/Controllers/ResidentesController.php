@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Residente;
+use Illuminate\Support\Facades\Auth;
 
 class ResidentesController extends Controller
 {
@@ -14,7 +15,12 @@ class ResidentesController extends Controller
      */
     public function index()
     {
-        return view('Residentes.index', compact('residentes'));
+        $user_session = Auth::user()->name;
+        $residentes = Residente::all();
+        return view('Residentes.index', [
+            'residentes' => $residentes,
+            'user_session' => $user_session,
+        ]);
     }
 
     /**
@@ -23,7 +29,8 @@ class ResidentesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {        
+    {
+        
         return view('Residentes.crear');
     }
 
@@ -97,19 +104,11 @@ class ResidentesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nombres' => 'required',
-            'apellidos' => 'required',
-            'numeroControl' => 'required',
-            'correo' => 'required',
-            'carrera' => 'required',
+            'nombre' => 'required',
         ]);
 
         $evaluador = Residente::find($id);
-        $evaluador->nombres = $request->nombres;
-        $evaluador->apellidos = $request->apellidos;
-        $evaluador->numeroControl = $request->numeroControl;
-        $evaluador->correo = $request->correo;
-        $evaluador->carrera = $request->carrera;
+        $evaluador->nombre = $request->nombre;
         $evaluador->save();
         return redirect()->route('residentes.index');
     }
