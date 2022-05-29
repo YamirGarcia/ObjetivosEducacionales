@@ -9,9 +9,10 @@
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">
-                <a style="text-decoration: none; color: #6c757d" href="/encuestas" >Encuestas</a>
-                <a style="text-decoration: none; color: #6c757d" >/
-                    Crear Encuesta</a></h3>
+                <a style="text-decoration: none; color: #6c757d" href="/encuestas">Encuestas</a>
+                <a style="text-decoration: none; color: #6c757d">/
+                    Crear Encuesta</a>
+            </h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -66,7 +67,12 @@
                                         <label for="residente" class="form-label fs-4">Residente</label>
                                         <select name="residente" id="residente" class="select2 form-select" required>
                                             @foreach ($residentes as $residente)
-                                                <option value="{{ $residente->id }}">{{ $residente->nombres }} {{$residente->apellidos}} - {{$residente->numeroControl}}</option>
+                                                @if ($residente->aceptado && $residente->carrera == App\Models\Carrera::find($carrera)->carrera)
+                                                    <option value="{{ $residente->id }}">
+                                                        {{ $residente->numeroControl }}
+                                                        - {{ $residente->nombres }} {{ $residente->apellidos }} -
+                                                        {{ $residente->correo }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -120,9 +126,8 @@
                                                                             value="{{ $aspecto->id }}">
                                                                         <label
                                                                             for="checkAspecto{{ $aspecto->id }}"></label>
-                                                                        <button
-                                                                            class="btn-acordion collapsed"
-                                                                            type="button" data-toggle="collapse"
+                                                                        <button class="btn-acordion collapsed" type="button"
+                                                                            data-toggle="collapse"
                                                                             data-target="#collapseAspecto{{ $aspecto->id }}"
                                                                             aria-expanded="true"
                                                                             aria-controls="collapseAspecto{{ $aspecto->id }}"
@@ -143,7 +148,8 @@
                                                                             {{ $aspecto->preguntas->count() }})</h4>
                                                                         <ol class="list-group list-group-numbered">
                                                                             @forelse ($aspecto->preguntas as $pregunta)
-                                                                                <li class="list-group-item" style="background: #f5f3f4">
+                                                                                <li class="list-group-item"
+                                                                                    style="background: #f5f3f4">
                                                                                     {{ $pregunta->Pregunta }}</li>
                                                                             @empty
                                                                                 <p>No hay preguntas disponibles</p>
@@ -182,9 +188,9 @@
                                     style="visibility: hidden;"
                                     value="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <button type="submit" class="boton-submit" id="enviarForm">Guardar</button>
-                                    </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <button type="submit" class="boton-submit" id="enviarForm">Guardar</button>
+                                </div>
                             </div>
 
                             <input type="text" name="tipoEncuesta" hidden id="tipoEncuesta" value="{{ $tipoEncuesta }}">
@@ -230,11 +236,11 @@
             $('#select2-dropdown').on('change', event => {
                 let pId = $('#select2-dropdown').select2("val");
                 let pName = $('$select2-dropdown option:selected').text();
-            }
+            })
         });
         document.addEventListener('livewire:load', () => {
             $('.select2').select2();
-        })
+        });
     </script>
 
 

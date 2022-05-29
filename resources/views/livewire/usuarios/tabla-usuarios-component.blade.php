@@ -102,7 +102,7 @@
                                                             @foreach ($usuario->getRoleNames() as $rolName) 
                                                                 <h5> --}}
                                                         <span class="badge badge-dark"
-                                                            wire:click='mostrarPermisos({{ $usuario->id }})'
+                                                            wire:click.prefetch='mostrarPermisos({{ $usuario->id }})'
                                                             data-toggle="modal" data-target="#modalUsuarioPermisos">
                                                             {{ $usuario->rol }}</span>
                                                         {{-- </h5>
@@ -112,9 +112,9 @@
                                                     <td class="column5">
                                                         <h5>
                                                             <span class="badge bg-primary"
-                                                                wire:click='cargarDatosCarreras({{ $usuario->id }})'
+                                                                wire:click.prefetch='cargarDatosCarreras({{ $usuario->id }})'
                                                                 data-toggle="modal"
-                                                                data-target="#modalAtributosCarrera">Carreras
+                                                                data-target="#modalAtributosCarrera">Carreras:
                                                                 {{ count($usuario->carreras) }}</span>
                                                         </h5>
                                                     </td>

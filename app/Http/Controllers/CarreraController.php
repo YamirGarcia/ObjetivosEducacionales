@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carrera;
-use App\Models\User;
 use App\Models\UsuarioCarrera;
+use App\Models\User;
 use App\Models\Atributo;
 use App\Models\ObjetivoEducacional;
 use App\Models\ObjetivoAspecto;
@@ -193,5 +193,19 @@ class CarreraController extends Controller
 
         return redirect()->route('carreras.index');
     }
+
+    public function eliminarUsuarioCarrera($idUsuario, $idCarrera){
+        // dd($idUsuario, $idCarrera);
+        
+        $temp = UsuarioCarrera::where([
+            ['user_id', $idUsuario],
+            ['carrera_id', $idCarrera]
+            ]
+            )->get();
+            // dd(Carrera::find($temp[0]->carrera_id), User::find($temp[0]->user_id));
+            // dd($temp);
+        $temp[0]->delete();
+        return redirect()->route('carreras.index');
     }
+}
 

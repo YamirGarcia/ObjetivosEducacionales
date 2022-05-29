@@ -129,7 +129,7 @@
                                                                                 @can('editar-preguntasAtributos')
                                                                                     <a data-toggle="modal"
                                                                                         data-target="#modalEditarPregunta"
-                                                                                        wire:click='cargarPregunta({{ $pregunta->id }})'>
+                                                                                        wire:click.prefetch='cargarPregunta({{ $pregunta->id }})'>
                                                                                         <div class="icon edit-fill">
                                                                                             <i>
                                                                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +169,7 @@
                                                             </tbody>
                                                         </table>
                                                     @else
-                                                        <h2>No Existen Preguntas</h2>
+                                                        <h4>No Existen Preguntas</h4>
                                                     @endif
                                                     <br>
                                                     @can('crear-preguntasAtributos')

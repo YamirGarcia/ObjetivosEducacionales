@@ -26,7 +26,7 @@
                 <label for="">Año</label>
                 <select name="" id="año" class="form-select" wire:model="añoSeleccionado">
                     <option selected disabled value="">Seleccionar Año </option>
-                    @foreach (range(2017, date('Y')) as $year)
+                    @foreach (range(date('Y'),2017) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
                     @endforeach
                 </select>
@@ -90,7 +90,7 @@
                     <label for="">Año</label>
                     <select id="añoC1" name="" class="form-select" wire:model="añoSeleccionadoC1">
                         <option selected disabled value="">Seleccionar Año </option>
-                        @foreach (range(2017, date('Y')) as $year)
+                        @foreach (range(date('Y'),2017) as $year)
                             <option value="{{ $year }}">{{ $year }}</option>
                         @endforeach
                     </select>
@@ -120,7 +120,7 @@
                     <label for="">Año</label>
                     <select id="añoC2" name="" class="form-select" wire:model="añoSeleccionadoC2">
                         <option selected disabled value="">Seleccionar Año </option>
-                        @foreach (range(2017, date('Y')) as $year)
+                        @foreach (range(date('Y'), 2017) as $year)
                             <option value="{{ $year }}">{{ $year }}</option>
                         @endforeach
                     </select>
@@ -189,7 +189,7 @@
                 <label for="">Año</label>
                 <select name="" id="año" class="form-select" wire:model="añoSeleccionadoC3">
                     <option selected disabled value="">Seleccionar Año </option>
-                    @foreach (range(2017, date('Y')) as $year)
+                    @foreach (range(date('Y'),2017) as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
                     @endforeach
                 </select>
