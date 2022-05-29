@@ -2,6 +2,7 @@
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Bienvenido {{ \Illuminate\Support\Facades\Auth::user()->name }}</h3>
+
         </div>
         <div class="section-body">
             <div class="row">
@@ -10,122 +11,44 @@
                         <div class="card-body">
 
                             <div class="container">
-
-
-                                    <div class="progres-container">
-                                        <h5>Ingenieria en sistemas Computacionales | ENE-JUN 2022</h5>
+                                <div class="progres-container">
+                                    <h5>{{ $tablaC3 }}</h5>
+                                    @foreach ($dataObjetivos as $item)
                                         <div class="bar-container">
                                             {{-- <div> --}}
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
+                                            <p class="texto-objetivo">{{ $item['objetivo'] }}</p>
+                                            <p class="texto-valor">{{ $item['valor'] }}</p>
+                                            <p class="texto-meta">{{ $item['meta'] }}</p>
                                             {{-- </div> --}}
                                             <div class="progres-bar">
-                                                <div class="complete-bar bar-success" style="width: 100%">
+                                                <div class="{{ $item['clase'] }}" style="{{ $item['porcentaje'] }}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="bar-container">
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
-                                            <div class="progres-bar">
-                                                <div class="complete-bar bar-incomplete" style="width: 70%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bar-container">
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
-                                            <div class="progres-bar">
-                                                <div class="complete-bar bar-wrong" style="width: 50%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bar-container">
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
-                                            <div class="progres-bar">
-                                                <div class="complete-bar bar-incomplete" style="width: 63%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progres-container">
-                                        <h5>Ingenieria en sistemas Computacionales | ENE-JUN 2022</h5>
+                                    @endforeach
+                                </div>
+                                <div class="progres-container">
+                                    <h5>{{ $tablaC3 }}</h5>
+                                    @foreach ($dataObjetivosC4 as $item)
                                         <div class="bar-container">
                                             {{-- <div> --}}
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
+                                            <p class="texto-objetivo">{{ $item['atributo'] }}</p>
+                                            <p class="texto-valor">{{ $item['valor'] }}</p>
+                                            <p class="texto-meta">{{ $item['meta'] }}</p>
                                             {{-- </div> --}}
                                             <div class="progres-bar">
-                                                <div class="complete-bar bar-success" style="width: 100%">
+                                                <div class="{{ $item['clase'] }}"
+                                                    style="{{ $item['porcentaje'] }}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="bar-container">
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
-                                            <div class="progres-bar">
-                                                <div class="complete-bar bar-incomplete" style="width: 70%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bar-container">
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
-                                            <div class="progres-bar">
-                                                <div class="complete-bar bar-wrong" style="width: 50%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bar-container">
-                                            <p class="texto-objetivo">Aqui va el nombre del objetivo pero pues
-                                                muy
-                                                grande y
-                                                queiro
-                                                ver como se veria</p>
-                                            <p class="texto-valor">4.3</p>
-                                            <p class="texto-meta">5</p>
-                                            <div class="progres-bar">
-                                                <div class="complete-bar bar-incomplete" style="width: 63%">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                </div>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#staticBackdrop">
+                                    configuración
+                                </button>
 
                                 <div class="container-button">
 
@@ -215,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-home ">
+                                    <div class="card-home end">
                                         <div class="card-img bg-card-green-2">
                                             <div class="info">
                                                 <p class="text-title">Encuestas</p>
@@ -245,17 +168,63 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
+
+    <!-- Modal para cambiar configuración de las metas -->
+    <div wire:ignore.self class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Configuración de Visualización de Metas</h5>
+                    <button class="btn-tabla" type="button" data-dismiss="modal">
+                        <div class="icon trash-fill">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path
+                                        d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
+                                </svg>
+                            </i>
+                        </div>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Carrera</label>
+                    <select class="form-control" name="" id="" required wire:model="carreraConf">
+                        <option disabled selected value="">Seleccionar Carrera</option>
+                        @foreach ($carreras as $carrera)
+                            <option value="{{ $carrera->id }}">{{ $carrera->carrera }} |
+                                {{ $carrera->planEstudios }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label for="">Periodo</label>
+                    <select class="form-control" name="" id="" required wire:model="periodoConf">
+                        <option disabled selected value="">Seleccionar Periodo</option>
+                        <option value="ENE-JUN-">ENE-JUN</option>
+                        <option value="VERANO-">VERANO</option>
+                        <option value="AGO-DIC-">AGO-DIC</option>
+                    </select>
+                    <label for="">Año</label>
+                    <select class="form-control" name="" id="" required wire:model="añoConf">
+                        <option selected disabled value="">Seleccionar Año </option>
+                        @foreach (range(date('Y'), 2017) as $year)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endforeach
+                    </select>
+                    {{ $carreraConf }}{{ $periodoConf }}
+
+                </div>
+                <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
+                    <button class="boton-submit" wire:click='guardarConfiguracion'>Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

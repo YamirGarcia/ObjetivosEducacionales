@@ -21,8 +21,9 @@
 }
 
 .container-button {
-    height: auto;
+    height: 520px;
     width: calc(100% - 1100px);
+    margin-left: 10px;
     /* margin: 0; */
     /* background: white; */
     /* box-shadow: 0px 0px 10px 1px #c8d3fd; */
@@ -39,7 +40,7 @@
 }
 
 .progres-container {
-    height: 500px;
+    height: 520px;
     width: 425px;
     background: white;
     box-shadow: 0px 0px 10px 1px #c8d3fd;
@@ -56,7 +57,7 @@
 }
 
 .progres-bar {
-    width: 95%;
+    width: 91%;
     /* margin: 0 30px 0 5px; */
     border-radius: 30px;
     padding: 2px;
@@ -90,6 +91,7 @@
 .progres-container .texto-objetivo {
     position: relative;
     font-size: 12px;
+    margin-bottom: 5px;
 }
 
 .texto-meta {
@@ -128,11 +130,14 @@
 .card-home {
     width: 190px;
     height: 100px;
-    margin: 1rem 0;
+    margin-bottom: 30px;
     position: relative;
     /* background: #a2d2ff; */
     transition: box-shadow .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 20px;
+}
+.end{
+    margin-bottom: 0;
 }
 
 .card-img {
