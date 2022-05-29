@@ -155,7 +155,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar Atributo</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> <b> Agregar Atributo </b></h5>
                     <button class="btn-tabla" type="button" data-dismiss="modal">
                         <div class="icon trash-fill">
                             <i>
@@ -171,10 +171,10 @@
                 <form action="{{ url('/Atributos', []) }}" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <label for="carrera">Descripción:</label>
+                        <label for="carrera"> <b> Descripción: </b> </label>
                         <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;" autofocus
                             required></textarea>
-                        <label for="meta">Meta</label>
+                        <label for="meta"> <b> Meta: </b> </label>
                         <input type="number" class="form-control" name="meta" max="5" min="0" step="0.1">
                         <input type="text" class="form-control" name="idCarrera"
                             style="margin-bottom: 2rem; visibility: hidden;" value={{ $id }}></textarea>

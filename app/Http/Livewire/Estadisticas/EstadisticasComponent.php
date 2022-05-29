@@ -92,6 +92,13 @@ class EstadisticasComponent extends Component
         $user = Auth::user();
         $carreras = \App\Models\Carrera::select('id', 'carrera', 'planEstudios')->where('creadopor', $user->id)->get();
 
+        $dataBarrasObjetivos = [];
+        $dataAspectos = [];
+        $sumatoria = [];
+        $sumatoriaAspectos = [];
+        $contadores = [];
+        $contadoresAspectos = [];
+
 
         // if para la primer tabla
         if ($this->tipoSeleccionado && $this->carreraSeleccionada && $this->añoSeleccionado && $this->periodoSeleccionado) {
@@ -217,6 +224,7 @@ class EstadisticasComponent extends Component
                     $dataBarrasObjetivos[] = ["name" => ObjetivoEducacional::find($key)->descripcion, "y" => $sumatoria[$key], "drilldown" => 'objetivo' . $key];
                 }
                 $this->datosObjetivos = $dataBarrasObjetivos;
+                // dd($this->datosObjetivos);
                 $this->dataAspectos = $dataAspectos;
             } else {
                 $this->limpiar();

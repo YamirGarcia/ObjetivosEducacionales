@@ -7,12 +7,13 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <link rel="stylesheet" type="text/css" href="css/estiloDashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/iconos.css">
     @livewireStyles
 @endsection
 
 @section('content')
+@stack('scripts')
     @livewire('dashboard.metas-component')
-
     <script>
         var myCarousel = document.getElementById('carrusel');
         var carousel = new bootstrap.Carousel(myCarousel, {

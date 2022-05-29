@@ -6,8 +6,11 @@ Login
     ✅-Recuperar Contraseña
     ✅-Quitar boton de recordar ya que no sirve
 
+Roles
+    ❌-Si seleccionas permisos con los checks y dejas vacío el campo de rol salta un error feo
+    ❌-Crear permisos de asignar usuarios a carreras
 Dashboard
-    ❌-Tarjetas funcionales
+    ✅-Tarjetas funcionales
     🟠❌-mostrar Objetivos con Metas
 
 Usuarios
@@ -18,7 +21,7 @@ Carreras
     ✅-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
     ✅🟠-Al ocultar una carrera que también se pueda desocultar
     ✅-Boton asignas usuarios a carrera no funciona eliminar usuario
-    ❌-Modificar orden de botones en carrera, 1.Limpiar 2.Ocultar 3.Filtro, misma distancia 
+    ✅-Modificar orden de botones en carrera, 1.Limpiar 2.Ocultar 3.Filtro, misma distancia 
 
     Objetivos
         ✅-Dar de alta Metas
