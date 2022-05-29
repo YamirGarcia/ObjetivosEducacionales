@@ -164,7 +164,7 @@
                         <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;"
                             autofocus required></textarea>
                         <label for="meta"> <b> Meta: </b></label>
-                        <input type="number" class="form-control" name="meta" max="5" min="0">
+                        <input type="number" class="form-control" name="meta" max="5" min="0" step="0.1" required>
                         <input type="text" class="form-control" name="idCarrera"
                             style="margin-bottom: 2rem; visibility: hidden;" value={{ $id }}></textarea>
                     </div>
@@ -205,7 +205,7 @@
                             <textarea type="text" class="form-control" name="descripcion" rows="5"
                                 style="resize: none; height: 6rem;" required>{{ $objetivo->descripcion }}</textarea>
                             <label for="carrera">Meta</label>
-                            <input type="number" class="form-control" name="meta" max="5" min="0" step="0.1" value="{{$objetivo->meta}}">
+                            <input type="number" class="form-control" name="meta" max="5" min="0" step="0.1" value="{{$objetivo->meta}}" required>
                             <input type="text" class="form-control" name="idCarrera"
                                 style="margin-bottom: 2rem; visibility: hidden;" value={{ $id }}>
 

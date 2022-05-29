@@ -7,6 +7,7 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <link rel="stylesheet" type="text/css" href="css/estiloDashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/iconos.css">
     @livewireStyles
 @endsection
 
