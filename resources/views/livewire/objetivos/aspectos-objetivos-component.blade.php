@@ -142,7 +142,7 @@
                                                                                 @can('editar-preguntasObjetivos')
                                                                                     <a href="#" data-toggle="modal"
                                                                                         data-target="#modalEditarPregunta"
-                                                                                        wire:click="cargarDatosPregunta({{ $preguntaAsp->id }})">
+                                                                                        wire:click.prefetch="cargarDatosPregunta({{ $preguntaAsp->id }})">
                                                                                         <div class="icon edit-fill">
                                                                                             <i>
                                                                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h2>No existen aspectos asignados a este Objetivo Educacional</h2>
+                                <h4>No existen aspectos asignados a este Objetivo Educacional</h2>
                             @endforelse
 
                         </div>

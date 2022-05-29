@@ -76,37 +76,58 @@
                 @yield('content')
                 @include('layouts.fondo')
 
-                <div >
+                <div>
                     <div class="row" style="justify-content: center;">
                         <div class="col-lg-5">
                             <div class="card shadow p-3 mb-5 bg-body rounded" style="border-top:10px solid #562685">
                                 <div class="card-body">
                                     <div class="title">
-                                        <h3 style="border-bottom: 1px solid gray; padding-bottom: 1rem; margin-bottom:1rem;">Registrar Residente</h3>
-                                        <p style="margin-bottom: 2rem;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, quo. Nam a nobis, molestiae, ab itaque reiciendis blanditiis cumque non quos debitis maxime ducimus laborum architecto vero id temporibus saepe!</p>
+                                        <h3
+                                            style="border-bottom: 1px solid gray; padding-bottom: 1rem; margin-bottom:1rem;">
+                                            Registrar Residente</h3>
+                                        <p style="margin-bottom: 2rem;">Lorem ipsum dolor sit amet, consectetur
+                                            adipisicing elit. Facere, quo. Nam a nobis, molestiae, ab itaque reiciendis
+                                            blanditiis cumque non quos debitis maxime ducimus laborum architecto vero id
+                                            temporibus saepe!</p>
                                     </div>
                                     {!! Form::open(['method' => 'POST', 'route' => ['formularioResidentes.store']]) !!}
                                     <div>
-                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">1</label><label for="nombres">Nombre:</label>
-                                        <input type="text" class="form-control" name="nombres" id="nombres" style="margin-bottom: 1rem;">
+                                        <label for=""
+                                            style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">1</label><label
+                                            for="nombres">Nombre:</label>
+                                        <input type="text" class="form-control" name="nombres" id="nombres"
+                                            style="margin-bottom: 1rem;">
                                     </div>
                                     <div>
-                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">2</label><label for="apellidos">Apellidos:</label>
-                                        <input type="text" class="form-control" name="apellidos" id="apellidos" style="margin-bottom: 1rem;">
+                                        <label for=""
+                                            style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">2</label><label
+                                            for="apellidos">Apellidos:</label>
+                                        <input type="text" class="form-control" name="apellidos" id="apellidos"
+                                            style="margin-bottom: 1rem;">
                                     </div>
                                     <div>
-                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">3</label><label for="numeroControl">Numero de Control:</label>
-                                        <input type="text" class="form-control" name="numeroControl" id="numeroControl" style="margin-bottom: 1rem;">
+                                        <label for=""
+                                            style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">3</label><label
+                                            for="numeroControl">Numero de Control:</label>
+                                        <input type="text" class="form-control" name="numeroControl" id="numeroControl"
+                                            style="margin-bottom: 1rem;">
                                     </div>
                                     <div>
-                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">4</label><label for="correo">Correo:</label>
-                                        <input type="text" class="form-control" name="correo" id="correo" style="margin-bottom: 1rem;">
+                                        <label for=""
+                                            style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">4</label><label
+                                            for="correo">Correo:</label>
+                                        <input type="text" class="form-control" name="correo" id="correo"
+                                            style="margin-bottom: 1rem;">
                                     </div>
                                     <div>
-                                        <label for="" style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">5</label><label for="carrera">Carrera:</label>
-                                        <select name="carrera" id="carrera" class="form-select" style="margin-bottom: 2rem;">
+                                        <label for=""
+                                            style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">5</label><label
+                                            for="carrera">Carrera:</label>
+                                        {{-- <select name="carrera" id="carrera" class="form-select"
+                                            style="margin-bottom: 2rem;">
                                             <option value="" selected disabled></option>
-                                            <option value="Ingenieria en Sistemas computacionales">Ingenieria en Sistemas Computacionales</option>
+                                            <option value="Ingenieria en Sistemas computacionales">Ingenieria en
+                                                Sistemas Computacionales</option>
                                             <option value="Electrica">Electrica</option>
                                             <option value="Gestion Empresarial">Gestion Empresarial</option>
                                             <option value="Ingenieria en Bioquimica">Ingenieria en Bioquimica</option>
@@ -115,8 +136,25 @@
                                             <option value="Ingenieria Mecanica">Ingenieria Mecanica</option>
                                             <option value="Ingenieria Mecatronica">Ingenieria Mecatronica</option>
                                             <option value="Ingenieria en Electronica">Ingenieria en Electronica</option>
+                                        </select> --}}
+
+                                        <select class="form-select" name="carrera" id="carrera" style="margin-bottom: 2rem;">
+                                            <option value="" selected disabled></option>
+                                            <option value="Administración">Administración</option>
+                                            <option value="Bioquímica">Bioquímica</option>
+                                            <option value="Contador Público">Contador Público</option>
+                                            <option value="Eléctrica">Eléctrica</option>
+                                            <option value="Electrónica">Electrónica</option>
+                                            <option value="Gestión Empresarial">Gestión Empresarial</option>
+                                            <option value="Industrial">Industrial</option>
+                                            <option value="Materiales">Materiales</option>
+                                            <option value="Mecánica">Mecánica</option>
+                                            <option value="Mecatrónica">Mecatrónica</option>
+                                            <option value="Sistemas Computacionales">Sistemas Computacionales</option>
+                                            <option value="TICS">TICS</option>
+
                                         </select>
-                                        
+
                                     </div>
 
                                     <div class="col-xs-6 col-sm-6 col-md-10">

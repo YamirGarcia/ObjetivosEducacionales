@@ -160,17 +160,17 @@
                 <form action="{{ url('/ObjetivoEducacional', []) }}" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <label for="carrera">Objetivo Educacional:</label>
+                        <label for="carrera"> <b> Objetivo Educacional: </b></label>
                         <textarea type="text" class="form-control" name="descripcion" rows="5" style="resize: none; height: 6rem;"
                             autofocus required></textarea>
-                        <label for="meta">Meta</label>
+                        <label for="meta"> <b> Meta: </b></label>
                         <input type="number" class="form-control" name="meta" max="5" min="0">
                         <input type="text" class="form-control" name="idCarrera"
                             style="margin-bottom: 2rem; visibility: hidden;" value={{ $id }}></textarea>
                     </div>
                     <div class="modal-footer">
                         <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">
-                            <button type="submit" class="boton-submit">Guardar</button>
+                            <button type="submit" class="boton-submit"><b> Guardar </b></button>
                         </div>
                     </div>
                 </form>

@@ -40,6 +40,22 @@ Route::get('/formularioResidentes', function () {
     return view('Residentes.formulario');
 })->name('formularioResidentes');
 
+
+
+// RECUPERAR CONTRASEÑA
+// PASO 1 - rederizamos blade para que ingrese su correo
+Route::get('/correoRecuperar', function () {
+    return view('contraseñas.formulario-correo-contraseña');
+})->name('recuperarContraseña');
+// PASO 2 - con esta ruta generamos le correo de recuperacion 
+Route::post('/correoRecuperar', [App\Http\Controllers\CambiarContraseñaController::class, 'enviarCorreoRecuperacion'])->name('recuperarContraseñaCorreo');
+
+Route::get('/recuperarContraseña/{token}', [App\Http\Controllers\CambiarContraseñaController::class, 'cambiarContraseñaBlade'])->name('ingresarNuevaContraseña');
+Route::post('/recuperarContraseña', [App\Http\Controllers\CambiarContraseñaController::class, 'cambiarContraseña'])->name('cambiarNuevaContraseña');
+
+
+// -------------------------------------------
+
 Route::resource('formularioResidentes', FormularioResidentesController::class);
 
 Route::group(['middleware' => ['auth']], function(){
