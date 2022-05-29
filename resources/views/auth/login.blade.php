@@ -10,7 +10,7 @@ Login
 
 <div class="card card-primary login__form">
     <div class="card-header">
-        <h4>Login</h4>
+        <h4 class="fs-2">Iniciar Sesión</h4>
     </div>
 
     <div class="card-body">

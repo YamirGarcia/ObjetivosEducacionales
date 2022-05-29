@@ -12,8 +12,8 @@
 @endsection
 
 @section('content')
+@stack('scripts')
     @livewire('dashboard.metas-component')
-
     <script>
         var myCarousel = document.getElementById('carrusel');
         var carousel = new bootstrap.Carousel(myCarousel, {

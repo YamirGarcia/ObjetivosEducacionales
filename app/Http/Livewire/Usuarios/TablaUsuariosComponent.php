@@ -82,37 +82,67 @@ class TablaUsuariosComponent extends Component
     {
         $user_sesion = Auth::user();
 
-        $usuarios = User::where([
-            ['creadopor', $user_sesion->name],
-            ['rol', '!=', 'Evaluador']
-            ]);
+        if($user_sesion->rol == 'Administrador'){
+            
+            if($this->campo && $this->order){
+                $usuarios = User::orderBy($this->campo, $this->order)->get();
+            }else{
+                $usuarios = User::all();
+                $this->campo = null;
+                $this->order = null;
+            }
+
+                $usuarios = $usuarios->filter(function ($usuario) {
+                    if( str_contains(strtolower($usuario->rol),strtolower($this->rol)) ) return true;
+                });
         
+                $usuarios = $usuarios->filter(function ($usuario) {
+                    if( str_contains(strtolower($usuario->name),strtolower($this->search)) || str_contains(strtolower($usuario->email),strtolower($this->search)) ) return true;
+                });
+        
+                return view('livewire.usuarios.tabla-usuarios-component', [
+                    'usuarios' => $usuarios,
+                    'user_sesion' => Auth::user()->name,
+                    'roles' => Role::pluck('name', 'name')->all(),
+                    'rolUsuario' => Auth::user()->rol,
+                ]);
 
 
-        if($this->campo && $this->order){
-            $usuarios = $usuarios->orderBy($this->campo, $this->order);
         }else{
-            $this->campo = null;
-            $this->order = null;
+            $usuarios = User::where([
+                ['creadopor', $user_sesion->name],
+                ['rol', '!=', 'Evaluador']
+                ]);
+                if($this->campo && $this->order){
+                    $usuarios = $usuarios->orderBy($this->campo, $this->order);
+                }else{
+                    $this->campo = null;
+                    $this->order = null;
+                }
+        
+                $usuarios = $usuarios->get();     
+                
+                
+                // FILTROS
+                $usuarios = $usuarios->filter(function ($usuario) {
+                    if( str_contains(strtolower($usuario->rol),strtolower($this->rol)) ) return true;
+                });
+        
+                $usuarios = $usuarios->filter(function ($usuario) {
+                    if( str_contains(strtolower($usuario->name),strtolower($this->search)) || str_contains(strtolower($usuario->email),strtolower($this->search)) ) return true;
+                });
+        
+                return view('livewire.usuarios.tabla-usuarios-component', [
+                    'usuarios' => $usuarios,
+                    'user_sesion' => Auth::user()->name,
+                    'roles' => Role::pluck('name', 'name')->all(),
+                    'rolUsuario' => Auth::user()->rol,
+                ]);
         }
 
-        $usuarios = $usuarios->get();     
         
-        // FILTROS
-        $usuarios = $usuarios->filter(function ($usuario) {
-            if( str_contains(strtolower($usuario->rol),strtolower($this->rol)) ) return true;
-        });
 
-        $usuarios = $usuarios->filter(function ($usuario) {
-            if( str_contains(strtolower($usuario->name),strtolower($this->search)) || str_contains(strtolower($usuario->email),strtolower($this->search)) ) return true;
-        });
 
-        return view('livewire.usuarios.tabla-usuarios-component', [
-            'usuarios' => $usuarios,
-            'user_sesion' => Auth::user()->name,
-            'roles' => Role::pluck('name', 'name')->all(),
-            'rolUsuario' => Auth::user()->rol,
-        ]);
     }
 
     public function limpiar(){

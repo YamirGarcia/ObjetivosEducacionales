@@ -343,7 +343,9 @@ class MetasComponent extends Component
 
 
 
-        return view('livewire.dashboard.metas-component');
+        return view('livewire.dashboard.metas-component', [
+            'usuario' => $user
+        ]);
     }
 
 
