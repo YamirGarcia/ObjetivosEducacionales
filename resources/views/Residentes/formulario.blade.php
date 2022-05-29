@@ -96,33 +96,33 @@
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">1</label><label
                                             for="nombres">Nombre:</label>
                                         <input type="text" class="form-control" name="nombres" id="nombres"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required pattern="[a-zA-Z ]{2,254}">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">2</label><label
                                             for="apellidos">Apellidos:</label>
                                         <input type="text" class="form-control" name="apellidos" id="apellidos"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required pattern="[a-zA-Z ]{2,254}">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">3</label><label
                                             for="numeroControl">Numero de Control:</label>
                                         <input type="text" class="form-control" name="numeroControl" id="numeroControl"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required pattern="[0-9]{8}">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">4</label><label
                                             for="correo">Correo:</label>
                                         <input type="text" class="form-control" name="correo" id="correo"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required pattern="^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">5</label><label
-                                            for="carrera">Carrera:</label>
+                                            for="carrera" required>Carrera:</label>
                                         {{-- <select name="carrera" id="carrera" class="form-select"
                                             style="margin-bottom: 2rem;">
                                             <option value="" selected disabled></option>

@@ -161,7 +161,7 @@ class AsignarEncuestasController extends Controller
             $encuestas = Carrera::find($carrera)->objetivos;
             return view('encuestas.crear', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta'));
         }else{
-            $residentes = Residente::where('asignadoPor', $user_session)->get();
+            $residentes = Residente::all();
             $encuestas = Carrera::find($carrera)->atributos;
             return view('encuestas.crearAtributo', compact('carrera', 'encuestas', 'evaluadores', 'tipoEncuesta', 'residentes'));
         }
