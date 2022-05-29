@@ -58,14 +58,18 @@ class ResidentesController extends Controller
         // $residente -> nombre = $request -> nombre;
         // $residente -> nombre = $request -> nombre;
         // $residente->save();
-
-        Residente::create([
+        // dd('Guardando');
+        $residente = Residente::create([
             'nombres' => $request->nombres,
             'apellidos' =>$request->apellidos,
             'numeroControl' => $request->numeroControl,
             'correo' => $request->correo,
             'carrera' => $request->carrera,
         ]);
+
+        $residente->asignadoPor = Auth::user()->name;
+        $residente->aceptado = true;
+        $residente->save();
 
         return redirect()->route('residentes.index');
     }

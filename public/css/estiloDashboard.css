@@ -22,7 +22,8 @@
 
 .container-button {
     height: auto;
-    width: 80%;
+    width: calc(100% - 1100px);
+    /* margin: 0; */
     /* background: white; */
     /* box-shadow: 0px 0px 10px 1px #c8d3fd; */
     /* padding: auto; */
@@ -31,6 +32,7 @@
     /* margin: 5px 5px 5px 4px; */
     /* overflow: auto; */
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     justify-content: space-around;
@@ -38,7 +40,7 @@
 
 .progres-container {
     height: 500px;
-    width: 530px;
+    width: 425px;
     background: white;
     box-shadow: 0px 0px 10px 1px #c8d3fd;
     padding: 8px;
@@ -125,7 +127,7 @@
 /* From uiverse.io by @alexruix */
 .card-home {
     width: 190px;
-    height: 160px;
+    height: 100px;
     margin: 1rem 0;
     position: relative;
     /* background: #a2d2ff; */
@@ -135,7 +137,7 @@
 
 .card-img {
     position: absolute;
-    height: 160px;
+    height: 100px;
     width: 240px;
     padding-top: 6px;
     /* align-items: center; */
@@ -151,39 +153,39 @@
 
 .usuarios {
     /* fill: #116f8b; */
-    width: 145px;
-    height: 145px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     left: 10px;
-    top: 0;
+    top: 13px;
     opacity: .7;
 }
 .carreras{
     /* fill: #126d89; */
-    width: 145px;
-    height: 145px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     left: 10px;
-    top: 0;
+    top: 13px;
     opacity: .7;  
 }
 .evaluadores{
     /* fill: #409079; */
-    width: 135px;
-    height: 135px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     left: 10px;
-    top: 10px;
+    top: 12px;
     opacity: .7;
 }
 
 .encuestas{
     /* fill: #5c9c72; */
-    width: 145px;
-    height: 145px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     left: 10px;
-    top: 0;
+    top: 13px;
     opacity: .7;
 }
 
@@ -197,22 +199,22 @@
     justify-content: space-between;
 }
 .text-title{
-    transform: translateY(120%);
+    transform: translateY(50%);
     transition: all .3s ease-in-out;
 }
 .text-title-evaluadores{
-    transform: translateY(120%);
+    transform: translateY(60%);
     transition: all .3s ease-in-out;
 }
 .text-cent{
-    transform: translateY(90%);
+    transform: translateY(50%);
     transition: all .3s ease-in-out;
 }
 .card-icon {
     opacity: 0;
     transform: translateX(20%) translateY(45%);
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     transition: all .3s ease-in-out;
 }
 
@@ -287,15 +289,15 @@
 }
 
 .card-home:hover .text-title{
-    transform: translateX(-160%) translateY(0%);
+    transform: translateX(-160%) translateY(400%);
     font-size: 13px;
 }
 .card-home:hover .text-title-evaluadores{
-    transform: translateX(-125%) translateY(0%);
+    transform: translateX(-125%) translateY(400%);
     font-size: 13px;
 }
 .card-home:hover .text-cent{
-    transform: translateX(-20%) translateY(16%) scale(2.3);
+    transform: translateX(-20%) translateY(-30%);
 }
 
 .card-home:hover .usuarios{

@@ -3,7 +3,7 @@
 General
     ❌-cambiar hover en todas las tablas
 Login
-    ❌-Recuperar Contraseña
+    ✅-Recuperar Contraseña
     ✅-Quitar boton de recordar ya que no sirve
 
 Dashboard
@@ -17,7 +17,7 @@ Usuarios
 Carreras
     ✅-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
     ✅🟠-Al ocultar una carrera que también se pueda desocultar
-    ❌-Boton asignas usuarios a carrera no funciona eliminar usuario
+    ✅-Boton asignas usuarios a carrera no funciona eliminar usuario
     ❌-Modificar orden de botones en carrera, 1.Limpiar 2.Ocultar 3.Filtro, misma distancia 
 
     Objetivos
@@ -62,7 +62,7 @@ Encuestas
         ✅-ver como mostrar lo de los residentes de solo esa carrera
         ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
         ✅-boton guardar no tiene estilo
-        ❌-QUe solo muetre los residentes que ya fueron aceptados
+        ✅-Que solo muetre los residentes que ya fueron aceptados
 
 residentes
     Editar residentes
@@ -72,12 +72,14 @@ residentes
     Crear residentes
         ✅--Barra de navegación
         ✅--boton guardar no tiene estilo
+        ✅-Al crear un residente que ya le asigne el cmapo de asignadoPor
+        ✅-filtro por carrera no funciona
 
     Formulario para crear residentes los alumnos
 
 Estadísticas
-    ❌-Select carrera mostrar elplan de estudio de la carrera
-    🟠❌-Agregar Tabla para la comparación de metas con resultados
+    ✅-Select carrera mostrar elplan de estudio de la carrera
+    ✅-Agregar Tabla para la comparación de metas con resultados
 
 
 

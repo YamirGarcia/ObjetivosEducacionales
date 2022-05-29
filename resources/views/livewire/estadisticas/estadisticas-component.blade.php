@@ -1,5 +1,6 @@
 <div>
     <div class="card-body">
+        <h2>Tabla de Promedios</h2>
         <div class="container-tabla-filtros" style="height: 665px">
             <div class="filtros" style="position: relative">
                 <label for="">Tipo</label>
@@ -12,7 +13,7 @@
                 <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionada">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
-                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera}} | {{$carrera->planEstudios}}</option>
                     @endforeach
                 </select>
                 <label for="">Periodo</label>
@@ -61,6 +62,7 @@
     <br>
     <br>
     <div class="card-body">
+        <h1>Tabla Comparativa</h1>
         <div class="container-tabla-filtros">
             <div class="filtros">
                 <div class="fil1">
@@ -75,7 +77,7 @@
                     <select id="carreraC1" name="" class="form-select" wire:model="carreraSeleccionadaC1">
                         <option selected disabled value="">Seleccionar Carrera</option>
                         @foreach ($carreras2 as $carrera)
-                            <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                            <option value="{{ $carrera->id }}">{{ $carrera->carrera}} | {{$carrera->planEstudios}}</option>
                         @endforeach
                     </select>
                     <label for="">Periodo</label>
@@ -105,7 +107,7 @@
                     <select id="carreraC2" name="" class="form-select" wire:model="carreraSeleccionadaC2">
                         <option selected disabled value="">Seleccionar Carrera</option>
                         @foreach ($carreras2 as $carrera)
-                            <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                            <option value="{{ $carrera->id }}">{{ $carrera->carrera}} | {{$carrera->planEstudios}}</option>
                         @endforeach
                     </select>
                     <label for="">Periodo</label>
@@ -161,6 +163,7 @@
     <br>
     <br>
     <div class="card-body">
+        <h2>Tabla de Metas</h2>
         <div class="container-tabla-filtros" style="height: 665px">
             <div class="filtros" style="position: relative">
                 <label for="">Tipo</label>
@@ -173,7 +176,7 @@
                 <select name="" id="carrera" class="form-select" wire:model="carreraSeleccionadaC3">
                     <option selected disabled value="">Seleccionar Carrera</option>
                     @foreach ($carreras2 as $carrera)
-                        <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
+                        <option value="{{ $carrera->id }}">{{ $carrera->carrera}} | {{$carrera->planEstudios}}</option>
                     @endforeach
                 </select>
                 <label for="">Periodo</label>
@@ -338,6 +341,7 @@
                         series: [{
                             name: 'Objetivos',
                             colorByPoint: true,
+                            borderRadius: 10,
                             // PRIMERAS COLUMNAS A MOSTRAR
                             data: @this.datosObjetivos
                         }],
@@ -379,9 +383,11 @@
                             enabled: false
                         },
                         series: [{
+                            borderRadius: 10,
                             name: @this.tablaC1,
                             data: @this.dataTablaComparativaC1
                         }, {
+                            borderRadius: 10,
                             name: @this.tablaC2,
                             data: @this.dataTablaComparativaC2
                         }]
@@ -414,15 +420,18 @@
                         series: [{
                             type: 'column',
                             colorByPoint: true,
-                            name: 'Nombre de la carrera',
+                            borderRadius: 10,
+                            name: @this.tablaC3,
                             data: @this.dataColumnaMetas,
                         }, {
                             type: 'spline',
                             name: 'Metas',
+                            color: 'black',
                             data: @this.dataMetas,
                             marker: {
                                 lineWidth: 2,
-                                lineColor: Highcharts.getOptions().colors[6],
+                                lineColor: 'black',
+                                color: 'orange',
                                 fillColor: 'white'
                             }
                         }]

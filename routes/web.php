@@ -40,8 +40,6 @@ Route::get('/formularioResidentes', function () {
     return view('Residentes.formulario');
 })->name('formularioResidentes');
 
-
-
 // RECUPERAR CONTRASEÑA
 // PASO 1 - rederizamos blade para que ingrese su correo
 Route::get('/correoRecuperar', function () {
