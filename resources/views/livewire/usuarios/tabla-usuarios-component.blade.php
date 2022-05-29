@@ -97,7 +97,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($usuarios as $usuario)
-                                            @if ($usuario->rol != 'Evaluador' && $usuario->rol !='Administrador')
+                                            @if ($usuario->rol != 'Evaluador' && $usuario->creadopor !='SuperAdmin')
                                                 <tr class="table100-head">
                                                     <td class="column1">{{ $loop->iteration }}</td>
                                                     <td class="column2">{{ $usuario->name }}</td>

@@ -160,36 +160,6 @@
                                     <div class="courses-container">
                                         <div class="course">
                                             <div class="course-preview" style="width: 420px">
-                                                <h2>Evaluadores</h2>
-                                            </div>
-                                            <div class="course-info">
-                                                <input type="checkbox" id="Seleccion-Evaluadores"> Seleccionar Todos
-                                                <div class="column" id="lista-evaluadores">
-                                                    <input class="opcion" type="checkbox" name="permission[]"
-                                                        value="37"> Ver
-                                                    Evaluadores
-                                                </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="38"> Crear Evaluadores
-                                                </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="39"> Editar
-                                                    Evaluadores
-                                                </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="40"> Eliminar
-                                                    Evaluadores
-                                                </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="41"> Visualizar
-                                                    Información
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="courses-container">
-                                        <div class="course">
-                                            <div class="course-preview" style="width: 420px">
                                                 <h2>Contestar Encuestas</h2>
                                             </div>
                                             <div class="course-info">

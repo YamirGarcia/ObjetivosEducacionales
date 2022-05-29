@@ -121,7 +121,7 @@ class TablaUsuariosComponent extends Component
                 }
         
                 $usuarios = $usuarios->get();     
-                
+                // dd($usuarios);
                 
                 // FILTROS
                 $usuarios = $usuarios->filter(function ($usuario) {
