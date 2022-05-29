@@ -34,14 +34,14 @@ class TablaEncuestasComponent extends Component
                                 ->join('carreras', 'carreras.id', '=', 'idCarrera')
                                 ->join('evaluadors', 'evaluadors.id', '=', 'evaluador')
                                 ->join('residentes', 'residentes.id', '=', 'residente')
-                                ->where('asignadoPor', $user->id)
+                                ->where('encuesta_evaluador_atributos.asignadoPor', $user->id)
                                 ->select('encuesta_evaluador_atributos.*', 'carreras.carrera', 'evaluadors.nombres as evaluadorNombre', 'residentes.nombres', 'planEstudios');
 
 
         $encuestasObjetivos = db::table('encuesta_evaluador_objetivos')
                                 ->join('carreras', 'carreras.id', '=', 'encuesta_evaluador_objetivos.idCarrera')
                                 ->join('evaluadors', 'evaluadors.id', '=', 'encuesta_evaluador_objetivos.evaluador')
-                                ->where('asignadoPor', $user->id)
+                                ->where('encuesta_evaluador_objetivos.asignadoPor', $user->id)
                                 ->select('encuesta_evaluador_objetivos.*', 'carreras.carrera', 'evaluadors.nombres', 'carreras.planEstudios');
                                 
         if($this->campoObj && $this->orderObj){

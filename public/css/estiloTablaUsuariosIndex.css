@@ -107,18 +107,20 @@ tbody tr:hover {
 }
 
 .column1 {
-    width: 10%;
+    width: 5%;
     padding-left: 40px;
     text-align: center;
 }
 
 .column2 {
     width: 15%;
+    padding-left: 4rem;
+    padding-right: 50px;
     text-align: center;
 }
 
 .column3 {
-    width: 25%;
+    width: 20%;
     text-align: center;
 }
 
@@ -133,9 +135,9 @@ tbody tr:hover {
 }
 
 .column6 {
-    width: 222px;
+    width: 100px;
     text-align: center;
-    padding-right: 62px;
+    /* padding-right: 62px; */
 }
 
 /* .column1-modal-iteration {

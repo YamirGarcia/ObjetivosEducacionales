@@ -1,0 +1,96 @@
+✅❌🟠Pendientes por hacer
+
+General
+    ❌-cambiar hover en todas las tablas
+Login
+    ✅-Recuperar Contraseña
+    ✅-Quitar boton de recordar ya que no sirve
+
+Roles
+    ❌-Si seleccionas permisos con los checks y dejas vacío el campo de rol salta un error feo
+    ❌-Crear permisos de asignar usuarios a carreras
+Dashboard
+    ✅-Tarjetas funcionales
+    🟠❌-mostrar Objetivos con Metas
+
+Usuarios
+    Crear Usuario
+        ✅-Que no se pueda asignar el rol de evaluador
+
+Carreras
+    ✅-Al ocultar un carrera sale modal de poder eliminar la carrera y debe ser modal de editar
+    ✅🟠-Al ocultar una carrera que también se pueda desocultar
+    ✅-Boton asignas usuarios a carrera no funciona eliminar usuario
+    ✅-Modificar orden de botones en carrera, 1.Limpiar 2.Ocultar 3.Filtro, misma distancia 
+
+    Objetivos
+        ✅-Dar de alta Metas
+        ❌-modal Editar aspecto no cierra
+        ❌-modal editar pregunta no cierra
+    Atributos
+        ✅-Dar de alta Metas
+        Editar
+            ✅-Quitar boton de cerrar
+            ✅-Agregar boton de cross esquina superior derecha
+            ✅-boton actualizar poner leyende "actualizar" y poner estilo del boton
+            ✅-El text area ponerlo igual que en la parte de agregar atributo
+
+Evaluadores
+    Grupo de interes
+        ✅--boton agregar no tiene estilo
+        Agregar grupo de interes
+            ✅--boton agregar no tiene estilo
+        Editar grupo de interes
+            ✅--boton actualizar no tiene estilo 
+    Editar
+        ✅-Ruta navegación
+        ✅-Boton guardar no tiene estilo
+    Agregar evaluador
+        ✅-Ruta navegación
+        ✅-Boton guardar no tiene estilo
+
+Encuestas
+    Ver Respuestas Objetivos
+        ✅-Barra de navegación
+    Ver Respuestas Atributos
+        ✅--Barra de navegación
+    Crear Encuesta Objetivos
+        ✅-barra de navegación
+        ✅--En evaluadores que solo se muestren los que el usuarios a creado
+        ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
+        ✅--boton guardar no tiene estilo
+    Crear Encuesta Atributos
+        ✅-barra de navegación
+        ✅--En evaluadores que solo se muestren los que el usuarios a creado
+        ✅-ver como mostrar lo de los residentes de solo esa carrera
+        ✅-Diseño de tarjetas y de acordiones igual que al momento de crear los apsectos y preguntas en carreras
+        ✅-boton guardar no tiene estilo
+        ✅-Que solo muetre los residentes que ya fueron aceptados
+
+residentes
+    Editar residentes
+        ✅--Barra de navegación
+        ✅-Editar no tiene todos los campos que en el de crear
+        ✅-boton guardar no tiene estilo
+    Crear residentes
+        ✅--Barra de navegación
+        ✅--boton guardar no tiene estilo
+        ✅-Al crear un residente que ya le asigne el cmapo de asignadoPor
+        ✅-filtro por carrera no funciona
+
+    Formulario para crear residentes los alumnos
+
+Estadísticas
+    ✅-Select carrera mostrar elplan de estudio de la carrera
+    ✅-Agregar Tabla para la comparación de metas con resultados
+
+
+
+🟠🟠🟠🟠🟠🟠-Ver como manejar lo de eliminar en evaluadores, usuarios, grupo de interes, residentes, 
+ya que si ya tienen algo creado al eliminarlo crea errores de relación🟠🟠🟠🟠🟠🟠
+
+🟠🟠🟠🟠🟠🟠-Revisar que todos los permisos estan bien, es decir que si alguien le asigna una carrera
+a un usuario que ese usuario pueda ver toda la información de la carrera, coo objetivos, preguntas, encuestas
+estadisticas🟠🟠🟠🟠🟠🟠
+
+🟠🟠🟠🟠🟠🟠-Que el admin pueda ver toda la información pero que los demas usuarios solo vena lo suyo🟠🟠🟠🟠🟠🟠

@@ -7,7 +7,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Respuestas</h3>
+            <h3 class="page__heading">
+                <a style="text-decoration: none; color: #6c757d" href="/encuestas" >Encuestas</a>
+                <a style="text-decoration: none; color: #6c757d" >/
+                    Respuestas</a></h3>
         </div>
         <div class="section-body">
             <div class="row">

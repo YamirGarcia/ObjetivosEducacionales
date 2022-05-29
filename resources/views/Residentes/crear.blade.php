@@ -7,7 +7,9 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Residentes</h3>
+            <h3 class="page__heading">
+                <a style="text-decoration: none; color: #6c757d" href="/residentes" >Residentes</a>
+                <a style="text-decoration: none; color: #6c757d" >/ Crear Residentes</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -77,9 +79,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5" style="margin: 0 auto">
-                                <button type="submit"
-                                    class="btn btn-primary btn-block rounded-pill shadow-sm">Guardar</button>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <button type="submit" class="boton-submit" id="enviarForm">Guardar</button>
                             </div>
                             {!! Form::close() !!}
                         </div>

@@ -12,7 +12,8 @@
     <!-- Bootstrap 4.1.1 -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     {{-- Boostrap 5.1 --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Ionicons -->
     <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css">
@@ -21,15 +22,19 @@
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/estilofondo.css">
     <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
-    
+    {{-- CDN SELECT 2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     @yield('page_css')
     <!-- Template CSS -->
-    
+
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
+    <link rel="stylesheet" href="{{ asset('web/css/components.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     @yield('page_css')
-    {{-- FONTS  --}}
+    {{-- FONTS --}}
     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
@@ -38,20 +43,24 @@
 </head>
 @yield('cssObjetivos')
 <style>
-    .nav-bar{
+    .nav-bar {
         position: fixed;
         z-index: 3000;
         background: #11101d;
     }
-    .modal{
+
+    .modal {
         top: 50px
     }
-    .section-header{
+
+    .section-header {
         position: sticky;
         top: 0;
         /* z-index: 3000; */
     }
+
 </style>
+
 <body style="overflow-y: scroll;">
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
@@ -69,16 +78,16 @@
             </div>
             <footer class="main-footer" style="border: none">
                 @include('layouts.footer')
-                
+
             </footer>
         </div>
     </div>
-    
-    
-    
+
+
+
     @include('profile.change_password')
     @include('profile.edit_profile')
-    @yield('js') 
+    @yield('js')
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
@@ -98,8 +107,8 @@
 @yield('scripts')
 <script>
     let loggedInUser = @json(\Illuminate\Support\Facades\Auth::user());
-    let loginUrl = '{{ route('login')}}';
-    const userUrl = '{{url('users')}}';
+    let loginUrl = '{{ route('login') }}';
+    const userUrl = '{{ url('users') }}';
     // Loading button plugin (removed from BS4)
     (function($) {
         $.fn.button = function(action) {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('descripcion');
             $table->bigInteger('idCarrera')->unsigned();
+            $table->float('meta', 8, 2);
             $table->timestamps();
             $table->foreign('idCarrera')->references('id')->on('carreras');//->onDelete('cascade');
         });

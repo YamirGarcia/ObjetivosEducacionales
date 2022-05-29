@@ -16,6 +16,7 @@ use App\Http\Controllers\ContestarEncuestaController;
 use App\Http\Controllers\AspectosAtributosController;
 use App\Http\Controllers\ResidentesController;
 use App\Http\Controllers\PreguntaAspectoAtributoController;
+use App\Http\Controllers\FormularioResidentesController;
 use App\Http\Livewire\Atributos\AspectosAtributosComponent;
 use App\Http\Livewire\Estadisticas\EstadisticasComponent;
 
@@ -35,6 +36,25 @@ Route::get('/menu', function () {
     return view('Objetivos.menu');
 })->name('menu');
 
+Route::get('/formularioResidentes', function () {
+    return view('Residentes.formulario');
+})->name('formularioResidentes');
+
+// RECUPERAR CONTRASEÑA
+// PASO 1 - rederizamos blade para que ingrese su correo
+Route::get('/correoRecuperar', function () {
+    return view('contraseñas.formulario-correo-contraseña');
+})->name('recuperarContraseña');
+// PASO 2 - con esta ruta generamos le correo de recuperacion 
+Route::post('/correoRecuperar', [App\Http\Controllers\CambiarContraseñaController::class, 'enviarCorreoRecuperacion'])->name('recuperarContraseñaCorreo');
+
+Route::get('/recuperarContraseña/{token}', [App\Http\Controllers\CambiarContraseñaController::class, 'cambiarContraseñaBlade'])->name('ingresarNuevaContraseña');
+Route::post('/recuperarContraseña', [App\Http\Controllers\CambiarContraseñaController::class, 'cambiarContraseña'])->name('cambiarNuevaContraseña');
+
+
+// -------------------------------------------
+
+Route::resource('formularioResidentes', FormularioResidentesController::class);
 
 Route::group(['middleware' => ['auth']], function(){
     // -------------------------- ROLES --------------------------
@@ -57,6 +77,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('residentes', ResidentesController::class);
     
     Route::post('/agregarUsuario/{id}', [App\Http\Controllers\CarreraController::class, 'agregar_usuario'])->name('agregarUser');
+    Route::post('/eliminarUsuarioCarrera/{idUsuario}/{idCarrera}', [App\Http\Controllers\CarreraController::class, 'eliminarUsuarioCarrera'])->name('eliminarUsuarioCarrera');
     Route::delete('/eliminarAtributo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarAtributo'])->name('eliminarAtributo');
     Route::delete('/eliminarObjetivo/{id}', [App\Http\Controllers\CarreraController::class, 'eliminarObjetivo'])->name('eliminarObjetivo');
     Route::resource('ObjetivoEducacional', ObjetivosController::class);
@@ -64,6 +85,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('ObjetivoEducacional', ObjetivosController::class);
     Route::resource('AspectosAtributos', AspectosAtributosController::class);
     Route::resource('PreguntaAspectosAtributos', PreguntaAspectoAtributoController::class);
+
+    
     
 });
 

@@ -1,3 +1,7 @@
+.container-role{
+    display: flex;
+    flex-wrap: wrap;
+}
 .bloque{
     background: #e9ecef;
     display: flex;
@@ -13,3 +17,98 @@
 .opcion{
     margin-left: 20px;
 }
+
+
+
+
+
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #c8d3fd;
+	display: flex;
+	max-width: 100%;
+	margin: 10px;
+	overflow: hidden;
+	width: 500px;
+    height: 160px;
+}
+
+
+
+.course h2 {
+	letter-spacing: 1px;
+	margin: 40px 0;
+}
+
+.course-preview {
+	background-color: #11101d;
+	color: #fff;
+	padding: 10px;
+    min-width: 200px;
+	max-width: 500px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+.course-info {
+	padding: 10px 0 0 40px;
+	position: relative;
+	width: 100%;
+}
+
+
+/* input[type="checkbox"] + label + button {
+    color: #adb5bd;
+}
+
+input[type="checkbox"]:checked + label + button {
+    color: black;
+}
+
+input[type="checkbox"] + label:before {
+	content: "";
+	width: 26px;
+	height: 26px;
+	float: left;
+	margin: 0.5em 0.5em 0 0;
+	border: 2px solid #ccc;
+	background: #fff;
+    border-radius: 100px;
+}
+input[type="checkbox"]:checked + label:before {
+	border-color: #007ea7;
+    background: #007ea7;
+}
+
+input[type="checkbox"]:checked + label:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border: 7px solid #fff;
+    border-radius: 100%;
+    float: left;
+    margin-left: -28px;
+    margin-top: 15px;
+    transform: rotate(-55deg);
+}
+
+input[type="checkbox"] {
+	display: none;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+

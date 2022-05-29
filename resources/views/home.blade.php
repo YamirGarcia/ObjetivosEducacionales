@@ -6,30 +6,20 @@
     {{-- <script src="https://code.highcharts.com/modules/exporting.js"></script> --}}
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estiloDashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/iconos.css">
+    @livewireStyles
 @endsection
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h3 class="page__heading">Dashboard</h3>
-        </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card shadow p-3 mb-5 bg-body rounded">
-                        <div class="card-body">
-                            <div class="row">
-
-                                <div id="container" style="width:350px; margin: 0 auto;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+@stack('scripts')
+    @livewire('dashboard.metas-component')
     <script>
+        var myCarousel = document.getElementById('carrusel');
+        var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 1000000,
+            pause: true
+        })
         /**
          * Get the current time
          */
@@ -212,4 +202,5 @@
             return (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375);
         };
     </script>
+@livewireScripts
 @endsection

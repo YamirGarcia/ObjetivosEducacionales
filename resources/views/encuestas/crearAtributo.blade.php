@@ -2,17 +2,22 @@
 
 @section('estilos')
     <link rel="stylesheet" type="text/css" href="css/estiloCrearEncuesta.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear nueva Encuesta</h3>
+            <h3 class="page__heading">
+                <a style="text-decoration: none; color: #6c757d" href="/encuestas">Encuestas</a>
+                <a style="text-decoration: none; color: #6c757d">/
+                    Crear Encuesta</a>
+            </h3>
         </div>
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-11" style="margin: 0 auto">
-                    <div class="card">
+                    <div class="card shadow p-3 mb-5 bg-body rounded">
                         <div class="card-body">
                             <h3 class="mb-4"> {{ App\Models\Carrera::find($carrera)->carrera }} |
                                 {{ App\Models\Carrera::find($carrera)->planEstudios }}</h3>
@@ -33,8 +38,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="evaluador" class="form-label fs-4">Evaluador</label>
-                                        <select name="evaluador" id="evaluador" class="form-select" required>
-                                            <option selected="selected" disabled></option>
+                                        <select name="evaluador" id="evaluador" class="select2 form-select" required>
                                             @foreach ($evaluadores as $evaluador)
                                                 <option value="{{ $evaluador->id }}">{{ $evaluador->nombres }}</option>
                                             @endforeach
@@ -45,7 +49,7 @@
                                     <div class="form-group">
                                         <label for="periodo" class="form-label fs-4">Periodo de evaluación</label>
                                         {{-- <input type="text" class="form-control" name="periodo" id="periodo"> --}}
-                                        <select name="periodo" id="periodo" class="form form-control" required>
+                                        <select name="periodo" id="periodo" class="form form-select" required>
                                             <option value="" selected disabled>Seleccione periodo</option>
                                             <option value="ENE-JUN-{{ date('Y') }}">ENE-JUN {{ date('Y') }}</option>
                                             <option value="VERANO-{{ date('Y') }}">VERANO {{ date('Y') }}</option>
@@ -61,23 +65,17 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="residente" class="form-label fs-4">Residente</label>
-                                        {{-- <select name="residente" id="residente" class="form-select" required>
-                                            <option selected="selected" disabled></option>
+                                        <select name="residente" id="residente" class="select2 form-select" required>
                                             @foreach ($residentes as $residente)
-                                                <option value="{{ $residente->id }}">{{ $residente->nombres }}
-                                                </option>
-                                            @endforeach
-                                        </select> --}}
-                                        <select name="residente" id="select2-dropdown" class="form-control">
-                                            <option value="" selected disabled>Seleccionar Residente Buey</option>
-                                            @foreach ($residentes as $residente)
-                                                <option value="{{$residente->id}}">{{$residente->nombres}}</option>
+                                                @if ($residente->aceptado && $residente->carrera == App\Models\Carrera::find($carrera)->carrera)
+                                                    <option value="{{ $residente->id }}">
+                                                        {{ $residente->numeroControl }}
+                                                        - {{ $residente->nombres }} {{ $residente->apellidos }} -
+                                                        {{ $residente->correo }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="col">
                                 </div>
                             </div>
 
@@ -86,14 +84,14 @@
 
                                 @foreach ($encuestas as $encuesta)
                                     <div class="accordion" id="accordionExample{{ $encuesta->id }}">
-                                        <div class="card">
+                                        <div class="card card-accordion">
                                             <div class="card-header" id="heading{{ $encuesta->id }}">
                                                 <h2 class="mb-0" style="display: flex">
                                                     {{-- <input class="vertical-centered" type="text"
                                                         id="check{{ $encuesta->id }}" name="encuesta[]"
                                                         value="{{ $encuesta->id }}"> --}}
                                                     <label for="check{{ $encuesta->id }}"></label>
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                    <button class="btn-acordion collapsed" type="button"
                                                         data-toggle="collapse" data-target="#collapse{{ $encuesta->id }}"
                                                         aria-expanded="true" aria-controls="collapse{{ $encuesta->id }}"
                                                         style="text-decoration: none">
@@ -118,7 +116,7 @@
                                             </script> --}}
                                                         <div class="accordion"
                                                             id="accordionExampleAspecto{{ $aspecto->id }}">
-                                                            <div class="card">
+                                                            <div class="card card-accordion">
                                                                 <div class="card-header"
                                                                     id="headingAspecto{{ $aspecto->id }}">
                                                                     <h2 class="mb-0" style="display: flex">
@@ -128,9 +126,8 @@
                                                                             value="{{ $aspecto->id }}">
                                                                         <label
                                                                             for="checkAspecto{{ $aspecto->id }}"></label>
-                                                                        <button
-                                                                            class="btn btn-link btn-block text-left collapsed"
-                                                                            type="button" data-toggle="collapse"
+                                                                        <button class="btn-acordion collapsed" type="button"
+                                                                            data-toggle="collapse"
                                                                             data-target="#collapseAspecto{{ $aspecto->id }}"
                                                                             aria-expanded="true"
                                                                             aria-controls="collapseAspecto{{ $aspecto->id }}"
@@ -151,7 +148,8 @@
                                                                             {{ $aspecto->preguntas->count() }})</h4>
                                                                         <ol class="list-group list-group-numbered">
                                                                             @forelse ($aspecto->preguntas as $pregunta)
-                                                                                <li class="list-group-item">
+                                                                                <li class="list-group-item"
+                                                                                    style="background: #f5f3f4">
                                                                                     {{ $pregunta->Pregunta }}</li>
                                                                             @empty
                                                                                 <p>No hay preguntas disponibles</p>
@@ -190,9 +188,8 @@
                                     style="visibility: hidden;"
                                     value="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
 
-                                <div class="col-5" style="margin: 0 auto">
-                                    <button type="submit"
-                                        class="btn btn-primary btn-block rounded-pill shadow-sm">Guardar</button>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <button type="submit" class="boton-submit" id="enviarForm">Guardar</button>
                                 </div>
                             </div>
 
@@ -239,7 +236,10 @@
             $('#select2-dropdown').on('change', event => {
                 let pId = $('#select2-dropdown').select2("val");
                 let pName = $('$select2-dropdown option:selected').text();
-            }
+            })
+        });
+        document.addEventListener('livewire:load', () => {
+            $('.select2').select2();
         });
     </script>
 

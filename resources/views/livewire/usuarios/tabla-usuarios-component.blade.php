@@ -79,10 +79,15 @@
                                                         style="color: white"></span>
                                                 </button>
                                             </th>
+                                            @if ($rolUsuario == 'Administrador')
+                                                <th class="column6">
+                                                    Creado Por
+                                                </th>
+                                            @endif
                                             <th class="column4">
                                                 Rol
                                             </th>
-                                            <th class="column5">
+                                            <th class="column4">
                                                 Carreras Asignadas
                                             </th>
                                             <th class="column4">
@@ -92,29 +97,32 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($usuarios as $usuario)
-                                            @if ($usuario->creadopor == $user_sesion || $rolUsuario == 'Administrador')
+                                            @if ($usuario->rol != 'Evaluador' && $usuario->creadopor !='SuperAdmin')
                                                 <tr class="table100-head">
                                                     <td class="column1">{{ $loop->iteration }}</td>
                                                     <td class="column2">{{ $usuario->name }}</td>
                                                     <td class="column3">{{ $usuario->email }}</td>
+                                                    @if ($rolUsuario == 'Administrador')
+                                                        <td class="column6">{{$usuario->creadopor}}</td>
+                                                    @endif
                                                     <td class="column4">
                                                         {{-- @if (!empty($usuario->getRoleNames()))
                                                             @foreach ($usuario->getRoleNames() as $rolName) 
                                                                 <h5> --}}
                                                         <span class="badge badge-dark"
-                                                            wire:click='mostrarPermisos({{ $usuario->id }})'
+                                                            wire:click.prefetch='mostrarPermisos({{ $usuario->id }})'
                                                             data-toggle="modal" data-target="#modalUsuarioPermisos">
                                                             {{ $usuario->rol }}</span>
                                                         {{-- </h5>
                                                             @endforeach
                                                         @endif --}}
                                                     </td>
-                                                    <td class="column5">
+                                                    <td class="column4">
                                                         <h5>
                                                             <span class="badge bg-primary"
-                                                                wire:click='cargarDatosCarreras({{ $usuario->id }})'
+                                                                wire:click.prefetch='cargarDatosCarreras({{ $usuario->id }})'
                                                                 data-toggle="modal"
-                                                                data-target="#modalAtributosCarrera">Carreras
+                                                                data-target="#modalAtributosCarrera">Carreras:
                                                                 {{ count($usuario->carreras) }}</span>
                                                         </h5>
                                                     </td>

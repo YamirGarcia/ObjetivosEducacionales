@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Residente;
+use Illuminate\Support\Facades\Auth;
 
 class ResidentesController extends Controller
 {
@@ -14,8 +15,12 @@ class ResidentesController extends Controller
      */
     public function index()
     {
+        $user_session = Auth::user()->name;
         $residentes = Residente::all();
-        return view('Residentes.index', compact('residentes'));
+        return view('Residentes.index', [
+            'residentes' => $residentes,
+            'user_session' => $user_session,
+        ]);
     }
 
     /**
@@ -53,14 +58,18 @@ class ResidentesController extends Controller
         // $residente -> nombre = $request -> nombre;
         // $residente -> nombre = $request -> nombre;
         // $residente->save();
-
-        Residente::create([
+        // dd('Guardando');
+        $residente = Residente::create([
             'nombres' => $request->nombres,
             'apellidos' =>$request->apellidos,
             'numeroControl' => $request->numeroControl,
             'correo' => $request->correo,
             'carrera' => $request->carrera,
         ]);
+
+        $residente->asignadoPor = Auth::user()->name;
+        $residente->aceptado = true;
+        $residente->save();
 
         return redirect()->route('residentes.index');
     }
