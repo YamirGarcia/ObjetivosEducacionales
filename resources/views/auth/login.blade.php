@@ -4,7 +4,7 @@
 @endsection
 @section('css_login')
     <!-- a ver si importa esto -->
-    <link rel="stylesheet" type="text/css" href="css/cssLogin.css">
+    <link rel="stylesheet" type="text/css" href="/css/cssLogin.css">
     <link rel="stylesheet" type="text/css" href="/css/estilosGenerales.css">
 @endsection
 @section('content')
