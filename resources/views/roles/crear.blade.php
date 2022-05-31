@@ -130,6 +130,32 @@
                                     <div class="courses-container">
                                         <div class="course">
                                             <div class="course-preview" style="width: 420px">
+                                                <h2>Residentes</h2>
+                                            </div>
+                                            <div class="course-info">
+                                                <input type="checkbox" id="Seleccion-Residentes"> Seleccionar Todos
+                                                <div class="column" id="lista-residentes">
+                                                    <input class="opcion" type="checkbox" name="permission[]"
+                                                        value="51"> Ver
+                                                    Residentes
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-residentes">
+                                                    <input type="checkbox" name="permission[]" value="52"> Crear Residentes
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-residentes">
+                                                    <input type="checkbox" name="permission[]" value="53"> Editar
+                                                    Residentes
+                                                </div>
+                                                <div class="opcion" class="column" id="lista-residentes">
+                                                    <input type="checkbox" name="permission[]" value="54"> Eliminar
+                                                    Residentes
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="courses-container">
+                                        <div class="course">
+                                            <div class="course-preview" style="width: 420px">
                                                 <h2>Evaluadores</h2>
                                             </div>
                                             <div class="course-info">

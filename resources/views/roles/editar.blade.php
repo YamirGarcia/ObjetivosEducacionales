@@ -151,39 +151,33 @@
                                     <div class="courses-container">
                                         <div class="course">
                                             <div class="course-preview" style="width: 420px">
-                                                <h2>Evaluadores</h2>
+                                                <h2>Residentes</h2>
                                             </div>
                                             <div class="course-info">
-                                                <input type="checkbox" id="Seleccion-Evaluadores"> Seleccionar Todos
-                                                <div class="column" id="lista-evaluadores">
+                                                <input type="checkbox" id="Seleccion-Residentes"> Seleccionar Todos
+                                                <div class="column" id="lista-residentes">
                                                     <input class="opcion" type="checkbox" name="permission[]"
-                                                        value="37"
-                                                        @foreach ($rolePermissions as $rol) @if ($rol == 37) checked @endif
+                                                        value="51"
+                                                        @foreach ($rolePermissions as $rol) @if ($rol == 51) checked @endif
                                                         @endforeach> Ver
-                                                    Evaluadores
+                                                    Residentes
                                                 </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="38"
-                                                        @foreach ($rolePermissions as $rol) @if ($rol == 38) checked @endif
-                                                        @endforeach> Crear Evaluadores
+                                                <div class="opcion" class="column" id="lista-residentes">
+                                                    <input type="checkbox" name="permission[]" value="52"
+                                                        @foreach ($rolePermissions as $rol) @if ($rol == 52) checked @endif
+                                                        @endforeach> Crear Residentes
                                                 </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="39"
-                                                        @foreach ($rolePermissions as $rol) @if ($rol == 39) checked @endif
+                                                <div class="opcion" class="column" id="lista-residentes">
+                                                    <input type="checkbox" name="permission[]" value="53"
+                                                        @foreach ($rolePermissions as $rol) @if ($rol == 53) checked @endif
                                                         @endforeach> Editar
-                                                    Evaluadores
+                                                    Residentes
                                                 </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="40"
-                                                        @foreach ($rolePermissions as $rol) @if ($rol == 40) checked @endif
+                                                <div class="opcion" class="column" id="lista-residentes">
+                                                    <input type="checkbox" name="permission[]" value="54"
+                                                        @foreach ($rolePermissions as $rol) @if ($rol == 54) checked @endif
                                                         @endforeach> Eliminar
-                                                    Evaluadores
-                                                </div>
-                                                <div class="opcion" class="column" id="lista-evaluadores">
-                                                    <input type="checkbox" name="permission[]" value="41"
-                                                        @foreach ($rolePermissions as $rol) @if ($rol == 41) checked @endif
-                                                        @endforeach> Visualizar
-                                                    Información
+                                                    Residentes
                                                 </div>
                                             </div>
                                         </div>
