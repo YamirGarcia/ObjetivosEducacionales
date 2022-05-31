@@ -81,76 +81,75 @@
                         <div class="col-lg-5">
                             <div class="card shadow p-3 mb-5 bg-body rounded" style="border-top:10px solid #562685">
                                 <div class="card-body">
+                                    @if ($errors->any())
+                                        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                                            <strong>¡Revise los campos!</strong>
+                                            @foreach ($errors->all() as $error)
+                                                <span class="badge badge-danger">{{ $error }}</span>
+                                            @endforeach
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
                                     <div class="title">
                                         <h3
                                             style="border-bottom: 1px solid gray; padding-bottom: 1rem; margin-bottom:1rem;">
                                             Registrar Residente</h3>
-                                        <p style="margin-bottom: 2rem;">Lorem ipsum dolor sit amet, consectetur
-                                            adipisicing elit. Facere, quo. Nam a nobis, molestiae, ab itaque reiciendis
-                                            blanditiis cumque non quos debitis maxime ducimus laborum architecto vero id
-                                            temporibus saepe!</p>
+                                        <p style="margin-bottom: 2rem;"> <b> Porfavor, ingresa los datos solicitados para que posteriormente un administrador pueda aceptar tu petición una vez que tus datos se hayan corroborado. </b></p>
                                     </div>
                                     {!! Form::open(['method' => 'POST', 'route' => ['formularioResidentes.store']]) !!}
-                                    <div> 
+                                    <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">1</label><label
-                                            for="nombres">Nombre:</label>
+                                            for="nombres"><b> Nombre: </b></label>
                                         <input type="text" class="form-control" name="nombres" id="nombres"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required pattern="[a-zA-Z ]{2,254}">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">2</label><label
-                                            for="apellidos">Apellidos:</label>
+                                            for="apellidos"> <b>Apellidos:</b></label>
                                         <input type="text" class="form-control" name="apellidos" id="apellidos"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required pattern="[a-zA-Z ]{2,254}">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">3</label><label
-                                            for="numeroControl">Numero de Control:</label>
-                                        <input type="text" class="form-control" name="numeroControl" id="numeroControl"
-                                            style="margin-bottom: 1rem;">
+                                            for="numeroControl"> <b>Numero de Control: </b></label>
+                                        <input type="text" class="form-control" name="numeroControl"
+                                            id="numeroControl" style="margin-bottom: 1rem;" required pattern="[0-9]{8}">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">4</label><label
-                                            for="correo">Correo:</label>
+                                            for="correo"> <b>Correo: </b></label>
                                         <input type="text" class="form-control" name="correo" id="correo"
-                                            style="margin-bottom: 1rem;">
+                                            style="margin-bottom: 1rem;" required
+                                            pattern="^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$">
                                     </div>
                                     <div>
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">5</label><label
-                                            for="carrera">Carrera:</label>
-                                        {{-- <select name="carrera" id="carrera" class="form-select"
-                                            style="margin-bottom: 2rem;">
-                                            <option value="" selected disabled></option>
-                                            <option value="Ingenieria en Sistemas computacionales">Ingenieria en
-                                                Sistemas Computacionales</option>
-                                            <option value="Electrica">Electrica</option>
-                                            <option value="Gestion Empresarial">Gestion Empresarial</option>
-                                            <option value="Ingenieria en Bioquimica">Ingenieria en Bioquimica</option>
-                                            <option value="Ingenieria Industrial">Ingenieria Industrial</option>
-                                            <option value="Ingenieria en Materiales">Ingenieria en Materiales</option>
-                                            <option value="Ingenieria Mecanica">Ingenieria Mecanica</option>
-                                            <option value="Ingenieria Mecatronica">Ingenieria Mecatronica</option>
-                                            <option value="Ingenieria en Electronica">Ingenieria en Electronica</option>
-                                        </select> --}}
+                                            for="carrera" required> <b>Carrera: </b></label>
 
-                                        <select class="form-select" name="carrera" id="carrera" style="margin-bottom: 2rem;">
+                                        <select class="form-select" name="carrera" id="carrera"
+                                            style="margin-bottom: 2rem;">
                                             <option value="" selected disabled></option>
                                             <option value="Administración">Ingenieria en Administración</option>
                                             <option value="Bioquímica">Ingenieria en Bioquímica</option>
                                             <option value="Contador Público">Ingenieria en Contador Público</option>
                                             <option value="Eléctrica">Ingenieria en Eléctrica</option>
                                             <option value="Electrónica">Ingenieria en Electrónica</option>
-                                            <option value="Gestión Empresarial">Ingenieria en Gestión Empresarial</option>
+                                            <option value="Gestión Empresarial">Ingenieria en Gestión Empresarial
+                                            </option>
                                             <option value="Industrial">Ingenieria en Industrial</option>
                                             <option value="Materiales">Ingenieria en Materiales</option>
                                             <option value="Mecánica">Ingenieria en Mecánica</option>
                                             <option value="Mecatrónica">Ingenieria en Mecatrónica</option>
-                                            <option value="Sistemas Computacionales">Ingenieria en Sistemas Computacionales</option>
+                                            <option value="Sistemas Computacionales">Ingenieria en Sistemas
+                                                Computacionales</option>
                                             <option value="TICS">Ingenieria en TICS</option>
 
                                         </select>
