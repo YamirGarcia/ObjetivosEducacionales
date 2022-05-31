@@ -30,6 +30,7 @@ class TablaEvaluadoresComponent extends Component
         return view('livewire.evaluadores.tabla-evaluadores-component',[
             'evaluadores' => $evaluadores,
             'user_sesion' => Auth::user()->name,
+            'user_rol' => Auth::user()->rol
             
         ]);
     }

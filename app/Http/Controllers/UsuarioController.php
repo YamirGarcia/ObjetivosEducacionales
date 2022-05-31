@@ -72,6 +72,9 @@ class UsuarioController extends Controller
             if($key == 'Evaluador') {return false;}
             else {return true;}
         });
+        if(Auth::user()->rol != 'Administrador'){
+            unset($roles['Administrador']);
+        }
         $userRole = $user->roles->pluck('name', 'name')->all();
         return view('usuarios.editar', compact('user', 'roles', 'userRole'));
 

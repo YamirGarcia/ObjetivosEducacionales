@@ -66,7 +66,7 @@
             </thead>
             <tbody>
                 @foreach ($evaluadores as $evaluador)
-                    @if ($evaluador->creadopor == $user_sesion)
+                    @if ($evaluador->creadopor == $user_sesion || $user_rol == 'Administrador' )
                         <tr class="table100-head">
                             <td class="column1" style="display: none;">{{ $evaluador->id }}</td>
                             <td class="column2">{{ $evaluador->nombres }}</td>
