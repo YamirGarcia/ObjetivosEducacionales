@@ -1,6 +1,6 @@
 @extends('layouts.auth_app')
 @section('title')
-Login
+Objetivos Educacionales | ITM
 @endsection
 @section('css_login')
 <!-- a ver si importa esto -->

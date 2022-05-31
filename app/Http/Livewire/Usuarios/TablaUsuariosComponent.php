@@ -99,6 +99,11 @@ class TablaUsuariosComponent extends Component
                 $usuarios = $usuarios->filter(function ($usuario) {
                     if( str_contains(strtolower($usuario->name),strtolower($this->search)) || str_contains(strtolower($usuario->email),strtolower($this->search)) ) return true;
                 });
+
+                $usuarios = $usuarios->filter(function ($usuario) {
+                    if( $usuario->rol == 'Evaluador' || $usuario->creadopor == 'SuperAdmin' ) {return false;}
+                    else {return true;}
+                });
         
                 return view('livewire.usuarios.tabla-usuarios-component', [
                     'usuarios' => $usuarios,

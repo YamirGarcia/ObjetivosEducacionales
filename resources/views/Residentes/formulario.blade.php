@@ -91,7 +91,7 @@
                                             temporibus saepe!</p>
                                     </div>
                                     {!! Form::open(['method' => 'POST', 'route' => ['formularioResidentes.store']]) !!}
-                                    <div>
+                                    <div> 
                                         <label for=""
                                             style="padding: .4rem 1rem; background-color: #562685; color:white; margin-right: .5rem">1</label><label
                                             for="nombres">Nombre:</label>

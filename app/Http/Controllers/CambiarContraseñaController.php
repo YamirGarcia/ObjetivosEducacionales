@@ -36,8 +36,10 @@ class CambiarContraseñaController extends Controller
                 // dd($usuario, $usuario->id);
 
                 $correo = [
-                    'title' => 'Recuperación de Contraseña sistema de Objetivos Educacionales Title',
+                    'title' => 'Recuperación de Contraseña sistema de Objetivos Educacionales',
                     'body' => 'Adjuntamos link de acceso para recuperar contraseña Body',
+                    'nombre' => $usuario->name,
+                    'apellido' => $usuario->apellido,
                     'token' => $temp->token,
                     // 'idUsuario' => $usuario->id
                 ];
@@ -67,6 +69,7 @@ class CambiarContraseñaController extends Controller
     }
 
     public function cambiarContraseña(Request $request){
+        // dd($request['contraseña1']);
         $token = TokenAccesoCorreo::where('token',$request['token'])->get();
         $token = $token[0];
         $user = User::where('email', $token->email)->get();

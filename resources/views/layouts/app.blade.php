@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Objetivos Educacionales</title>
+    <title>Objetivos Educacionales | ITM</title>
     {{-- <link rel="icon" href="img/tecnm.png" type="image/icon type"> --}}
     {{-- <link rel = "icon" href = "" type = "image/x-icon"> --}}
     <link rel="icon" type="image/png" href="img/tecnm.png" />
