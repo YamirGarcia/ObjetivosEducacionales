@@ -40,10 +40,10 @@ class FormularioResidentesController extends Controller
     {
         
         $this->validate($request, [
-            'nombres' => 'required',
-            'apellidos' => 'required',
+            'nombres' => 'required|max:30',
+            'apellidos' => 'required|max:30',
             'numeroControl' => 'required',
-            'correo' => 'required',
+            'correo' => 'required|email|unique:residentes,correo',
             'carrera' => 'required',
         ]);
 
@@ -55,7 +55,7 @@ class FormularioResidentesController extends Controller
             'carrera' => $request->carrera,
         ]);
 
-        return redirect()->route('formularioResidentes.index');
+        return view('Residentes.formulario2');
     }
 
     /**

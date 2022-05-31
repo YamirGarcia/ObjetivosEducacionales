@@ -1,10 +1,13 @@
+@section('estilos')
+@endsection
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Objetivos Educacionales | ITM</title>
+    <title>Objetivos Educacionales</title>
     {{-- <link rel="icon" href="img/tecnm.png" type="image/icon type"> --}}
     {{-- <link rel = "icon" href = "" type = "image/x-icon"> --}}
     <link rel="icon" type="image/png" href="img/tecnm.png" />
@@ -64,29 +67,47 @@
 <body style="overflow-y: scroll;">
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg" style="background: #11101d;"></div>
+            {{-- <div class="navbar-bg" style="background: #11101d;"></div>
             <nav class="navbar navbar-expand-lg main-navbar nav-bar">
                 @include('layouts.header')
-            </nav>
-            <div class="main-sidebar main-sidebar-postion">
-                @include('layouts.sidebar')
-            </div>
+            </nav> --}}
             <!-- Main Content -->
-            <div class="main-content">
+            <div style="margin-top: 2rem">
                 @yield('content')
                 @include('layouts.fondo')
+
+                <div>
+                    <div class="row" style="justify-content: center;">
+                        <div class="col-lg-5">
+                            <div class="card shadow p-3 mb-5 bg-body rounded" style="border-top:10px solid #562685">
+                                <div class="card-body">
+                                    <div class="title">
+                                        <h3
+                                            style="border-bottom: 1px solid gray; padding-bottom: 1rem; margin-bottom:1rem;">
+                                            Solicitud Enviada</h3>
+                                            <p> Tu solicitud de aceptacion esta en proceso. Por favor espere a que uno de nuestros administradores acepte su solictud para continuar con tu evaluación como Residente.</p>
+
+                                            <a href="{{route('formularioResidentes.index')}}">
+                                                <div class="col-xs-10 col-sm-10 col-md-10">
+                                                    <button type="" class="boton-submit">Regresar</button>
+                                                </div>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <footer class="main-footer" style="border: none">
+            {{-- <footer class="main-footer" style="border: none">
                 @include('layouts.footer')
 
-            </footer>
+            </footer> --}}
         </div>
     </div>
 
 
 
-    @include('profile.change_password')
-    @include('profile.edit_profile')
     @yield('js')
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -105,21 +126,5 @@
 
 @yield('page_js')
 @yield('scripts')
-<script>
-    let loggedInUser = @json(\Illuminate\Support\Facades\Auth::user());
-    let loginUrl = '{{ route('login') }}';
-    const userUrl = '{{ url('users') }}';
-    // Loading button plugin (removed from BS4)
-    (function($) {
-        $.fn.button = function(action) {
-            if (action === 'loading' && this.data('loading-text')) {
-                this.data('original-text', this.html()).html(this.data('loading-text')).prop('disabled', true);
-            }
-            if (action === 'reset' && this.data('original-text')) {
-                this.html(this.data('original-text')).prop('disabled', false);
-            }
-        };
-    }(jQuery));
-</script>
 
 </html>
