@@ -38,12 +38,13 @@
 }
 
 .login__fondousuario {
-  left: 30%;
+  left: 40%;
+  top: 110px;
   z-index: 300;
   position: absolute;
   background: #FD8368;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
   margin: 0px 0px 450px 0px;
   align-items: center;
@@ -52,7 +53,7 @@
 
 .login__fondousuario-icono {
   object-fit: cover;
-  width: 200px;
+  width: 100px;
 }
 
 .login__form {
@@ -72,7 +73,7 @@
   border-radius: 50px;
   height: 3em;
   width: 50%;
-  left: ;
+  /* left: ; */
   /* bottom: -13em;*/
   margin: 0px 0px 0px 20%;
 }

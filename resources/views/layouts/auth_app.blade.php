@@ -55,10 +55,10 @@
     <!-- <div class="login"> -->
     <div id="app">
         <section class="section">
-            <b> <p style="position: absolute; top: 0; left: 35.5%; top: 60px; font-size: 80px;">¡Bienvenidos!</p> </b>
             <div class="container">
                 <div class="row">
                     <div class="login">
+                        <h1 style="position: absolute; top: 0; left:15%; width: 70%; top: 35px; font-size: 60px; color: white; text-align: center;">Bienvenido</h1> 
                         <div class="login-brand">
                             <div class="login__fondousuario">
                                 <img class="login__fondousuario-icono"
