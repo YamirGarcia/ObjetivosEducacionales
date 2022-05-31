@@ -19,12 +19,6 @@ use App\Models\GrupoDeInteres;
 class EvaluadoresController extends Controller
 {
 
-    function __construct()
-    {
-        $this->middleware('permission:ver-evaluador | crear-evaluador | editar-evaluador | borrar-evaluador', ['only'=>['evaluadores.index']]);
-        $this->middleware('permission:crear-evaluador', ['only'=>['evaluadores.crear']]);
-        $this->middleware('permission:editar-evaluador', ['only'=>['evaluadores.editar']]);
-    }
     /**
      * Display a listing of the resource.
      *

@@ -12,15 +12,16 @@
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
+    <link rel="stylesheet" href="{{ asset('web/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/cssLogin.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosGenerales.css">
 </head>
 
 <body>
-    <div class="imagen-svg">
+    {{-- <div class="imagen-svg">
         <svg class="topography-shape js-shape" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1200 580" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <path d="M734.567 34.372c-28.692 61.724-23.266 100.422 16.275 116.094 59.313 23.508 200.347 32.911 259.299 83.906 58.95 50.994 238.697 11.572 269.438-75.95C1310.32 70.9 1365.669-64 1073.808-64c-194.576 0-307.654 32.79-339.24 98.372h-.001z" fill="#FFFA72" fill-rule="nonzero"></path>
             <path d="M734.567 34.372c-28.692 61.724-23.266 100.422 16.275 116.094 59.313 23.508 200.347 32.911 259.299 83.906 58.95 50.994 238.697 11.572 269.438-75.95C1310.32 70.9 1365.669-64 1073.808-64c-194.576 0-307.654 32.79-339.24 98.372h-.001z" fill="#FFFA72" fill-rule="nonzero" transform="translate(-1800, 60) scale(2.8, 2.8) skewX(30) " style="position: relative; z-index: 0; fill: rgb(214, 242, 255);"></path>
@@ -36,26 +37,47 @@
             <path d="M734.567 34.372c-28.692 61.724-23.266 100.422 16.275 116.094 59.313 23.508 200.347 32.911 259.299 83.906 58.95 50.994 238.697 11.572 269.438-75.95C1310.32 70.9 1365.669-64 1073.808-64c-194.576 0-307.654 32.79-339.24 98.372h-.001z" fill="#FFFA72" fill-rule="nonzero" transform="translate(-300, 10) scale(1.3, 1.3) skewX(5) " style="position: relative; z-index: 10; fill: rgb(65, 69, 132);"></path>
             <path d="M734.567 34.372c-28.692 61.724-23.266 100.422 16.275 116.094 59.313 23.508 200.347 32.911 259.299 83.906 58.95 50.994 238.697 11.572 269.438-75.95C1310.32 70.9 1365.669-64 1073.808-64c-194.576 0-307.654 32.79-339.24 98.372h-.001z" fill="#FFFA72" fill-rule="nonzero" transform="translate(-150, 5) scale(1.15, 1.15) skewX(2.5) " style="position: relative; z-index: 11; fill: rgb(50, 51, 119);"></path>
         </svg>
+    </div> --}}
+    <div class="wrapper">
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
     <!-- <div class="login"> -->
     <div id="app">
         <section class="section">
-            <div class="container mt-5">
+            <b> <p style="position: absolute; top: 0; left: 35.5%; top: 60px; font-size: 80px;">¡Bienvenidos!</p> </b>
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6 offset-md-3 login">
+                    <div class="login">
                         <div class="login-brand">
                             <div class="login__fondousuario">
-                                <img class="login__fondousuario-icono" src="https://www.seekpng.com/png/full/138-1388073_login-icons-user-flat-icon-png.png" />
+                                <img class="login__fondousuario-icono"
+                                    src="https://www.seekpng.com/png/full/138-1388073_login-icons-user-flat-icon-png.png" />
                             </div>
                         </div>
                         @yield('content')
                         <div class="simple-footer">
-                            {{-- Copyright &copy; {{ getSettingValue('application_name') }} {{ date('Y') }}--}}
+                            {{-- Copyright &copy; {{ getSettingValue('application_name') }} {{ date('Y') }} --}}
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <div style="position: absolute; bottom: 0;">
+            <a href="{{ url('/home') }}" class="small-sidebar-text">
+                <img class="navbar-brand-full" src="https://itesainvestigacion.weebly.com/uploads/6/5/9/7/65970875/logo-tecnm-2018_orig.png" width="500px" alt=""/>
+            </a>
+        </div>
     </div>
     <!-- </div> -->
 
