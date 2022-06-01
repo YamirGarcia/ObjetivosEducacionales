@@ -30,14 +30,15 @@ class CarreraController extends Controller
     {
         $user_session = Auth::user()->name;
         $user = Auth::user();
-
+        $usuarios = null;
         if ($user->getRoleNames()[0] == "Administrador") {
             $carreras = Carrera::all();
+            $usuarios = User::all();
         } else {
             $carreras = User::find($user->id)->carreras;   
+            $usuarios = User::where('creadopor', $user->name)->get();
         }
-
-        $usuarios = User::where('creadopor', $user->name)->get();
+        
         return view('Objetivos.carrera', ['carreras' => $carreras, 'usuarios' => $usuarios]);
     }
 
