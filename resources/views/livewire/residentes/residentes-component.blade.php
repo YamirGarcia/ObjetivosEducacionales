@@ -99,7 +99,7 @@
                         </thead>
                         <tbody>
                             @foreach ($residentes as $residente)
-                                @if ($residente->aceptado == true || $user_rol=='Administrador')
+                                @if ($residente->aceptado == true || ($user_rol=='Administrador' && $residente->aceptado == true))
                                     <tr class="table100-head">
 
                                         <td class="column1">{{ $residente->nombres }}</td>
@@ -243,7 +243,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($residentes2 as $residente)
-                                    @if ($residente->aceptado == false || $user_rol == "Administrador")
+                                    @if ($residente->aceptado == false || ($user_rol=='Administrador' && $residente->aceptado == false))
                                         <tr class="table100-head">
                                             <td class="column1">{{ $residente->nombres }}</td>
                                             <td class="column2">{{ $residente->apellidos }}</td>
