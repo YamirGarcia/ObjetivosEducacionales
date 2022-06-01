@@ -346,7 +346,7 @@
                             <option value="{{ $year }}">{{ $year }}</option>
                         @endforeach
                     </select>
-                    {{ $carreraConf }}{{ $periodoConf }}
+                   
 
                 </div>
                 <div class="col-xs-8 col-sm-12 col-md-15" style="left: -35px">

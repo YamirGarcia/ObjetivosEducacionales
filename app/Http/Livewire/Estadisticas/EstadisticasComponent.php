@@ -90,8 +90,19 @@ class EstadisticasComponent extends Component
     {
         $this->dicAspectos = null;
         $user = Auth::user();
-        $carreras = \App\Models\Carrera::select('id', 'carrera', 'planEstudios')->where('creadopor', $user->id)->get();
+        // $carreras = \App\Models\Carrera::select('id', 'carrera', 'planEstudios')->where('creadopor', $user->id)->get();
+        $carreras = null;
 
+        if($user->name == "Administrador"){
+            $carreras = Carrera::all();
+        }else{
+            // $this->carreras = Carrera::where('creadopor', $user->id)->get();
+            $carreras = db::table('usuario_carreras')
+                        ->join('users', 'users.id', '=', 'usuario_carreras.user_id')
+                        ->join('carreras', 'carreras.id', '=', 'usuario_carreras.carrera_id')
+                        ->where('user_id','=', $user->id);
+        }
+        
         $dataBarrasObjetivos = [];
         $dataAspectos = [];
         $sumatoria = [];

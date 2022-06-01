@@ -82,6 +82,7 @@ class ResidentesComponent extends Component
             'residentes' => $residentes,
             'residentes2' => $residentes2,
             'user_session' => $user_session,
+            'user_rol' => Auth::user()->rol
         ])->layout('Residentes.index');
 
         

@@ -99,7 +99,7 @@
                         </thead>
                         <tbody>
                             @foreach ($residentes as $residente)
-                                @if ($residente->aceptado == true && $residente->asignadoPor == $user_session)
+                                @if ($residente->aceptado == true && ($residente->asignadoPor == $user_session || $user_rol=='Administrador'))
                                     <tr class="table100-head">
 
                                         <td class="column1">{{ $residente->nombres }}</td>
