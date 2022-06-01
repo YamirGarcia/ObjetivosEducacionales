@@ -89,9 +89,9 @@ class EstadisticasComponent extends Component
     public function render()
     {
         $this->dicAspectos = null;
+        $carreras = null;
         $user = Auth::user();
         // $carreras = \App\Models\Carrera::select('id', 'carrera', 'planEstudios')->where('creadopor', $user->id)->get();
-        $carreras = null;
 
         if($user->name == "Administrador"){
             $carreras = Carrera::all();
@@ -100,7 +100,7 @@ class EstadisticasComponent extends Component
             $carreras = db::table('usuario_carreras')
                         ->join('users', 'users.id', '=', 'usuario_carreras.user_id')
                         ->join('carreras', 'carreras.id', '=', 'usuario_carreras.carrera_id')
-                        ->where('user_id','=', $user->id);
+                        ->where('user_id','=', $user->id)->select('carreras.id', 'carreras.carrera', 'carreras.planEstudios');
         }
         
         $dataBarrasObjetivos = [];

@@ -64,8 +64,19 @@ class MetasComponent extends Component
             $this->carreras = db::table('usuario_carreras')
                         ->join('users', 'users.id', '=', 'usuario_carreras.user_id')
                         ->join('carreras', 'carreras.id', '=', 'usuario_carreras.carrera_id')
-                        ->where('user_id','=', $user->id);
+                        ->where('user_id','=', $user->id)
+                        ->select('carreras.*');
         }
+
+        // if($user->name == "Administrador"){
+        //     $this->carreras = Carrera::all();
+        // }else{
+        //     // $this->carreras = Carrera::where('creadopor', $user->id)->get();
+        //     $this->carreras = db::table('usuario_carreras')
+        //                 ->join('users', 'users.id', '=', 'usuario_carreras.user_id')
+        //                 ->join('carreras', 'carreras.id', '=', 'usuario_carreras.carrera_id')
+        //                 ->where('user_id','=', $user->id);
+        // }
 
         $conf = ConfiguracionDashboard::where('creadoPor',$user->id)->get();
         // dd($conf);
