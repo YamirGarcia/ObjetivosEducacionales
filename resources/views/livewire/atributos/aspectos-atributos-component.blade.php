@@ -57,7 +57,9 @@
                                                     data-toggle="collapse" data-target="#collapse{{ $aspecto->id }}"
                                                     aria-expanded="true" aria-controls="collapse{{ $aspecto->id }}"
                                                     style="text-decoration: none">
-                                                    {{ $loop->iteration }}.- {{ $aspecto->nombre }}
+                                                    {{ $loop->iteration }}.- {{ $aspecto->nombre }} <span
+                                                        class="ml-2">
+                                                        Preguntas({{ count($aspecto->preguntas) }}) </span>
                                                 </button>
                                                 <div wire:ignore.self class="acciones2">
                                                     @can('editar-aspectosAtributos')
