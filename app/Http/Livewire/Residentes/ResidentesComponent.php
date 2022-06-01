@@ -102,7 +102,7 @@ class ResidentesComponent extends Component
             'residentes' => $residentes,
             'residentes2' => $residentes2,
             'user_session' => $user_session,
-            'user_rol' => Auth::user()->rol,
+            'user_rol' => $usuario->rol,
             'usuario' => $usuario,
         ])->layout('Residentes.index');
 
@@ -193,7 +193,7 @@ class ResidentesComponent extends Component
     public function contiene($carreraObjetivo){
         $user = Auth::user();
         foreach($user->carreras as $carrera){
-            if ($carrera->carrera == $carreraObjetivo) {
+            if ($carrera->carrera == $carreraObjetivo || $user->rol == 'Administrador') {
                 return true;
             }
         }
