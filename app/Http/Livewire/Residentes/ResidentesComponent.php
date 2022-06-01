@@ -22,6 +22,9 @@ class ResidentesComponent extends Component
     {
         $residentes2=null;
         $residentes = null;
+        $user = Auth::user();
+        $user_session = Auth::user()->name;
+        $usuario = Auth::user();
         if($this->campo && $this->order){
             $residentes = Residente::orderBy($this->campo, $this->order)->get();
         }else{
@@ -45,7 +48,7 @@ class ResidentesComponent extends Component
             else false;
         });
 
-        $residente2 = $residentes2->filter(function ($value) {
+        $residentes2 = $residentes2->filter(function ($value) {
             if(
                 str_contains(strtolower($value->nombres), strtolower($this->searchPen))  
             || str_contains(strtolower($value->apellidos), strtolower($this->searchPen)) 
@@ -56,8 +59,25 @@ class ResidentesComponent extends Component
             else false;
         });
 
-        $user_session = Auth::user()->name;
+        $residentes2 = $residentes2->filter(function ($value) {
+            if($this->contiene($value->carrera)){
+                return true;
+            } else {
+                return false;
+            }
+        });
 
+        $residentes = $residentes->filter(function ($value) {
+            if($this->contiene($value->carrera)){
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+
+
+        
         if($this->inputCarrera){
             $residentes = $residentes->filter(function ($value) {
                 if($value->carrera == $this->inputCarrera){
@@ -82,7 +102,8 @@ class ResidentesComponent extends Component
             'residentes' => $residentes,
             'residentes2' => $residentes2,
             'user_session' => $user_session,
-            'user_rol' => Auth::user()->rol
+            'user_rol' => Auth::user()->rol,
+            'usuario' => $usuario,
         ])->layout('Residentes.index');
 
         
@@ -169,5 +190,14 @@ class ResidentesComponent extends Component
         Residente::destroy($id);
     }
 
+    public function contiene($carreraObjetivo){
+        $user = Auth::user();
+        foreach($user->carreras as $carrera){
+            if ($carrera->carrera == $carreraObjetivo) {
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
