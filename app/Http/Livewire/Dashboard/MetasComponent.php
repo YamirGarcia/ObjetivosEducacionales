@@ -65,7 +65,7 @@ class MetasComponent extends Component
                         ->join('users', 'users.id', '=', 'usuario_carreras.user_id')
                         ->join('carreras', 'carreras.id', '=', 'usuario_carreras.carrera_id')
                         ->where('user_id','=', $user->id)
-                        ->select('carreras.*');
+                        ->select('carreras.*')->get();
         }
 
         // if($user->name == "Administrador"){
