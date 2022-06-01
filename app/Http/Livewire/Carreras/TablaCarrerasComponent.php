@@ -27,7 +27,7 @@ class TablaCarrerasComponent extends Component
         $user_session = Auth::user()->name;
         $user = Auth::user();
 
-        if ($user->getRoleNames()[0] == "Administrador") {
+        if ($user->rol == "Administrador") {
             $carreras = Carrera::where('carrera', 'ilike', "%{$this->search}%")
             ->orWhere('planEstudios', 'ilike', "%{$this->search}%");
             $this->band = true;
@@ -55,6 +55,13 @@ class TablaCarrerasComponent extends Component
                 }
             });
             $usuarios = User::where('creadopor', $user->name)->get();
+            if($this->botonMostrar == true){
+            $carreras = $carreras->filter(function($item){
+                if($item->oculto == false){
+                    return true;
+                }
+            });
+        }
             return view('livewire.carreras.tabla-carreras-component',[
             'carreras' => $carreras,
             'usuarios' => $usuarios,
