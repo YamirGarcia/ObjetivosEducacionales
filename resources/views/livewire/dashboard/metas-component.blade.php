@@ -161,7 +161,7 @@
                                                     <div class="info">
                                                         <p class="text-title">Usuarios </p>
                                                         <h4 class="text-cent" style="font-size: 40px !important">
-                                                            {{ $usuario->rol == 'Administrador' ? count(App\Models\User::where([['rol','!=','Evaluador']])->get()) : count(App\Models\User::where('creadopor', $usuario->name)->get()) }}
+                                                            {{ $usuario->rol == 'Administrador' ? count(App\Models\User::where([['rol','!=','Evaluador'], ['creadopor','!=', 'SuperAdmin']])->get())  : count(App\Models\User::where([['creadopor', $usuario->name], ['rol','!=','Evaluador']])->get()) - 1 }}
                                                         </h4>
                                                     </div>
                                                     <svg class="usuarios" xmlns="http://www.w3.org/2000/svg"
